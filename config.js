@@ -38,8 +38,8 @@ global.vs = '2.0.7'
 global.vsJB = '5.0'
 global.nameqr = 'Ai Yaemori - MD'
 global.namebot = 'ᥡᥲᥱm᥆rі ᑲ᥆𝗍 ᰔᩚ'
-global.sessions = 'MiniSession'
-global.jadi = 'MiniJadiBot'
+global.sessions = 'GenesisSession'
+global.jadi = 'GenesisJadiBot'
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
