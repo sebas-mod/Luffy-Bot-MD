@@ -31,7 +31,7 @@ let handler = async (m, { conn, usedPrefix, text, args, command }) => {
             displayName: "Creador",
             contacts: [{ vcard }] 
         }
-    }, { quoted: fkontak });
+    }, { quoted: estilo });
 
     let txt = `👋 *Hola \`${username}\` este es*\n*el contacto de mi creador*`;
 
