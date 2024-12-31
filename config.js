@@ -43,23 +43,16 @@ global.jadi = 'GenesisJadiBot'
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
-global.packname = '⪛✰ 𝐀𝐢 𝐘𝐚𝐞𝐦𝐨𝐫𝐢 - 𝐌𝐃 ✰⪜'
-global.botname = 'Yaemori Bot - MD 🍟'
-global.wm = 'YaemoriBot-MD 🌸'
-global.author = 'Made By DevDiego 👑'
-global.dev = '© ⍴᥆ᥕᥱrᥱძ ᑲᥡ ძᥱ᥎ძіᥱg᥆ ✌︎'
-global.textbot = 'Ai Yaemori : DevDiego 🚩'
+global.packname = '⪛✰ Genesis Ai - Ultra ✰⪜'
+global.botname = 'Genesis-Ai 🤍'
+global.wm = 'Genesis-Ultra 🤍'
+global.author = 'Made By Izumi.kzx ☕'
+global.dev = '© ⍴᥆ᥕᥱrᥱძ ᑲᥡ Angel ✌︎'
+global.textbot = 'Genesis Ai : Izumi.kzx 🚩'
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
-global.imagen1 = fs.readFileSync('./src/img/Menu.jpg')
-global.imagen2 = fs.readFileSync('./src/img/Menu2.jpg')
-global.imagen3 = fs.readFileSync('./src/img/Menu3.jpg')
-global.welcome = fs.readFileSync('./src/img/welcome.jpg')
-global.adios = fs.readFileSync('./src/img/adios.jpg')
-global.catalogo = fs.readFileSync('./src/img/catalogo.jpg')
-global.miniurl = fs.readFileSync('./src/img/miniurl.jpg')
-global.avatar = fs.readFileSync('./src/img/avatar_contact.jpg')
+global.catalogo = fs.readFileSync('./src/catalogo.png')
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
