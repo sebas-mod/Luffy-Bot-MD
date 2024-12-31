@@ -18,7 +18,7 @@ font: 'chrome',
 align: 'center',
 colors: ['red']
 });
-say(`Developed By • Cuervo-Team-Supreme`, {
+say(`Developed By • Izumi.kzx - TK-Host`, {
 font: 'console',
 align: 'center',
 colors: ['yellow']
