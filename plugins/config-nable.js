@@ -335,10 +335,6 @@ await conn.sendMessage(m.chat, {
     { 
       buttonId: ".menu", 
       buttonText: { displayText: 'test' } 
-    },
-    { 
-      buttonId: ".s", 
-      buttonText: { displayText: 'Hola' } 
     }
   ],
   viewOnce: true,
