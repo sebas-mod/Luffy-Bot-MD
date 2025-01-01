@@ -16,12 +16,12 @@ const rl = createInterface(process.stdin, process.stdout);
 say('Genesis\nUltra', {
 font: 'chrome',
 align: 'center',
-colors: ['red']
+gradient: ['red', 'magenta']
 });
 say(`Developed By • Izumi.kzx - TK-Host`, {
 font: 'console',
 align: 'center',
-colors: ['yellow']
+gradient: ['red', 'magenta']
 });
 var isRunning = false;
 function start(file) {
