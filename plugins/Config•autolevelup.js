@@ -1,4 +1,91 @@
-import { xpRange, canLevelUp, findLevel } from '../lib/levelling.js'
+import { xpRange, canLevelUp, findLevel } from '../lib/levelling.js';
+import fetch from 'node-fetch';
+
+let handler = m => m;
+
+handler.all = async function (m) {
+    let user = global.db?.data?.users?.[m.sender];
+    if (!user?.autolevelup) return true;
+
+    const { exp, level } = user;
+    const { multiplier } = global;
+    const { min, xp, max } = xpRange(level, multiplier);
+
+    try {
+        let beforeLevel = level;
+        while (canLevelUp(level, exp, multiplier)) user.level++;
+
+        if (beforeLevel !== user.level) {
+            const newLevel = user.level;
+            const role = assignRole(newLevel); // Función para asignar roles según nivel
+            user.role = role;
+
+            // Mensaje de notificación
+            const message = `🎉 ¡Subiste de nivel!\n👤 Usuario: ${m.sender}\n🌟 Nivel: ${beforeLevel} ➡️ ${newLevel}\n🏅 Nuevo rol: ${role}`;
+            await m.reply(message);
+
+            // Recompensas por nivel
+            const rewards = calculateRewards(newLevel);
+            applyRewards(user, rewards);
+
+            const rewardMessage = formatRewardsMessage(newLevel, rewards);
+            await m.reply(rewardMessage);
+        }
+    } catch (error) {
+        console.error("Error en el manejo de nivel:", error);
+    }
+};
+
+export default handler;
+
+// Función para asignar roles según el nivel
+function assignRole(level) {
+    const roles = {
+        0: '🌱 Aventurero(a) Novato(a) V',
+        10: '🌿 Explorador(a) IV',
+        20: '🍃 Guardián(a) III',
+        30: '🌳 Héroe(a) II',
+        40: '🌲 Leyenda I',
+    };
+    return roles[Math.floor(level / 10) * 10] || '🌟 Maestro(a)';
+}
+
+// Función para calcular recompensas
+function calculateRewards(level) {
+    const baseRewards = { cookies: 5, exp: 10, money: 50, joincount: 1 };
+    const multiplier = Math.floor(level / 10) || 1;
+
+    return {
+        cookies: baseRewards.cookies * multiplier,
+        exp: baseRewards.exp * multiplier,
+        money: baseRewards.money * multiplier,
+        joincount: baseRewards.joincount * multiplier,
+    };
+}
+
+// Función para aplicar recompensas al usuario
+function applyRewards(user, rewards) {
+    for (const [key, value] of Object.entries(rewards)) {
+        user[key] = (user[key] || 0) + value;
+    }
+}
+
+// Función para formatear el mensaje de recompensas
+function formatRewardsMessage(level, rewards) {
+    return `🎁 ¡Recompensas por alcanzar el nivel ${level}!\n` +
+        `🍪 Cookies: ${rewards.cookies}\n` +
+        `✨ Exp: ${rewards.exp}\n` +
+        `💰 Dinero: ${rewards.money}\n` +
+        `🔗 Tickets: ${rewards.joincount}`;
+}
+
+
+
+
+
+
+
+/* import { xpRange, canLevelUp, findLevel } from '../lib/levelling.js'
 import fetch from 'node-fetch'
 
 let handler = m => m
@@ -53,49 +140,6 @@ function enumGetKey(a) {
         return a.jid
 }
 
-/* import { canLevelUp, xpRange } from '../lib/levelling.js'
-import { levelup } from '../lib/canvas.js'
-
-let handler = m => m
-handler.before = async function (m, { conn, usedPrefix }) {
-
-if (!db.data.chats[m.chat].autolevelup) return
-let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-let perfil = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://qu.ax/QGAVS.jpg')
-let mentionedJid = [who]
-let username = conn.getName(who)
-let userName = m.pushName || 'Anónimo'
-
-let user = global.db.data.users[m.sender]
-let chat = global.db.data.chats[m.chat]
-if (!chat.autolevelup)
-return !0
-
-let level = user.level
-let before = user.level * 1
-while (canLevelUp(user.level, user.exp, global.multiplier)) 
-user.level++
-if (before !== user.level) {
-let currentRole = Object.entries(roles).sort((a, b) => b[1] - a[1]) .find(([, minLevel]) => level + 1 >= minLevel)[0]
-let nextRole = Object.entries(roles).sort((a, b) => a[1] - b[1]) .find(([, minLevel]) => level + 2 < minLevel)[0]
-
-//if (user.role != currentRole && level >= 1) {
-if (level >= 1) {
-user.role = currentRole
-let text22 = `✨ *¡Felicidades ${userName}!* \n\nTu nuevo rango es:\n» ${currentRole}.\n` + (nextRole ? ` Para llegar al rango:\n» ${nextRole}\nAlcanza el nivel:\n» *${roles[nextRole]}*.` : '')
-await conn.sendMessage(global.channelid, { text: text22, contextInfo: {
-externalAdReply: {
-title: "【 🔔 𝗡𝗢𝗧𝗜𝗙𝗜𝗖𝗔𝗖𝗜𝗢́𝗡 🔔 】",
-body: '🥳 ¡Alguien obtuvo un nuevo Rango!',
-thumbnailUrl: perfil,
-sourceUrl: redes,
-mediaType: 1,
-showAdAttribution: false,
-renderLargerThumbnail: false
-}}}, { quoted: null }) 
-}
-
-m.reply(`*🎉 ¡ F E L I C I D A D E S ! 🎉*\n\n💫 Nivel Actual » *${user.level}*\n🌵 Rango » ${user.role}\n📆 Fecha » *${moment.tz('America/Bogota').format('DD/MM/YY')}*\n\n> *\`¡Has alcanzado un Nuevo Nivel!\`*`) */
 
 let especial = 'cookies'
 let especial2 = 'exp'
@@ -228,7 +272,86 @@ user[especial4] += especialCant4 * 4
 conn.reply(m.chat, `*🥳 RECOMPENSA POR SU NUEVO NIVEL 45!!* 🏆
 ᰔᩚ *${especialCant * 5} ${especial}*
 ᰔᩚ *${especialCant2 * 5} ${especial2}*
-ᰔᩚ *${especialCant3 * 5} ${especial3}*
+ᰔᩚ *${especimport { xpRange, canLevelUp, findLevel } from '../lib/levelling.js';
+import fetch from 'node-fetch';
+
+let handler = m => m;
+
+handler.all = async function (m) {
+    let user = global.db?.data?.users?.[m.sender];
+    if (!user?.autolevelup) return true;
+
+    const { exp, level } = user;
+    const { multiplier } = global;
+    const { min, xp, max } = xpRange(level, multiplier);
+
+    try {
+        let beforeLevel = level;
+        while (canLevelUp(level, exp, multiplier)) user.level++;
+
+        if (beforeLevel !== user.level) {
+            const newLevel = user.level;
+            const role = assignRole(newLevel); // Función para asignar roles según nivel
+            user.role = role;
+
+            // Mensaje de notificación
+            const message = `🎉 ¡Subiste de nivel!\n👤 Usuario: ${m.sender}\n🌟 Nivel: ${beforeLevel} ➡️ ${newLevel}\n🏅 Nuevo rol: ${role}`;
+            await m.reply(message);
+
+            // Recompensas por nivel
+            const rewards = calculateRewards(newLevel);
+            applyRewards(user, rewards);
+
+            const rewardMessage = formatRewardsMessage(newLevel, rewards);
+            await m.reply(rewardMessage);
+        }
+    } catch (error) {
+        console.error("Error en el manejo de nivel:", error);
+    }
+};
+
+export default handler;
+
+// Función para asignar roles según el nivel
+function assignRole(level) {
+    const roles = {
+        0: '🌱 Aventurero(a) Novato(a) V',
+        10: '🌿 Explorador(a) IV',
+        20: '🍃 Guardián(a) III',
+        30: '🌳 Héroe(a) II',
+        40: '🌲 Leyenda I',
+    };
+    return roles[Math.floor(level / 10) * 10] || '🌟 Maestro(a)';
+}
+
+// Función para calcular recompensas
+function calculateRewards(level) {
+    const baseRewards = { cookies: 5, exp: 10, money: 50, joincount: 1 };
+    const multiplier = Math.floor(level / 10) || 1;
+
+    return {
+        cookies: baseRewards.cookies * multiplier,
+        exp: baseRewards.exp * multiplier,
+        money: baseRewards.money * multiplier,
+        joincount: baseRewards.joincount * multiplier,
+    };
+}
+
+// Función para aplicar recompensas al usuario
+function applyRewards(user, rewards) {
+    for (const [key, value] of Object.entries(rewards)) {
+        user[key] = (user[key] || 0) + value;
+    }
+}
+
+// Función para formatear el mensaje de recompensas
+function formatRewardsMessage(level, rewards) {
+    return `🎁 ¡Recompensas por alcanzar el nivel ${level}!\n` +
+        `🍪 Cookies: ${rewards.cookies}\n` +
+        `✨ Exp: ${rewards.exp}\n` +
+        `💰 Dinero: ${rewards.money}\n` +
+        `🔗 Tickets: ${rewards.joincount}`;
+}ialCant3 * 5} ${especial3}*
 ᰔᩚ *${especialCant4 * 5} ${especial4}*`, m)
 user[especial] += especialCant * 5
 user[especial2] += especialCant2 * 5
@@ -502,4 +625,4 @@ global.roles = {
 '🔥 *Héroe(a) Inmortal II*': 4000,
 '🔥 *Héroe(a) Inmortal I*': 5000,
 '👑🌌 *Eterna Deidad del Multiverso* ⚡': 10000,
-}
+} */
