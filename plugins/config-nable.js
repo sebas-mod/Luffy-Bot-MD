@@ -321,7 +321,30 @@ ${usedPrefix + command} antifake
 ${usedPrefix + command} antilink`, m, rcanal)
       throw false
   }
-  conn.reply(m.chat, `🚩 La función *${type}* se *${isEnable ? 'activó' : 'desactivó'}* ${isAll ? 'para este Bot' : isUser ? '' : 'para este chat'}`, m, rcanal)
+await conn.sendMessage(m.chat, { 
+  text: `❱❱ 𝗚𝗘𝗡𝗘𝗦𝗜𝗦 • 𝗠𝗗 ❰❰\n\n` +
+        `*» 𝗢𝗣𝗖𝗜𝗢𝗡 |* ${type.toUpperCase()}\n` +
+        `*» 𝗘𝗦𝗧𝗔𝗗𝗢 |* ${isEnable ? 'ON' : 'OFF'}\n` +
+        `*» 𝗣𝗔𝗥𝗔 |* ${isAll ? 'ESTE BOT' : isUser ? '' : 'ESTE CHAT'}`, 
+  footer: wm, 
+  buttons: [
+    { 
+      buttonId: isEnable ? `.off ${type}` : `.on ${type}`, 
+      buttonText: { displayText: isEnable ? 'ᴅᴇꜱᴀᴄᴛɪᴠᴀʀ ☁️' : 'ᴀᴄᴛɪᴠᴀʀ ☁️' } 
+    },
+    { 
+      buttonId: ".menu", 
+      buttonText: { displayText: 'test' } 
+    },
+    { 
+      buttonId: ".s", 
+      buttonText: { displayText: 'Hola' } 
+    }
+  ],
+  viewOnce: true,
+  headerType: 1
+}, { quoted: m });
+//  conn.reply(m.chat, `🚩 La función *${type}* se *${isEnable ? 'activó' : 'desactivó'}* ${isAll ? 'para este Bot' : isUser ? '' : 'para este chat'}`, m, rcanal)
 }
 
 handler.help = ['enable', 'disable']
