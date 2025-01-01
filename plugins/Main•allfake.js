@@ -31,14 +31,14 @@ console.log(`Error : ${e}`)
 global.creador = 'Wa.me/5493876432076'
 global.ofcbot = `${conn.user.jid.split('@')[0]}`
 global.asistencia = 'https://wa.me/message/O4QPPHZOFDOJI1'
-global.namechannel = '© All Rightd Reserved • YaemoriBot'
+global.namechannel = '✿ Genesis • Channel OFC ✿'
 global.listo = '✨️ *Aquí tienes ฅ^•ﻌ•^ฅ*'
 global.fotoperfil = await conn.profilePictureUrl(m.sender, 'image').catch(_ => 'https://qu.ax/QGAVS.jpg')
 
 //ids channel
 global.channelid = '120363220939514640@newsletter'
 global.canalIdYL = ["120363220939514640@newsletter", "120363205895430548@newsletter", "120363383239813951@newsletter", "120363233459118973@newsletter"]
-global.canalNombreYL = ["✿ Genesis  •  Channel OFC ✿", "TK • Hosting ☁️", "Sociedad • TK 🫂", "Diario de Joan TK ✍️"]
+global.canalNombreYL = ["✿ Genesis • Channel OFC ✿", "TK • Hosting ☁️", "Sociedad • TK 🫂", "Diario de Joan TK ✍️"]
 global.channelRD = await getRandomChannel()
 
 //fechas
