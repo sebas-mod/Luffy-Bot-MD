@@ -1,3 +1,4 @@
+import db from '../lib/database.js'
 import { createHash } from 'crypto';
 import canvafy from 'canvafy';
 import fs from 'fs/promises';
