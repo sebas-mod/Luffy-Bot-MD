@@ -4,7 +4,6 @@ import fetch from 'node-fetch'; // Asegúrate de tener 'node-fetch' instalado.
 
 let handler = (m) => m;
 handler.before = async function (m, { conn }) {
-  // Verificar si el autolevelup está habilitado en el chat
   if (!db.data.chats[m.chat].autolevelup) return;
 
   // Obtener ID del usuario o mencionado
