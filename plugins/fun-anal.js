@@ -1,4 +1,4 @@
-import fs from 'fs';
+/* import fs from 'fs';
 import path from 'path';
 import { uploadToTelegraph } from './lib/uploadImage.js';
 import { sticker } from './lib/sticker.js';
@@ -48,4 +48,4 @@ handler.register = true;
 
 handler.group = true;
 
-export default handler;
+export default handler; */
