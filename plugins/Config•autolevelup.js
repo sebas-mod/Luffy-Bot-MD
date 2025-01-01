@@ -1,7 +1,7 @@
 import { canLevelUp, xpRange } from '../lib/levelling.js';
 import { levelup } from '../lib/canvas.js';
 import fetch from 'node-fetch';
-import canvafy from 'canvafy'; // Asegúrate de instalar canvafy
+import canvafy from 'canvafy';
 
 let handler = (m) => m;
 handler.before = async function (m, { conn }) {
@@ -31,7 +31,7 @@ handler.before = async function (m, { conn }) {
     let role = Object.keys(roles).reduce((acc, key) => {
       if (roles[key] <= user.level) acc = key;
       return acc;
-    }, '🌱 *Aventurero(a) - Novato(a) V*'); // Rol por defecto si no encuentra uno
+    }, '🌱 Novato I');
 
     let text = `✨ *¡Felicidades ${name}!*\n\n` +
       `🎯 *Nuevo nivel alcanzado:*\n` +
