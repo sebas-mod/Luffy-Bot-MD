@@ -6,7 +6,6 @@ let handler = (m) => m;
 handler.before = async function (m, { conn }) {
   if (!db.data.chats[m.chat].autolevelup) return;
 
-  // Obtener ID del usuario o mencionado
   let who = m.mentionedJid && m.mentionedJid[0]
     ? m.mentionedJid[0]
     : m.fromMe
