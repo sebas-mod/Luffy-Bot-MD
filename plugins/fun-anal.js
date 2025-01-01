@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
-import { uploadToTelegraph } from '../lib/uploadImage.js';
-import { sticker } from '../lib/sticker.js';
+import { uploadToTelegraph } from './lib/uploadImage.js';
+import { sticker } from './lib/sticker.js';
 
 let handler = async (m, { conn, usedPrefix }) => {
     if (!global.db.data.chats[m.chat].nsfw && m.isGroup) {
