@@ -15,7 +15,7 @@ handler.before = async function (m, { conn }) {
 
   let pp = await conn
     .profilePictureUrl(who, 'image')
-    .catch((_) => 'https://pomf2.lain.la/f/rycjgv2t.jpg'); // URL predeterminada si falla
+    .catch((_) => 'https://pomf2.lain.la/f/rycjgv2t.jpg');
 
   let img = null;
   try {
@@ -35,7 +35,6 @@ handler.before = async function (m, { conn }) {
 
   while (canLevelUp(user.level, user.exp, global.multiplier)) user.level++;
   if (before !== user.level) {
-    // Obtener el rol según el nivel actual
     const roles = global.roles;
     let role = Object.keys(roles).reduce((acc, key) => {
       if (roles[key] <= user.level) acc = key;
