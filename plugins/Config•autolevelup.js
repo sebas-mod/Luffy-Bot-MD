@@ -62,6 +62,16 @@ handler.before = async function (m, { conn }) {
 export default handler;
 
 // Definición de roles por nivel
+
+*`乂 L E V E L  -  U P 乂`*
+
+*┌  ◦ `Nombre:`* Newbie ㋡
+*├  ◦  `Rol:`*
+*├  ◦  `Exp:`*
+*└  ◦  `Nivel:`*  [ 0 ] ➠ [ 1 ]
+
+© ⍴᥆ᥕᥱr ᑲᥡ іzᥙmі.kz᥊ - gᥱᥒᥱsіs-ᥲі
+
 global.roles = {
   '🌱 Novato I': 0,
   '🌱 Novato II': 2,
