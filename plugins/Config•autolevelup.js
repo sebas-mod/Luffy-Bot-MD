@@ -13,18 +13,16 @@ handler.before = async function (m, { conn }) {
     ? conn.user.jid
     : m.sender;
 
-  // Obtener la URL de la foto de perfil del usuario
   let pp = await conn
     .profilePictureUrl(who, 'image')
     .catch((_) => 'https://pomf2.lain.la/f/rycjgv2t.jpg'); // URL predeterminada si falla
 
-  // Descargar la imagen y convertirla en buffer
   let img = null;
   try {
     img = await (await fetch(pp)).buffer();
   } catch (err) {
     console.error('Error al obtener la imagen:', err);
-    img = null; // En caso de error, asignar nulo
+    img = null;
   }
 
   let name = await conn.getName(m.sender);
@@ -35,7 +33,6 @@ handler.before = async function (m, { conn }) {
   let level = user.level;
   let before = user.level * 1;
 
-  // Verificar si el usuario puede subir de nivel
   while (canLevelUp(user.level, user.exp, global.multiplier)) user.level++;
   if (before !== user.level) {
     // Obtener el rol según el nivel actual
@@ -51,27 +48,6 @@ handler.before = async function (m, { conn }) {
       `- Nivel actual: ${user.level}\n` +
       `- Rol actual: ${role}`;
 
-    // Enviar mensaje de notificación al canal y al usuario
-    await conn.sendMessage(
-      global.channelid,
-      {
-        text: text,
-        contextInfo: {
-          externalAdReply: {
-            title: "【 🔔 𝗡𝗢𝗧𝗜𝗙𝗜𝗖𝗔𝗖𝗜𝗢́𝗡 🔔 】",
-            body: '🥳 ¡Alguien obtuvo un nuevo Rango!',
-            thumbnail: img || null, // Usar la imagen descargada o ninguna
-            sourceUrl: redes,
-            mediaType: 1,
-            showAdAttribution: false,
-            renderLargerThumbnail: false,
-          },
-        },
-      },
-      { quoted: null }
-    );
-
-    // Enviar mensaje directo al usuario en el chat
     await conn.sendFile(
       m.chat,
       img || 'https://pomf2.lain.la/f/rycjgv2t.jpg', // Si no hay imagen, usar URL predeterminada
