@@ -56,16 +56,12 @@ global.catalogo = fs.readFileSync('./src/catalogo.png')
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
-global.grupo = 'https://chat.whatsapp.com/GkuIuySiMwb4qJGl3UJtcZ' //YaemoriBot
-global.grupo2 = 'https://chat.whatsapp.com/Ksd32KH9zFoDmO1PJt44M7' //GataBot & YaemoriBot
-global.grupo3 = 'https://chat.whatsapp.com/HjVwC835OWgERQYhspnMW8' //Megumin & YaemoriBot
-global.channel = 'https://whatsapp.com/channel/0029VaQD7LAJP216tu9liI2A'
-global.channel2 = 'https://whatsapp.com/channel/0029Vam7yUg77qVaz3sIAp0z'
-global.channel3 = 'https://whatsapp.com/channel/0029Va4QjH7DeON0ePwzjS1A'
-global.md = 'https://github.com/Dev-Diego/YaemoriBot-MD' 
-global.yt = 'https://www.youtube.com/@OfcDiego'
-global.tiktok = 'https://tiktok.com/@dev_diego'
-global.correo = 'theyaemoribot@gmail.com'
+global.group = 'https://chat.whatsapp.com/GqKwwoV2JJaJDP2SL7SddX'
+global.group2 = 'https://chat.whatsapp.com/Fn5Ipyxu6mE6qEQlwWZTwU'
+global.canal = 'https://whatsapp.com/channel/0029VaJxgcB0bIdvuOwKTM2Y'
+global.github = 'https://github.com/Angelito-OFC/Genesis-AI' 
+global.instagram = 'https://www.instagram.com/angelito.kzx' 
+global.whatsApp = 'https://wa.me/59168683798'
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
