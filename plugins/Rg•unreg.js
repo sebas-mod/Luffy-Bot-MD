@@ -1,3 +1,4 @@
+import db from '../lib/database.js'
 import { createHash } from 'crypto'
 let handler = async function (m, { conn, args, usedPrefix}) {
   if (!args[0]) return m.reply(`🤍 Ingresa tu número de serie junto al comando.`)
