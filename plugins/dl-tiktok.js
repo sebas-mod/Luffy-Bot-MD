@@ -24,8 +24,8 @@ await m.react('🕓');
             profilePicture
         } = await ttdl(args[0]);//variables del resultado de 'ttdl'
        
-let txt = '';
-txt += `> *\`» Título :\`* ${title || '❌'}\n`; 
+let txt = '> *\`» Título :\`* ${title}';
+// txt += `> *\`» Título :\`* ${title || '❌'}\n`; 
 
 //VIDEO TIKTOK
         await conn.sendFile(m.chat, video, 'tiktok.mp4', txt, m, null, rcanal);
