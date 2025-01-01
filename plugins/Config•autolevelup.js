@@ -106,7 +106,7 @@ handler.before = async function (m, { conn }) {
     // Generar la imagen personalizada con canvafy utilizando la imagen de perfil `pp`
     const levelUpImage = await new canvafy.LevelUp()
       .setAvatar(pp)  // Usamos la URL de la imagen de perfil
-      .setBackground("image", "https://qu.ax/kaapD.jpg")
+      .setBackground("image", "https://qu.ax/pZVUy.jpg")
       .setUsername(name)
       .setBorder("#000000")
       .setAvatarBorder("#ff0000")
