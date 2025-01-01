@@ -24,7 +24,7 @@ await m.reply('☁️ Ocurrió un error inesperado\n\n' + e)
 await m.react(error)
 }}
 handler.help = ['mediafire']
-handler.tags = ['descargas']
+handler.tags = ['dl']
 handler.command = ['mediafire', 'mdfire', 'mf']
 handler.premium = false
 
