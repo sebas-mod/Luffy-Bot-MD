@@ -90,6 +90,50 @@ export default handler;
 
 // Definición de roles por nivel
 global.roles = {
+  '🌱 Novato V': 0,
+  '🌱 Novato IV': 2,
+  '🌱 Novato III': 4,
+  '🌱 Novato II': 6,
+  '🌱 Novato I': 8,
+  '🛠️ Aprendiz V': 10,
+  '🛠️ Aprendiz IV': 12,
+  '🛠️ Aprendiz III': 14,
+  '🛠️ Aprendiz II': 16,
+  '🛠️ Aprendiz I': 18,
+  '⚔️ Explorador V': 20,
+  '⚔️ Explorador IV': 22,
+  '⚔️ Explorador III': 24,
+  '⚔️ Explorador II': 26,
+  '⚔️ Explorador I': 28,
+  '🏹 Guerrero V': 30,
+  '🏹 Guerrero IV': 32,
+  '🏹 Guerrero III': 34,
+  '🏹 Guerrero II': 36,
+  '🏹 Guerrero I': 38,
+  '🛡️ Guardián V': 40,
+  '🛡️ Guardián IV': 42,
+  '🛡️ Guardián III': 44,
+  '🛡️ Guardián II': 46,
+  '🛡️ Guardián I': 48,
+  '🔮 Mago V': 50,
+  '🔮 Mago IV': 52,
+  '🔮 Mago III': 54,
+  '🔮 Mago II': 56,
+  '🔮 Mago I': 58,
+  '🏅 Héroe V': 60,
+  '🏅 Héroe IV': 62,
+  '🏅 Héroe III': 64,
+  '🏅 Héroe II': 66,
+  '🏅 Héroe I': 68,
+  '💎 Paladín V': 70,
+  '💎 Paladín IV': 72,
+  '💎 Paladín III': 74,
+  '💎 Paladín II': 76,
+  '💎 Paladín I': 78,
+  '🌌 Maestro V': 80,
+  '🌌 Maestro IV':
+
+/* global.roles = {
   '🌱 *Aventurero(a) - Novato(a) V*': 0,
   '🌱 *Aventurero(a) - Novato(a) IV*': 2,
   '🌱 *Aventurero(a) - Novato(a) III*': 4,
@@ -107,7 +151,7 @@ global.roles = {
   '⚔️ *Explorador(a) del Valle I*': 28,
   '🏹 *Guerrero(a) del Alba V*': 30,
   // (Continúan los roles como en tu diseño original)
-};
+}; */ 
 
 
 
