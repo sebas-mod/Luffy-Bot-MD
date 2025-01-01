@@ -15,7 +15,7 @@ handler.before = async function (m, { conn }) {
 
   let pp = await conn
     .profilePictureUrl(who, 'image')
-    .catch((_) => 'https://pomf2.lain.la/f/rycjgv2t.jpg');  // Fallback en caso de que no se pueda obtener la imagen
+    .catch((_) => 'https://telegra.ph/file/24fa902ead26340f3df2c.png');
 
   let name = await conn.getName(m.sender);
   let user = global.db.data.users[m.sender];
