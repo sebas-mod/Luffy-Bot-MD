@@ -330,11 +330,11 @@ await conn.sendMessage(m.chat, {
   buttons: [
     { 
       buttonId: isEnable ? `.off ${type}` : `.on ${type}`, 
-      buttonText: { displayText: isEnable ? 'APAGAR' : 'ENCENDER' } 
+      buttonText: { displayText: isEnable ? 'APAGAR ☁️' : 'ENCENDER ☁️' } 
     },
     { 
       buttonId: ".menu", 
-      buttonText: { displayText: 'test' } 
+      buttonText: { displayText: 'MENU' } 
     }
   ],
   viewOnce: true,
