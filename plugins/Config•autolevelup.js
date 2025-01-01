@@ -1,6 +1,6 @@
 import { canLevelUp, xpRange } from '../lib/levelling.js';
 import { levelup } from '../lib/canvas.js';
-import fetch from 'node-fetch'; // Asegúrate de tener 'node-fetch' instalado.
+import fetch from 'node-fetch';
 
 let handler = (m) => m;
 handler.before = async function (m, { conn }) {
