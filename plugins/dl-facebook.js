@@ -39,7 +39,7 @@ await m.react(error)
 return conn.reply(m.chat, '🚩 Error al enviar el video.', m, rcanal)}}
 
 handler.help = ['facebook', 'fb']
-handler.tags = ['descargas']
+handler.tags = ['dl']
 handler.command = ['facebook', 'fb']
 handler.cookies = 1
 handler.register = true
