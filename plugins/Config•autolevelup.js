@@ -1,4 +1,4 @@
-import { canLevelUp, xpRange } from '../lib/levelling.js';
+/* import { canLevelUp, xpRange } from '../lib/levelling.js';
 import { levelup } from '../lib/canvas.js';
 import fetch from 'node-fetch';
 
@@ -55,6 +55,69 @@ handler.before = async function (m, { conn }) {
       `*├  ◦ \`Rol:\`* ${role}\n` +
       `*├  ◦ \`Exp:\`* ${user.exp} xp\n` +
       `*└  ◦ \`Nivel:\`* [ ${before} ] ➠ [ ${user.level} ]\n\n© ⍴᥆ᥕᥱr ᑲᥡ іzᥙmі.kz᥊ - gᥱᥒᥱsіs-ᥲі`.trim(),
+      m
+    );
+  }
+};
+export default handler; */
+
+import { canLevelUp, xpRange } from '../lib/levelling.js';
+import { levelup } from '../lib/canvas.js';
+import fetch from 'node-fetch';
+import canvafy from 'canvafy'; // Asegúrate de instalar canvafy
+
+let handler = (m) => m;
+handler.before = async function (m, { conn }) {
+  if (!db.data.chats[m.chat].autolevelup) return;
+
+  let who = m.mentionedJid && m.mentionedJid[0]
+    ? m.mentionedJid[0]
+    : m.fromMe
+    ? conn.user.jid
+    : m.sender;
+
+  let name = await conn.getName(m.sender);
+  let user = global.db.data.users[m.sender];
+  let chat = global.db.data.chats[m.chat];
+  if (!chat.autolevelup) return true;
+
+  let level = user.level;
+  let before = user.level * 1;
+
+  while (canLevelUp(user.level, user.exp, global.multiplier)) user.level++;
+  if (before !== user.level) {
+    const roles = global.roles;
+    let role = Object.keys(roles).reduce((acc, key) => {
+      if (roles[key] <= user.level) acc = key;
+      return acc;
+    }, '🌱 *Aventurero(a) - Novato(a) V*'); // Rol por defecto si no encuentra uno
+
+    let text = `✨ *¡Felicidades ${name}!*\n\n` +
+      `🎯 *Nuevo nivel alcanzado:*\n` +
+      `- Nivel previo: ${before}\n` +
+      `- Nivel actual: ${user.level}\n` +
+      `- Rol actual: ${role}`;
+
+    // Generar la imagen personalizada con canvafy
+    const levelUpImage = await new canvafy.LevelUp()
+      .setAvatar("https://cdn.discordapp.com/avatars/928259219038302258/cb1bcc0c5616d3fb1527b4ea03c9ae17.png?size=1024")
+      .setBackground("image", "https://cdn.discordapp.com/attachments/1041745966186909826/1096055377289814126/e4a8a79fccae98487a74d8bd1f2357834dfa7295.png")
+      .setUsername(name)
+      .setBorder("#000000")
+      .setAvatarBorder("#ff0000")
+      .setOverlayOpacity(0.7)
+      .setLevels(before, user.level)
+      .build();
+
+    await conn.sendFile(
+      m.chat,
+      levelUpImage,
+      `levelup-${m.sender}.png`,
+      `*\`乂 L E V E L  -  U P 乂\`*\n\n` +
+      `*┌  ◦ \`Nombre:\`* ${name}\n` +
+      `*├  ◦ \`Rol:\`* ${role}\n` +
+      `*├  ◦ \`Exp:\`* ${user.exp} xp\n` +
+      `*└  ◦ \`Nivel:\`* [ ${before} ] ➠ [ ${user.level} ]\n\n© ⍴᥆ᥕᥱr ᑲᥡ іzᥙмі.kz᥊ - gᥱᥒᥱsіs-ᥲі`.trim(),
       m
     );
   }
