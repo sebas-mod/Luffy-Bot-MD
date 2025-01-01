@@ -44,7 +44,7 @@ await m.react(error)
   }
 }
 handler.help = ['gitclone *<url git>*']
-handler.tags = ['descargas']
+handler.tags = ['dl']
 handler.command = ['gitclone']
 handler.register = true 
 //handler.star = 1
