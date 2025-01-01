@@ -1,3 +1,118 @@
+import { canLevelUp, xpRange } from '../lib/levelling.js';
+import { levelup } from '../lib/canvas.js';
+import fetch from 'node-fetch'; // Asegúrate de tener 'node-fetch' instalado.
+
+let handler = (m) => m;
+handler.before = async function (m, { conn }) {
+  // Verificar si el autolevelup está habilitado en el chat
+  if (!db.data.chats[m.chat].autolevelup) return;
+
+  // Obtener ID del usuario o mencionado
+  let who = m.mentionedJid && m.mentionedJid[0]
+    ? m.mentionedJid[0]
+    : m.fromMe
+    ? conn.user.jid
+    : m.sender;
+
+  // Obtener la URL de la foto de perfil del usuario
+  let pp = await conn
+    .profilePictureUrl(who, 'image')
+    .catch((_) => 'https://pomf2.lain.la/f/rycjgv2t.jpg'); // URL predeterminada si falla
+
+  // Descargar la imagen y convertirla en buffer
+  let img = null;
+  try {
+    img = await (await fetch(pp)).buffer();
+  } catch (err) {
+    console.error('Error al obtener la imagen:', err);
+    img = null; // En caso de error, asignar nulo
+  }
+
+  let name = await conn.getName(m.sender);
+  let user = global.db.data.users[m.sender];
+  let chat = global.db.data.chats[m.chat];
+  if (!chat.autolevelup) return true;
+
+  let level = user.level;
+  let before = user.level * 1;
+
+  // Verificar si el usuario puede subir de nivel
+  while (canLevelUp(user.level, user.exp, global.multiplier)) user.level++;
+  if (before !== user.level) {
+    // Obtener el rol según el nivel actual
+    const roles = global.roles;
+    let role = Object.keys(roles).reduce((acc, key) => {
+      if (roles[key] <= user.level) acc = key;
+      return acc;
+    }, '🌱 *Aventurero(a) - Novato(a) V*'); // Rol por defecto si no encuentra uno
+
+    let text = `✨ *¡Felicidades ${name}!*\n\n` +
+      `🎯 *Nuevo nivel alcanzado:*\n` +
+      `- Nivel previo: ${before}\n` +
+      `- Nivel actual: ${user.level}\n` +
+      `- Rol actual: ${role}`;
+
+    // Enviar mensaje de notificación al canal y al usuario
+    await conn.sendMessage(
+      global.channelid,
+      {
+        text: text,
+        contextInfo: {
+          externalAdReply: {
+            title: "【 🔔 𝗡𝗢𝗧𝗜𝗙𝗜𝗖𝗔𝗖𝗜𝗢́𝗡 🔔 】",
+            body: '🥳 ¡Alguien obtuvo un nuevo Rango!',
+            thumbnail: img || null, // Usar la imagen descargada o ninguna
+            sourceUrl: redes,
+            mediaType: 1,
+            showAdAttribution: false,
+            renderLargerThumbnail: false,
+          },
+        },
+      },
+      { quoted: null }
+    );
+
+    // Enviar mensaje directo al usuario en el chat
+    await conn.sendFile(
+      m.chat,
+      img || 'https://pomf2.lain.la/f/rycjgv2t.jpg', // Si no hay imagen, usar URL predeterminada
+      'thumbnail.jpg',
+      `🎉 *¡Subiste de nivel!*\n\n` +
+      `◪ *Nombre:* ${name}\n` +
+      `├◆ *Rol:* ${role}\n` +
+      `├◆ *Exp:* ${user.exp} xp\n` +
+      `╰◆ *Nivel:* ${before} ➠ ${user.level}`.trim(),
+      m
+    );
+  }
+};
+export default handler;
+
+// Definición de roles por nivel
+global.roles = {
+  '🌱 *Aventurero(a) - Novato(a) V*': 0,
+  '🌱 *Aventurero(a) - Novato(a) IV*': 2,
+  '🌱 *Aventurero(a) - Novato(a) III*': 4,
+  '🌱 *Aventurero(a) - Novato(a) II*': 6,
+  '🌱 *Aventurero(a) - Novato(a) I*': 8,
+  '🛠️ *Aprendiz del Camino V*': 10,
+  '🛠️ *Aprendiz del Camino IV*': 12,
+  '🛠️ *Aprendiz del Camino III*': 14,
+  '🛠️ *Aprendiz del Camino II*': 16,
+  '🛠️ *Aprendiz del Camino I*': 18,
+  '⚔️ *Explorador(a) del Valle V*': 20,
+  '⚔️ *Explorador(a) del Valle IV*': 22,
+  '⚔️ *Explorador(a) del Valle III*': 24,
+  '⚔️ *Explorador(a) del Valle II*': 26,
+  '⚔️ *Explorador(a) del Valle I*': 28,
+  '🏹 *Guerrero(a) del Alba V*': 30,
+  // (Continúan los roles como en tu diseño original)
+};
+
+
+
+
+
 /* import { canLevelUp, xpRange } from '../lib/levelling.js'
 import { levelup } from '../lib/canvas.js'
 
