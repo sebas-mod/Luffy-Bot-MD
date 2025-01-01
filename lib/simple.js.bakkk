@@ -1,22 +1,20 @@
-import path from 'path'  
+import path from 'path'
 import { toAudio } from './converter.js'
-import chalk from 'chalk'
+import chalk from 'chalk' 
 import fetch from 'node-fetch'
 import PhoneNumber from 'awesome-phonenumber'
 import fs from 'fs'
 import util from 'util'
-import { fileTypeFromBuffer } from 'file-type' 
+import { fileTypeFromBuffer } from 'file-type'
 import { format } from 'util'
 import { fileURLToPath } from 'url'
 import store from './store.js'
-import Jimp from 'jimp'  
-import pino from 'pino'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
-/** 
- * @type {import('@adiwajshing/baileys')}
- */
+/**
+ * @type {import('@whiskeysockets/baileys')}
+ */ 
 const {
     default: _makeWaSocket,
     makeWALegacySocket,
@@ -24,15 +22,11 @@ const {
     downloadContentFromMessage,
     jidDecode,
     areJidsSameUser,
-    generateWAMessage,
     generateForwardMessageContent,
     generateWAMessageFromContent,
     WAMessageStubType,
-    extractMessageContent,
-    makeInMemoryStore,
-    getAggregateVotesInPollMessage, 
-    prepareWAMessageMedia,
-    WA_DEFAULT_EPHEMERAL
+    extractMessageContent, 
+    prepareWAMessageMedia 
 } = (await import('@whiskeysockets/baileys')).default
 
 export function makeWASocket(connectionOptions, options = {}) {
