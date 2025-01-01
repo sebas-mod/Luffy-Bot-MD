@@ -15,15 +15,15 @@ export async function before(m, {conn, participants, groupMetadata}) {
   if (chat.welcome && m.messageStubType == 27) {
     let bienvenida = `*⭒─ׄ─ׅ─ׄ─⭒ \`ʙɪᴇɴᴠᴇɴɪᴅᴀ\` ⭒─ׄ─ׅ─ׄ─⭒*\n\n*Usuario:* @${m.messageStubParameters[0].split`@`[0]} \n*Grupo:* ${groupMetadata.subject}\n${dev}`;
     
-await conn.sendAi(m.chat, packname, dev, bienvenida, img, img, channel, estilo)
+await conn.sendAi(m.chat, packname, dev, bienvenida, img, img, canal, estilo)
   }
   
   if (chat.welcome && m.messageStubType == 28) {
     let bye = `*⭒─ׄ─ׅ─ׄ─⭒ \`ᴀ ᴅ ɪ ᴏ ꜱ\` ⭒─ׄ─ׅ─ׄ─⭒*\n\n*Usuario:* @${m.messageStubParameters[0].split`@`[0]}\n*Grupo:* ${groupMetadata.subject}\n${dev}`;
-await conn.sendAi(m.chat, packname, dev, bye, img, img, channel, estilo)
+await conn.sendAi(m.chat, packname, dev, bye, img, img, canal, estilo)
   }
   
   if (chat.welcome && m.messageStubType == 32) {
     let kick = `*⭒─ׄ─ׅ─ׄ─⭒ \`ᴀ ᴅ ɪ ᴏ ꜱ\` ⭒─ׄ─ׅ─ׄ─⭒*\n\n*Usuario:* @${m.messageStubParameters[0].split`@`[0]}\n*Grupo:* ${groupMetadata.subject}\n${dev}`;
-await conn.sendAi(m.chat, packname, dev, kick, img, img, channel, estilo)
+await conn.sendAi(m.chat, packname, dev, kick, img, img, canal, estilo)
 }}
