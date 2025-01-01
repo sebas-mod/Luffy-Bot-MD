@@ -50,11 +50,11 @@ handler.before = async function (m, { conn }) {
       m.chat,
       img || 'https://pomf2.lain.la/f/rycjgv2t.jpg',
       'thumbnail.jpg',
-      `🎉 *¡Subiste de nivel!*\n\n` +
-      `◪ *Nombre:* ${name}\n` +
-      `├◆ *Rol:* ${role}\n` +
-      `├◆ *Exp:* ${user.exp} xp\n` +
-      `╰◆ *Nivel:* ${before} ➠ ${user.level}`.trim(),
+      `*\`乂 L E V E L  -  U P 乂\`*\n\n` +
+      `*┌  ◦ \`Nombre:\`* ${name}\n` +
+      `*├  ◦ \`Rol:\`* ${role}\n` +
+      `*├  ◦ \`Exp:\`* ${user.exp} xp\n` +
+      `*└  ◦ \`Nivel:\`* [ ${before} ] ➠ [ ${user.level} ]\n\n© ⍴᥆ᥕᥱr ᑲᥡ іzᥙmі.kz᥊ - gᥱᥒᥱsіs-ᥲі`.trim(),
       m
     );
   }
@@ -65,10 +65,10 @@ export default handler;
 
 *`乂 L E V E L  -  U P 乂`*
 
-*┌  ◦ `Nombre:`* Newbie ㋡
-*├  ◦  `Rol:`*
-*├  ◦  `Exp:`*
-*└  ◦  `Nivel:`*  [ 0 ] ➠ [ 1 ]
+*┌  ◦ \`Nombre:\`* Newbie ㋡
+*├  ◦ \`Rol:\`*
+*├  ◦ \`Exp:\`*
+*└  ◦ \`Nivel:\`*  [ 0 ] ➠ [ 1 ]
 
 © ⍴᥆ᥕᥱr ᑲᥡ іzᥙmі.kz᥊ - gᥱᥒᥱsіs-ᥲі
 
