@@ -13,17 +13,17 @@ export async function before(m, {conn, participants, groupMetadata}) {
   let userName = user ? user.name : await conn.getName(who);
 
   if (chat.welcome && m.messageStubType == 27) {
-    let bienvenida = `ゲ◜៹ Bienvenid@ ៹◞ゲ \n\nUsuario: @${m.messageStubParameters[0].split`@`[0]} \nGrupo: ${groupMetadata.subject}\n${dev}`;
+    let bienvenida = `*⭒─ׄ─ׅ─ׄ─⭒ \`ʙɪᴇɴᴠᴇɴɪᴅᴀ\` ⭒─ׄ─ׅ─ׄ─⭒*\n\n*Usuario:* @${m.messageStubParameters[0].split`@`[0]} \n*Grupo:* ${groupMetadata.subject}\n${dev}`;
     
-await conn.sendMini(m.chat, packname, dev, bienvenida, img, img, channel, estilo)
+await conn.sendAi(m.chat, packname, dev, bienvenida, img, img, channel, estilo)
   }
   
   if (chat.welcome && m.messageStubType == 28) {
-    let bye = `ゲ◜៹ Adiós ៹◞ゲ \n\nUsuario: @${m.messageStubParameters[0].split`@`[0]}\nGrupo: ${groupMetadata.subject}\n${dev}`;
-await conn.sendMini(m.chat, packname, dev, bye, img, img, channel, estilo)
+    let bye = `*⭒─ׄ─ׅ─ׄ─⭒ \`ᴀ ᴅ ɪ ᴏ ꜱ\` ⭒─ׄ─ׅ─ׄ─⭒*\n\n*Usuario:* @${m.messageStubParameters[0].split`@`[0]}\n*Grupo:* ${groupMetadata.subject}\n${dev}`;
+await conn.sendAi(m.chat, packname, dev, bye, img, img, channel, estilo)
   }
   
   if (chat.welcome && m.messageStubType == 32) {
-    let kick = `ゲ◜៹ Adiós ៹◞ゲ \n\nUsuario: @${m.messageStubParameters[0].split`@`[0]}\nGrupo: ${groupMetadata.subject}\n${dev}`;
-await conn.sendMini(m.chat, packname, dev, kick, img, img, channel, estilo)
+    let kick = `*⭒─ׄ─ׅ─ׄ─⭒ \`ᴀ ᴅ ɪ ᴏ ꜱ\` ⭒─ׄ─ׅ─ׄ─⭒*\n\n*Usuario:* @${m.messageStubParameters[0].split`@`[0]}\n*Grupo:* ${groupMetadata.subject}\n${dev}`;
+await conn.sendAi(m.chat, packname, dev, kick, img, img, channel, estilo)
 }}
