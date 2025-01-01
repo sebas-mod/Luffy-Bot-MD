@@ -6,7 +6,7 @@ import { webp2png } from '../lib/webp2mp4.js'
 let handler = async (m, { conn, args, usedPrefix, command }) => {
 
 let name = conn.getName(m.sender);
-let text1 = `© YaemoriBot-MD\nAuthor:\nFecha:\nDia:\nCreador:`
+let text1 = `© GenesisBot-MD\nAuthor:\nFecha:\nDia:\nCreador:`
 let text2 = `${vs}\n${name}\n${fecha}\n${dia}\nDevDiego`
 let stiker = false
 try {
