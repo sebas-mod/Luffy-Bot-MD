@@ -24,6 +24,12 @@ handler.all = async function (m) {
             const message = `🎉 ¡Subiste de nivel!\n👤 Usuario: ${m.sender}\n🌟 Nivel: ${beforeLevel} ➡️ ${newLevel}\n🏅 Nuevo rol: ${role}`;
             await m.reply(message);
 
+            // Aquí va el mensaje personalizado con la información del usuario
+            const tag = m.sender;
+            const logo = 'https://example.com/logo.jpg'; // Aquí la URL o ruta de la imagen
+            const userMessage = `◪ *Name:* ${tag}\n├◆ *Role:* ${role}\n├◆ *Exp:* ${exp} xp\n╰◆ *Level:* ${beforeLevel} ➠ ${newLevel}\n`.trim();
+            await m.reply(userMessage);
+
             // Recompensas por nivel
             const rewards = calculateRewards(newLevel);
             applyRewards(user, rewards);
@@ -78,7 +84,6 @@ function formatRewardsMessage(level, rewards) {
         `💰 Dinero: ${rewards.money}\n` +
         `🔗 Tickets: ${rewards.joincount}`;
 }
-
 
 
 
