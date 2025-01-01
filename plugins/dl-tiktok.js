@@ -25,7 +25,7 @@ await m.react('🕓');
         } = await ttdl(args[0]);//variables del resultado de 'ttdl'
        
 let txt = '';
-txt += `> *\`» Título :\`* ${title || '❌'}\n`; 
+txt += `> \`» Título :\` ${title || 'no tiene'}\n`; 
 
 //VIDEO TIKTOK
         await conn.sendFile(m.chat, video, 'tiktok.mp4', txt, m, null, rcanal);
