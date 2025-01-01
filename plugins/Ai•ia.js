@@ -35,7 +35,7 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
             const response = await luminsesi(query, username, prompt)
             // Aquí ya no se enviará el mensaje intermedio, se envía directamente la respuesta
             await conn.reply(m.chat, response, m, fake)
-            await m.react(done)
+            await m.react(🤖)
         } catch {
             await m.react(error)
             await conn.reply(m.chat, '✘ ChatGpT no puede responder a esa pregunta.', m, fake)
