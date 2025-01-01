@@ -39,9 +39,8 @@ handler.before = async function (m, { conn }) {
       `- Nivel actual: ${user.level}\n` +
       `- Rol actual: ${role}`;
 
-    // Generar la imagen personalizada con canvafy utilizando la imagen de perfil `pp`
     const levelUpImage = await new canvafy.LevelUp()
-      .setAvatar(pp)  // Usamos la URL de la imagen de perfil
+      .setAvatar(pp)
       .setBackground("image", "https://qu.ax/pZVUy.jpg")
       .setUsername(name)
       .setBorder("#000000")
@@ -64,8 +63,6 @@ handler.before = async function (m, { conn }) {
   }
 };
 export default handler;
-
-// Definición de roles por nivel
 
 global.roles = {
   '🌱 Novato I': 0,
