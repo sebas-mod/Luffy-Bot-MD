@@ -61,6 +61,7 @@ handler.before = async function (m, { conn }) {
 };
 export default handler; */
 
+
 import { canLevelUp, xpRange } from '../lib/levelling.js';
 import { levelup } from '../lib/canvas.js';
 import fetch from 'node-fetch';
@@ -75,6 +76,10 @@ handler.before = async function (m, { conn }) {
     : m.fromMe
     ? conn.user.jid
     : m.sender;
+
+  let pp = await conn
+    .profilePictureUrl(who, 'image')
+    .catch((_) => 'https://pomf2.lain.la/f/rycjgv2t.jpg');  // Fallback en caso de que no se pueda obtener la imagen
 
   let name = await conn.getName(m.sender);
   let user = global.db.data.users[m.sender];
@@ -98,9 +103,9 @@ handler.before = async function (m, { conn }) {
       `- Nivel actual: ${user.level}\n` +
       `- Rol actual: ${role}`;
 
-    // Generar la imagen personalizada con canvafy
+    // Generar la imagen personalizada con canvafy utilizando la imagen de perfil `pp`
     const levelUpImage = await new canvafy.LevelUp()
-      .setAvatar("https://cdn.discordapp.com/avatars/928259219038302258/cb1bcc0c5616d3fb1527b4ea03c9ae17.png?size=1024")
+      .setAvatar(pp)  // Usamos la URL de la imagen de perfil
       .setBackground("image", "https://cdn.discordapp.com/attachments/1041745966186909826/1096055377289814126/e4a8a79fccae98487a74d8bd1f2357834dfa7295.png")
       .setUsername(name)
       .setBorder("#000000")
