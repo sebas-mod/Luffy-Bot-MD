@@ -6,8 +6,8 @@ handler.before = async function (m, { conn, usedPrefix }) {
 
 if (!db.data.chats[m.chat].autolevelup) return
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-let perfil = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://qu.ax/QGAVS.jpg')
-let mentionedJid = [who]
+let pp = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://pomf2.lain.la/f/rycjgv2t.jpg')
+let img = await (await fetch(`${pp}`)).buffer()
 let name = await conn.getName(m.sender)
 let username = conn.getName(who)
 let userName = m.pushName || 'Anónimo'
@@ -41,7 +41,7 @@ renderLargerThumbnail: false
 }}}, { quoted: null }) 
 }
 
-await conn.sendFile(m.chat, perfil, 'Thumb.jpg', `◪ *Name:* ${name}\n├◆ *Role:* ${user.role}\n├◆ *Exp:* ${exp} xp\n╰◆ *Level:* ${before} ➠ ${user.level}\n`.trim(), m)
+await conn.sendFile(m.chat, img, 'thumbnail.jpg', `◪ *Name:* ${name}\n├◆ *Role:* ${user.role}\n├◆ *Exp:* ${exp} xp\n╰◆ *Level:* ${before} ➠ ${user.level}\n`.trim(), m)
 
 // m.reply(`*🎉 ¡ F E L I C I D A D E S ! 🎉*\n\n💫 Nivel Actual » *${user.level}*\n🌵 Rango » ${user.role}\n📆 Fecha » *${moment.tz('America/Bogota').format('DD/MM/YY')}*\n\n> *\`¡Has alcanzado un Nuevo Nivel!\`*`)
 
