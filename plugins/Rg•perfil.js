@@ -1,3 +1,4 @@
+
 import { canLevelUp, xpRange } from '../lib/levelling.js'
 import { createHash } from 'crypto'
 import PhoneNumber from 'awesome-phonenumber'
@@ -9,8 +10,8 @@ let handler = async (m, { conn, usedPrefix, command}) => {
   let bio = await conn.fetchStatus(who).catch(_ => 'undefined')
   let biot = bio.status?.toString() || 'Sin Info'
   let user = global.db.data.users[who]
-  let pp = await conn.profilePictureUrl(who, 'image').catch(_ => icons)
-  let { exp, cookies, name, registered, regTime, age, level } = global.db.data.users[who]
+  let pp = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://pomf2.lain.la/f/rycjgv2t.jpg')
+  let { exp, corazones, name, registered, regTime, age, level } = global.db.data.users[who]
   let { min, xp, max } = xpRange(user.level, global.multiplier)
   let username = conn.getName(who)
   let prem = global.prems.includes(who.split`@`[0])
@@ -19,25 +20,24 @@ let handler = async (m, { conn, usedPrefix, command}) => {
   let userNationalityData = api.data.result
   let userNationality = userNationalityData ? `${userNationalityData.name} ${userNationalityData.emoji}` : 'Desconocido'
   let img = await (await fetch(`${pp}`)).buffer()
-let txt = `*👤 PERFIL USER*\n\n`
-txt += `⭐️ *Nombre* :: *${name}*\n`
-txt += `🪴 *Edad* :: *${registered ? `${age} años` : '×'}*\n`
-txt += `🍟 *Numero* :: *${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}*\n`
-txt += `✨ *Pais* :: *${userNationality}*\n`
-txt += `☁️ *Link* :: *wa.me/${who.split`@`[0]}*\n`
-txt += `🍟 *Galletas* :: *${cookies}*\n`
-txt += `🍁 *Nivel* :: *${level}*\n`
-txt += `🌸 *XP* :: Total ${exp}\n`
-txt += `🍄 *Registrado* :: *${registered ? 'Si': 'No'}*\n`
-txt += `💐 *Premium* :: *${prem ? 'Si' : 'No'}*\n`
-
+  let txt = ` –  *P E R F I L  -  U S E R*\n\n`
+      txt += `◦ *Nombre* : ${name}\n`
+      txt += `◦ *Edad* : ${registered ? `${age} años` : '×'}\n`
+      txt += `◦ *Numero* : ${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}\n`
+      txt += `◦ *Nacionalidad* : ${userNationality}\n`
+      txt += `◦ *Link* : wa.me/${who.split`@`[0]}\n`
+      txt += `◦ *Corazones* : ${corazones}\n`
+      txt += `◦ *Nivel* : ${level}\n`
+      txt += `◦ *XP* : Total ${exp} (${user.exp - min}/${xp})\n`
+      txt += `◦ *Premium* : ${prem ? 'Si' : 'No'}\n`
+      txt += `◦ *Registrado* : ${registered ? 'Si': 'No'}`
   let mentionedJid = [who]
 await conn.sendFile(m.chat, img, 'thumbnail.jpg', txt, m, null, fake)
 }
-handler.help = ['perfil']
-handler.tags = ['rg']
-handler.command = ['perfil', 'profile']
-handler.register = false
+handler.help = ['perfil', 'perfil *@user*']
+handler.tags = ['start']
+handler.command = /^(perfil|profile)$/i
+handler.register = true
 
 export default handler
 
