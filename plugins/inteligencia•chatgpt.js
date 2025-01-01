@@ -13,9 +13,9 @@ await m.reply(json.result)
 console.error(error)    
 }}
 
-handler.help = ['ia', 'chatgpt']
+handler.help = ['gifted *<text>*']
 handler.tags = ['ai']
 handler.register = true
-handler.command = ['ia', 'chatgptt']
+handler.command = ['gifted']
 
 export default handler
