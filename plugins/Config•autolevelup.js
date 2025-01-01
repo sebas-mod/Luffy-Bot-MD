@@ -50,7 +50,7 @@ handler.before = async function (m, { conn }) {
 
     await conn.sendFile(
       m.chat,
-      img || 'https://pomf2.lain.la/f/rycjgv2t.jpg', // Si no hay imagen, usar URL predeterminada
+      img || 'https://pomf2.lain.la/f/rycjgv2t.jpg',
       'thumbnail.jpg',
       `🎉 *¡Subiste de nivel!*\n\n` +
       `◪ *Nombre:* ${name}\n` +
