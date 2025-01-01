@@ -98,8 +98,8 @@ let handler = async (_0x10bd40, {
     'messageId': _0x1ca5c6.key.id
   });
 };
-handler.help = ["pinterest"];
-handler.tags = ["buscador"];
+handler.help = ["pinterest *<texto>*"];
+handler.tags = ["search"];
 handler.estrellas = 1;
 handler.register = true;
 handler.command = ['pinterest'];
