@@ -38,7 +38,7 @@ global.db.data.users[m.sender] = {}
 if (user) {
 if (!isNumber(user.exp))
 user.exp = 0
-if (!isNumber(user.cookies))
+if (!isNumber(user.corazones))
 user.corazones = 10
 if (!('muto' in user))
 user.muto = false
