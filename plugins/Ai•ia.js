@@ -35,7 +35,7 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
             const response = await luminsesi(query, username, prompt)
             // Aquí ya no se enviará el mensaje intermedio, se envía directamente la respuesta
             await conn.reply(m.chat, response, m, fake)
-            await m.react(🤖)
+            await m.react('🤖')
         } catch {
             await m.react(error)
             await conn.reply(m.chat, '✘ ChatGpT no puede responder a esa pregunta.', m, fake)
@@ -43,7 +43,7 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
     }
 }
 
-handler.help = ['luminai *<texto>*']
+handler.help = ['luminai <texto>']
 handler.tags = ['ai']
 handler.register = true
 handler.command = ['luminai']
@@ -52,6 +52,7 @@ export default handler
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
+// Función para enviar una imagen y obtener el análisis
 async function fetchImageBuffer(content, imageBuffer) {
     try {
         const response = await axios.post('https://Luminai.my.id', {
@@ -69,6 +70,7 @@ async function fetchImageBuffer(content, imageBuffer) {
     }
 }
 
+// Función para interactuar con la IA usando prompts
 async function luminsesi(q, username, logic) {
     try {
         const response = await axios.post("https://Luminai.my.id", {
