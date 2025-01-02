@@ -60,16 +60,16 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
     footer: dev,
     buttons: [
       {
-        buttonId: `.ping`,
-        buttonText: { displayText: '📶 PING' },
+        buttonId: `.perfil`,
+        buttonText: { displayText: '👤 PERFIL' },
       },
       {
         buttonId: `.owner`,
-        buttonText: { displayText: '👤 OWNER' },
+        buttonText: { displayText: '☁️ OWNER' },
       },
       {
-        buttonId: `.help`,
-        buttonText: { displayText: '❓ HELP' },
+        buttonId: `.ping`,
+        buttonText: { displayText: '📶 PING' },
       },
     ],
     viewOnce: true,
