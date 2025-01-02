@@ -54,7 +54,7 @@ const sendMessage = async (username, message, spamCount) => {
 const handler = async (m, { text }) => {
     if (!text.split("|")[0] || !text.split("|")[1] || !text.split("|")[2]) {
         return m.reply(
-            "Ingresa el nombre de usuario, mensaje y la cantidad de spam.\nEjemplo: .nglspam rexxzynxd|hola|5"
+            "Ingresa el nombre de usuario, mensaje y la cantidad de spam.\nEjemplo: .nglspam izumi.kzx|hola|5"
         );
     }
 
