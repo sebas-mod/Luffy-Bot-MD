@@ -1,3 +1,8 @@
+/* 
+- Nglspam By Angel-OFC  
+- Spam de mensajes en NGL
+- https://whatsapp.com/channel/0029VaJxgcB0bIdvuOwKTM2Y
+*/
 import crypto from 'crypto';
 import fetch from 'node-fetch';
 
