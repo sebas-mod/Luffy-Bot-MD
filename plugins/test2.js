@@ -1,7 +1,6 @@
 import crypto from 'crypto';
 import fetch from 'node-fetch';
 
-
 const sendMessage = async (username, message, spamCount) => {
     let counter = 0;
     while (counter < spamCount) {
