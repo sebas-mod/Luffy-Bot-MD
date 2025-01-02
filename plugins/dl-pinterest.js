@@ -32,6 +32,8 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   }
 }
 
-handler.command = /^(pinterestdl)$/i
+handler.help = ['pinterestdl *<url>*'];
+handler.tags = ['dl'];
+handler.command = ['pinterestdl'];
 
 export default handler
