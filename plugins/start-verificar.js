@@ -50,7 +50,7 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
   txt += `*\`⁘ FECHA:\`* ${date}\n`;
   txt += `*\`⁘ N° SERIAL:\`* ${sn}\n`;
   txt += `\`━━━━━━━━━━━━━━━━━━━━\`\n\n`;
-  txt += `> Escribe *${usedPrefix}profile* para ver tu perfil.`;
+//  txt += `> Escribe *${usedPrefix}profile* para ver tu perfil.`;
 
   let dev = ' ©️ ρσωε૨ ɓყ ƭεαɱ รƭα૨૮σ૨ε';
 
