@@ -27,7 +27,7 @@ var handler = async (m, { conn, participants, usedPrefix, command }) => {
 //conn.reply('5493876432076@s.whatsapp.net', `🚩 Un Admin Acabo De Eliminar Un Usuario En El Grupo:\n> ${groupMetadata.subject}.`, m, rcanal, );
 };
 
-handler.help = ['kick'];
+handler.help = ['kick *<@user | responder>*'];
 handler.tags = ['grupo'];
 handler.command = ['kick', 'ban']
 handler.admin = true;
