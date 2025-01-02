@@ -20,8 +20,8 @@ teks += `🐢 *Titulo ∙* ${g.title}\n🚩 *Info ∙* ${g.snippet}\n🔗 *Url �
 conn.reply(m.chat, teks, m, rcanal)
 })
 }
-handler.help = ['google <búsqueda>']
-handler.tags = ['buscador']
+handler.help = ['google *<texto>*']
+handler.tags = ['search']
 handler.command = ['google']
 handler.register = true 
 export default handler
