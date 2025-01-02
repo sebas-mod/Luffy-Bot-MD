@@ -326,7 +326,7 @@ await conn.sendMessage(m.chat, {
         `*» 𝗢𝗣𝗖𝗜𝗢𝗡 |* ${type.toUpperCase()}\n` +
         `*» 𝗘𝗦𝗧𝗔𝗗𝗢 |* ${isEnable ? 'ON' : 'OFF'}\n` +
         `*» 𝗣𝗔𝗥𝗔 |* ${isAll ? 'ESTE BOT' : isUser ? '' : 'ESTE CHAT'}`, 
-  footer: wm, 
+  footer: dev, 
   buttons: [
     { 
       buttonId: isEnable ? `.off ${type}` : `.on ${type}`, 
