@@ -39,8 +39,8 @@ const handler = async (m, { conn, text }) => {
         if (!consulta) {
             return m.reply("`¿Nombre de la fuente?`");
         }
-await m.react('🕒');
 
+        await m.react('🕒');
         const resultadosBusqueda = await buscarFuentes(consulta);
         const textoResultados = resultadosBusqueda
             .map((url, index) => `${index + 1}. ${url}`)
