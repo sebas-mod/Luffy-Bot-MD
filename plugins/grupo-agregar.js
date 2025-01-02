@@ -16,8 +16,8 @@ await conn.reply(text+'@s.whatsapp.net', `*🍟 Hola! soy Ai Yaemori, Una person
 await m.reply(`🍟 *Enviando la invitación al privado de ${nom}*\n\n*📅 ${fecha}*\n⏰ *${tiempo}*`) 
 
 }
-handler.help = ['add']
-handler.tags = ['grupo']
+handler.help = ['add *<número>*']
+handler.tags = ['group']
 handler.command = ['add', 'agregar', 'añadir']
 handler.group = true
 handler.admin = true
