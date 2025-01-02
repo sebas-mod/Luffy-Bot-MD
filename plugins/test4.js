@@ -51,13 +51,13 @@ async function descargarFuente(urlZip) {
 async function enviarFuenteAlUsuario(rutaArchivo, conn, m) {
     try {
         const bufferImagen = fs.readFileSync(rutaArchivo);
-        await m.react('☁️');
+        await m.react('✅');
         await conn.sendMessage(m.chat, {
             document: bufferImagen,
             fileName: "fuente.zip",
             mimetype: "application/zip",
             caption: "Fuente enviada con éxito.",
-            quoted: m // Incluye el mensaje original como respuesta
+            quoted: m
         });
 
         fs.unlinkSync(rutaArchivo);
@@ -70,7 +70,7 @@ async function enviarFuenteAlUsuario(rutaArchivo, conn, m) {
 const handler = async (m, { conn, text }) => {
     const urlFuente = text.trim();
     try {
-        await m.react('🕒'); // Reacción inicial para indicar que el proceso ha comenzado
+        await m.react('🕒');
 
         if (!urlFuente || !urlFuente.startsWith("https://www.dafont.com")) {
             return m.reply("¡URL inválida! Asegúrate de usar un enlace válido de Dafont.");
@@ -90,8 +90,8 @@ const handler = async (m, { conn, text }) => {
     }
 };
 
-handler.command = /^(dafont)$/i;
 handler.help = ["dafont *<url>*"];
-handler.tags = ["search"];
+handler.tags = ["dl"];
+handler.command = ["dafont"];
 
 export default handler;
