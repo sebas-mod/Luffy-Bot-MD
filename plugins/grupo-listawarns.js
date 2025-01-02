@@ -13,7 +13,7 @@ let caption = `⚠️ 𝙐𝙎𝙐𝘼𝙍𝙄𝙊𝙎 𝘼𝘿𝙑𝙀𝙍𝙏�
 await conn.reply(m.chat, caption, m, { mentions: await conn.parseMention(caption) })}
 
 handler.help = ['listadv']
-handler.tags = ['grupo']
+handler.tags = ['group']
 handler.command = ['listadv', 'listaadv', 'listadv', 'adv', 'advlist', 'advlista']
 
 export default handler
