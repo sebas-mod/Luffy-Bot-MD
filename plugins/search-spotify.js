@@ -4,6 +4,7 @@ const { generateWAMessageContent, generateWAMessageFromContent, proto } = (await
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
 if (!text) return m.reply('Ingresa el texto de lo que quieres buscar en Spotify 🤍');
+await m.react('🕓');
 
 try {
 async function createImage(url) {
@@ -67,6 +68,7 @@ carouselMessage: proto.Message.InteractiveMessage.CarouselMessage.fromObject({ca
     'quoted': m
   });
 
+await m.react('✅');
 await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id })
 } catch (error) {
 console.error(error)
