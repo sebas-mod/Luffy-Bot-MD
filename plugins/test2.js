@@ -52,13 +52,14 @@ const sendMessage = async (username, message, spamCount) => {
 
 // Función para manejar el comando
 const handler = async (m, { text }) => {
-    if (!text.split("|")[0] || !text.split("|")[1] || !text.split("|")[2]) {
+    const args = text.split(" ");
+    if (args.length < 3) {
         return m.reply(
-            "Ingresa el nombre de usuario, mensaje y la cantidad de spam.\nEjemplo: .nglspam rexxzynxd|hola|5"
+            "Ingresa el nombre de usuario, mensaje y la cantidad de spam.\nEjemplo: .nglspam _sooybilly.ff0 hola 5"
         );
     }
 
-    const [username, message, count] = text.split("|");
+    const [username, message, count] = args;
     const spamCount = parseInt(count, 10);
 
     if (isNaN(spamCount) || spamCount <= 0) {
