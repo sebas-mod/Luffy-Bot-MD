@@ -1,31 +1,41 @@
-import axios from 'axios'
-import fetch from 'node-fetch'
-import cheerio from 'cheerio'
-import {mediafiredl} from '@bochilteam/scraper'
+/* 
 
-let handler = async (m, { conn, args, usedPrefix, command }) => {
-if (!args[0]) return conn.reply(m.chat, '🚩 Ingrese el enlace de un archivo de Mediafire.', m, rcanal)
-if (!args[0].match(/mediafire/gi)) return conn.reply(m.chat, '🍟 El enlace deve ser de un archivo de Mediafire.', m, rcanal)
+*❀ By JTxs*
+
+[ Canal Principal ] :
+https://whatsapp.com/channel/0029VaeQcFXEFeXtNMHk0D0n
+
+[ Canal Rikka Takanashi Bot ] :
+https://whatsapp.com/channel/0029VaksDf4I1rcsIO6Rip2X
+
+[ Canal StarlightsTeam] :
+https://whatsapp.com/channel/0029VaBfsIwGk1FyaqFcK91S
+
+[ HasumiBot FreeCodes ] :
+https://whatsapp.com/channel/0029Vanjyqb2f3ERifCpGT0W
+*/
+
+// *[ ❀ MEDIAFIRE ]*
+import fetch from 'node-fetch';
+
+let HS = async (m, { conn, text }) => {
+if (!text) return conn.reply(m.chat, `❀ Ingresa un link de mediafire`, m)
+
 try {
-await m.react(rwait)
-let { title, ext, aploud, size, dl_url } = await mediafiredl(args[0])
-let txt = `乂  *¡MEDIAFIRE - DESCARGAS!*  乂\n\n`
-    txt += `✩ *Nombre* : ${title}\n`
-    txt += `✩ *Peso* : ${size}\n`
-    txt += `✩ *Publicado* : ${aploud}\n`
-    txt += `✩ *MimeType* : ${ext}\n\n`
-    txt += `*- ↻ El archivo se esta enviando espera un momento, soy lento. . .*`
-let img = await (await fetch('https://i.ibb.co/wLQFn7q/logo-mediafire.jpg')).buffer()
-await conn.sendFile(m.chat, img, 'thumbnail.jpg', txt, fkontak, null, rcanal)
-await conn.sendFile(m.chat, dl_url, title, null, fkontak, null, { mimetype: ext, asDocument: true })
-await m.react(done)
-} catch (e) {
-await m.reply('☁️ Ocurrió un error inesperado\n\n' + e)
-await m.react(error)
-}}
-handler.help = ['mediafire *<url>*']
-handler.tags = ['dl']
-handler.command = ['mediafire', 'mdfire', 'mf']
-handler.premium = false
+let api = await fetch(`https://restapi.apibotwa.biz.id/api/mediafire?url=${text}`)
+let json = await api.json()
+let { filename, type, size, uploaded, ext, mimetype, download:dl_url } = json.data.response
+m.reply(`*${filename}*
 
-export default handler
+- *Tipo :* ${type}
+- *Tamaño :* ${size}
+- *Creado :* ${uploaded}`)
+await conn.sendFile(m.chat, dl_url, filename, null, m, null, { mimetype: ext, asDocument: true })
+
+} catch (error) {
+console.error(error)
+}}
+
+HS.command = ['mediafire']
+
+export default HS
