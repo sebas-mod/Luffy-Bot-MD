@@ -51,7 +51,7 @@ async function descargarFuente(urlZip) {
 async function enviarFuenteAlUsuario(rutaArchivo, conn, m) {
     try {
         const bufferImagen = fs.readFileSync(rutaArchivo);
-        await m.react('✅');
+        await m.react('☁️');
         await conn.sendMessage(m.chat, {
             document: bufferImagen,
             fileName: "fuente.zip",
