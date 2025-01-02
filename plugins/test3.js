@@ -54,8 +54,8 @@ const handler = async (m, { conn, text }) => {
     }
 };
 
-handler.command = /^(buscarfuente|searchfont)$/i;
-handler.help = ["buscarfuente <nombre-fuente>"];
-handler.tags = ["utilidad"];
+handler.help = ["dafontsearch *<texto>*"];
+handler.tags = ["search"];
+handler.command = ["dafontsearch"];
 
 export default handler;
