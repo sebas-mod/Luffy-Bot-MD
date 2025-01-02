@@ -1,8 +1,6 @@
 import crypto from 'crypto';
 import fetch from 'node-fetch';
 
-// wm creado por RexxHayanasi
-// wm oficial: https://whatsapp.com/channel/0029VaHMgM3Lo4hcfGTJ3W1e
 
 const sendMessage = async (username, message, spamCount) => {
     let counter = 0;
@@ -50,7 +48,6 @@ const sendMessage = async (username, message, spamCount) => {
     }
 };
 
-// Función para manejar el comando
 const handler = async (m, { text }) => {
     if (!text.split("|")[0] || !text.split("|")[1] || !text.split("|")[2]) {
         return m.reply(
