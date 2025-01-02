@@ -31,7 +31,13 @@ let HS = `- *Titulo :* ${title}
 - *Duracion :* ${duration}`
 
 await conn.sendFile(m.chat, thumbnail, 'HasumiBotFreeCodes.jpg', HS, m)
-await conn.sendFile(m.chat, dl_url, 'HasumiBotFreeCodes.mp3', null, m)
+await conn.sendMessage(m.chat, { 
+      audio: { url: dl_url }, 
+      fileName: `${title}.mp3`, 
+      mimetype: 'audio/mp4' 
+    }, { quoted: m })
+
+// await conn.sendFile(m.chat, dl_url, 'HasumiBotFreeCodes.mp3', null, m)
 } catch (error) {
 console.error(error)
 }}
