@@ -60,8 +60,8 @@ await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
 console.error(error)
 }}
 
-handler.help = ['tweetposts']
-handler.tags = ['buscador']
+handler.help = ['tweetposts *<texto>*']
+handler.tags = ['search']
 handler.command = ['tweetposts']
 handler.register = true
 handler.cookies = 1
