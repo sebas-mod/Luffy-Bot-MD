@@ -38,6 +38,7 @@ const handler = async (m, { conn, text }) => {
     try {
         if (!consulta) {
             return m.reply("`¿Nombre de la fuente?`");
+  await m.react('🕒');
         }
 
         const resultadosBusqueda = await buscarFuentes(consulta);
@@ -45,6 +46,7 @@ const handler = async (m, { conn, text }) => {
             .map((url, index) => `${index + 1}. ${url}`)
             .join("\n");
 
+        await m.react('✅');
         await conn.sendMessage(m.chat, {
             text: `*🔍 Resultados de búsqueda para* "- ${consulta}":\n\n${textoResultados}`,
         });
