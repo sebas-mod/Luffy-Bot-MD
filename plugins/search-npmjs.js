@@ -41,8 +41,8 @@ await conn.reply(m.chat, '🌱 Ocurrió un error', m, fake)
 await m.react(error)
 }}
 
-handler.help = ['npmjs']
-handler.tags = ['buscador']
+handler.help = ['npmjs *<texto>*']
+handler.tags = ['search']
 handler.command = ['npmjs']
 handler.register = true
 handler.cookies = 1
