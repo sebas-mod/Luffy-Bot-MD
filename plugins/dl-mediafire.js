@@ -18,6 +18,7 @@ txt += `- *Creado :* ${uploaded}\n`;
 - *Tipo :* ${type}
 - *Tamaño :* ${size}
 - *Creado :* ${uploaded}`) */
+        await conn.sendMessage(m.chat, txt, m, null, fake);
         await m.react('✅');
         await conn.sendFile(m.chat, dl_url, filename, null, m, null, { mimetype: ext, asDocument: true })
     } catch (error) {
