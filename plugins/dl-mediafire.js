@@ -18,6 +18,8 @@ let handler = async (m, { conn, text }) => {
     }
 }
 
+handler.help = ['mediafire *<url>*']
+handler.tags = ['dl']
 handler.command = ['mediafire']
 
 export default handler;
