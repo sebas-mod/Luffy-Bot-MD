@@ -51,7 +51,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args, command }) => {
     "start": "🚀 「 *`START`* 」 🚀",
     "sticker": "🖼️ 「 *`STICKER`* 」 🖼️",
     "dl": "📥 「 *`DOWNLOADER`* 」 📥",
-    "ai": "🧠 「 *`AI`* 」 🧠ɪ",
+    "ai": "🧠 「 *`AI`* 」 🧠",
     "tools": "🛠️ 「 *`TOOLS`* 」 🛠️",
     "anonymous": "🙈 「 *`ANONYMOUS`* 」 🙈",
     "confesar": "🤫 「 *`CONFESIONES`* 」 🤫",
