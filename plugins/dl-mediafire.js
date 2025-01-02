@@ -8,7 +8,12 @@ let handler = async (m, { conn, text }) => {
         let api = await fetch(`https://restapi.apibotwa.biz.id/api/mediafire?url=${text}`)
         let json = await api.json()
         let { filename, type, size, uploaded, ext, mimetype, download: dl_url } = json.data.response
-        m.reply(`*${filename}*
+let txt = '';
+txt += `*${filename}*\n\n`;
+txt += `- *Tipo :* ${type}\n`;
+txt += `- *Tamaño :* ${size}\n`; 
+txt += `- *Creado :* ${uploaded}\n`;
+//        m.reply(`*${filename}*
 
 - *Tipo :* ${type}
 - *Tamaño :* ${size}
