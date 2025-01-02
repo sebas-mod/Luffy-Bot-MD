@@ -3,6 +3,7 @@ import fetch from 'node-fetch';
 let handler = async (m, { conn, text, usedPrefix, command }) => {
     if (!text) {
         return conn.reply(m.chat, '❀ Ingresa el link de una cancion de spotify', m)
+await m.react('🕓');
     }
 
     try {
@@ -14,6 +15,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 - *Calidad :* ${quality}
 - *Duracion :* ${duration}`
 
+        await m.react('✅');
         await conn.sendFile(m.chat, thumbnail, 'SpotifyThumbnail.jpg', songInfo, m)
         await conn.sendMessage(m.chat, { 
             audio: { url: dl_url }, 
