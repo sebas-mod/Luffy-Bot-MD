@@ -44,7 +44,6 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
 
   let txt = '*`📄 R E G I S T R O 📄`*\n';
   txt += `\`━━━━━━━━━━━━━━━━━━━━\`\n`;
-  txt += `*\`⁘ TAG:\`* @${m.sender.split('@')[0]}\n`;
   txt += `*\`⁘ NOMBRE:\`* ${name}\n`;
   txt += `*\`⁘ EDAD:\`* ${age} años\n`;
   txt += `*\`⁘ FECHA:\`* ${date}\n`;
