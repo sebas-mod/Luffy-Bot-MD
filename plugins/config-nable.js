@@ -334,12 +334,12 @@ await conn.sendMessage(m.chat, {
     },
     { 
       buttonId: ".menu", 
-      buttonText: { displayText: 'MENU' } 
+      buttonText: { displayText: 'MENU ☁️' } 
     }
   ],
   viewOnce: true,
   headerType: 1
-}, { quoted: m });
+}, { quoted: estilo });
 //  conn.reply(m.chat, `🚩 La función *${type}* se *${isEnable ? 'activó' : 'desactivó'}* ${isAll ? 'para este Bot' : isUser ? '' : 'para este chat'}`, m, rcanal)
 }
 
