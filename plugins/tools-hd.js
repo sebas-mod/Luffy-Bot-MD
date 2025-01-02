@@ -9,7 +9,7 @@ const handler = async (m, {conn, usedPrefix, command}) => {
   let img = await q.download?.()
   let listo = '*Aqui tiene ฅ^•ﻌ•^ฅ*'
   let pr = await remini(img, "enhance")
-  await conn.sendFile(m.chat, pr, 'thumbnail.jpg', listo, m, null, rcanal)
+  await conn.sendFile(m.chat, pr, 'thumbnail.jpg', listo, m, null, fake)
   await m.react('✅')
   } catch {
   await m.react('✖️')
