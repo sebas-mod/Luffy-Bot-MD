@@ -18,7 +18,6 @@ async function obtenerUrlDescarga(urlFuente) {
         if (!enlaceDescarga) {
             throw new Error("¡No se encontró el enlace de descarga!");
         }
-await m.react('🕒');
 
         const urlCompletaDescarga = enlaceDescarga.startsWith('//') ? `https:${enlaceDescarga}` : enlaceDescarga;
         return urlCompletaDescarga;
