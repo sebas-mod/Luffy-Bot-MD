@@ -343,8 +343,8 @@ await conn.sendMessage(m.chat, {
 //  conn.reply(m.chat, `🚩 La función *${type}* se *${isEnable ? 'activó' : 'desactivó'}* ${isAll ? 'para este Bot' : isUser ? '' : 'para este chat'}`, m, rcanal)
 }
 
-handler.help = ['enable', 'disable']
-handler.tags = ['nable', 'owner']
+handler.help = ['enable *<opción>*', 'disable *<opción>*', 'on *<opción>*', 'off *<opción>*']
+handler.tags = ['nable']
 handler.command = ['enable', 'disable', 'on', 'off', '1', '0']
 
 export default handler
