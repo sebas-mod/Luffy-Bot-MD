@@ -9,8 +9,8 @@ a.push([b[c]])
                         }
                         return conn.sendPoll(m.chat, `${packname}`, a, m)
 }
-handler.help = ['encuesta <text|text2>']
-handler.tags = ['grupo'] 
+handler.help = ['encuesta *<text|text2>*']
+handler.tags = ['group'] 
 handler.command = ['poll', 'encuesta'] 
 handler.group = true
 
