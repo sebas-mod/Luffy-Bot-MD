@@ -1,4 +1,4 @@
- import { fbdl } from 'ruhend-scraper';
+ import { igdl } from 'ruhend-scraper';
 
 const handler = async (m, { text, conn, args, usedPrefix, command }) => {
   if (!args[0]) {
@@ -41,6 +41,7 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 };
 
 handler.help = ['fb *<link>*'];
+handler.corazones = 2
 handler.tags = ['dl']
 handler.command = /^(fb|facebook|fbdl)$/i;
 handler.register = true
