@@ -35,7 +35,35 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
       txt += `\`━━━━━━━━━━━━━━━━━━━━\`\n\n`
       txt += `> Escribe *${usedPrefix}profile* para ver tu perfil.`
       
-  await conn.sendFile(m.chat, img, 'perfil.jpg', txt, m, false, { mentions: [m.sender] })
+//  await conn.sendFile(m.chat, img, 'perfil.jpg', txt, m, false, { mentions: [m.sender] })
+
+await conn.sendMessage(m.chat, {
+  image: { url: img },
+  caption: txt,
+  footer: dev,
+  buttons: [
+    {
+      buttonId: `.ping`,
+      buttonText: {
+        displayText: 'PING',
+      },
+    },
+    {
+      buttonId: `.owner`,
+      buttonText: {
+        displayText: 'OWNER',
+      },
+    },
+    {
+      buttonId: `.help`,
+      buttonText: {
+        displayText: 'HELP',
+      },
+    },
+  ],
+  viewOnce: true,
+  headerType: 4,
+}, { quoted: m });
   await m.react('✅')
 }
 
