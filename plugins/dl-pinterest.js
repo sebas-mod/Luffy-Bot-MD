@@ -3,6 +3,7 @@ import fetch from 'node-fetch'
 let handler = async (m, { conn, text, usedPrefix, command }) => {
   if (!text) {
     return conn.reply(m.chat, '❀ Ingresa el link de un video/imagen de pinterest', m)
+  await m.react('🕓');
   }
 
   try {
@@ -21,6 +22,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     } else {
       let media = json.media
       if (media.format === "JPG") {
+        await m.react('✅');
         await conn.sendFile(m.chat, media.download_url, 'Imagen.jpg', `✰ ${json.title}`, m)
       } else if (media.format === "MP4") {
         await conn.sendFile(m.chat, media.download_url, 'Video.mp4', `✰ ${json.title}`, m)
