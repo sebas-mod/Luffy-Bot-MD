@@ -87,6 +87,8 @@ const handler = async (_0x5b04ea, {
     }
   }
 };
+handler.help = ['mute *<@user>*']
+handler.tags = ['group']
 handler.command = ['mute', 'unmute'];
 handler.group = true;
 handler.admin = true;
