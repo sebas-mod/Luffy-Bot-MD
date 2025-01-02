@@ -111,7 +111,7 @@ const handler = async (m, {
             await conn.sendMessage(m.chat, {
                 text: `*🔍 Hasil pencarian untuk* "- ${query}":\n\n- ${resultText}`,
             });
-        } else if (command === "download") {
+        } else if (command === "downloadfont") {
             const fontUrl = query.trim();
             if (!fontUrl || !fontUrl.startsWith("https://www.dafont.com")) {
                 return m.reply("url yang valid!");
