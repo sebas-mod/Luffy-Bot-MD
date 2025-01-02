@@ -4,31 +4,18 @@ let handler  = async (m, { conn, usedPrefix, command }) => {
 
 let grupos = `*Hola!, te invito a unirte a los grupos oficiales de del Bot para convivir con la comunidad :D* 🍂
 
-1- YaemoriBot 🍭
-*✰* ${grupo}
-
-*─ׄ─ׄ⭒─ׄ─ׅ─ׄ⭒─ׄ─ׅ─ׄ⭒─ׄ─ׅ─ׄ⭒─ׄ─ׅ─ׄ⭒─ׄ─ׄ*
-
-*♡ Grupo de colaboración*
-
-1- 𝙶𝚊𝚝𝚊𝙱𝚘𝚝 💞 𝚈𝚊𝚎𝚖𝚘𝚛𝚒𝙱𝚘𝚝
-*✰* ${grupo2}
-
-2- 𝙼𝚎𝚐𝚞𝚖𝚒𝚗𝙱𝚘𝚝 💫 𝚈𝚊𝚎𝚖𝚘𝚛𝚒𝙱𝚘𝚝
-*✰* ${grupo3}
+1- Génesis Ultra ☁️
+*✰* https://chat.whatsapp.com/GqKwwoV2JJaJDP2SL7SddX
 
 *─ׄ─ׄ⭒─ׄ─ׅ─ׄ⭒─ׄ─ׅ─ׄ⭒─ׄ─ׅ─ׄ⭒─ׄ─ׅ─ׄ⭒─ׄ─ׄ*
 
 ➠ Enlace anulado? entre aquí! 
 
-♡ Canal :
-*✰* ${channel}
+♡ Canal Genesis :
+*✰* https://whatsapp.com/channel/0029VaJxgcB0bIdvuOwKTM2Y
 
-♡ YaemoriBot - Test :
-*✰* ${channel2}
-
-♡ Infinity-Wa :
-*✰* ${channel3}
+♡ Canal TK-Host :
+*✰* https://whatsapp.com/channel/0029VaGGynJLY6d43krQYR2g
 
 > ${dev}`
 
