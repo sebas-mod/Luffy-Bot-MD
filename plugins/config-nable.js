@@ -322,7 +322,7 @@ ${usedPrefix + command} antilink`, m, rcanal)
       throw false
   }
 await conn.sendMessage(m.chat, { 
-  text: `❱❱ 𝗚𝗘𝗡𝗘𝗦𝗜𝗦 • 𝗠𝗗 ❰❰\n\n` +
+  text: `` +
         `*» 𝗢𝗣𝗖𝗜𝗢𝗡 |* ${type.toUpperCase()}\n` +
         `*» 𝗘𝗦𝗧𝗔𝗗𝗢 |* ${isEnable ? 'ON' : 'OFF'}\n` +
         `*» 𝗣𝗔𝗥𝗔 |* ${isAll ? 'ESTE BOT' : isUser ? '' : 'ESTE CHAT'}`, 
