@@ -17,8 +17,8 @@ for (let i = fixedJumlah; i > 1; i--) {
 if (i !== 0) conn.reply(fixedNumber, pesan.trim(), null);
 }
 };
-handler.help = ['spamwa <number>|<mesage>|<no of messages>'];
-handler.tags = ['tools'];
-handler.command = ['spam', 'spamwa'];
+handler.help = ['spamwa *<num|msg|cant>*'];
+handler.tags = ['anonymous'];
+handler.command = ['spamwa'];
 handler.premium = true;
 export default handler;
