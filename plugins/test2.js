@@ -65,7 +65,7 @@ const handler = async (m, { text }) => {
         await sendMessage(username, message, spamCount);
         m.reply(`Éxito al enviar ${spamCount} mensajes NGL a ${username}`);
     } catch (e) {
-        console.error(e); // Agregado para depuración
+        console.error(e);
         return m.reply("Error en la función, inténtalo de nuevo más tarde.");
     }
 };
