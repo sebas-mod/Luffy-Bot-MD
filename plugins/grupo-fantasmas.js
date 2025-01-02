@@ -51,7 +51,7 @@ break
 }
 
 }
-handler.tags = ['grupo']
+handler.tags = ['group']
 handler.command = ['fantasmas', 'kickfantasmas']
 handler.group = true
 handler.botAdmin = true
