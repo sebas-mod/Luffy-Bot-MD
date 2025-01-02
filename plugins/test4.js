@@ -18,6 +18,7 @@ async function obtenerUrlDescarga(urlFuente) {
         if (!enlaceDescarga) {
             throw new Error("¡No se encontró el enlace de descarga!");
         }
+await m.react('🕒');
 
         const urlCompletaDescarga = enlaceDescarga.startsWith('//') ? `https:${enlaceDescarga}` : enlaceDescarga;
         return urlCompletaDescarga;
@@ -51,6 +52,7 @@ async function descargarFuente(urlZip) {
 async function enviarFuenteAlUsuario(rutaArchivo, conn, m) {
     try {
         const bufferImagen = fs.readFileSync(rutaArchivo);
+        await m.react('✅');
         await conn.sendMessage(m.chat, {
             document: bufferImagen,
             fileName: "fuente.zip",
