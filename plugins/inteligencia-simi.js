@@ -13,10 +13,10 @@ await m.react(error)
 return conn.reply(m.chat, '❀ Ocurrió un error', m);
 }};
 
-handler.help = ['simi', 'bot'];
+handler.help = ['simi *<texto>*'];
 handler.tags = ['ai'];
 handler.register = true;
-handler.command = ['simi', 'bot', 'alexa', 'cortana'];
+handler.command = ['simi'];
 export default handler;
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
