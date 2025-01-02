@@ -9,7 +9,7 @@ await m.reply(`🍟 Se envió un enlace de invitación al usuario.`)
 
 }
 handler.help = ['invite *<numero>*']
-handler.tags = ['grupo']
+handler.tags = ['group']
 handler.command = ['invite', 'invitar'] 
 handler.group = true
 //handler.admin = true
