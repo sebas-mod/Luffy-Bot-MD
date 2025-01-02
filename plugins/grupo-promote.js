@@ -27,7 +27,7 @@ conn.reply(m.chat, `✅ *Fue agregado como admin del grupo con exito.*`, m, fake
 
 }
 handler.help = ['promote']
-handler.tags = ['grupo']
+handler.tags = ['group']
 handler.command = ['promote', 'promover']
 
 handler.group = true
