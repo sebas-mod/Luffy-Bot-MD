@@ -20,7 +20,7 @@ if (isClose === 'announcement'){
 m.reply(`🔐 *SOLOS LOS ADMINS PUEDEN ESCRIBIR EN ESTE GRUPO.*`)
 }}
 handler.help = ['grupo *<abrir / cerrar>*']
-handler.tags = ['grupo']
+handler.tags = ['group']
 handler.command = ['group', 'grupo']
 handler.admin = true
 handler.botAdmin = true
