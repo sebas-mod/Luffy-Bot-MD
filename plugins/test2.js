@@ -97,7 +97,7 @@ const handler = async (m, {
     const command = args[0].toLowerCase();
     const query = args.slice(1).join(" ");
     try {
-        if (command === "search") {
+        if (command === "searchfont") {
             if (!query) return m.reply("`nama font?`");
 
             const searchResults = await searchFonts(query);
