@@ -1,3 +1,8 @@
+/*
+ • Código Creado por By Izumi.kzx
+ • Dafont Descargador 
+ • https://whatsapp.com/channel/0029VaJxgcB0bIdvuOwKTM2Y
+*/
 import axios from "axios";
 import fs from "fs";
 import path from "path";
