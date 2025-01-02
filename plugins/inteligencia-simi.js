@@ -14,7 +14,7 @@ return conn.reply(m.chat, '❀ Ocurrió un error', m);
 }};
 
 handler.help = ['simi', 'bot'];
-handler.tags = ['fun'];
+handler.tags = ['ai'];
 handler.register = true;
 handler.command = ['simi', 'bot', 'alexa', 'cortana'];
 export default handler;
