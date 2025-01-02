@@ -19,8 +19,6 @@ async function obtenerUrlDescarga(urlFuente) {
             throw new Error("¡No se encontró el enlace de descarga!");
         }
 
-await m.react('🕒');
-
         const urlCompletaDescarga = enlaceDescarga.startsWith('//') ? `https:${enlaceDescarga}` : enlaceDescarga;
         return urlCompletaDescarga;
     } catch (error) {
@@ -81,7 +79,6 @@ const handler = async (m, { conn, text }) => {
         }
 
         const rutaZip = await descargarFuente(urlDescarga);
-        await m.react('✅');
         await enviarFuenteAlUsuario(rutaZip, conn, m);
     } catch (error) {
         console.error(error);
@@ -89,8 +86,8 @@ const handler = async (m, { conn, text }) => {
     }
 };
 
+handler.command = /^(dafont)$/i;
 handler.help = ["dafont *<url>*"];
-handler.tags = ["dl"];
-handler.command = ["dafont"];
+handler.tags = ["search"];
 
 export default handler;
