@@ -48,6 +48,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args, command }) => {
     "tk": "💻 「 *`TK-HOSTING`* 」 💻",
     "search": "🔍 「 *`SEARCH`* 」 🔍",
     "rpg": "🎮 「 *`RPG`* 」 🎮",
+    "nable": "🟢 「 *`ON - OFF`* 」 🔴",
     "start": "🚀 「 *`START`* 」 🚀",
     "sticker": "🖼️ 「 *`STICKER`* 」 🖼️",
     "dl": "📥 「 *`DOWNLOADER`* 」 📥",
