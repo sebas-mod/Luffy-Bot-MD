@@ -132,7 +132,7 @@ const handler = async (m, {
         m.reply(error.message);
     }
 };
-handler.help = ["search font-name", "download font-url"];
+handler.help = ["searchfont font-name", "downloadfont font-url"];
 handler.tags = ["downloader"];
 handler.command = /^(dafont)$/i;
 export default handler;
