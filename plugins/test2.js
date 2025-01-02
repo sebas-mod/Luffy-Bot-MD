@@ -4,135 +4,124 @@ import fs from "fs";
 import path from "path";
 const HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:117.0) Gecko/20100101 Firefox/117.0",
-    "Accept-Language": "en-US,en;q=0.9",
+    "Accept-Language": "es-ES,es;q=0.9",
     "Referer": "https://www.dafont.com/",
     "Cookie": "PHPSESSID=57to1j7l3q2bm4jj8cp3hjcnp7; _ga=GA1.1.735222474.1735736599; __eoi=ID=80f4924dca104d55:T=1725101280:RT=1735736599:S=AA-Afjafx9HUtWtBeU58TBZaba6w; _ga_W3Z15Z4TYR=GS1.1.1735736598.1.1.1735736606.0.0.0; __gads=ID=6fc638e356053a5a:T=1725853453:RT=1735736606:S=ALNI_MYOTnA2MElBW5CpGSLOZxjmjCxp7Q; __gpi=UID=00000ef5a81aa477:T=1725853453:RT=1735736606:S=ALNI_MYOYl4xhjvabA08qVlVrfYhbdWxTg"
 };
-async function searchFonts(query) {
+async function buscarFuentes(consulta) {
     try {
-        const searchUrl = `https://www.dafont.com/search.php?q=${encodeURIComponent(query)}`;
-        const {
-            data
-        } = await axios.get(searchUrl, {
-            headers: HEADERS
-        });
+        const urlBusqueda = `https://www.dafont.com/search.php?q=${encodeURIComponent(consulta)}`;
+        const { data } = await axios.get(urlBusqueda, { headers: HEADERS });
         const $ = cheerio.load(data);
-        const results = [];
+        const resultados = [];
 
         $("div.preview a").each((_, el) => {
-            const relativeUrl = $(el).attr("href");
-            if (relativeUrl) {
-                const fullUrl = `https://www.dafont.com/${relativeUrl}`;
-                results.push(fullUrl);
+            const urlRelativa = $(el).attr("href");
+            if (urlRelativa) {
+                const urlCompleta = `https://www.dafont.com/${urlRelativa}`;
+                resultados.push(urlCompleta);
             }
         });
-        if (results.length === 0) {
-            throw new Error("Font tidak ditemukan.");
+        if (resultados.length === 0) {
+            throw new Error("No se encontraron fuentes.");
         }
 
-        return results.slice(0, 5);
+        return resultados.slice(0, 5);
     } catch (error) {
-        console.error("Error saat mencari font:", error.message);
-        throw new Error("Gagal mencari font.");
+        console.error("Error al buscar fuentes:", error.message);
+        throw new Error("Error al buscar fuentes.");
     }
 }
-async function getDownloadUrl(fontUrl) {
+async function obtenerUrlDescarga(urlFuente) {
     try {
-        const {
-            data
-        } = await axios.get(fontUrl, {
-            headers: HEADERS
-        });
+        const { data } = await axios.get(urlFuente, { headers: HEADERS });
         const $ = cheerio.load(data);
-        const downloadLink = $("a.dl").attr("href");
-        if (!downloadLink) {
-            throw new Error("Link download tidak ditemukan!");
+        const enlaceDescarga = $("a.dl").attr("href");
+        if (!enlaceDescarga) {
+            throw new Error("¡No se encontró el enlace de descarga!");
         }
-        const fullDownloadUrl = downloadLink.startsWith('//') ? `https:${downloadLink}` : downloadLink;
-        return fullDownloadUrl;
+        const urlCompletaDescarga = enlaceDescarga.startsWith('//') ? `https:${enlaceDescarga}` : enlaceDescarga;
+        return urlCompletaDescarga;
     } catch (error) {
-        console.error("Error mengambil URL download:", error.message);
-        throw new Error("Gagal mengambil URL download.");
+        console.error("Error al obtener la URL de descarga:", error.message);
+        throw new Error("Error al obtener la URL de descarga.");
     }
 }
-async function downloadFont(zipUrl) {
+async function descargarFuente(urlZip) {
     try {
-        const response = await axios.get(zipUrl, {
+        const respuesta = await axios.get(urlZip, {
             responseType: "arraybuffer",
             headers: HEADERS
         });
-        const contentType = response.headers["content-type"];
-        if (!contentType || !contentType.includes("application/zip")) {
-            throw new Error("File zip gagal!");
+        const tipoContenido = respuesta.headers["content-type"];
+        if (!tipoContenido || !tipoContenido.includes("application/zip")) {
+            throw new Error("¡Archivo ZIP fallido!");
         }
-        const filePath = path.resolve(process.cwd(), "font.zip");
-        fs.writeFileSync(filePath, response.data);
-        return filePath;
+        const rutaArchivo = path.resolve(process.cwd(), "fuente.zip");
+        fs.writeFileSync(rutaArchivo, respuesta.data);
+        return rutaArchivo;
     } catch (error) {
-        console.error("Error mengunduh font:", error.message);
-        throw new Error("Gagal mengunduh font.");
+        console.error("Error al descargar la fuente:", error.message);
+        throw new Error("Error al descargar la fuente.");
     }
 }
-async function sendFontToUser(filePath, conn, m) {
+async function enviarFuenteAlUsuario(rutaArchivo, conn, m) {
     try {
-        const imageBuffer = fs.readFileSync(filePath);
+        const bufferImagen = fs.readFileSync(rutaArchivo);
         await conn.sendMessage(m.chat, {
-            document: imageBuffer,
-            fileName: "font.zip",
+            document: bufferImagen,
+            fileName: "fuente.zip",
             mimetype: "application/zip",
-            caption: "done kan bang?"
+            caption: "Fuente enviada con éxito."
         });
 
-        fs.unlinkSync(filePath);
+        fs.unlinkSync(rutaArchivo);
     } catch (error) {
-        console.error("Error mengirim font:", error.message);
-        throw new Error("Gagal mengirim font.");
+        console.error("Error al enviar la fuente:", error.message);
+        throw new Error("Error al enviar la fuente.");
     }
 }
-const handler = async (m, {
-    conn,
-    text
-}) => {
+const handler = async (m, { conn, text }) => {
     const args = text.split(" ");
-    const command = args[0].toLowerCase();
-    const query = args.slice(1).join(" ");
+    const comando = args[0].toLowerCase();
+    const consulta = args.slice(1).join(" ");
     try {
-        if (command === "search") {
-            if (!query) return m.reply("`nama font?`");
+        if (comando === "buscar") {
+            if (!consulta) return m.reply("`¿Nombre de la fuente?`");
 
-            const searchResults = await searchFonts(query);
-            if (searchResults.length === 0) {
-                return m.reply("Tidak ada font ditemukan untuk query ini.");
+            const resultadosBusqueda = await buscarFuentes(consulta);
+            if (resultadosBusqueda.length === 0) {
+                return m.reply("No se encontraron fuentes para esta consulta.");
             }
-            const resultText = searchResults
+            const textoResultados = resultadosBusqueda
                 .map((url, index) => `${index + 1}. ${url}`)
                 .join("\n");
 
             await conn.sendMessage(m.chat, {
-                text: `*🔍 Hasil pencarian untuk* "- ${query}":\n\n- ${resultText}`,
+                text: `*🔍 Resultados de búsqueda para* "- ${consulta}":\n\n- ${textoResultados}`,
             });
-        } else if (command === "download") {
-            const fontUrl = query.trim();
-            if (!fontUrl || !fontUrl.startsWith("https://www.dafont.com")) {
-                return m.reply("url yang valid!");
+        } else if (comando === "descargar") {
+            const urlFuente = consulta.trim();
+            if (!urlFuente || !urlFuente.startsWith("https://www.dafont.com")) {
+                return m.reply("¡URL inválida!");
             }
-            const downloadUrl = await getDownloadUrl(fontUrl);
-            const response = await axios.head(downloadUrl);
-            if (response.status !== 200) {
-                throw new Error("url tak dapat akses!");
+            const urlDescarga = await obtenerUrlDescarga(urlFuente);
+            const respuesta = await axios.head(urlDescarga);
+            if (respuesta.status !== 200) {
+                throw new Error("¡URL inaccesible!");
             }
 
-            const zipFilePath = await downloadFont(downloadUrl);
-            await sendFontToUser(zipFilePath, conn, m);
+            const rutaZip = await descargarFuente(urlDescarga);
+            await enviarFuenteAlUsuario(rutaZip, conn, m);
         } else {
-            m.reply("Gunakan perintah `search` untuk mencari font atau `download` untuk mengunduh font.");
+            m.reply("Usa el comando `buscar` para buscar una fuente o `descargar` para descargar una fuente.");
         }
     } catch (error) {
         console.error(error);
         m.reply(error.message);
     }
 };
-handler.help = ["searchfont font-name", "downloadfont font-url"];
-handler.tags = ["downloader"];
+handler.help = ["buscarfuente nombre-fuente", "descargarfuente url-fuente"];
+handler.tags = ["descargador"];
 handler.command = /^(dafont)$/i;
 export default handler;
