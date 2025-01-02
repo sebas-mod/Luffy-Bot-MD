@@ -1,4 +1,4 @@
-import axios from "axios";
+/* import axios from "axios";
 import * as cheerio from "cheerio";
 import fs from "fs";
 import path from "path";
@@ -124,4 +124,4 @@ const handler = async (m, { conn, text }) => {
 handler.help = ["buscarfuente nombre-fuente", "descargarfuente url-fuente"];
 handler.tags = ["descargador"];
 handler.command = /^(dafont)$/i;
-export default handler;
+export default handler; */
