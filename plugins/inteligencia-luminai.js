@@ -43,7 +43,7 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
     }
 }
 
-handler.help = ['luminai <texto>']
+handler.help = ['luminai *<texto>*']
 handler.tags = ['ai']
 handler.register = true
 handler.command = ['luminai']
