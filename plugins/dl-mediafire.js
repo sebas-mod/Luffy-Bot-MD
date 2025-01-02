@@ -13,11 +13,11 @@ txt += `*${filename}*\n\n`;
 txt += `- *Tipo :* ${type}\n`;
 txt += `- *Tamaño :* ${size}\n`; 
 txt += `- *Creado :* ${uploaded}\n`;
-//        m.reply(`*${filename}*
+/*       m.reply(`*${filename}*
 
 - *Tipo :* ${type}
 - *Tamaño :* ${size}
-- *Creado :* ${uploaded}`)
+- *Creado :* ${uploaded}`) */
         await m.react('✅');
         await conn.sendFile(m.chat, dl_url, filename, null, m, null, { mimetype: ext, asDocument: true })
     } catch (error) {
