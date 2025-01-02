@@ -76,5 +76,10 @@ const handler = async (m, { text }) => {
 
 handler.command = handler.help = ["nglspam"];
 handler.tags = ["tools"];
+
+handler.help = ["nglspam *<nombre | mensaje | cantidad>*"]
+handler.tags = ["tools"]
+handler.command = ["nglspam"]
+
 handler.premium = true;
 export default handler;
