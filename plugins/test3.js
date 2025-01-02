@@ -1,3 +1,9 @@
+/*
+ • Código Creado por By Izumi.kzx
+ • Dafont Search
+ • https://whatsapp.com/channel/0029VaJxgcB0bIdvuOwKTM2Y
+*/
+
 import axios from "axios";
 import * as cheerio from "cheerio";
 
