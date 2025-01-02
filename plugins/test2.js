@@ -62,6 +62,7 @@ const handler = async (m, { text }) => {
     }
 
     try {
+        await m.react('✅');
         await sendMessage(username, message, spamCount);
         m.reply(`Éxito al enviar ${spamCount} mensajes NGL a ${username}`);
     } catch (e) {
