@@ -97,7 +97,7 @@ const handler = async (m, {
     const command = args[0].toLowerCase();
     const query = args.slice(1).join(" ");
     try {
-        if (command === "searchfont") {
+        if (command === "search") {
             if (!query) return m.reply("`nama font?`");
 
             const searchResults = await searchFonts(query);
@@ -111,7 +111,7 @@ const handler = async (m, {
             await conn.sendMessage(m.chat, {
                 text: `*🔍 Hasil pencarian untuk* "- ${query}":\n\n- ${resultText}`,
             });
-        } else if (command === "downloadfont") {
+        } else if (command === "download") {
             const fontUrl = query.trim();
             if (!fontUrl || !fontUrl.startsWith("https://www.dafont.com")) {
                 return m.reply("url yang valid!");
