@@ -25,6 +25,8 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     }
 }
 
-handler.command = /^(spotify)$/i
+handler.help = ['spotify *<url>*']
+handler.tags = ['dl']
+handler.command = ['spotify']
 
 export default handler;
