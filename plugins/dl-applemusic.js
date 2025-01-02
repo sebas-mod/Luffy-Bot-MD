@@ -168,9 +168,9 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } });
 };
 
-handler.help = ['play'];
-handler.tags = ['downloader'];
+handler.help = ['applemusic *<url|txt>*'];
+handler.tags = ['dl'];
 handler.limit = 3;
-handler.command = /^(applemusicplay|play|song)$/i;
+handler.command = /^(applemusic)$/i;
 
 export default handler;
