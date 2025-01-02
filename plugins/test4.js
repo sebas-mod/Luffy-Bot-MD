@@ -88,6 +88,6 @@ const handler = async (m, { conn, text }) => {
 
 handler.help = ["dafont *<url>*"];
 handler.tags = ["dl"];
-handler.command = /^(dafont)$/i;
+handler.command = ["dafont"];
 
 export default handler;
