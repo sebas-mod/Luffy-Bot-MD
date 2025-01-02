@@ -18,7 +18,7 @@ https://whatsapp.com/channel/0029Vanjyqb2f3ERifCpGT0W
 // *[ ❀ MEDIAFIRE ]*
 import fetch from 'node-fetch';
 
-let HS = async (m, { conn, text }) => {
+let handler = async (m, { conn, text }) => {
 if (!text) return conn.reply(m.chat, `❀ Ingresa un link de mediafire`, m)
 
 try {
@@ -36,6 +36,6 @@ await conn.sendFile(m.chat, dl_url, filename, null, m, null, { mimetype: ext, as
 console.error(error)
 }}
 
-HS.command = ['mediafire']
+handler.command = ['mediafire']
 
-export default HS
+export default handler;
