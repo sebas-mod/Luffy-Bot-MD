@@ -36,6 +36,8 @@ return
   return !1;
 };
 
+handler.help = ['advertir *<@user>*']
+handler.tags = ['group']
 handler.command = ['advertir', 'advertencia', 'warn', 'warning'];
 handler.group = true;
 handler.admin = true;
