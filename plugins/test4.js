@@ -86,8 +86,8 @@ const handler = async (m, { conn, text }) => {
     }
 };
 
-handler.command = /^(descargarfuente|downloadfont)$/i;
-handler.help = ["descargarfuente <url-fuente>"];
-handler.tags = ["utilidad"];
+handler.help = ["dafont *<url>*"];
+handler.tags = ["dl"];
+handler.command = /^(dafont)$/i;
 
 export default handler;
