@@ -36,7 +36,7 @@ ${listAdmin}
   conn.sendFile(m.chat, pp, 'img.jpg', text, m, false, {mentions: [...groupAdmins.map((v) => v.id), owner]});
 };
 handler.help = ['infogrupo'];
-handler.tags = ['grupo'];
+handler.tags = ['group'];
 handler.command = ['infogrupo', 'gp'];
 handler.register = true
 handler.group = true;
