@@ -36,21 +36,21 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
       message += "\n🎥 *Tipo*: Video";
 
       if (videoInfo.nowm) {
-    await conn.sendMessage(m.chat, {
-      video: { url: videoInfo.nowm },
-      caption: message,
-      footer: dev,
-      buttons: [
-        {
-          buttonId: `.tiktokmp3 ${audioUrl}`,
-          buttonText: {
-            displayText: 'Descargar Audio',
-          },
-        },
-      ],
-      viewOnce: true,
-      headerType: 4,
-    }, { quoted: m })
+        await conn.sendMessage(m.chat, {
+          video: { url: videoInfo.nowm },
+          caption: message,
+          footer: dev,
+          buttons: [
+            {
+              buttonId: `.tiktokmp3 ${text}`, // Usa el enlace proporcionado por el usuario
+              buttonText: {
+                displayText: 'Descargar Audio',
+              },
+            },
+          ],
+          viewOnce: true,
+          headerType: 4,
+        }, { quoted: m });
       } else {
         conn.reply(m.chat, "No se pudo obtener el video sin marca de agua.", m);
       }
