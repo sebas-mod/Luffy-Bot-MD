@@ -159,7 +159,7 @@ const _0x4ea9f2 = _0x42414c[0x0] && /Code/.test(_0x42414c[0x0].trim()) ? true : 
         }
         if (_0x3a7bea && _0x4ea9f2) {
           _0x125157 = await _0x3b0d31.sendMessage(_0x229076.chat, {
-            'text': "✿ *Vincula tu cuenta usando el codigo.*\n\n_✰ Sigue las *instrucciones* :_\n\n`1` » Click en los 3 puntos\n\n`2` » Toque dispositivos vinculados\n\n`3` » Escanee este codigo QR para iniciar sesión\n\n`4` » Vincular nuevo dispositivo\n\n`5` » Selecciona Vincular con el número de teléfono\n\n> *✰ Nota :* _Este Código solo funciona en el número que lo solicito_\n> *✿ Aviso :* _No es recomendable ser subbot en tu numero principal_" + _0x261df0.toString('utf-8')
+            'text': "✿ *Vincula tu cuenta usando el codigo.*\n\n_✰ Sigue las *instrucciones* :_\n\n`1` » Click en los 3 puntos\n\n`2` » Toque dispositivos vinculados\n\n`3` » Vincular nuevo dispositivo\n\n`4` » Selecciona Vincular con el número de teléfono\n\n> *✰ Nota :* _Este Código solo funciona en el número que lo solicito_\n> *✿ Aviso :* _No es recomendable ser subbot en tu numero principal_" + _0x261df0.toString('utf-8')
           }, {
             'quoted': _0x229076
           });
