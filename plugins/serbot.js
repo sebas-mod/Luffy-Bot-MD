@@ -74,8 +74,6 @@ const message = users.map((v, index) => `👤 *\`「 ${index + 1} 」\` ${v.user
 const replyMessage = message.length === 0 ? `No hay Sub-Bots disponible por el momento, verifique mas tarde.` : message;
 const totalUsers = users.length;
 const responseMessage = `☁️ *S U B B O T S - G E N E S I S* ☁️\n\n_Total Subbots Activos :_ ${totalUsers || '0'}\n\n${replyMessage.trim()}`.trim();
-
-// await _envio.sendMessage(m.chat, img, 'thumbnail.jpg', {text: responseMessage, mentions: _envio.parseMention(responseMessage)}, {quoted: m})
 await _envio.sendFile(m.chat, img, 'thumbnail.jpg', responseMessage, m, null, fake, false, { mentions: _envio.parseMention(responseMessage) })
 break   
 }}
