@@ -35,7 +35,7 @@ GenesisBot-MD recibe **soporte semanal** si llegas a ver un error **repetitivame
 
 </details>
 
-### <img src="https://i.pinimg.com/originals/19/80/6e/19806e91932e6054965fc83b85241270.gif" alt="Prueba La Bot Aqui" width="42" height="42"> **`Prueba La Bot Aqui`**
+### <img src="https://i.pinimg.com/originals/19/80/6e/19806e91932e6054965fc83b85241270.gif" alt="Prueba La Bot Aqui" width="42" height="42"> **`Instala Genesis Aqui`**
 
 ### **`TK HOST 📲`**
 <a href="https://dash.tk-joanhost.com"><img src="https://i.ibb.co/pr8TnWJ/SAVE-20240915-183758.jpg" height="125px"></a>
