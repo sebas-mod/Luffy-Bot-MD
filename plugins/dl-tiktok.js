@@ -39,7 +39,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     await conn.sendMessage(m.chat, {
       video: { url: videoInfo.nowm },
       caption: message,
-      footer: ' ©️ ρσωε૨ ɓყ ƭεαɱ รƭα૨૮σ૨ε',
+      footer: dev,
       buttons: [
         {
           buttonId: `.audio ${audioUrl}`,
