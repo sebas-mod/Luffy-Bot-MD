@@ -42,7 +42,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
       footer: dev,
       buttons: [
         {
-          buttonId: `.audio ${audioUrl}`,
+          buttonId: `.tiktokmp3 ${audioUrl}`,
           buttonText: {
             displayText: 'Descargar Audio',
           },
