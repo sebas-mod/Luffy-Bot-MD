@@ -4,6 +4,9 @@ import path, { join } from 'path'
 import ws from 'ws';
 
 let handler = async (m, { conn: _envio, command, usedPrefix, args, text, isOwner}) => {
+
+let img = await (await fetch(`https://pomf2.lain.la/f/hg3otwi4.jpg`)).buffer()
+
 const isCommand1 = /^(deletesesion|deletebot|deletesession|deletesesaion)$/i.test(command)  
 const isCommand2 = /^(stop|pausarai|pausarbot)$/i.test(command)  
 const isCommand3 = /^(bots|sockets|socket)$/i.test(command)   
