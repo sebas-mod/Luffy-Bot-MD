@@ -4,7 +4,6 @@ import cheerio from "cheerio";
 let handler = async (m, { conn, text, usedPrefix, command }) => {
   if (!text) {
     return conn.reply(m.chat, `Usa el formato: ${usedPrefix + command} <enlace de TikTok>`, m);
-await m.react('🕓')
   }
 
   try {
