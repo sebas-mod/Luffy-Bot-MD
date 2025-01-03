@@ -34,7 +34,6 @@ const handler = async (m, { text, conn }) => {
 
         m.reply(`✅ Se encontraron ${images.length} imágenes. Procesando...`);
 
-        // Crear directorio temporal
         const tempDir = "tmp";
         if (!fs.existsSync(tempDir)) fs.mkdirSync(tempDir);
 
