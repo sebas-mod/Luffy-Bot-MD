@@ -292,7 +292,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
     break
     default:
       if (!/[01]/.test(command)) return conn.reply(m.chat, `
-*👑 Funciones solo para owner*
+*☁️ Funciones solo para owner*
 
 ${usedPrefix + command} antispam
 ${usedPrefix + command} antiprivado
@@ -300,7 +300,7 @@ ${usedPrefix + command} status
 ${usedPrefix + command} autoread
 ${usedPrefix + command} restrict
 
-*🚩 Funciones de grupos*
+*☁️ Funciones de grupos*
 
 ${usedPrefix + command} welcome 
 ${usedPrefix + command} autoaceptar
