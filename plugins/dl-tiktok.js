@@ -48,6 +48,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
               },
             },
           ],
+          viewOnce: true,
           headerType: 4,
         }, { quoted: m });
       } else {
