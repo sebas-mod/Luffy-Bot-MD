@@ -22,13 +22,12 @@ conn.sendMessage(m.chat, { react: { text: "🕒", key: m.key } });
         }
       }
     };
-	await conn.sendFile(m.chat, dp.results.nowm, `${dp.results.title}.mp4`, ``, m, null, rcanal)
 	await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key }});
     await conn.sendMessage(m.chat, doc, { quoted: m })
 }
-handler.help = ['tiktok2']
+handler.help = ['tiktokmp3 *<url>*']
 handler.tags = ['downloader']
-handler.command = /^(tt2|tiktok2)$/i
+handler.command = /^(tiktokmp3)$/i
 handler.premium = false
 handler.register = true
 export default handler
