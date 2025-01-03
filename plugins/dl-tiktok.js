@@ -7,7 +7,6 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   }
 
   try {
-    // React con "🕓" al inicio del proceso
     await m.react('🕓');
 
     const videoResult = await ttsave.video(text);
@@ -32,7 +31,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
       await conn.reply(m.chat, message, m);
 
       for (let slide of slides) {
-        await m.react('✅'); // React con "✅" al enviar cada slide
+        await m.react('✅');
         await conn.sendFile(m.chat, slide.url, `presentación-${slide.number}.jpg`, "", m);
       }
     } 
@@ -40,7 +39,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
       message += "\n🎥 *Tipo*: Video";
 
       if (videoInfo.nowm) {
-        await m.react('✅'); // React con "✅" antes de enviar el video
+        await m.react('✅');
         await conn.sendMessage(m.chat, {
           video: { url: videoInfo.nowm },
           caption: message,
@@ -49,7 +48,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
             {
               buttonId: `.tiktokmp3 ${text}`, // Usa el enlace proporcionado por el usuario
               buttonText: {
-                displayText: 'Descargar Audio',
+                displayText: 'Descargar Audio 🎧',
               },
             },
           ],
@@ -62,7 +61,6 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     }
 
     if (audioUrl) {
-      // El audio se puede manejar directamente desde el botón generado
     }
   } catch (error) {
     console.error(error);
@@ -70,9 +68,9 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   }
 };
 
-handler.help = ["tiktok <enlace>", "tiktokdl <enlace>"];
-handler.tags = ["descargador"];
-handler.command = ["tiktok", "tiktokdl"];
+handler.help = ["tiktok *<url>*"];
+handler.tags = ["dl"];
+handler.command = ["tiktok];
 export default handler;
 
 const headers = {
