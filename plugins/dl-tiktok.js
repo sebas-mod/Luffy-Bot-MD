@@ -7,6 +7,9 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   }
 
   try {
+    // React con "🕓" al inicio del proceso
+    await m.react('🕓');
+
     const videoResult = await ttsave.video(text);
     const { 
       type, 
@@ -29,7 +32,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
       await conn.reply(m.chat, message, m);
 
       for (let slide of slides) {
-        await m.react('✅')
+        await m.react('✅'); // React con "✅" al enviar cada slide
         await conn.sendFile(m.chat, slide.url, `presentación-${slide.number}.jpg`, "", m);
       }
     } 
@@ -37,7 +40,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
       message += "\n🎥 *Tipo*: Video";
 
       if (videoInfo.nowm) {
-        await m.react('✅')
+        await m.react('✅'); // React con "✅" antes de enviar el video
         await conn.sendMessage(m.chat, {
           video: { url: videoInfo.nowm },
           caption: message,
