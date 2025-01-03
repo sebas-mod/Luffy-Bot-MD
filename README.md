@@ -4,7 +4,7 @@
 
 ![Genesis](https://i.ibb.co/1djcb0T/file.jpg)
 <div align="center">
-<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Oswald&weight=300&size=37&duration=3000&pause=100&color=000000&background=601D6E00&center=true&vCenter=true&repeat=true&random=FALSO&width=860&height=90&lines=Angel-OFC+lanzó+la mejor+versión;De+Genesis AI - 2.0.0;Con+nuevos+comandos+y+mejoras;Genesis-AI+El+Mejor Bot+De+WhatsApp" alt="Typing SVG"/></a>
+<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Oswald&weight=300&size=37&duration=3000&pause=100&color=000000&background=601D6E00&center=true&vCenter=true&repeat=true&random=FALSO&width=760&height=90&lines=Angel-OFC+lanzó+la mejor+versión;De+Genesis AI - 2.0.0;Con+nuevos+comandos+y+mejoras;Genesis-AI+El+Mejor Bot+De+WhatsApp" alt="Typing SVG"/></a>
 </div>
 
 [![GROUP OFFICIAL](https://img.shields.io/badge/WhatsApp%20group-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/CTQL9XFA0uk66xIYZWfKij) [![GROUP OFFICIAL](https://img.shields.io/badge/WhatsApp%20channel-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://whatsapp.com/channel/0029VaOhfUIAjPXTORInZf0d)
