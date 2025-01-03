@@ -45,18 +45,17 @@ const handler = async (m, { text, conn }) => {
             fs.writeFileSync(filepath, imgResponse.data);
         }
 
-        // Crear archivo ZIP
         const zipFilename = "komikudl.zip";
         const output = fs.createWriteStream(zipFilename);
         const archive = archiver("zip", { zlib: { level: 9 } });
 
         output.on("close", async () => {
+            await m.react('✅')
             await conn.sendFile(m.chat, zipFilename, zipFilename, "📦 Archivo comprimido listo.", m);
             setTimeout(() => {
-                // Eliminar archivo ZIP y directorio temporal
                 fs.unlinkSync(zipFilename);
                 fs.rmSync(tempDir, { recursive: true, force: true });
-            }, 10000); // 10 segundos para evitar problemas con archivos grandes
+            }, 10000);
         });
 
         archive.on("error", (err) => {
