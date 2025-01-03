@@ -36,7 +36,23 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
       message += "\n🎥 *Tipo*: Video";
 
       if (videoInfo.nowm) {
-        await conn.sendMessage(m.chat, {
+    await conn.sendMessage(m.chat, {
+      video: { url: videoInfo.nowm },
+      caption: message,
+      footer: ' ©️ ρσωε૨ ɓყ ƭεαɱ รƭα૨૮σ૨ε',
+      buttons: [
+        {
+          buttonId: `.audio ${audioUrl}`,
+          buttonText: {
+            displayText: 'Descargar Audio',
+          },
+        },
+      ],
+      viewOnce: true,
+      headerType: 4,
+    }, { quoted: m })
+
+/*        await conn.sendMessage(m.chat, {
           video: { url: videoInfo.nowm },
           caption: message,
           footer: ' ©️ ρσωε૨ ɓყ ƭεαɱ รƭα૨૮σ૨ε',
@@ -50,7 +66,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
           ],
           viewOnce: true,
           headerType: 4,
-        }, { quoted: m });
+        }, { quoted: m }); */
       } else {
         conn.reply(m.chat, "No se pudo obtener el video sin marca de agua.", m);
       }
