@@ -74,7 +74,6 @@ const handler = async (m, { text, conn }) => {
 
 handler.help = ["komikudl <url>"];
 handler.tags = ["tools"];
-handler.command = /^(komikudl)$/i;
-handler.limit = true;
+handler.command = ["komikudl"];
 
 export default handler;
