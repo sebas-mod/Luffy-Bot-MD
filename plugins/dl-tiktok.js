@@ -3,7 +3,7 @@ import cheerio from "cheerio";
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
   if (!text) {
-    return conn.reply(m.chat, `Gunakan format: ${usedPrefix + command} <link TikTok>`, m);
+    return conn.reply(m.chat, `Usa el formato: ${usedPrefix + command} <enlace de TikTok>`, m);
   }
 
   try {
@@ -19,46 +19,43 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     } = videoResult;
 
     let message = `
-📛 *Nickname*: ${nickname || "-"}
-🆔 *Username*: ${username || "-"}
-📝 *Deskripsi*: ${description || "-"}
+📛 *Apodo*: ${nickname || "-"}
+🆔 *Usuario*: ${username || "-"}
+📝 *Descripción*: ${description || "-"}
 `.trim();
 
     if (type === "slide") {
-      message += "\n📷 *Tipe*: Slide (Gambar)";
+      message += "\n📷 *Tipo*: Presentación (Imágenes)";
       await conn.reply(m.chat, message, m);
 
       for (let slide of slides) {
-        await conn.sendFile(m.chat, slide.url, `slide-${slide.number}.jpg`, "", m);
+        await conn.sendFile(m.chat, slide.url, `presentación-${slide.number}.jpg`, "", m);
       }
     } 
     else if (type === "video") {
-      message += "\n🎥 *Tipe*: Video";
+      message += "\n🎥 *Tipo*: Video";
       if (videoInfo.nowm) {
-        message += ``;
         await conn.sendFile(m.chat, videoInfo.nowm, "tiktok.mp4", message, m);
       } else {
-        conn.reply(m.chat, "Gagal mengambil video tanpa watermark.", m);
+        conn.reply(m.chat, "No se pudo obtener el video sin marca de agua.", m);
       }
-    } 
-//hapus wm?=sdm rendah https://whatsapp.com/channel/0029VaJYWMb7oQhareT7F40V
+    }
+
     if (audioUrl) {
-      message += "\n🎵 *Tipe*: Audio";
+      message += "\n🎵 *Tipo*: Audio";
       await conn.sendFile(m.chat, audioUrl, "tiktok.mp3", "", m);
     }
   } catch (error) {
     console.error(error);
-    conn.reply(m.chat, `Terjadi kesalahan saat memproses permintaan. Pastikan link TikTok valid dan coba lagi.`, m);
+    conn.reply(m.chat, `Ocurrió un error al procesar la solicitud. Asegúrate de que el enlace de TikTok sea válido e inténtalo nuevamente.`, m);
   }
 };
-//wwmmm https://whatsapp.com/channel/0029VaJYWMb7oQhareT7F40V
-handler.help = ["tiktok <link>","tiktokdl <link>"];
-handler.tags = ["downloader"];
-handler.command = ["tiktok","tiktokdl"];
-//https://whatsapp.com/channel/0029VaJYWMb7oQhareT7F40V
+
+handler.help = ["tiktok <enlace>", "tiktokdl <enlace>"];
+handler.tags = ["descargador"];
+handler.command = ["tiktok", "tiktokdl"];
 export default handler;
-//hapus wm?=mandul https://whatsapp.com/channel/0029VaJYWMb7oQhareT7F40V
-// Scrape By Daffa https://whatsapp.com/channel/0029VaiVeWA8vd1HMUcb6k2S/321
+
 const headers = {
   authority: "ttsave.app",
   accept: "application/json, text/plain, */*",
@@ -90,10 +87,10 @@ const ttsave = {
     };
 
     const stats = {
-      plays: "",
-      likes: "",
-      comments: "",
-      shares: "",
+      reproducciones: "",
+      meGusta: "",
+      comentarios: "",
+      compartidos: "",
     };
 
     $(".flex.flex-row.items-center.justify-center").each((index, element) => {
@@ -102,17 +99,17 @@ const ttsave = {
       const value = $element.find("span.text-gray-500").text().trim();
 
       if (svgPath && svgPath.startsWith("M10 18a8 8 0 100-16")) {
-        stats.plays = value;
+        stats.reproducciones = value;
       } else if (svgPath && svgPath.startsWith("M3.172 5.172a4 4 0 015.656")) {
-        stats.likes = value || "0";
+        stats.meGusta = value || "0";
       } else if (svgPath && svgPath.startsWith("M18 10c0 3.866-3.582")) {
-        stats.comments = value;
+        stats.comentarios = value;
       } else if (svgPath && svgPath.startsWith("M17.593 3.322c1.1.128")) {
-        stats.shares = value;
+        stats.compartidos = value;
       }
     });
 
-    const songTitle = $(".flex.flex-row.items-center.justify-center.gap-1.mt-5")
+    const tituloCancion = $(".flex.flex-row.items-center.justify-center.gap-1.mt-5")
       .find("span.text-gray-500")
       .text()
       .trim();
@@ -132,7 +129,7 @@ const ttsave = {
       description,
       dlink,
       stats,
-      songTitle,
+      tituloCancion,
       slides,
     };
   },
