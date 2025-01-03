@@ -151,14 +151,14 @@ let handler = async (_0x229076, {
             'image': await _0x36edb8.toBuffer(_0x3a7bea, {
               'scale': 0x8
             }),
-            'caption': "‿︵ʚɞ『☁️𝙔𝙖𝙚𝙢𝙤𝙧𝙞𝘽𝙤𝙩-𝙈𝘿☁️』ʚɞ‿︵\n\n🌸 𝗙𝗨𝗡𝗖𝗜𝗢𝗡 𝗦𝗘𝗥 𝗦𝗨𝗕 𝗕𝗢𝗧 🌸\n\n*✨️ Con otro celular o en la PC escanea este QR para convertirte en un Sub Bot*\n\n`1` » Haga clic en los tres puntos en la esquina superior derecha\n\n`2` » Toca dispositivos vinculados\n\n`3` » Escanee este codigo QR para iniciar sesión\n\n🌻 *¡Este código QR expira en 45 segundos!*\n\n*👑 Jadibot, Hecho por @Aiden_NotLogic 🙌*\n" + _0x261df0.toString("utf-8")
+            'caption': "‿︵ʚɞ『☁️ Genesis-Ultra ☁️』ʚɞ‿︵\n\n🌸 𝗙𝗨𝗡𝗖𝗜𝗢𝗡 𝗦𝗘𝗥 𝗦𝗨𝗕 𝗕𝗢𝗧 🌸\n\n*✨️ Con otro celular o en la PC escanea este QR para convertirte en un Sub Bot*\n\n`1` » Haga clic en los tres puntos en la esquina superior derecha\n\n`2` » Toca dispositivos vinculados\n\n`3` » Escanee este codigo QR para iniciar sesión\n\n🌻 *¡Este código QR expira en 45 segundos!*\n\n*👑 Jadibot, Hecho por @Aiden_NotLogic 🙌*\n" + _0x261df0.toString("utf-8")
           }, {
             'quoted': _0x229076
           });
         }
         if (_0x3a7bea && _0x4ea9f2) {
           _0x125157 = await _0x3b0d31.sendMessage(_0x229076.chat, {
-            'text': "‿︵ʚɞ『☁️𝙔𝙖𝙚𝙢𝙤𝙧𝙞𝘽𝙤𝙩-𝙈𝘿☁️』ʚɞ‿︵\n\n🌸 𝗙𝗨𝗡𝗖𝗜𝗢𝗡 𝗦𝗘𝗥 𝗦𝗨𝗕 𝗕𝗢𝗧 🌸\n\n*✨️ Usa este Código para convertirte en un Sub Bot*\n\n`1` » Haga clic en los tres puntos en la esquina superior derecha\n\n`2` » Toca dispositivos vinculados\n\n`3` » Selecciona Vincular con el número de teléfono\n\n`4` » Escriba el Código\n\n🌻 *¡Este código solo funciona en el número que lo solicitó!*\n\n*👑 Jadibot, Hecho por @Aiden_NotLogic 🙌*\n" + _0x261df0.toString('utf-8')
+            'text': "‿︵ʚɞ『☁️ Genesis-Ultra ☁️』ʚɞ‿︵\n\n🌸 𝗙𝗨𝗡𝗖𝗜𝗢𝗡 𝗦𝗘𝗥 𝗦𝗨𝗕 𝗕𝗢𝗧 🌸\n\n*✨️ Usa este Código para convertirte en un Sub Bot*\n\n`1` » Haga clic en los tres puntos en la esquina superior derecha\n\n`2` » Toca dispositivos vinculados\n\n`3` » Selecciona Vincular con el número de teléfono\n\n`4` » Escriba el Código\n\n🌻 *¡Este código solo funciona en el número que lo solicitó!*\n\n*👑 Jadibot, Hecho por @Aiden_NotLogic 🙌*\n" + _0x261df0.toString('utf-8')
           }, {
             'quoted': _0x229076
           });
