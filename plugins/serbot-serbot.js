@@ -346,7 +346,7 @@ if (_0x4ea9f2) {
 };
 handler.help = ['serbot', "serbot --code"];
 handler.tags = ['serbot'];
-handler.command = ["jadibot", "serbot"];
+handler.command = ["jadibot", "serbot", "code"];
 export default handler;
 function sleep(_0x3adb64) {
   return new Promise(_0x29b84a => setTimeout(_0x29b84a, _0x3adb64));
