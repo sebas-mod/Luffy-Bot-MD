@@ -70,7 +70,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 
 handler.help = ["tiktok *<url>*"];
 handler.tags = ["dl"];
-handler.command = ["tiktok];
+handler.command = ["tiktok"];
 export default handler;
 
 const headers = {
