@@ -40,7 +40,7 @@ let handler = async (m, { conn, text, command }) => {
 
 handler.help = ["brat", "totalbrat"]
 handler.tags = ["sticker"]
-handler.command = /^(brat|totalbrat)$/i
+handler.command = /^(bratt|totalbrat)$/i
 
 export default handler
 
