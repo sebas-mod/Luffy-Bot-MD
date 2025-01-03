@@ -21,7 +21,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     } = videoResult;
 
     let message = `
-📛 *Apodo*: ${nickname || "-"}
+📛 *Nombre*: ${nickname || "-"}
 🆔 *Usuario*: ${username || "-"}
 📝 *Descripción*: ${description || "-"}
 `.trim();
