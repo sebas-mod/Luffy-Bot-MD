@@ -46,7 +46,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
           footer: dev,
           buttons: [
             {
-              buttonId: `.tiktokmp3 ${text}`, // Usa el enlace proporcionado por el usuario
+              buttonId: `.tiktokmp3 ${text}`,
               buttonText: {
                 displayText: 'Descargar Audio 🎧',
               },
