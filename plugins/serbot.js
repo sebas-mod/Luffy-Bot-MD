@@ -73,7 +73,7 @@ return resultado;
 const message = users.map((v, index) => `👤 *\`「 ${index + 1} 」\` ${v.user.name || 'Sub-Bot'}*\n📎 Wa.me/${v.user.jid.replace(/[^0-9]/g, '')}?text=${usedPrefix}menu\n🕑 Online: ${ v.uptime ? convertirMsADiasHorasMinutosSegundos(Date.now() - v.uptime) : 'Desconocido'}`).join('\n\n__________________________\n\n');
 const replyMessage = message.length === 0 ? `No hay Sub-Bots disponible por el momento, verifique mas tarde.` : message;
 const totalUsers = users.length;
-const responseMessage = `☁️ *S U B - B O T S* ☁️\n\n_Total Subbots Activos :_ ${totalUsers || '0'}\n\n${replyMessage.trim()}`.trim();
+const responseMessage = `☁️ *S U B B O T S - L I S T A* ☁️\n\n_Total Subbots Activos :_ ${totalUsers || '0'}\n\n${replyMessage.trim()}`.trim();
 
 // await _envio.sendMessage(m.chat, img, 'thumbnail.jpg', {text: responseMessage, mentions: _envio.parseMention(responseMessage)}, {quoted: m})
 await _envio.sendFile(m.chat, img, 'thumbnail.jpg', responseMessage, m, null, fake, false, { mentions: _envio.parseMention(responseMessage) })
