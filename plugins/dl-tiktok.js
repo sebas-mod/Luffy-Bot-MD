@@ -7,7 +7,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   }
 
   try {
-    await m.react('🕓');
+    await m.react('🕒');
 
     const videoResult = await ttsave.video(text);
     const { 
