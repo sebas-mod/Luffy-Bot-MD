@@ -4,6 +4,7 @@ import cheerio from "cheerio";
 let handler = async (m, { conn, text, usedPrefix, command }) => {
   if (!text) {
     return conn.reply(m.chat, `Usa el formato: ${usedPrefix + command} <enlace de TikTok>`, m);
+await m.react('🕓')
   }
 
   try {
@@ -36,6 +37,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
       message += "\n🎥 *Tipo*: Video";
 
       if (videoInfo.nowm) {
+        await m.react('✅')
         await conn.sendMessage(m.chat, {
           video: { url: videoInfo.nowm },
           caption: message,
