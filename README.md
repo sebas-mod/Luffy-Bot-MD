@@ -61,10 +61,6 @@ GenesisBot-MD recibe **soporte semanal** si llegas a ver un error **repetitivame
 > **Si planeas instalar o extraer el bot, recuerda que su venta está estrictamente prohibida bajo cualquier circunstancia. El uso del bot con fines de venta constituye una violación de los términos de nuestro repositorio y se tomarán las medidas necesarias contra quienes incumplan estas condiciones.**
 
 ***
-### 💥 AGRADECIMIENTOS 
-
-<a href="https://github.com/StarlightsTeam"><img src="https://github.com/StarlightsTeam.png" width="100" height="100" alt="StarlightsTeam"/></a>
-
 ### ☁️ COLABORADORES
 
 <a href="https://github.com/MauroAzcurra"><img src="https://github.com/MauroAzcurra.png" width="100" height="100" alt="MauroAzcurra"/></a>
