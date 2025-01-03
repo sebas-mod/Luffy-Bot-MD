@@ -158,7 +158,7 @@ if (!('self' in settings)) settings.self = false
 if (!('restrict' in settings)) settings.restrict = false
 if (!('jadibotmd' in settings)) settings.jadibotmd = true
 if (!('autobio' in settings)) settings.autobio = false
-if (!('antiPrivate' in settings)) settings.antiPrivate = false
+if (!('antiPrivate' in settings)) settings.antiPrivate = true
 if (!('autoread' in settings)) settings.autoread = false
 if (!('autoread2' in settings)) settings.autoread2 = false
 if (!('antiSpam' in settings)) settings.antiSpam = false
@@ -167,7 +167,7 @@ self: false,
 restrict: false,
 jadibotmd: true,
 autobio: false,
-antiPrivate: false,
+antiPrivate: true,
 autoread: false,
 autoread2: false,
 antiSpam: false,
