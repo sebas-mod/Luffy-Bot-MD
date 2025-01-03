@@ -30,6 +30,7 @@ await m.react('🕓')
       await conn.reply(m.chat, message, m);
 
       for (let slide of slides) {
+        await m.react('✅')
         await conn.sendFile(m.chat, slide.url, `presentación-${slide.number}.jpg`, "", m);
       }
     } 
