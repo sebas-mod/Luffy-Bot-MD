@@ -27,8 +27,8 @@ let handler = async (m, { conn }) => {
     });
 
     if (response.status === 200) {
-      let baseUrl = response.data.trim(); // URL base sin la extensión
-      let fullUrl = `${baseUrl}.${extension}`; // Agrega la extensión al final
+      let baseUrl = response.data.trim(); // URL base proporcionada por la API
+      let fullUrl = baseUrl.includes(`.${extension}`) ? baseUrl : `${baseUrl}.${extension}`; // Asegura la extensión correcta
 
       let txt = `*乂 C A T B O X  -  U P L O A D E R*\n\n`;
       txt += `  *» Titulo* : ${filename}\n`;
