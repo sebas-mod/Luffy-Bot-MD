@@ -51,6 +51,6 @@ let handler = async (m, { conn }) => {
 
 handler.tags = ['tools'];
 handler.help = ['catbox'];
-handler.command = /^(catbox)$/i;
+handler.command = ['catbox', 'tourl'];
 handler.register = true;
 export default handler;
