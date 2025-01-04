@@ -90,7 +90,7 @@ global.nombre = m.pushName || 'Anónimo'
 global.taguser = '@' + m.sender.split("@s.whatsapp.net")
 var more = String.fromCharCode(8206)
 global.readMore = more.repeat(850)
-global.sticker1 = `☁️Bot\n${botname}\n\n☁️Usuario\n@${conn.getName(m.sender)}`;
+global.sticker1 = `☁️Bot\n${botname}\n\n☁️Usuario\n${nombre}`;
 global.sticker2 = `☁️ Team Starcore\nhttps://github.com/Izumi-kzx\n\n☁️Creador:\nIzumi.kzx`
 
 //Fakes
