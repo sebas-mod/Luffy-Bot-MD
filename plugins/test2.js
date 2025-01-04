@@ -10,7 +10,7 @@ let json = await api.json()
 let { title, image, url } = json.result
 // let title = json.result.metadata.title
 // let dl_url = json.result.download.url
-await conn.sendMessage(m.chat, { audio: { url: dl_url }, fileName: `${title}.mp3`, mimetype: 'audio/mp4' }, { quoted: m })
+await conn.sendMessage(m.chat, { audio: { url: url }, fileName: `${title}.mp3`, mimetype: 'audio/mp4' }, { quoted: m })
 
 } catch (error) {
 console.error(error)
