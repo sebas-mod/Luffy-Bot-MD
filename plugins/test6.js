@@ -24,6 +24,9 @@ let handler = async (m, { conn }) => {
       }
     })
 
+    // Verificar el cuerpo de la respuesta
+    console.log('Respuesta de Free Image Host:', response.data)
+
     // Verificar si la respuesta contiene HTML (en caso de error)
     if (response.data.includes('<!DOCTYPE html>')) {
       throw new Error('Error al procesar la imagen. La respuesta parece ser una página de error HTML.')
@@ -56,6 +59,6 @@ let handler = async (m, { conn }) => {
 
 handler.tags = ['convertir']
 handler.help = ['tofreeimage']
-handler.command = /^(tourl2|tofreeimage)$/i
+handler.command = /^(tourl3|tofreeimage)$/i
 handler.register = true
 export default handler
