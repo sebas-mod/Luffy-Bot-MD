@@ -28,7 +28,7 @@ const handler = async (m, { conn }) => {
             fileLength: "99999999999",
             pageCount: "2024",
             caption: `qq`,
-            mimetype: 'application/json', // Cambiar a image/png si el archivo lo requiere
+            mimetype: 'image/png', // Cambiar a image/png si el archivo lo requiere
             jpegThumbnail: resizedThumbnail,
         }, { quoted: m });
     } catch (error) {
