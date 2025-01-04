@@ -1,6 +1,11 @@
 import fetch from 'node-fetch';
 import yts from 'yt-search';
 
+async function search(query, options = {}) {
+  let search = await yts.search({ query, hl: "es", gl: "ES", ...options });
+  return search.videos;
+}
+
 let handler = async (m, { conn, text }) => {
   if (!text) {
     return conn.reply(m.chat, `❀ Ingresa un link de youtube`, m);
@@ -13,9 +18,9 @@ let handler = async (m, { conn, text }) => {
   }
 
   try {
-    // Buscar el video usando yt-search
-    let res = await yts(text);
-    let video = res.videos[0]; // Usamos el primer video que aparece en los resultados
+    // Buscar el video usando la función personalizada search
+    let ytres = await search(text);
+    let video = ytres[0]; // Usamos el primer video de los resultados
 
     // Obtener la miniatura del video
     let img = await (await fetch(video.image)).buffer(); // Descargamos la imagen
