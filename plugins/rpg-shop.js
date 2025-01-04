@@ -1,4 +1,4 @@
-const xppercookies = 350;
+const xppercorazones = 350;
 const handler = async (m, {conn, command, args}) => {
   let count = command.replace(/^buy/i, '');
   count = count ? /all/i.test(count) ? Math.floor(global.db.data.users[m.sender].exp / xppercorazones) : parseInt(count) : args[0] ? parseInt(args[0]) : 1;
