@@ -40,6 +40,6 @@ let handler = async (m, { conn, text }) => {
   }
 }
 
-handler.command = ['ytmp3']
+handler.command = ['ytmp3v3']
 
 export default handler
