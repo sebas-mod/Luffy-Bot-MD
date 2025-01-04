@@ -20,17 +20,17 @@ let handler = async (m, { conn, text }) => {
   if (!text) return conn.reply(m.chat, `❀ Ingresa un link de YouTube`, m)
 
   try {
-    let api = await fetch(`https://deliriussapi-oficial.vercel.app/download/ytmp3?url=${text}`)
+    let api = await fetch(`https://apis-starlights-team.koyeb.app/starlight/youtube-mp3?url=${text}`)
     let json = await api.json()
 
-    if (!json.status) return conn.reply(m.chat, `❀ Ocurrió un error al procesar el enlace.`, m)
+    if (!json.dl_url) return conn.reply(m.chat, `❀ Ocurrió un error al procesar el enlace.`, m)
 
-    let title = json.data.download.filename || 'audio'
-    let dl_url = json.data.download.url
+    let title = json.title || 'audio'
+    let dl_url = json.dl_url
 
     await conn.sendMessage(m.chat, { 
       audio: { url: dl_url }, 
-      fileName: `${title}`, 
+      fileName: `${title}.mp3`, 
       mimetype: 'audio/mp4' 
     }, { quoted: m })
 
