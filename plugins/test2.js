@@ -1,4 +1,4 @@
-< (async () => {
+/* < (async () => {
 
 const { prepareWAMessageMedia, generateWAMessageFromContent } = require("baileys");
 const { randomBytes } = require("crypto");
@@ -32,4 +32,4 @@ const buttonsMessage = {
 }
 
 return await sock.sendMessage(m.cht, buttonsMessage)
-})()
+})() */
