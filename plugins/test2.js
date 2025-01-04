@@ -1,35 +1,55 @@
-/* < (async () => {
+import fs from 'fs';
+import FormData from 'form-data';
+import axios from 'axios';
+import fetch from 'node-fetch';
 
-const { prepareWAMessageMedia, generateWAMessageFromContent } = require("baileys");
-const { randomBytes } = require("crypto");
+let handler = async (m, { conn }) => {
+  let q = m.quoted ? m.quoted : m;
+  let mime = (q.msg || q).mimetype || '';
 
-const { imageMessage } = await prepareWAMessageMedia({
-    image: { url: "https://i.pinimg.com/736x/1c/b9/dc/1cb9dce731c1544b0bd018b02567fd1f.jpg" }
-}, { upload: sock.waUploadToServer });
-
-
-const buttons = [
-  {
-    buttonId: ".menu", 
-    buttonText: { 
-      displayText: 'Menu' 
-    }
-  }, {
-    buttonId: ".ping", 
-    buttonText: {
-      displayText: "Ping"
-    }
+  if (!mime.startsWith('image/')) {
+    return m.reply('🚩 Responde a una *Imagen.*');
   }
-]
 
-const buttonsMessage = {
-  image: imageMessage,  
-  caption: "humm", 
-  footer: "join trend", 
-  buttons: buttons,
-  viewOnce: true, 
-  headerType: 1
-}
+  await m.react('🕓');
 
-return await sock.sendMessage(m.cht, buttonsMessage)
-})() */
+  let media = await q.download();
+  let formData = new FormData();
+  formData.append('reqtype', 'fileupload');
+  formData.append('fileToUpload', media, { filename: 'file' });
+
+  try {
+    let response = await axios.post('https://catbox.moe/user/api.php', formData, {
+      headers: {
+        ...formData.getHeaders(),
+      },
+    });
+
+    if (response.status === 200) {
+      let url = response.data;
+
+      let txt = `*乂 C A T B O X  -  U P L O A D E R*\n\n`;
+      txt += `  *» Titulo* : ${q.filename || 'file'}\n`;
+      txt += `  *» Mime* : ${mime}\n`;
+      txt += `  *» File* : ${q.filename || 'file.jpg'}\n`;
+      txt += `  *» Enlace* : ${url}\n\n`;
+      txt += `🚩 *${textbot}*`;
+
+      await conn.sendFile(m.chat, url, 'catbox.jpg', txt, m, null, rcanal);
+      await m.react('✅');
+    } else {
+      await m.react('✖️');
+      m.reply('❌ Error al subir el archivo a Catbox.moe.');
+    }
+  } catch (error) {
+    console.error(error);
+    await m.react('✖️');
+    m.reply('❌ Error al intentar subir el archivo.');
+  }
+};
+
+handler.tags = ['tools'];
+handler.help = ['catbox'];
+handler.command = /^(catbox)$/i;
+handler.register = true;
+export default handler;
