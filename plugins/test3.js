@@ -17,7 +17,7 @@ const handler = async (m, { conn }) => {
                         title: 'Example',
                         highlight_label: "test",
                         description: "Example description",
-                        id: "example_id",
+                        id: ".play",
                     },
                 ],
             },
