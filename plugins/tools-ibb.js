@@ -17,26 +17,27 @@ let handler = async (m, { conn }) => {
   let formData = new FormData()
   formData.append('file', media, { filename: 'file' })
 
-  // Subir imagen a ImgBB
-  let imgbbApi = await axios.post('https://api.imgbb.com/1/upload?key=10604ee79e478b08aba6de5005e6c798', formData, {
-    headers: {
-      ...formData.getHeaders()
-    }
-  })
+  try {
+    // Subir imagen a ImgBB
+    let imgbbApi = await axios.post('https://api.imgbb.com/1/upload?key=10604ee79e478b08aba6de5005e6c798', formData, {
+      headers: {
+        ...formData.getHeaders()
+      }
+    })
 
-  // Subir imagen a Free Image Host
-  let freeImageHostApi = await fetch('https://www.freeimage.host/upload', {
-    method: 'POST',
-    body: formData,
-  })
-  let freeImageHostData = await freeImageHostApi.json()
+    // Subir imagen a Free Image Host
+    let freeImageHostApi = await fetch('https://www.freeimage.host/upload', {
+      method: 'POST',
+      body: formData,
+    })
+    let freeImageHostData = await freeImageHostApi.json()
 
-  await m.react('✅')
-  if (imgbbApi.data.data || freeImageHostData.url) {
+    await m.react('✅')
+
     let txt = '`I M A G E  -  U P L O A D E R`\n\n'
-    
+
     // Información ImgBB
-    if (imgbbApi.data.data) {
+    if (imgbbApi && imgbbApi.data && imgbbApi.data.data) {
       txt += `*🔖 Titulo (ImgBB)* : ${q.filename || 'x'}\n`
       txt += `*🔖 Id (ImgBB)* : ${imgbbApi.data.data.id}\n`
       txt += `*🔖 Enlace (ImgBB)* : ${imgbbApi.data.data.url}\n`
@@ -46,18 +47,22 @@ let handler = async (m, { conn }) => {
       txt += `*🔖 Extension (ImgBB)* : ${imgbbApi.data.data.image.extension}\n`
       txt += `*🔖 Delete (ImgBB)* : ${imgbbApi.data.data.delete_url}\n\n`
     }
-    
+
     // Información Free Image Host
-    if (freeImageHostData.url) {
+    if (freeImageHostData && freeImageHostData.url) {
       txt += `*🔖 Enlace (FreeImageHost)* : ${freeImageHostData.url}\n`
       txt += `*🔖 Delete (FreeImageHost)* : ${freeImageHostData.delete_url}\n\n`
     }
 
     txt += `© By: Genesis`
 
+    // Enviar el archivo
     await conn.sendFile(m.chat, imgbbApi.data.data ? imgbbApi.data.data.url : freeImageHostData.url, 'ibb.jpg', txt, m, null, fake)
-  } else {
-    await m.react('✅')
+
+  } catch (error) {
+    console.error('Error al procesar la imagen:', error)
+    await m.reply('Hubo un error al subir la imagen.')
+    await m.react('❌')
   }
 }
 handler.tags = ['convertir']
