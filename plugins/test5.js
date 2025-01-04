@@ -14,6 +14,9 @@ const handler = async (m, { conn }) => {
             return;
         }
 
+        // Obtener el tamaño real del archivo
+        const { size } = fs.statSync(filePath);
+
         // Descargar y redimensionar la miniatura
         const response = await axios({ url: thumbnailUrl, responseType: 'arraybuffer' });
         const resizedThumbnail = await sharp(response.data)
@@ -25,7 +28,7 @@ const handler = async (m, { conn }) => {
         await conn.sendMessage(m.chat, {
             document: fs.readFileSync(filePath),
             fileName: 'Sock',
-            fileLength: "99999999999",
+            fileLength: size, // Tamaño real del archivo en bytes
             pageCount: "2024",
             caption: `qq`,
             mimetype: 'image/png', // Cambiar a image/png si el archivo lo requiere
