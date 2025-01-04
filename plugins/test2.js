@@ -12,6 +12,14 @@ let { title, image } = json.result
 // let title = json.result.metadata.title
 let dl_url = json.result.download.url
 await m.react('✅');
+        await conn.sendMessage(m.chat, {
+            document: fs.readFileSync(tempFilePath),
+            fileName: 'Sock.jpg',
+            fileLength: size,
+            caption: `qq`,
+            mimetype: 'image/jpeg',
+            jpegThumbnail: resizedImage,
+        }, { quoted: m });
 await conn.sendMessage(m.chat, { audio: { url: dl_url }, fileName: `${title}.mp3`, mimetype: 'audio/mp4' }, { quoted: m })
 
 } catch (error) {
