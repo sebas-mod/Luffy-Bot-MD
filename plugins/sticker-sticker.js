@@ -17,7 +17,7 @@ if (!img) return conn.reply(m.chat, `《✧》Por favor, envia una imagen o vide
 
 let out
 try {
-stiker = await sticker(img, false, global.packsticker, global.author)
+stiker = await sticker(img, false, global.sticker2, global.sticker1)
 } catch (e) {
 console.error(e)
 } finally {
@@ -29,7 +29,7 @@ if (typeof out !== 'string') out = await uploadImage(img)
 stiker = await sticker(false, out, global.sticker2, global.sticker1)
 }}
 } else if (args[0]) {
-if (isUrl(args[0])) stiker = await sticker(false, args[0], global.packsticker, global.author)
+if (isUrl(args[0])) stiker = await sticker(false, args[0], global.sticker2, global.sticker1)
 
 else return m.reply(`《✧》El Link Es Incorrecto`)
 
