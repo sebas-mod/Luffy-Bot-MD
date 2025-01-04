@@ -38,7 +38,7 @@ let handler = async (m, { conn, text }) => {
       fileLength: quality,
       caption: `❀ ${title}`,
       mimetype: 'audio/mpeg',
-      thumbnail: thumbnail,  // Usamos 'thumbnail' directamente
+      jpegThumbnail: thumbnail,  // Usamos 'thumbnail' directamente
     }, { quoted: m });
 
     // Enviar como audio
