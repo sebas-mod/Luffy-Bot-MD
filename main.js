@@ -354,18 +354,6 @@ const filePath = join(tmpDir, file)
 unlinkSync(filePath)})
 }
 
-function purgeSession() {
-let prekey = []
-let directorio = readdirSync(`./${sessions}`)
-let filesFolderPreKeys = directorio.filter(file => {
-return file.startsWith('pre-key-')
-})
-prekey = [...prekey, ...filesFolderPreKeys]
-filesFolderPreKeys.forEach(files => {
-unlinkSync(`./${sessions}/${files}`)
-})
-} 
-
 function redefineConsoleMethod(methodName, filterStrings) {
 const originalConsoleMethod = console[methodName]
 console[methodName] = function() {
