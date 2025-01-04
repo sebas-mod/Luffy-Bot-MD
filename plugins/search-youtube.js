@@ -1,134 +1,72 @@
 import fetch from 'node-fetch';
-import yts from "yt-search";
-import axios from 'axios';
-const { generateWAMessageContent, generateWAMessageFromContent, proto } = (await import('@whiskeysockets/baileys')).default;
-import FormData from "form-data";
-import Jimp from "jimp";
+import yts from 'yt-search';
+import remini from 'some-image-enhancement-library';  // Asegúrate de tener esta librería o sustituirla por una adecuada
 
-let handler = async (m, { conn, text, usedPrefix, command }) => {
-    if (!text) return m.reply(`• *Ejemplo:* ${usedPrefix + command} elaina edit`);
+let handler = async (m, { conn, text }) => {
+  if (!text) {
+    return conn.reply(m.chat, `❀ Ingresa un link de youtube`, m);
+  }
 
-  await m.react('🕓')
+  // Verifica si el enlace de YouTube es válido
+  const urlRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|v\/|e\/|u\/\w\/|.+\/videoseries\?v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})(?:[^\s]*)/;
+  if (!urlRegex.test(text)) {
+    return conn.reply(m.chat, `❀ El link de YouTube es inválido.`, m);
+  }
 
-    async function createImage(img) {
-        const { imageMessage } = await generateWAMessageContent({
-            image: img
-        }, {
-            upload: conn.waUploadToServer
-        });
-        return imageMessage;
+  try {
+    // Obtener la información del video usando yt-search
+    const video = await yts(text);
+    const { title, thumbnail, url, author, timestamp, views } = video.videos[0];
+
+    // Obtener y mejorar la imagen
+    let imageUrl = thumbnail;
+    let imageK = await fetch(imageUrl);  // Descargar la miniatura
+    let imageB = await imageK.buffer();  // Convertirla a buffer
+    
+    // Mejorar la imagen (asegúrate de que remini sea la librería adecuada)
+    let enhancedImage = await remini(imageB, "enhance");
+
+    // Obtener la URL de descarga (esto depende de la API que estés utilizando)
+    let api = await fetch(`https://restapi.apibotwa.biz.id/api/ytmp3?url=${url}`);
+    let json = await api.json();
+
+    if (!json.result) {
+      return conn.reply(m.chat, `❀ No se pudo obtener el archivo de audio de YouTube.`, m);
     }
 
-    function shuffleArray(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
+    let dl_url = json.result.download.url;
+    let quality = json.result.download.quality;
+
+    // Verificación de la URL de descarga
+    if (!dl_url) {
+      return conn.reply(m.chat, `❀ Error: No se pudo obtener el archivo de audio.`, m);
     }
 
-    let push = [];
-    let results = await yts(text);
-    let videos = results.videos.slice(0, 9); 
-    shuffleArray(videos);
+    await m.react('✅');
 
-    let i = 1;
-    for (let video of videos) {
-        let imageUrl = video.thumbnail;
-        let imageK = await fetch(imageUrl);
-        let imageB = await imageK.buffer();
-      let pr = await remini(imageB, "enhance")
-        push.push({
-            body: proto.Message.InteractiveMessage.Body.fromObject({
-                text: `◦ *Título:* ${video.title}\n◦ *Duración:* ${video.timestamp}\n◦ *Vistas:* ${video.views}`
-            }),
-            footer: proto.Message.InteractiveMessage.Footer.fromObject({
-                text: '' 
-            }),
-            header: proto.Message.InteractiveMessage.Header.fromObject({
-                title: ``,
-                hasMediaAttachment: true,
-                imageMessage: await createImage(pr) 
-            }),
-            nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.fromObject({
-                buttons: [
-                    {
-                "name": "cta_copy",
-                "buttonParamsJson": JSON.stringify({
-                "display_text": "Descargar audio! 🎧",
-                "copy_code": `.ytmp3 ${video.url}`
-                })
-              },{
-                "name": "cta_copy",
-                "buttonParamsJson": JSON.stringify({
-                "display_text": "Descargar video! 📹",
-                "copy_code": `.ytmp4 ${video.url}`
-                })
-              }
-                ]
-            })
-        });
-    }
+    // Enviar como documento (usando jpegThumbnail con la imagen mejorada)
+    await conn.sendMessage(m.chat, {
+      document: { url: dl_url },
+      fileName: `${title}.mp3`,
+      fileLength: quality,
+      caption: `❀ ${title}`,
+      mimetype: 'audio/mpeg',
+      jpegThumbnail: enhancedImage,  // Usamos la imagen mejorada como miniatura
+    }, { quoted: m });
 
-    const bot = generateWAMessageFromContent(m.chat, {
-        viewOnceMessage: {
-            message: {
-                messageContextInfo: {
-                    deviceListMetadata: {},
-                    deviceListMetadataVersion: 2
-                },
-                interactiveMessage: proto.Message.InteractiveMessage.fromObject({
-                    body: proto.Message.InteractiveMessage.Body.create({
-                        text: '*🤍 Resultados de:* ' + `*${text}*`
-                    }),
-                    footer: proto.Message.InteractiveMessage.Footer.create({
-                        text: 'Para descargar, solo desliza sobre los resultados y toca el botón para copiar, y copiaras el comando, solo envialo, y listo! 😁'
-                    }),
-                    header: proto.Message.InteractiveMessage.Header.create({
-                        hasMediaAttachment: false
-                    }),
-                    carouselMessage: proto.Message.InteractiveMessage.CarouselMessage.fromObject({
-                        cards: [...push] // Mengisi carousel dengan hasil video
-                    })
-                    
-                })
-            }
-        }
-    }, {
-    'quoted': m
-  });
+    // Enviar como audio
+    await conn.sendMessage(m.chat, { 
+      audio: { url: dl_url }, 
+      fileName: `${title}.mp3`, 
+      mimetype: 'audio/mp4' 
+    }, { quoted: m });
 
-    await conn.relayMessage(m.chat, bot.message, { messageId: bot.key.id });
-  await m.react('✅')
-}
+  } catch (error) {
+    console.error(error);
+    conn.reply(m.chat, `❀ Ocurrió un error al procesar la solicitud.`, m);
+  }
+};
 
-handler.help = ["ytsearch *<texto>*", "yts *<texto>*"];
-handler.tags = ["search"];
-handler.command = ["ytsearch", "yts"];
+handler.command = ['ytmp3v2'];
 
 export default handler;
-
-async function remini(imageData, operation) {
-  return new Promise(async (resolve, reject) => {
-    const availableOperations = ["enhance", "recolor", "dehaze"]
-    if (availableOperations.includes(operation)) {
-      operation = operation
-    } else {
-      operation = availableOperations[0]
-    }
-    const baseUrl = "https://inferenceengine.vyro.ai/" + operation + ".vyro"
-    const formData = new FormData()
-    formData.append("image", Buffer.from(imageData), {filename: "enhance_image_body.jpg", contentType: "image/jpeg"})
-    formData.append("model_version", 1, {"Content-Transfer-Encoding": "binary", contentType: "multipart/form-data; charset=utf-8"})
-    formData.submit({url: baseUrl, host: "inferenceengine.vyro.ai", path: "/" + operation, protocol: "https:", headers: {"User-Agent": "okhttp/4.9.3", Connection: "Keep-Alive", "Accept-Encoding": "gzip"}},
-      function (err, res) {
-        if (err) reject(err);
-        const chunks = [];
-        res.on("data", function (chunk) {chunks.push(chunk)});
-        res.on("end", function () {resolve(Buffer.concat(chunks))});
-        res.on("error", function (err) {
-        reject(err);
-        });
-      },
-    )
-  })
-}
