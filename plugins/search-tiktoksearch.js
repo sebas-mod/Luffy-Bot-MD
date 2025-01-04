@@ -15,12 +15,12 @@ const j = Math.floor(Math.random() * (i + 1));
 }
 try {
 await message.react(rwait)
-conn.reply(message.chat, '🚩 *Descargando Su Video...*', message, {
+conn.reply(message.chat, '☁️ *Descargando Su Video...*', message, {
 contextInfo: { externalAdReply :{ mediaUrl: null, mediaType: 1, showAdAttribution: true,
 title: packname,
 body: dev,
 previewType: 0, thumbnail: icons,
-sourceUrl: channel }}})
+sourceUrl: canal }}})
 let results = []
 let { data: response } = await axios.get('https://apis-starlights-team.koyeb.app/starlight/tiktoksearch?text=' + text)
 let searchResults = response.data
@@ -44,7 +44,7 @@ deviceListMetadata: {},
 deviceListMetadataVersion: 2
 },
 interactiveMessage: proto.Message.InteractiveMessage.fromObject({
-body: proto.Message.InteractiveMessage.Body.create({ text: '🚩 Resultado de: ' + text }),
+body: proto.Message.InteractiveMessage.Body.create({ text: '☁️ Resultado de: ' + text }),
 footer: proto.Message.InteractiveMessage.Footer.create({ text: '🔎 Tiktok - Busquedas' }),
 header: proto.Message.InteractiveMessage.Header.create({ hasMediaAttachment: false }),
 carouselMessage: proto.Message.InteractiveMessage.CarouselMessage.fromObject({ cards: [...results] })})}}
