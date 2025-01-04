@@ -14,7 +14,7 @@ let handler = async (m, { conn, text }) => {
   try {
     let api = await fetch(`https://api.giftedtech.my.id/api/download/dlmp3?apikey=gifted&url=${text}`)
     let json = await api.json()
-    let { quality, title, download_url } = json.result
+    let { quality, thumbail, title, download_url } = json.result
 
     await m.react('✅')
     await conn.sendMessage(m.chat, { 
