@@ -14,9 +14,11 @@ let handler = async (m, { conn }) => {
   await m.react('🕓');
 
   let media = await q.download();
+  let extension = mime.split('/')[1]; // Obtiene la extensión (ejemplo: jpg, png)
+  let filename = `file.${extension}`; // Nombre del archivo con extensión
   let formData = new FormData();
   formData.append('reqtype', 'fileupload');
-  formData.append('fileToUpload', media, { filename: 'file' });
+  formData.append('fileToUpload', media, filename);
 
   try {
     let response = await axios.post('https://catbox.moe/user/api.php', formData, {
@@ -26,16 +28,15 @@ let handler = async (m, { conn }) => {
     });
 
     if (response.status === 200) {
-      let url = response.data;
+      let url = response.data.trim();
 
       let txt = `*乂 C A T B O X  -  U P L O A D E R*\n\n`;
-      txt += `  *» Titulo* : ${q.filename || 'file'}\n`;
+      txt += `  *» Titulo* : ${filename}\n`;
       txt += `  *» Mime* : ${mime}\n`;
-      txt += `  *» File* : ${q.filename || 'file.jpg'}\n`;
       txt += `  *» Enlace* : ${url}\n\n`;
       txt += `🚩 *${textbot}*`;
 
-      await conn.sendFile(m.chat, url, 'catbox.jpg', txt, m, null, rcanal);
+      await conn.sendFile(m.chat, url, filename, txt, m, null, rcanal);
       await m.react('✅');
     } else {
       await m.react('✖️');
