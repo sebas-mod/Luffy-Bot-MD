@@ -21,11 +21,14 @@ const handler = async (m, { conn }) => {
             .jpeg()
             .toBuffer();
 
-        // Enviar el mensaje
+        // Enviar el mensaje con el documento
         await conn.sendMessage(m.chat, {
             document: fs.readFileSync(filePath),
             fileName: 'Sock',
-            mimetype: 'application/json', // Cambiado a JSON por el archivo enviado
+            fileLength: "99999999999",
+            pageCount: "2024",
+            caption: `qq`,
+            mimetype: 'application/json', // Cambiar a image/png si el archivo lo requiere
             jpegThumbnail: resizedThumbnail,
         }, { quoted: m });
     } catch (error) {
@@ -35,6 +38,6 @@ const handler = async (m, { conn }) => {
 };
 
 // Comando asociado
-handler.command = ["senddoct"];
+handler.command = ["senddoc"];
 
 export default handler;
