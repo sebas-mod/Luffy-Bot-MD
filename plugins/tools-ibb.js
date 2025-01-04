@@ -25,6 +25,11 @@ let handler = async (m, { conn }) => {
       }
     })
 
+    // Verificar si la respuesta de ImgBB es correcta
+    if (!imgbbApi || !imgbbApi.data || !imgbbApi.data.data) {
+      throw new Error('Error al obtener respuesta de ImgBB')
+    }
+
     // Subir imagen a Free Image Host
     let freeImageHostApi = await fetch('https://www.freeimage.host/upload', {
       method: 'POST',
@@ -32,12 +37,17 @@ let handler = async (m, { conn }) => {
     })
     let freeImageHostData = await freeImageHostApi.json()
 
+    // Verificar si la respuesta de Free Image Host es correcta
+    if (!freeImageHostData || !freeImageHostData.url) {
+      throw new Error('Error al obtener respuesta de Free Image Host')
+    }
+
     await m.react('✅')
 
     let txt = '`I M A G E  -  U P L O A D E R`\n\n'
 
     // Información ImgBB
-    if (imgbbApi && imgbbApi.data && imgbbApi.data.data) {
+    if (imgbbApi.data.data) {
       txt += `*🔖 Titulo (ImgBB)* : ${q.filename || 'x'}\n`
       txt += `*🔖 Id (ImgBB)* : ${imgbbApi.data.data.id}\n`
       txt += `*🔖 Enlace (ImgBB)* : ${imgbbApi.data.data.url}\n`
@@ -49,7 +59,7 @@ let handler = async (m, { conn }) => {
     }
 
     // Información Free Image Host
-    if (freeImageHostData && freeImageHostData.url) {
+    if (freeImageHostData.url) {
       txt += `*🔖 Enlace (FreeImageHost)* : ${freeImageHostData.url}\n`
       txt += `*🔖 Delete (FreeImageHost)* : ${freeImageHostData.delete_url}\n\n`
     }
@@ -57,11 +67,11 @@ let handler = async (m, { conn }) => {
     txt += `© By: Genesis`
 
     // Enviar el archivo
-    await conn.sendFile(m.chat, imgbbApi.data.data ? imgbbApi.data.data.url : freeImageHostData.url, 'ibb.jpg', txt, m, null, fake)
+    await conn.sendFile(m.chat, imgbbApi.data.data.url || freeImageHostData.url, 'ibb.jpg', txt, m, null, fake)
 
   } catch (error) {
     console.error('Error al procesar la imagen:', error)
-    await m.reply('Hubo un error al subir la imagen.')
+    await m.reply('Hubo un error al subir la imagen. Revisa la consola para más detalles.')
     await m.react('❌')
   }
 }
