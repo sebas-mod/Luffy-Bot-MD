@@ -25,7 +25,7 @@ let handler = async (m, { conn, text }) => {
 
     if (!json.dl_url) return conn.reply(m.chat, `❀ Ocurrió un error al procesar el enlace.`, m)
 
-    let title = json.title || 'audio'
+    let title = json.title
     let dl_url = json.dl_url
 
     await conn.sendMessage(m.chat, { 
