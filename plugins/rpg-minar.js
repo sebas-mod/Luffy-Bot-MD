@@ -25,7 +25,7 @@ await m.react('⛏️')
 
 user.health -= 50
 user.pickaxedurability -= 30
-user.corazones += cookies
+user.corazones += corazones
 user.iron += iron
 user.gold += gold
 user.emerald += emerald
