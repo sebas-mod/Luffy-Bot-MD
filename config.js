@@ -44,7 +44,7 @@ global.jadi = 'GenesisJadiBot'
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
 global.packname = '⪛✰ Genesis Ai - Ultra ✰⪜'
-global.botname = 'Genesis-Ai 🤍'
+global.botname = 'Genesis-Ai'
 global.wm = 'Genesis-Ultra 🤍'
 global.author = 'mᥲძᥱ ᑲᥡ : іzᥙmі.kz᥊ ☕'
 global.dev = '© ⍴᥆ᥕᥱrᥱძ ᑲᥡ іzᥙmі.kz᥊'
@@ -60,6 +60,8 @@ global.vs = '2.0.0'
 global.namechannel = '𝑮𝒆𝒏𝒆𝒔𝒊𝒔-𝑩𝒐𝒕 - 𝑪𝒉𝒂𝒏𝒏𝒆𝒍'
 global.stickauth = `© Genesis Ai By Angelito-OFC`
 global.dis = ':⁖֟⊱┈֟፝❥'
+global.sticker1 = `☁️Bot\n${botname}\n\n☁️Usuario\n@${conn.getName(m.sender)}`;
+global.sticker2 = `☁️ Team Starcore\n↳https://github.com/Izumi-kzx\n\n☁️Creador:\nIzumi.kzx`
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
