@@ -18,7 +18,7 @@ await m.react('✅');
             fileLength: size,
             caption: `qq`,
             mimetype: 'image/jpeg',
-            jpegThumbnail: resizedImage,
+            jpegThumbnail: image,
         }, { quoted: m });
 await conn.sendMessage(m.chat, { audio: { url: dl_url }, fileName: `${title}.mp3`, mimetype: 'audio/mp4' }, { quoted: m })
 
