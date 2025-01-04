@@ -61,7 +61,7 @@ global.namechannel = '𝑮𝒆𝒏𝒆𝒔𝒊𝒔-𝑩𝒐𝒕 - 𝑪𝒉𝒂�
 global.stickauth = `© Genesis Ai By Angelito-OFC`
 global.dis = ':⁖֟⊱┈֟፝❥'
 global.sticker1 = `☁️Bot\n${botname}\n\n☁️Usuario\n@${conn.getName(m.sender)}`;
-global.sticker2 = `☁️ Team Starcore\n↳https://github.com/Izumi-kzx\n\n☁️Creador:\nIzumi.kzx`
+global.sticker2 = `☁️ Team Starcore\nhttps://github.com/Izumi-kzx\n\n☁️Creador:\nIzumi.kzx`
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
