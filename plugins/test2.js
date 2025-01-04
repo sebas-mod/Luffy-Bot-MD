@@ -1,10 +1,4 @@
 import fetch from 'node-fetch';
-import yts from 'yt-search';
-
-async function search(query, options = {}) {
-  let search = await yts.search({ query, hl: "es", gl: "ES", ...options });
-  return search.videos;
-}
 
 let handler = async (m, { conn, text }) => {
   if (!text) {
@@ -18,21 +12,16 @@ let handler = async (m, { conn, text }) => {
   }
 
   try {
-    // Buscar el video usando la función personalizada search
-    let ytres = await search(text);
-    let video = ytres[0]; // Usamos el primer video de los resultados
-
-    // Obtener la miniatura del video
-    let img = await (await fetch(video.image)).buffer(); // Descargamos la imagen
-
-    // Obtener la URL del video y realizar la solicitud a la API externa
-    let api = await fetch(`https://restapi.apibotwa.biz.id/api/ytmp3?url=${video.url}`);
+    // Realiza la solicitud a la API externa
+    let api = await fetch(`https://restapi.apibotwa.biz.id/api/ytmp3?url=${text}`);
     let json = await api.json();
 
     if (!json.result) {
       return conn.reply(m.chat, `❀ No se pudo obtener el archivo de audio de YouTube.`, m);
     }
 
+    let { title, thumbnail, description, timestamp, ago, views, author } = json.result.metadata;
+    let imgBuffer = await (await fetch(thumbnail)).buffer();  // Obtener la miniatura como buffer
     let dl_url = json.result.download.url;
     let quality = json.result.download.quality;
 
@@ -43,20 +32,20 @@ let handler = async (m, { conn, text }) => {
 
     await m.react('☁️');
 
-    // Enviar el archivo de audio como documento con miniatura
+    // Enviar como documento (usando el buffer de la imagen)
     await conn.sendMessage(m.chat, {
       document: { url: dl_url },
-      fileName: `${video.title}.mp3`,
+      fileName: `${title}.mp3`,
       fileLength: quality,
-      caption: `❀ ${video.title}`,
+      caption: `❀ ${title}`,
       mimetype: 'audio/mpeg',
-      jpegThumbnail: img, // Usamos la miniatura descargada
+      jpegThumbnail: imgBuffer,  // Usamos el buffer de la miniatura
     }, { quoted: m });
 
-    // Enviar como audio directamente
+    // Enviar como audio
     await conn.sendMessage(m.chat, { 
       audio: { url: dl_url }, 
-      fileName: `${video.title}.mp3`, 
+      fileName: `${title}.mp3`, 
       mimetype: 'audio/mp4' 
     }, { quoted: m });
 
