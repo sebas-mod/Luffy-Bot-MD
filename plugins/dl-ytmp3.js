@@ -50,7 +50,7 @@ let handler = async (m, { conn, text }) => {
       {
         document: { url: download_url },
         fileName: `${title}.mp3`,
-        fileLength: quality,
+        fileLength: `${quality}`,
         caption: `❀ ${title}`,
         mimetype: 'audio/mpeg',
         jpegThumbnail: img,
