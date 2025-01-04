@@ -21,6 +21,13 @@ let handler = async (m, { conn, text }) => {
     }
 
     let { title, imagen, description, timestamp, ago, views, author } = json.result;
+
+    // Verificar si 'imagen' y 'dl_url' son válidos
+    if (!imagen || !json.result.download || !json.result.download.url) {
+      return conn.reply(m.chat, `❀ Error: URL de imagen o de descarga no disponible.`, m);
+    }
+
+    // Obtener la imagen como buffer
     let img = await (await fetch(imagen)).buffer();
     let dl_url = json.result.download.url;
     let quality = json.result.download.quality;
