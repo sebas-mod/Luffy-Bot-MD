@@ -1,20 +1,19 @@
 import fs from 'fs';
 import FormData from 'form-data';
 import axios from 'axios';
-import fetch from 'node-fetch';
 
 let handler = async (m, { conn }) => {
   let q = m.quoted ? m.quoted : m;
   let mime = (q.msg || q).mimetype || '';
 
-  if (!mime.startsWith('image/')) {
-    return m.reply('🚩 Responde a una *Imagen.*');
+  if (!mime) {
+    return m.reply('🚩 Responde a un archivo válido (imagen, video, etc.).');
   }
 
   await m.react('🕓');
 
   let media = await q.download();
-  let extension = mime.split('/')[1]; // Obtiene la extensión (ejemplo: jpg, png)
+  let extension = mime.split('/')[1]; // Obtiene la extensión (ejemplo: jpg, mp4)
   let filename = `file.${extension}`; // Nombre del archivo con extensión
   let formData = new FormData();
   formData.append('reqtype', 'fileupload');
@@ -28,15 +27,16 @@ let handler = async (m, { conn }) => {
     });
 
     if (response.status === 200) {
-      let url = response.data.trim();
+      let baseUrl = response.data.trim(); // URL base sin la extensión
+      let fullUrl = `${baseUrl}.${extension}`; // Agrega la extensión al final
 
       let txt = `*乂 C A T B O X  -  U P L O A D E R*\n\n`;
       txt += `  *» Titulo* : ${filename}\n`;
       txt += `  *» Mime* : ${mime}\n`;
-      txt += `  *» Enlace* : ${url}.jpg\n\n`;
+      txt += `  *» Enlace* : ${fullUrl}\n\n`;
       txt += `🚩 *${textbot}*`;
 
-      await conn.sendFile(m.chat, url, filename, txt, m, null, rcanal);
+      await conn.sendFile(m.chat, fullUrl, filename, txt, m, null, rcanal);
       await m.react('✅');
     } else {
       await m.react('✖️');
