@@ -26,7 +26,7 @@ await m.react(error)
 }}
 
 handler.help = ['script']
-handler.tags = ['main']
+handler.tags = ['info']
 handler.command = ['script', 'sc']
 handler.register = true
 
