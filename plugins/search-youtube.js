@@ -1,6 +1,5 @@
 import fetch from 'node-fetch';
 import yts from 'yt-search';
-import remini from 'some-image-enhancement-library';  // Asegúrate de tener esta librería o sustituirla por una adecuada
 
 let handler = async (m, { conn, text }) => {
   if (!text) {
@@ -17,14 +16,6 @@ let handler = async (m, { conn, text }) => {
     // Obtener la información del video usando yt-search
     const video = await yts(text);
     const { title, thumbnail, url, author, timestamp, views } = video.videos[0];
-
-    // Obtener y mejorar la imagen
-    let imageUrl = thumbnail;
-    let imageK = await fetch(imageUrl);  // Descargar la miniatura
-    let imageB = await imageK.buffer();  // Convertirla a buffer
-    
-    // Mejorar la imagen (asegúrate de que remini sea la librería adecuada)
-    let enhancedImage = await remini(imageB, "enhance");
 
     // Obtener la URL de descarga (esto depende de la API que estés utilizando)
     let api = await fetch(`https://restapi.apibotwa.biz.id/api/ytmp3?url=${url}`);
@@ -44,14 +35,18 @@ let handler = async (m, { conn, text }) => {
 
     await m.react('✅');
 
-    // Enviar como documento (usando jpegThumbnail con la imagen mejorada)
+    // Descargar la imagen como buffer
+    let imageK = await fetch(thumbnail);
+    let imageB = await imageK.buffer(); // Convertirla a buffer
+
+    // Enviar como documento (usando jpegThumbnail con la miniatura)
     await conn.sendMessage(m.chat, {
       document: { url: dl_url },
       fileName: `${title}.mp3`,
       fileLength: quality,
       caption: `❀ ${title}`,
       mimetype: 'audio/mpeg',
-      jpegThumbnail: enhancedImage,  // Usamos la imagen mejorada como miniatura
+      jpegThumbnail: imageB,  // Usamos la miniatura obtenida de yt-search
     }, { quoted: m });
 
     // Enviar como audio
