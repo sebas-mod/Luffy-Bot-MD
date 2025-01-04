@@ -1,17 +1,30 @@
 import fetch from 'node-fetch';
 
 let handler = async (m, { conn, text }) => {
-  if (!text) return conn.reply(m.chat, `❀ Ingresa un link de youtube`, m);
+  if (!text) {
+    return conn.reply(m.chat, `❀ Ingresa un link de youtube`, m);
+  }
 
   try {
+    // Verifica si el enlace de YouTube es válido
+    const urlRegex = /^(https?\:\/\/)?(www\.youtube\.com|youtu\.be)\/(watch\?v=|shorts\/)([a-zA-Z0-9_-]+)$/;
+    if (!urlRegex.test(text)) {
+      return conn.reply(m.chat, `❀ El link de YouTube es inválido.`, m);
+    }
+
+    // Realiza la solicitud a la API externa
     let api = await fetch(`https://restapi.apibotwa.biz.id/api/ytmp3?url=${text}`);
     let json = await api.json();
+
+    if (!json.result) {
+      return conn.reply(m.chat, `❀ No se pudo obtener el archivo de audio de YouTube.`, m);
+    }
 
     let { title, thumbnail, description, timestamp, ago, views, author } = json.result;
     let img = await (await fetch(thumbnail)).buffer();
     let dl_url = json.result.download.url;
     let quality = json.result.download.quality;
-    
+
     await m.react('✅');
 
     // Enviar como documento
@@ -33,6 +46,7 @@ let handler = async (m, { conn, text }) => {
 
   } catch (error) {
     console.error(error);
+    conn.reply(m.chat, `❀ Ocurrió un error al procesar la solicitud.`, m);
   }
 };
 
