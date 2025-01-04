@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const handler = async (m, { conn, sock }) => {
+const handler = async (m, { conn }) => {
     try {
         const filePath = path.resolve('./package.json');
         const thumbnailUrl = 'https://telegra.ph/file/61d0cf9605cf904f6e5f9.jpg';
@@ -12,8 +12,8 @@ const handler = async (m, { conn, sock }) => {
             return;
         }
 
-        // Redimensionar la miniatura
-        const jpegThumbnail = await sock.resize(thumbnailUrl, 400, 400);
+        // Redimensionar la miniatura (implementación propia para resize)
+        const jpegThumbnail = await conn.downloadAndResize(thumbnailUrl, 400, 400);
 
         // Enviar el mensaje
         await conn.sendMessage(m.chat, {
