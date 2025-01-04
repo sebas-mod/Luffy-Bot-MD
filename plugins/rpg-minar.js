@@ -13,19 +13,19 @@ let info = `⛏️ *Te has adentrando en lo profundo de las cuevas*
 > 🌱 Obtuviste estos recursos
 
 ✨ *Exp*: ${hasil}
-🍪 *Cookies*: ${cookies}
+🤍 *Corazones*: ${corazones}
 💚 *Esmeralda*: ${emerald}
 🔩 *Hierro*: ${iron}
 🏅 *Oro*: ${gold}
 🕋 *Carbón*: ${coal}
 🪨 *Piedra*: ${stone}`
 
-conn.fakeReply(m.chat, info, '0@s.whatsapp.net', '😊 *Minando.. - YaemoriBot* 🚩', 'status@broadcast' )
+conn.fakeReply(m.chat, info, '0@s.whatsapp.net', '😊 *Minando.. - Genesis* 🚩', 'status@broadcast' )
 await m.react('⛏️')
 
 user.health -= 50
 user.pickaxedurability -= 30
-user.cookies += cookies
+user.corazones += cookies
 user.iron += iron
 user.gold += gold
 user.emerald += emerald
