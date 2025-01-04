@@ -20,10 +20,10 @@ let handler = async (m, { conn, text }) => {
     await conn.sendMessage(m.chat, {
       document: { url: download_url },
       fileName: `${title}.mp3`,
-      fileLength: `${quality}`,
+      fileLength: quality,
       caption: `❀ ${title}`,
       mimetype: 'audio/mpeg',
-      jpegThumbnail: `${thumbail}`,
+      jpegThumbnail: thumbail,
     }, { quoted: m });
 
 /*    await conn.sendMessage(m.chat, { 
