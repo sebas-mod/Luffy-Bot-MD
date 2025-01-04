@@ -20,8 +20,8 @@ let handler = async (m, { conn, text }) => {
       return conn.reply(m.chat, `❀ No se pudo obtener el archivo de audio de YouTube.`, m);
     }
 
-    let { title, image, description, timestamp, ago, views, author } = json.result.metadata;
-    let img = await (await fetch(image)).buffer();  // Usamos 'image' en lugar de 'imagen'
+    let { title, thumbnail, description, timestamp, ago, views, author } = json.result.metadata;
+    let img = await (await fetch(thumbnail)).buffer();  // Usamos 'thumbnail' en lugar de 'image'
     let dl_url = json.result.download.url;
     let quality = json.result.download.quality;
 
@@ -39,7 +39,7 @@ let handler = async (m, { conn, text }) => {
       fileLength: quality,
       caption: `❀ ${title}`,
       mimetype: 'audio/mpeg',
-      jpegThumbnail: img,
+      thumbnail: img,  // Usamos 'thumbnail' en lugar de 'jpegThumbnail'
     }, { quoted: m });
 
     // Enviar como audio
