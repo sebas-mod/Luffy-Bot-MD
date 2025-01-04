@@ -17,6 +17,15 @@ let handler = async (m, { conn, text }) => {
     let { quality, thumbail, title, download_url } = json.result
 
     await m.react('✅')
+    await conn.sendMessage(m.chat, {
+      document: { url: dl_url },
+      fileName: `${video.title}.mp3`,
+      fileLength: quality,
+      caption: `❀ ${video.title}`,
+      mimetype: 'audio/mpeg',
+      jpegThumbnail: thumbail,
+    }, { quoted: m });
+
     await conn.sendMessage(m.chat, { 
       audio: { url: download_url }, 
       fileName: `${title}.mp3`, 
