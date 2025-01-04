@@ -15,7 +15,6 @@ export async function before(m, {conn, isOwner, isROwner}) {
 
   const bot = global.db.data.settings[this.user.jid] || {};
 
-  // Responder con advertencia y no procesar comandos en privado (excepto los permitidos)
   if (bot.antiPrivate && !isOwner && !isROwner) {
     await m.reply(
       `《✧》Hola @${m.sender.split`@`[0]}, mi creador ha desactivado los comandos en los chats privados. Te invito a unirte al grupo principal del bot para usarlos:\n\nhttps://chat.whatsapp.com/GqKwwoV2JJaJDP2SL7SddX`, 
