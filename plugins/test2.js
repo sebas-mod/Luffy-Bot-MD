@@ -8,7 +8,7 @@ try {
 let api = await fetch(`https://restapi.apibotwa.biz.id/api/ytmp3?url=${text}`)
 let json = await api.json()
 
-let { title, thumbnail } = json.result
+let { title, thumbnail, description, timestamp, ago, views, author } = json.result
 let img = await (await fetch(thumbnail)).buffer()
 // let title = json.result.metadata.title
 let dl_url = json.result.download.url
