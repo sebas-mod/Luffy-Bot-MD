@@ -43,7 +43,7 @@ GenesisBot-MD recibe **soporte semanal** si llegas a ver un error **repetitivame
 - **Dashboard:** [`Aquí`](https://dash.tk-joanhost.com)
 - **Panel:** [`Aquí`](https://panel.tk-joanhost.com)
 - **Canal de WhatsApp:** [`Aquí`](https://whatsapp.com/channel/0029VaoZXbk6RGJNYQVP8r27)
-- **Texto:** `Genesis Ai diponible aqui`
+- **Texto:** `Genesis Ultra (Bot-Oficial)`
 - [x] **Configuración** <details><summary>**Ajustes del Servidor - Genesis-Ultra**</summary><img src="https://i.ibb.co/w6MC5Q4/file.jpg"></details>
 
 ### **`🎇 Hosting Py:`**
