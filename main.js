@@ -366,6 +366,7 @@ setInterval(async () => {
 }, 1000 * 60 * 60);
 _quickTest().catch(console.error)
 
+
 /* global.reload = async (_ev, filename) => {
 if (pluginFilter(filename)) {
 const dir = global.__filename(join(pluginFolder, filename), true);
@@ -511,4 +512,4 @@ _quickTest().then(() => conn.logger.info(chalk.bold(`🔵  H E C H O\n`.trim()))
 async function joinChannels(conn) {
 for (const channelId of Object.values(global.ch)) {
 await conn.newsletterFollow(channelId).catch(() => {})
-}}
+}}*/
