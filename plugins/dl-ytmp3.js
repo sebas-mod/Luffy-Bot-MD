@@ -26,11 +26,11 @@ let handler = async (m, { conn, text }) => {
       jpegThumbnail: `${thumbail}`,
     }, { quoted: m });
 
-    await conn.sendMessage(m.chat, { 
+/*    await conn.sendMessage(m.chat, { 
       audio: { url: download_url }, 
       fileName: `${title}.mp3`, 
       mimetype: 'audio/mp4' 
-    }, { quoted: m })
+    }, { quoted: m }) */
   } catch (error) {
     console.error(error)
     m.reply("❀ Hubo un error al procesar la URL. Inténtalo nuevamente.")
