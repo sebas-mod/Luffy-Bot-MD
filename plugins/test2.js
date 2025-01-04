@@ -20,8 +20,7 @@ let handler = async (m, { conn, text }) => {
       return conn.reply(m.chat, `❀ No se pudo obtener el archivo de audio de YouTube.`, m);
     }
 
-    let { title, image, description, timestamp, ago, views, author } = json.result.metadata;
-    let imgBuffer = await (await fetch(image)).buffer();  // Obtener la miniatura como buffer
+    let { title, thumbnail, description, timestamp, ago, views, author } = json.result.metadata;
     let dl_url = json.result.download.url;
     let quality = json.result.download.quality;
 
@@ -32,14 +31,14 @@ let handler = async (m, { conn, text }) => {
 
     await m.react('✅');
 
-    // Enviar como documento
+    // Enviar como documento (intenta enviar thumbnail directamente)
     await conn.sendMessage(m.chat, {
       document: { url: dl_url },
       fileName: `${title}.mp3`,
       fileLength: quality,
       caption: `❀ ${title}`,
       mimetype: 'audio/mpeg',
-      jpegThumbnail: imgBuffer,  // Usamos el buffer de la imagen como miniatura
+      thumbnail: thumbnail,  // Usamos 'thumbnail' directamente
     }, { quoted: m });
 
     // Enviar como audio
