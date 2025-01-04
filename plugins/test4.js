@@ -31,7 +31,7 @@
 
 const fs = require('fs');
 
-const handler = async (m, { conn, sock }) => {
+const handler = async (m, { conn }) => {
     try {
         const filePath = './package.json';
         const thumbnailUrl = 'https://telegra.ph/file/61d0cf9605cf904f6e5f9.jpg';
