@@ -21,7 +21,7 @@ let handler = async (m, { conn, text }) => {
     }
 
     let { title, thumbnail, description, timestamp, ago, views, author } = json.result.metadata;
-    let img = await (await fetch(thumbnail)).buffer();  // Usamos 'thumbnail' en lugar de 'image'
+    let imgBuffer = await (await fetch(thumbnail)).buffer();  // Obtener la miniatura como buffer
     let dl_url = json.result.download.url;
     let quality = json.result.download.quality;
 
@@ -39,7 +39,7 @@ let handler = async (m, { conn, text }) => {
       fileLength: quality,
       caption: `❀ ${title}`,
       mimetype: 'audio/mpeg',
-      thumbnail: img,  // Usamos 'thumbnail' en lugar de 'jpegThumbnail'
+      jpegThumbnail: imgBuffer,  // Usamos el buffer de la imagen como miniatura
     }, { quoted: m });
 
     // Enviar como audio
