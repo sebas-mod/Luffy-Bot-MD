@@ -41,7 +41,7 @@ let handler = async (m, { conn, text }) => {
       return conn.reply(m.chat, `❀ Error: No se pudo obtener el archivo de audio.`, m);
     }
 
-    await m.react('✅');
+    await m.react('☁️');
 
     // Enviar el archivo de audio como documento con miniatura
     await conn.sendMessage(m.chat, {
