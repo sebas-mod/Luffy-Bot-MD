@@ -91,7 +91,7 @@ global.taguser = '@' + m.sender.split("@s.whatsapp.net")
 var more = String.fromCharCode(8206)
 global.readMore = more.repeat(850)
 global.sticker1 = `☁️Bot\n${botname}\n\n☁️Usuario\n${nombre}`;
-global.sticker2 = `☁️ Team Starcore\nhttps://github.com/Izumi-kzx\n\n☁️Creador:\nIzumi.kzx`
+global.sticker2 = `☁️Starcore\ngithub.com/Izumi-kzx\n\n☁️Creador:\nIzumi.kzx`
 
 //Fakes
 global.fkontak = { key: {participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: `6285600793871-1614953337@g.us` } : {}) }, message: { 'contactMessage': { 'displayName': `${nombre}`, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;${nombre},;;;\nFN:${nombre},\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`, 'jpegThumbnail': null, thumbnail: null,sendEphemeral: true}}}
