@@ -67,7 +67,7 @@ GenesisBot-MD recibe **soporte semanal** si llegas a ver un error **repetitivame
 
 ### **`🤍 CREADOR`**
 <a
-href="https://github.com/Angelito-OFC"><img src="https://github.com/Angelito-OFC.png" width="130" height="130" alt="Angelito"/></a>
+href="https://github.com/Izumi-kzx"><img src="https://github.com/Izumi-kzx.png" width="130" height="130" alt="Angelito"/></a>
 
 > Copyright (c) 2024 **[Angelito-OFC](https://whatsapp.com/channel/0029VaJxgcB0bIdvuOwKTM2Y)**.
 
