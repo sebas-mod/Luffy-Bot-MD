@@ -1,7 +1,6 @@
 import fs from 'fs'
 import FormData from 'form-data'
 import axios from 'axios'
-import fetch from 'node-fetch'
 
 let handler = async (m, { conn }) => {
 
@@ -18,15 +17,20 @@ let handler = async (m, { conn }) => {
   formData.append('file', media, { filename: 'file' })
 
   try {
-    // Subir imagen a Free Image Host
-    let freeImageHostApi = await fetch('https://www.freeimage.host/upload', {
-      method: 'POST',
-      body: formData,
+    // Subir imagen a Free Image Host usando axios
+    let response = await axios.post('https://www.freeimage.host/upload', formData, {
+      headers: {
+        ...formData.getHeaders()
+      }
     })
-    let freeImageHostData = await freeImageHostApi.json()
 
-    // Verificar si la respuesta de Free Image Host es correcta
-    if (!freeImageHostData || !freeImageHostData.url) {
+    // Verificar si la respuesta contiene HTML (en caso de error)
+    if (response.data.includes('<!DOCTYPE html>')) {
+      throw new Error('Error al procesar la imagen. La respuesta parece ser una página de error HTML.')
+    }
+
+    // Verificar si la respuesta de Free Image Host es válida
+    if (!response.data || !response.data.url) {
       throw new Error('Error al obtener respuesta de Free Image Host')
     }
 
@@ -36,12 +40,12 @@ let handler = async (m, { conn }) => {
 
     // Información de Free Image Host
     txt += `*🔖 Titulo* : ${q.filename || 'x'}\n`
-    txt += `*🔖 Enlace* : ${freeImageHostData.url}\n`
-    txt += `*🔖 Delete* : ${freeImageHostData.delete_url}\n\n`
+    txt += `*🔖 Enlace* : ${response.data.url}\n`
+    txt += `*🔖 Delete* : ${response.data.delete_url}\n\n`
     txt += `© By: Genesis`
 
     // Enviar el archivo
-    await conn.sendFile(m.chat, freeImageHostData.url, 'freeimage.jpg', txt, m, null, fake)
+    await conn.sendFile(m.chat, response.data.url, 'freeimage.jpg', txt, m, null, fake)
 
   } catch (error) {
     console.error('Error al procesar la imagen:', error)
