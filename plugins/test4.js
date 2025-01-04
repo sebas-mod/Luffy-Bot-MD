@@ -1,5 +1,7 @@
 import fs from 'fs';
 import path from 'path';
+import axios from 'axios';
+import sharp from 'sharp';
 
 const handler = async (m, { conn }) => {
     try {
@@ -12,8 +14,12 @@ const handler = async (m, { conn }) => {
             return;
         }
 
-        // Redimensionar la miniatura (implementación propia para resize)
-        const jpegThumbnail = await conn.downloadAndResize(thumbnailUrl, 400, 400);
+        // Descargar y redimensionar la miniatura
+        const response = await axios({ url: thumbnailUrl, responseType: 'arraybuffer' });
+        const resizedThumbnail = await sharp(response.data)
+            .resize(400, 400)
+            .jpeg()
+            .toBuffer();
 
         // Enviar el mensaje
         await conn.sendMessage(m.chat, {
@@ -23,7 +29,7 @@ const handler = async (m, { conn }) => {
             pageCount: "2024",
             caption: `qq`,
             mimetype: 'image/png',
-            jpegThumbnail,
+            jpegThumbnail: resizedThumbnail,
             contextInfo: {
                 externalAdReply: {
                     title: `Sock MD || Menu Group`,
