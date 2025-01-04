@@ -3,12 +3,11 @@ const { randomBytes } = require("crypto");
 
 const handler = async (m, { sock }) => {
     try {
-        // Preparar contenido multimedia (imagen)
+
         const { imageMessage } = await prepareWAMessageMedia({
             image: { url: "https://i.pinimg.com/736x/1c/b9/dc/1cb9dce731c1544b0bd018b02567fd1f.jpg" }
         }, { upload: sock.waUploadToServer });
 
-        // Definir las secciones
         const sections = [
             {
                 title: "Tags Relacionados",
@@ -23,7 +22,6 @@ const handler = async (m, { sock }) => {
             },
         ];
 
-        // Contenido del mensaje interactivo
         const messageContent = {
             interactiveMessage: {
                 body: { text: '...' },
@@ -75,7 +73,6 @@ const handler = async (m, { sock }) => {
             }
         };
 
-        // Generar y enviar el mensaje
         const message = generateWAMessageFromContent(m.chat, messageContent, { userJid: sock.user.id });
         await sock.relayMessage(m.chat, message.message, { messageId: message.key.id });
 
@@ -84,7 +81,6 @@ const handler = async (m, { sock }) => {
     }
 };
 
-// Comando asociado
 handler.command = ["test"];
 
 export default handler;
