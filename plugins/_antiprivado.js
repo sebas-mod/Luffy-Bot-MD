@@ -1,9 +1,8 @@
 export async function before(m, {conn, isOwner, isROwner}) {
   if (m.isBaileys && m.fromMe) return !0; // Ignorar mensajes del bot mismo
-  if (m.isGroup) return !1; // Ignorar mensajes en grupos
-  if (!m.message) return !0; // Ignorar si no hay mensaje
+  if (m.isGroup) return !1;
+  if (!m.message) return !0;
 
-  // Comandos permitidos en chats privados
   if (
     m.text.includes('PIEDRA') || 
     m.text.includes('PAPEL') || 
@@ -11,7 +10,7 @@ export async function before(m, {conn, isOwner, isROwner}) {
     m.text.includes('serbot') || 
     m.text.includes('bots')
   ) {
-    return !0; // Permitir que funcionen estos comandos
+    return !0;
   }
 
   const bot = global.db.data.settings[this.user.jid] || {};
@@ -23,10 +22,10 @@ export async function before(m, {conn, isOwner, isROwner}) {
       false, 
       {mentions: [m.sender]}
     );
-    return !1; // Ignorar cualquier otro comando en privado
+    return !1;
   }
 
-  return !1; // Ignorar mensaje
+  return !1;
 }
 
 
