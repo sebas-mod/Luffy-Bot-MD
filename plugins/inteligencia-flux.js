@@ -34,7 +34,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 };
 
 handler.help = ["flux *<texto>*"];
-handler.tags = ["tools"];
+handler.tags = ["ai"];
 handler.command = ["flux"];
 
 export default handler;
