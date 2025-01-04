@@ -38,6 +38,6 @@ const handler = async (m, { conn }) => {
 };
 
 // Comando asociado
-handler.command = ["senddoc"];
+handler.command = ["senddoct"];
 
 export default handler;
