@@ -13,7 +13,13 @@ let handler = async (m, { conn, text }) => {
   }
 
   try {
-    let api = await fetch(`https://api.giftedtech.my.id/api/download/dlmp3?apikey=gifted&url=${text}`);
+    // Depurar entrada
+    console.log(`URL ingresada: ${text}`);
+
+    let apiUrl = `https://api.giftedtech.my.id/api/download/dlmp3?apikey=gifted&url=${encodeURIComponent(text)}`;
+    console.log(`Llamando a la API: ${apiUrl}`);
+
+    let api = await fetch(apiUrl);
     let json = await api.json();
 
     if (!json.result) {
@@ -22,8 +28,19 @@ let handler = async (m, { conn, text }) => {
 
     let { quality, thumbnail, title, download_url } = json.result;
 
-    // Descargar la miniatura
-    let img = await (await fetch(thumbnail)).buffer();
+    // Verificar valores devueltos
+    if (!download_url || !title) {
+      return m.reply("❀ Información incompleta recibida de la API.");
+    }
+
+    let img = null;
+    if (thumbnail) {
+      try {
+        img = await (await fetch(thumbnail)).buffer();
+      } catch {
+        console.warn("❀ Error al descargar la miniatura.");
+      }
+    }
 
     await m.react('✅');
 
@@ -52,7 +69,7 @@ let handler = async (m, { conn, text }) => {
       { quoted: m }
     );
   } catch (error) {
-    console.error(error);
+    console.error("❀ Error en el handler:", error);
     m.reply("❀ Hubo un error al procesar la URL. Inténtalo nuevamente.");
   }
 };
