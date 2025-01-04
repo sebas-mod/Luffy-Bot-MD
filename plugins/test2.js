@@ -13,8 +13,8 @@ let handler = async (m, { conn }) => {
   await m.react('🕓');
 
   let media = await q.download();
-  let extension = mime.split('/')[1]; // Obtiene la extensión (ejemplo: jpg, mp4)
-  let filename = `file.${extension}`; // Nombre del archivo con extensión
+  let extension = mime.split('/')[1];
+  let filename = `file.${extension}`;
   let formData = new FormData();
   formData.append('reqtype', 'fileupload');
   formData.append('fileToUpload', media, filename);
@@ -27,7 +27,7 @@ let handler = async (m, { conn }) => {
     });
 
     if (response.status === 200) {
-      let baseUrl = response.data.trim(); // URL base proporcionada por la API
+      let baseUrl = response.data.trim();
       let fullUrl = baseUrl.includes(`.${extension}`) ? baseUrl : `${baseUrl}.${extension}`; // Asegura la extensión correcta
 
       let txt = `*乂 C A T B O X  -  U P L O A D E R*\n\n`;
