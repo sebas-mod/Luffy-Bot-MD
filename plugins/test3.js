@@ -74,7 +74,7 @@ const handler = async (m, { conn }) => {
             }
         };
 
-        const message = generateWAMessageFromContent(m.chat, messageContent, { userJid: sock.user.id });
+        const message = generateWAMessageFromContent(m.chat, messageContent, { userJid: conn.user.id });
         await conn.relayMessage(m.chat, message.message, { messageId: message.key.id });
 
     } catch (error) {
