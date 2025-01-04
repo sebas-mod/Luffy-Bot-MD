@@ -18,12 +18,12 @@ let handler = async (m, { conn, text }) => {
 
     await m.react('✅')
     await conn.sendMessage(m.chat, {
-      document: { url: dl_url },
-      fileName: `${video.title}.mp3`,
-      fileLength: quality,
-      caption: `❀ ${video.title}`,
+      document: { url: download_url },
+      fileName: `${title}.mp3`,
+      fileLength: ${quality},
+      caption: `❀ ${title}`,
       mimetype: 'audio/mpeg',
-      jpegThumbnail: thumbail,
+      jpegThumbnail: ${thumbail},
     }, { quoted: m });
 
     await conn.sendMessage(m.chat, { 
