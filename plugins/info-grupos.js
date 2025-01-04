@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
 
 let handler  = async (m, { conn, usedPrefix, command }) => {
-let img = await (await fetch(`https://pomf2.lain.la/f/rd6slv9.jpg`)).buffer()
+let img = await (await fetch(`https://i.ibb.co/1djcb0T/file.jpg`)).buffer()
 const more = String.fromCharCode(8206)
 const readMore = more.repeat(4001)
 let txt = `*Hola!, te invito a unirte a los grupos oficiales de del Bot para convivir con la comunidad :D*
