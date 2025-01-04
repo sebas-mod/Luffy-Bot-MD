@@ -295,6 +295,65 @@ delete global.plugins[filename]
 filesInit().then((_) => Object.keys(global.plugins)).catch(console.error);
 
 global.reload = async (_ev, filename) => {
+  if (pluginFilter(filename)) {
+    const dir = global.__filename(join(pluginFolder, filename), true);
+    if (filename in global.plugins) {
+      if (existsSync(dir)) conn.logger.info(` updated plugin - '${filename}'`);
+      else {
+        conn.logger.warn(`deleted plugin - '${filename}'`);
+        return delete global.plugins[filename];
+      }
+    } else conn.logger.info(`new plugin - '${filename}'`);
+    const err = syntaxerror(readFileSync(dir), filename, {
+      sourceType: 'module',
+      allowAwaitOutsideFunction: true,
+    });
+    if (err) conn.logger.error(`syntax error while loading '${filename}'\n${format(err)}`);
+    else {
+      try {
+        const module = (await import(`${global.__filename(dir)}?update=${Date.now()}`));
+        global.plugins[filename] = module.default || module;
+      } catch (e) {
+        conn.logger.error(`error require plugin '${filename}\n${format(e)}'`);
+      } finally {
+        global.plugins = Object.fromEntries(Object.entries(global.plugins).sort(([a], [b]) => a.localeCompare(b)));
+      }
+    }
+  }
+};
+Object.freeze(global.reload);
+watch(pluginFolder, global.reload);
+await global.reloadHandler();
+async function _quickTest() {
+  const test = await Promise.all([
+    spawn('ffmpeg'),
+    spawn('ffprobe'),
+    spawn('ffmpeg', ['-hide_banner', '-loglevel', 'error', '-filter_complex', 'color', '-frames:v', '1', '-f', 'webp', '-']),
+    spawn('convert'),
+    spawn('magick'),
+    spawn('gm'),
+    spawn('find', ['--version']),
+  ].map((p) => {
+    return Promise.race([
+      new Promise((resolve) => {
+        p.on('close', (code) => {
+          resolve(code !== 127);
+        });
+      }),
+      new Promise((resolve) => {
+        p.on('error', (_) => resolve(false));
+      })]);
+  }));
+  const [ffmpeg, ffprobe, ffmpegWebp, convert, magick, gm, find] = test;
+  global.support = {ffmpeg, ffprobe, ffmpegWebp, convert, magick, gm, find};
+  Object.freeze(global.support);
+}
+setInterval(async () => {
+  if (stopped === 'close' || !conn || !conn?.user) return;
+  await clearTmp();
+}, 180000);
+
+/* global.reload = async (_ev, filename) => {
 if (pluginFilter(filename)) {
 const dir = global.__filename(join(pluginFolder, filename), true);
 if (filename in global.plugins) {
@@ -439,4 +498,4 @@ _quickTest().then(() => conn.logger.info(chalk.bold(`🔵  H E C H O\n`.trim()))
 async function joinChannels(conn) {
 for (const channelId of Object.values(global.ch)) {
 await conn.newsletterFollow(channelId).catch(() => {})
-}}
+}} */
