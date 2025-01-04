@@ -20,17 +20,15 @@ let handler = async (m, { conn, text }) => {
       return conn.reply(m.chat, `❀ No se pudo obtener el archivo de audio de YouTube.`, m);
     }
 
-    let { title, imagen, description, timestamp, ago, views, author } = json.result;
-
-    // Verificar si 'imagen' y 'dl_url' son válidos
-    if (!imagen || !json.result.download || !json.result.download.url) {
-      return conn.reply(m.chat, `❀ Error: URL de imagen o de descarga no disponible.`, m);
-    }
-
-    // Obtener la imagen como buffer
-    let img = await (await fetch(imagen)).buffer();
+    let { title, image, description, timestamp, ago, views, author } = json.result.metadata;
+    let img = await (await fetch(image)).buffer();  // Usamos 'image' en lugar de 'imagen'
     let dl_url = json.result.download.url;
     let quality = json.result.download.quality;
+
+    // Verificación de la URL de descarga
+    if (!dl_url) {
+      return conn.reply(m.chat, `❀ Error: No se pudo obtener el archivo de audio.`, m);
+    }
 
     await m.react('✅');
 
