@@ -33,7 +33,7 @@ let handler = async (m, { conn }) => {
       let txt = `*乂 C A T B O X  -  U P L O A D E R*\n\n`;
       txt += `  *» Titulo* : ${filename}\n`;
       txt += `  *» Mime* : ${mime}\n`;
-      txt += `  *» Enlace* : ${url}\n\n`;
+      txt += `  *» Enlace* : ${url}.jpg\n\n`;
       txt += `🚩 *${textbot}*`;
 
       await conn.sendFile(m.chat, url, filename, txt, m, null, rcanal);
