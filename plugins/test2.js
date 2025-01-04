@@ -5,13 +5,13 @@ let handler = async (m, { conn, text }) => {
     return conn.reply(m.chat, `❀ Ingresa un link de youtube`, m);
   }
 
-  try {
-    // Verifica si el enlace de YouTube es válido
-    const urlRegex = /^(https?\:\/\/)?(www\.youtube\.com|youtu\.be)\/(watch\?v=|shorts\/)([a-zA-Z0-9_-]+)$/;
-    if (!urlRegex.test(text)) {
-      return conn.reply(m.chat, `❀ El link de YouTube es inválido.`, m);
-    }
+  // Verifica si el enlace de YouTube es válido
+  const urlRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|v\/|e\/|u\/\w\/|.+\/videoseries\?v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})(?:[^\s]*)/;
+  if (!urlRegex.test(text)) {
+    return conn.reply(m.chat, `❀ El link de YouTube es inválido.`, m);
+  }
 
+  try {
     // Realiza la solicitud a la API externa
     let api = await fetch(`https://restapi.apibotwa.biz.id/api/ytmp3?url=${text}`);
     let json = await api.json();
