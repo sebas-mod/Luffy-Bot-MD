@@ -1,7 +1,7 @@
 const { prepareWAMessageMedia, generateWAMessageFromContent } = require("@whiskeysockets/baileys");
 const { randomBytes } = require("crypto");
 
-const handler = async (m, { sock }) => {
+const handler = async (m, { conn }) => {
     try {
 
         const { imageMessage } = await prepareWAMessageMedia({
@@ -74,7 +74,7 @@ const handler = async (m, { sock }) => {
         };
 
         const message = generateWAMessageFromContent(m.chat, messageContent, { userJid: sock.user.id });
-        await sock.relayMessage(m.chat, message.message, { messageId: message.key.id });
+        await conn.relayMessage(m.chat, message.message, { messageId: message.key.id });
 
     } catch (error) {
         console.error("Error al enviar el mensaje interactivo:", error);
