@@ -13,9 +13,7 @@ let handler = async (m, { conn, text }) => {
   }
 
   try {
-    // Depurar entrada
     console.log(`URL ingresada: ${text}`);
-
     let apiUrl = `https://api.giftedtech.my.id/api/download/dlmp3?apikey=gifted&url=${encodeURIComponent(text)}`;
     console.log(`Llamando a la API: ${apiUrl}`);
 
@@ -28,17 +26,18 @@ let handler = async (m, { conn, text }) => {
 
     let { quality, thumbnail, title, download_url } = json.result;
 
-    // Verificar valores devueltos
-    if (!download_url || !title) {
-      return m.reply("❀ Información incompleta recibida de la API.");
-    }
-
+    // Manejo de miniatura
     let img = null;
     if (thumbnail) {
       try {
-        img = await (await fetch(thumbnail)).buffer();
-      } catch {
-        console.warn("❀ Error al descargar la miniatura.");
+        console.log(`Descargando miniatura desde: ${thumbnail}`);
+        let response = await fetch(thumbnail);
+        if (!response.ok) throw new Error(`Error al descargar la miniatura: ${response.statusText}`);
+        img = await response.buffer();
+        console.log("Miniatura descargada correctamente.");
+      } catch (e) {
+        console.warn("❀ No se pudo descargar la miniatura:", e.message);
+        img = null;
       }
     }
 
@@ -50,10 +49,10 @@ let handler = async (m, { conn, text }) => {
       {
         document: { url: download_url },
         fileName: `${title}.mp3`,
-        fileLength: `${quality}`,
+        fileLength: quality,
         caption: `❀ ${title}`,
         mimetype: 'audio/mpeg',
-        jpegThumbnail: img,
+        jpegThumbnail: img || undefined, // Solo incluir si img está disponible
       },
       { quoted: m }
     );
