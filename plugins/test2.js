@@ -21,7 +21,7 @@ let handler = async (m, { conn, text }) => {
     }
 
     let { title, thumbnail, description, timestamp, ago, views, author } = json.result.metadata;
-    let imgBuffer = await (await fetch(thumbnail)).buffer();  // Obtener la miniatura como buffer
+    let img = await (await fetch(thumbnail)).buffer();  // Usamos 'thumbnail' en lugar de 'image'
     let dl_url = json.result.download.url;
     let quality = json.result.download.quality;
 
@@ -32,14 +32,14 @@ let handler = async (m, { conn, text }) => {
 
     await m.react('☁️');
 
-    // Enviar como documento (usando el buffer de la imagen)
+    // Enviar como documento
     await conn.sendMessage(m.chat, {
       document: { url: dl_url },
       fileName: `${title}.mp3`,
       fileLength: quality,
       caption: `❀ ${title}`,
       mimetype: 'audio/mpeg',
-      jpegThumbnail: imgBuffer,  // Usamos el buffer de la miniatura
+      thumbnail: img,  // Usamos 'thumbnail' en lugar de 'jpegThumbnail'
     }, { quoted: m });
 
     // Enviar como audio
