@@ -6,8 +6,8 @@ import { webp2png } from '../lib/webp2mp4.js'
 let handler = async (m, { conn, args, usedPrefix, command }) => {
 
 let name = conn.getName(m.sender);
-let text1 = `© GenesisBot-MD\nAuthor:\nFecha:\nDia:\nCreador:`
-let text2 = `${vs}\n${name}\n${fecha}\n${dia}\nDevDiego`
+let text1 = `Genesis-Ultra\nAuthor:\nFecha:\nCreador:`
+let text2 = `${vs}\n${name}\n${fecha}\nIzumi.kzx`
 let stiker = false
 try {
 let q = m.quoted ? m.quoted : m
