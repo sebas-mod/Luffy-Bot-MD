@@ -15,6 +15,7 @@ let handler = async (m, { conn, text }) => {
     let api = await fetch(`https://api.giftedtech.my.id/api/download/dlmp3?apikey=gifted&url=${text}`)
     let json = await api.json()
     let { quality, thumbail, title, download_url } = json.result
+        let img = await (await fetch(thumbnail)).buffer()
 
     await m.react('✅')
     await conn.sendMessage(m.chat, {
@@ -23,7 +24,7 @@ let handler = async (m, { conn, text }) => {
       fileLength: quality,
       caption: `❀ ${title}`,
       mimetype: 'audio/mpeg',
-      jpegThumbnail: thumbail,
+      jpegThumbnail: img,
     }, { quoted: m });
 
 /*    await conn.sendMessage(m.chat, { 
