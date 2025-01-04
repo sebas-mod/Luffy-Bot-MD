@@ -20,8 +20,8 @@ let handler = async (m, { conn, text }) => {
       return conn.reply(m.chat, `❀ No se pudo obtener el archivo de audio de YouTube.`, m);
     }
 
-    let { title, thumbnail, description, timestamp, ago, views, author } = json.result;
-    let img = await (await fetch(thumbnail)).buffer();
+    let { title, imagen, description, timestamp, ago, views, author } = json.result;
+    let img = await (await fetch(imagen)).buffer();
     let dl_url = json.result.download.url;
     let quality = json.result.download.quality;
 
