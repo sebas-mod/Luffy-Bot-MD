@@ -1,4 +1,5 @@
 import fetch from 'node-fetch';
+import yts from 'yt-search';
 
 let handler = async (m, { conn, text }) => {
   if (!text) {
@@ -12,16 +13,18 @@ let handler = async (m, { conn, text }) => {
   }
 
   try {
-    // Realiza la solicitud a la API externa
-    let api = await fetch(`https://restapi.apibotwa.biz.id/api/ytmp3?url=${text}`);
+    // Obtener la información del video usando yt-search
+    const video = await yts(text);
+    const { title, image, url, author, timestamp, views } = video.videos[0];
+
+    // Obtener la URL de descarga (esto depende de la API que estés utilizando)
+    let api = await fetch(`https://restapi.apibotwa.biz.id/api/ytmp3?url=${url}`);
     let json = await api.json();
 
     if (!json.result) {
       return conn.reply(m.chat, `❀ No se pudo obtener el archivo de audio de YouTube.`, m);
     }
 
-    let { title, image, description, timestamp, ago, views, author } = json.result.metadata;
-    let imgBuffer = await (await fetch(image)).buffer();  // Obtener la imagen como buffer
     let dl_url = json.result.download.url;
     let quality = json.result.download.quality;
 
@@ -32,14 +35,17 @@ let handler = async (m, { conn, text }) => {
 
     await m.react('✅');
 
-    // Enviar como documento (usando jpegThumbnail con la imagen descargada)
+    // Descargar la imagen (miniatura) utilizando la propiedad "image" de yt-search
+    let img = await (await fetch(image)).buffer(); // Usamos la URL de "image" para obtener la miniatura
+
+    // Enviar como documento (usando jpegThumbnail con la miniatura)
     await conn.sendMessage(m.chat, {
       document: { url: dl_url },
       fileName: `${title}.mp3`,
       fileLength: quality,
       caption: `❀ ${title}`,
       mimetype: 'audio/mpeg',
-      jpegThumbnail: imgBuffer,  // Usamos el buffer de la imagen como miniatura
+      jpegThumbnail: img,  // Usamos la miniatura obtenida de yt-search
     }, { quoted: m });
 
     // Enviar como audio
