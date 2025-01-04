@@ -15,92 +15,6 @@ let handler = async (m, { conn }) => {
 
   let media = await q.download()
   let formData = new FormData()
-  formData.append('file', media, { filename: 'file' })
-
-  try {
-    // Subir imagen a ImgBB
-    let imgbbApi = await axios.post('https://api.imgbb.com/1/upload?key=10604ee79e478b08aba6de5005e6c798', formData, {
-      headers: {
-        ...formData.getHeaders()
-      }
-    })
-
-    // Verificar si la respuesta de ImgBB es correcta
-    if (!imgbbApi || !imgbbApi.data || !imgbbApi.data.data) {
-      throw new Error('Error al obtener respuesta de ImgBB')
-    }
-
-    // Subir imagen a Free Image Host
-    let freeImageHostApi = await fetch('https://www.freeimage.host/upload', {
-      method: 'POST',
-      body: formData,
-    })
-    let freeImageHostData = await freeImageHostApi.json()
-
-    // Verificar si la respuesta de Free Image Host es correcta
-    if (!freeImageHostData || !freeImageHostData.url) {
-      throw new Error('Error al obtener respuesta de Free Image Host')
-    }
-
-    await m.react('✅')
-
-    let txt = '`I M A G E  -  U P L O A D E R`\n\n'
-
-    // Información ImgBB
-    if (imgbbApi.data.data) {
-      txt += `*🔖 Titulo (ImgBB)* : ${q.filename || 'x'}\n`
-      txt += `*🔖 Id (ImgBB)* : ${imgbbApi.data.data.id}\n`
-      txt += `*🔖 Enlace (ImgBB)* : ${imgbbApi.data.data.url}\n`
-      txt += `*🔖 Directo (ImgBB)* : ${imgbbApi.data.data.url_viewer}\n`
-      txt += `*🔖 Mime (ImgBB)* : ${mime}\n`
-      txt += `*🔖 File (ImgBB)* : ${q.filename || 'x.jpg'}\n`
-      txt += `*🔖 Extension (ImgBB)* : ${imgbbApi.data.data.image.extension}\n`
-      txt += `*🔖 Delete (ImgBB)* : ${imgbbApi.data.data.delete_url}\n\n`
-    }
-
-    // Información Free Image Host
-    if (freeImageHostData.url) {
-      txt += `*🔖 Enlace (FreeImageHost)* : ${freeImageHostData.url}\n`
-      txt += `*🔖 Delete (FreeImageHost)* : ${freeImageHostData.delete_url}\n\n`
-    }
-
-    txt += `© By: Genesis`
-
-    // Enviar el archivo
-    await conn.sendFile(m.chat, imgbbApi.data.data.url || freeImageHostData.url, 'ibb.jpg', txt, m, null, fake)
-
-  } catch (error) {
-    console.error('Error al procesar la imagen:', error)
-    await m.reply('Hubo un error al subir la imagen. Revisa la consola para más detalles.')
-    await m.react('❌')
-  }
-}
-handler.tags = ['convertir']
-handler.help = ['toibb']
-handler.command = /^(tourl2|toibb)$/i
-handler.register = true 
-export default handler
-
-
-
-
-/* import fs from 'fs'
-import FormData from 'form-data'
-import axios from 'axios'
-import fetch from 'node-fetch'
-
-let handler = async (m, { conn }) => {
-
-  let q = m.quoted ? m.quoted : m
-  let mime = (q.msg || q).mimetype || ''
-
-  await m.react('🕒')
-  if (!mime.startsWith('image/')) {
-    return m.reply('Responde a una *Imagen.*')
-  }
-
-  let media = await q.download()
-  let formData = new FormData()
   formData.append('image', media, { filename: 'file' })
 
   let api = await axios.post('https://api.imgbb.com/1/upload?key=10604ee79e478b08aba6de5005e6c798', formData, {
@@ -130,4 +44,4 @@ handler.tags = ['convertir']
 handler.help = ['toibb']
 handler.command = /^(tourl2|toibb)$/i
 handler.register = true 
-export default handler */
+export default handler
