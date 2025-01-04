@@ -1,4 +1,5 @@
-const { prepareWAMessageMedia, generateWAMessageFromContent } = await import("@whiskeysockets/baileys");
+const { proto, generateWAMessageFromContent, generateWAMessageContent } = (await import('@whiskeysockets/baileys')).default;
+// const { prepareWAMessageMedia, generateWAMessageFromContent } = await import("@whiskeysockets/baileys");
 const { randomBytes } = require("crypto");
 
 const handler = async (m, { conn }) => {
