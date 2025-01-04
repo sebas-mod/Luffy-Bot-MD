@@ -5,35 +5,34 @@ import sharp from 'sharp';
 
 const handler = async (m, { conn }) => {
     try {
-        const filePath = path.resolve('./package.json');
+        const tempFilePath = path.resolve('./temp-image.jpg'); // Ruta temporal para el archivo
         const thumbnailUrl = 'https://telegra.ph/file/61d0cf9605cf904f6e5f9.jpg';
 
-        // Verificar si el archivo existe
-        if (!fs.existsSync(filePath)) {
-            await conn.sendMessage(m.chat, { text: 'El archivo package.json no fue encontrado.' }, { quoted: m });
-            return;
-        }
-
-        // Obtener el tamaño real del archivo
-        const { size } = fs.statSync(filePath);
-
-        // Descargar y redimensionar la miniatura
+        // Descargar la imagen desde la URL
         const response = await axios({ url: thumbnailUrl, responseType: 'arraybuffer' });
-        const resizedThumbnail = await sharp(response.data)
+        const resizedImage = await sharp(response.data)
             .resize(400, 400)
             .jpeg()
             .toBuffer();
 
-        // Enviar el mensaje con el documento
+        // Escribir la imagen en un archivo temporal
+        fs.writeFileSync(tempFilePath, resizedImage);
+
+        // Obtener el tamaño del archivo temporal
+        const { size } = fs.statSync(tempFilePath);
+
+        // Enviar el mensaje con el archivo
         await conn.sendMessage(m.chat, {
-            document: fs.readFileSync(filePath),
-            fileName: 'Sock',
+            document: fs.readFileSync(tempFilePath),
+            fileName: 'Sock.jpg', // Nombre del archivo con extensión
             fileLength: size, // Tamaño real del archivo en bytes
-            pageCount: "2024",
             caption: `qq`,
-            mimetype: 'image/png', // Cambiar a image/png si el archivo lo requiere
-            jpegThumbnail: resizedThumbnail,
+            mimetype: 'image/jpeg', // MIME adecuado para la imagen
+            jpegThumbnail: resizedImage, // Miniatura
         }, { quoted: m });
+
+        // Eliminar el archivo temporal después de enviarlo
+        fs.unlinkSync(tempFilePath);
     } catch (error) {
         console.error("Error al enviar el mensaje:", error);
         await conn.sendMessage(m.chat, { text: 'Hubo un error al enviar el mensaje.' }, { quoted: m });
