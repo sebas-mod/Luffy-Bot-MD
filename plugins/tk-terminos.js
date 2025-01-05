@@ -42,7 +42,7 @@ Consulta los detalles y políticas de nuestro servicio:
 
 🚀 ¡Gracias por confiar en TK-HOST, tu mejor aliado en hosting y tecnología!
   `.trim();
-  await conn.sendFile(m.chat, imageUrl, 'terminos.jpg', text, m);
+  await conn.sendFile(m.chat, imageUrl, 'terminos.jpg', text, m, null, fake);
 };
 
 handler.command = ['terminostk'];
