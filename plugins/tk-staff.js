@@ -63,5 +63,4 @@ ${listAdmin}
 handler.command = /^(staff)$/i; // Comandos activadores
 handler.tags = ['tk'];
 handler.help = ['staff'];
-handler.group = true; // Solo en grupos
 export default handler;
