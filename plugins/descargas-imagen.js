@@ -1,13 +1,20 @@
 import {googleImage} from '@bochilteam/scraper';
 const handler = async (m, {conn, text, usedPrefix, command}) => {
-  if (!text) throw `☁️ Ingresa el texto de lo que quieres buscar`;
-  //if (m.text.includes('gore') || m.text.includes('cp')|| m.text.includes('porno')|| m.text.includes('Gore')|| m.text.includes('rule')|| m.text.includes('CP')|| m.text.includes('Rule34')) return m.reply('[❗𝐈𝐍𝐅𝐎❗] 𝙽𝙾 𝙿𝚄𝙴𝙳𝙾 𝙴𝙽𝚅𝙸𝙰𝚁 𝙴𝚂𝚃𝙴 𝙲𝙾𝙽𝚃𝙴𝙽𝙸𝙴𝙽𝙳𝙾 𝙴𝚂𝚃𝙰 𝙿𝚁𝙾𝙷𝙸𝙱𝙸𝙳𝙾 𝙴𝙻 𝙶𝚁𝚄𝙿𝙾\n𝚂𝙸 𝙴𝚂 𝙰𝙳𝙼𝙸𝙽 𝚈 𝙳𝙴𝚂𝙴𝙰 𝙰𝙲𝚃𝙸𝚅𝙰𝚁𝙻𝙾𝚂 𝚄𝚂𝙴 𝙴𝙻 𝙲𝙾𝙼𝙰𝙽𝙳𝙾 #enable modohorny');
+  if (!text) throw `*☁️ Uso Correcto: ${usedPrefix + command} Playa*`;
+  conn.reply(m.chat, '𖤍 *Descargando su imagen...*', m, {
+  contextInfo: { externalAdReply :{ mediaUrl: null, mediaType: 1, showAdAttribution: true,
+  title: packname,
+  body: wm,
+  previewType: 0, thumbnail: icons,
+  sourceUrl: channel }}})
   const res = await googleImage(text);
   const image = await res.getRandom();
   const link = image;
-  conn.sendFile(m.chat, link, 'error.jpg', `🔎 *𝚁𝙴𝚂𝚄𝙻𝚃𝙰𝙳𝙾 𝙳𝙴:* ${text}\n🔗 *𝙻𝙸𝙽𝙺* ${link}\n🌎 *𝙱𝚄𝚂𝙲𝙰𝙳𝙾𝚁:* Google`, m);
+  conn.sendFile(m.chat, link, 'error.jpg', `*🔎 Resultado De: ${text}*\n> ${textbot}`, m, null, rcanal);
 };
-handler.help = ['gimage <query>', 'imagen <query>'];
-handler.tags = ['internet', 'tools'];
-handler.command = /^(gimage|image|imagen)$/i;
+handler.help = ['imagen <query>'];
+handler.tags = ['buscador', 'tools', 'descargas'];
+handler.command = ['image','imagen'];
+handler.group = true;
+handler.register = false
 export default handler;
