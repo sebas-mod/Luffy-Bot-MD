@@ -44,7 +44,7 @@ else return conn.reply(m.chat, '《✧》Por favor, envia una imagen o video par
 
 
 }}
-handler.help = ['stiker <img>', 'sticker <url>']
+handler.help = ['stiker *<img>*', 'sticker *<url>*']
 handler.tags = ['sticker']
 handler.group = false;
 handler.register = true
