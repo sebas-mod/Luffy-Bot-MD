@@ -1,8 +1,8 @@
 let handler = async (m, { conn }) => {
   const imageUrls = [
-    'https://pomf2.lain.la/f/ay62wjkb.jpg',
-    'https://pomf2.lain.la/f/colvnnrh.jpg',
-    'https://pomf2.lain.la/f/sp1ikzyi.jpg'
+    'https://files.catbox.moe/7x0gvu.jpeg',
+    'https://files.catbox.moe/mrlhnr.jpeg',
+    'https://files.catbox.moe/irsabw.jpeg'
   ];
   const randomImageUrl = imageUrls[Math.floor(Math.random() * imageUrls.length)];
 
