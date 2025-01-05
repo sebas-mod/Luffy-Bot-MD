@@ -1,4 +1,4 @@
-import axios from 'axios';
+/* import axios from 'axios';
 import fs from 'fs';
 import path from 'path';
 import sharp from 'sharp';
@@ -76,7 +76,7 @@ handler.command = ['brat'];
 handler.tags = ['sticker'];
 handler.help = ['brat *<texto>*'];
 
-export default handler;
+export default handler; */
 
 
 
@@ -84,7 +84,7 @@ export default handler;
 
 
 
-/* import axios from 'axios';
+import axios from 'axios';
 import fs from 'fs';
 import path from 'path';
 import sharp from 'sharp';
@@ -142,7 +142,7 @@ const handler = async (m, {
             })
             .toFile(outputFilePath);
 
-        await conn.sendMessage(m.chat, {
+        await conn.sendMessage(m.chat, global.packname, global.author, {
             sticker: {
                 url: outputFilePath
             },
@@ -162,4 +162,4 @@ handler.command = ['brat'];
 handler.tags = ['sticker'];
 handler.help = ['brat *<texto>*'];
 
-export default handler; */
+export default handler;
