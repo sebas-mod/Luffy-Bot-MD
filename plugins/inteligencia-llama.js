@@ -27,8 +27,6 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     let responseMessage = json.choices[0].message.content
     conn.aiSessions[m.sender].push({ role: "system", content: responseMessage })
 
-   // await conn.sendMessage(m.chat, { text: responseMessage }, { quoted: m })
-
 await conn.sendMessage(m.chat, {
 text: responseMessage,
 contextInfo: {
