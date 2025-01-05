@@ -89,12 +89,7 @@ console.log(chalk.yellow(`╭${lineM}
 ┊${chalk.blueBright('┊')}${chalk.cyan(`💚 Nombre: ${packageJsonObj.name}`)}
 ┊${chalk.blueBright('┊')}${chalk.cyan(`❇️ Versión: ${packageJsonObj.version}`)}
 ┊${chalk.blueBright('┊')}${chalk.cyan(`📌 Descripción: ${packageJsonObj.description}`)}
-┊${chalk.blueBright('┊')}${chalk.cyan(`🥷 Project Author: ${packageJsonObj.author.name} (@katashi_fukushima)`)}
-┊${chalk.blueBright('┊')}${chalk.blueBright('┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅')} 
-┊${chalk.blueBright('┊')}${chalk.yellow(`🌟 Colaboradores:`)}
-┊${chalk.blueBright('┊')}${chalk.yellow(`• SoIz1 (iZi)`)}
-┊${chalk.blueBright('┊')}${chalk.yellow(`• WilsonOFC (WilsonWaoz)`)}
-┊${chalk.blueBright('╰┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅')} 
+┊${chalk.blueBright('┊')}${chalk.cyan(`🥷 Project Author: ${packageJsonObj.author.name}`)}
 ┊${chalk.blueBright('╭┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅')}
 ┊${chalk.blueBright('┊')}${chalk.cyan(`⏰ Hora Actual :`)}
 ┊${chalk.blueBright('┊')}${chalk.cyan(`${currentTime}`)}
