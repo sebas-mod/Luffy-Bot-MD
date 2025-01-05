@@ -1,5 +1,5 @@
 // Definimos la lista de comandos válidos (modo case-insensitive).
-const comandos = /piedra|papel|tijera|estado|verificar|code|jadibot --code|--code|creadora|bottemporal|grupos|instalarbot|términos|bots|deletebot|eliminarsesion|serbot|verify|register|registrar|reg|reg1|nombre|name|nombre2|name2|edad|age|edad2|age2|genero|género|gender|identidad|pasatiempo|hobby|identify|finalizar|pas2|pas3|pas4|pas5|registroc|deletesesion|registror|jadibot/i;
+const comandos = /piedra|papel|tijera|verificar|code|serbot code|serbot|creadora|grupos|bots|deletebot|eliminarsesion|serbot|verify|register|registrar|reg|registroc|deletesesion|registror|jadibot/i;
 
 // Handler base
 let handler = (m) => m;
