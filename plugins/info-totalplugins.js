@@ -23,7 +23,7 @@ var handler = async (m, { conn, args, command }) => {
     });
 }
 
-handler.help = ['totalfitur']
+handler.help = ['totalp']
 handler.tags = ['info']
-handler.command = ['totalfitur']
+handler.command = ['totalp']
 export default handler
