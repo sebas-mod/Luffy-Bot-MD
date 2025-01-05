@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import sharp from 'sharp';
 import { tmpdir } from 'os';
+import { sticker } from './sticker'; // Asegúrate de importar correctamente la función "sticker"
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -35,13 +36,17 @@ const handler = async (m, { text, conn }) => {
     try {
         const buffer = await fetchSticker(text);
 
-        // Generar el sticker con packname y autor
-        let stiker = await sticker(buffer, false, global.packname, global.author);
-        if (stiker) {
-            return conn.sendFile(m.chat, stiker, 'sticker.webp', '', fkontak);
+        // Intenta generar el sticker con packname y autor
+        try {
+            const stiker = await sticker(buffer, false, global.packname || "Packname", global.author || "Author");
+            if (stiker) {
+                return conn.sendFile(m.chat, stiker, 'sticker.webp', '', m);
+            }
+        } catch (e) {
+            console.error("Error en la función sticker:", e.message);
         }
 
-        // Si no se genera con el método anterior, se usa Sharp para procesarlo
+        // Respaldo: procesa el sticker con Sharp
         const outputFilePath = path.join(tmpdir(), `sticker-${Date.now()}.webp`);
         await sharp(buffer)
             .resize(512, 512, {
@@ -54,10 +59,11 @@ const handler = async (m, { text, conn }) => {
         await conn.sendMessage(
             m.chat,
             { sticker: { url: outputFilePath } },
-            { quoted: fkontak }
+            { quoted: m }
         );
         fs.unlinkSync(outputFilePath);
     } catch (error) {
+        console.error("Error en handler:", error.message);
         return conn.sendMessage(
             m.chat,
             { text: `Hubo un error 😪` },
