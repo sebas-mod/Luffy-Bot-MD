@@ -49,7 +49,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     });
 }
 
-handler.tags = ['confesiones'];
+handler.tags = ['confesar'];
 handler.help = ['nglanonimo'].map(v => v + ' <número mensaje>');
 handler.command = /^(ngl|nglanonimo)$/i;
 handler.register = true;
