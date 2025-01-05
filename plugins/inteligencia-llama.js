@@ -35,6 +35,6 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   }
 }
 
-handler.command = ['llamaAi']
+handler.command = ['llama']
 
 export default handler
