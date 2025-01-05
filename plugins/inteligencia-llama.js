@@ -7,7 +7,6 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   if (!text) return conn.reply(m.chat, `❀ Ingresa un texto para hablar con la IA`, m)
 
   try {
-    let { key } = await conn.sendMessage(m.chat, { text: '_❀ cargando respuesta_' }, { quoted: m })
     if (!(m.sender in conn.aiSessions))
       conn.aiSessions[m.sender] = [{
         role: 'system',
@@ -28,7 +27,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     let responseMessage = json.choices[0].message.content
     conn.aiSessions[m.sender].push({ role: "system", content: responseMessage })
 
-    await conn.sendMessage(m.chat, { text: responseMessage, edit: key }, { quoted: m })
+    await conn.sendMessage(m.chat, { text: responseMessage }, { quoted: m })
 
   } catch (error) {
     console.error(error)
