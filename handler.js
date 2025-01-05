@@ -95,7 +95,7 @@ chat.sAutoresponder = ''
 if (!('welcome' in chat))
 chat.welcome = true
 if (!('autolevelup' in chat))
-chat.autolevelup = true
+chat.autolevelup = false
 if (!('autoAceptar' in chat))
 chat.autoAceptar = false
 if (!('autoRechazar' in chat))
@@ -133,7 +133,7 @@ global.db.data.chats[m.chat] = {
 isBanned: false,
 sAutoresponder: '',
 welcome: true,
-autolevelup: true,
+autolevelup: false,
 autoresponder: false,
 delete: false,
 autoAceptar: false,
@@ -147,7 +147,7 @@ modoadmin: false,
 antiLink: false,
 simi: false,
 antiver: false,
-modohorny: false, 
+modohorny: true, 
 reaction: false,
 expired: 0, 
 }
@@ -155,7 +155,7 @@ var settings = global.db.data.settings[this.user.jid]
 if (typeof settings !== 'object') global.db.data.settings[this.user.jid] = {}
 if (settings) {
 if (!('self' in settings)) settings.self = false
-if (!('restrict' in settings)) settings.restrict = false
+if (!('restrict' in settings)) settings.restrict = true
 if (!('jadibotmd' in settings)) settings.jadibotmd = true
 if (!('autobio' in settings)) settings.autobio = false
 if (!('antiPrivate' in settings)) settings.antiPrivate = true
@@ -164,7 +164,7 @@ if (!('autoread2' in settings)) settings.autoread2 = false
 if (!('antiSpam' in settings)) settings.antiSpam = false
 } else global.db.data.settings[this.user.jid] = {
 self: false,
-restrict: false,
+restrict: true,
 jadibotmd: true,
 autobio: false,
 antiPrivate: true,
