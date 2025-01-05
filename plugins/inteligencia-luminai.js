@@ -34,7 +34,23 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
             const prompt = `${basePrompt}. Responde lo siguiente: ${query}`
             const response = await luminsesi(query, username, prompt)
             // Aquí ya no se enviará el mensaje intermedio, se envía directamente la respuesta
-            await conn.reply(m.chat, response, m, fake)
+        //    await conn.reply(m.chat, response, m, fake)
+await conn.sendMessage(m.chat, { 
+    text: '*Luminai:* ' + response,
+    contextInfo: {
+        forwardingScore: 9999999,
+        isForwarded: false, 
+        externalAdReply: {
+            showAdAttribution: true,
+            containsAutoReply: true,
+            title: `[ 𝗖𝗛𝗔𝗧𝗚𝗣𝗧 - 𝗗𝗘𝗠𝗢 ]`,
+            body: dev,
+            previewType: "PHOTO",
+            thumbnailUrl: 'https://files.catbox.moe/xblbmd.jpeg', 
+            sourceUrl: canal,
+        }
+    }
+}, { quoted: m });
             await m.react('🤖')
         } catch {
             await m.react(error)
