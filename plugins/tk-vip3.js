@@ -28,7 +28,7 @@ Plan ideal para proyectos fuertes y exigentes.
 💡 ¡Haz que tu proyecto despegue con el Plan TK-Vip3! 🚀
   `.trim();
 
-  await conn.sendFile(m.chat, randomImageUrl, 'tk-vip3.jpg', text, m);
+  await conn.sendFile(m.chat, randomImageUrl, 'tk-vip3.jpg', text, m, null, fake);
 };
 
 handler.command = ['vip3'];
