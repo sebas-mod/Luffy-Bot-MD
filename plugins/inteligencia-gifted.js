@@ -17,7 +17,7 @@ await conn.sendMessage(m.chat, {
         externalAdReply: {
             showAdAttribution: true,
             containsAutoReply: true,
-            title: `gі𝖿𝗍ᥱძ - іᥒ𝗍ᥱᥣіgᥱᥒᥴіᥲ`,
+            title: `❀ gі𝖿𝗍ᥱძ - іᥒ𝗍ᥱᥣіgᥱᥒᥴіᥲ`,
             body: dev,
             previewType: "PHOTO",
             thumbnailUrl: 'https://files.catbox.moe/bjmjxd.jpeg', 
