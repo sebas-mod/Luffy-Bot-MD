@@ -19,7 +19,6 @@ const { say } = cfonts
 const rl = createInterface(process.stdin, process.stdout)
 console.log('\n🚀 Iniciando Génesis-Ultra...');
 
-
 say('Genesis\nUltra', {
 font: 'chrome',
 align: 'center',
