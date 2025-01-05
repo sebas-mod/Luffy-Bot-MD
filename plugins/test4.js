@@ -74,6 +74,6 @@ const handler = async (m, {
 };
 handler.command = ['brat'];
 handler.tags = ['sticker'];
-handler.help = ['brat teks'];
+handler.help = ['brat *<texto>*'];
 
 export default handler;
