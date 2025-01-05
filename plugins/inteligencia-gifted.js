@@ -2,7 +2,7 @@ import fetch from 'node-fetch'
 
 let handler = async(m, { conn, text }) => {
 if (!text) {
-return conn.reply(m.chat, `❀ Ingresa un texto para hablar con Chatgpt`, m)
+return conn.reply(m.chat, `❀ Ingresa un texto para hablar con gifted`, m)
 }
     
 try {
