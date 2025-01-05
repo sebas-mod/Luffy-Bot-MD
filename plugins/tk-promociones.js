@@ -1,5 +1,5 @@
 let handler = async (m, { conn }) => {
-  const imageUrl = 'https://pomf2.lain.la/f/baf25kk2.jpg'; // URL de la imagen promocional
+  const imageUrl = 'https://files.catbox.moe/x48r2q.jpeg'; // URL de la imagen promocional
   const text = `
 🎉 *Promociones Actuales en TK-HOST* 🏷️
 
