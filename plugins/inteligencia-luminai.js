@@ -43,7 +43,7 @@ await conn.sendMessage(m.chat, {
         externalAdReply: {
             showAdAttribution: true,
             containsAutoReply: true,
-            title: `[ 𝗖𝗛𝗔𝗧𝗚𝗣𝗧 - 𝗗𝗘𝗠𝗢 ]`,
+            title: `[ ᥣᥙmіᥒᥲі - іᥒ𝗍ᥱᥣіgᥱᥒᥴіᥲ ]`,
             body: dev,
             previewType: "PHOTO",
             thumbnailUrl: 'https://files.catbox.moe/xblbmd.jpeg', 
