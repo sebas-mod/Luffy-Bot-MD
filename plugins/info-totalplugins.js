@@ -7,7 +7,7 @@ var handler = async (m, { conn, args, command }) => {
 
     let replyMessage = `Total Fitur Bot Saat ini: ${totalf}\n`;
 
-    await conn.reply(m.chat, replyMessage, m, {
+    await conn.reply(m.chat, replyMessage, m)
         contextInfo: {
             externalAdReply: {
                 mediaUrl: '',
