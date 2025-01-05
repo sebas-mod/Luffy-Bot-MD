@@ -21,8 +21,7 @@ let neww = performance.now()
 let speed = neww - old
 const used = process.memoryUsage()
 let txt = `⭐️ \`\`\`Información - Genesis-Ai\`\`\` ⭐️\n\n`
-txt += '🌺꙰᠁❥ *◜Creador◞* ⇢ Izumi.kzx\n`
-'
+txt += '🌺꙰᠁❥ *◜Creador◞* ⇢ Izumi.kzx\n'
 txt += '🌻꙰᠁❥ *◜Prefijo◞* ⇢ [ ${usedPrefix} ]\n'
 txt += '🌺꙰᠁❥ *◜Versión◞* ⇢ ${vs}\n'
 txt += '🌻꙰᠁❥ *◜Chats Privados◞* ⇢ ${chats.length - groupsIn.length}\n'
