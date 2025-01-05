@@ -61,14 +61,14 @@ const handler = async (m, {
                 url: outputFilePath
             },
         }, {
-            quoted: m
+            quoted: fkontak
         });
         fs.unlinkSync(outputFilePath);
     } catch (error) {
         return conn.sendMessage(m.chat, {
             text: `: ${error.message}`,
         }, {
-            quoted: fkontak
+            quoted: m
         });
     }
 };
