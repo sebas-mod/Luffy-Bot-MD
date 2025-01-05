@@ -12,7 +12,6 @@ import path from 'path'
 import os from 'os'
 import { promises as fsPromises } from 'fs'
 
-// https://stackoverflow.com/a/50052194
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const require = createRequire(__dirname) //Incorpora la capacidad de crear el método 'requerir'
 const { name, author } = require(join(__dirname, './package.json')) //https://www.stefanjudis.com/snippets/how-to-import-json-files-in-es-modules-node-js/
