@@ -32,7 +32,7 @@ let handler = async (m, { conn }) => {
 };
 
 handler.command = ['dios'];
-handler.tags = ['planes'];
+handler.tags = ['tk'];
 handler.help = ['dios'];
 export default handler;
 
