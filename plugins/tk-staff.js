@@ -52,7 +52,7 @@ ${listAdmin}
     m.reply('No se pudo cargar la imagen desde la URL. Enviando imagen de respaldo...');
     try {
       // Usar la imagen local como respaldo
-      await conn.sendFile(m.chat, fallbackImage, 'soporte.jpg', text, m);
+      await conn.sendFile(m.chat, fallbackImage, 'soporte.jpg', text, m, null, fake);
     } catch (fallbackErr) {
       console.error('Error al enviar la imagen de respaldo:', fallbackErr.message);
       m.reply('No se pudo cargar ninguna imagen. Por favor, contacta al soporte.');
