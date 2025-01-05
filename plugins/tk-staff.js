@@ -1,5 +1,5 @@
 let handler = async (m, { conn, participants, groupMetadata, args }) => {
-  const imageUrl = 'https://f.uguu.se/UpKqBDik.jpg'; // Cambia por la URL de la imagen adecuada
+  const imageUrl = 'https://files.catbox.moe/ea82hr.jpeg'; // Cambia por la URL de la imagen adecuada
   const fallbackImage = './staff.jpg'; // Ruta de imagen local como respaldo
 
   // Obtener los administradores del grupo
