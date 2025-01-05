@@ -54,7 +54,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     }
 };
 
-handler.tags = ['confesiones'];
+handler.tags = ['confesar'];
 handler.help = ['respuesta'].map(v => v + ' <id mensaje>');
 handler.command = /^(respuesta|reply)$/i;
 handler.register = true;
