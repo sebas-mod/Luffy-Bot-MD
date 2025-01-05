@@ -75,5 +75,5 @@ const handler = async (m, {
 handler.command = ['brat'];
 handler.tags = ['sticker'];
 handler.help = ['brat teks'];
-handler.limit = true; // klo mau kasih 1k limit biar gk dispam
+
 export default handler;
