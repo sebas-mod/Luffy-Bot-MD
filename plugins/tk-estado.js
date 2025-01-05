@@ -198,8 +198,8 @@ ${randomResponse}
   await conn.sendMessage(m.chat, { text, ...rcanal }, { quoted: m });
 };
 
-handler.command = ['estado'];
+handler.command = ['estadotk'];
 handler.tags = ['tk'];
-handler.help = ['estado'];
+handler.help = ['estadotk'];
 
 export default handler;
