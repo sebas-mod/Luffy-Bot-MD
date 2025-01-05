@@ -8,7 +8,7 @@ let handler = async (m, { conn, text }) => {
         conn.reply(m.chat, m);
         let data = await chatGpt(text)
 await conn.sendMessage(m.chat, { 
-    text: data,
+    text: '*Demo:*' + data,
     contextInfo: {
         forwardingScore: 9999999,
         isForwarded: false, 
