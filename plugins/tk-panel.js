@@ -1,5 +1,5 @@
 let handler = async (m, { conn }) => {
-  const imageUrl = 'https://pomf2.lain.la/f/9a79fsqu.jpg'; // URL de la imagen
+  const imageUrl = 'https://files.catbox.moe/ea82hr.jpeg'; // URL de la imagen
   const text = `
 🌐 *Panel de Gestión de Servidores* 🛠️
 
