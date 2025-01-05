@@ -45,6 +45,8 @@ renderLargerThumbnail: true
   }
 }
 
+handler.help = ['llama *<texto>*'];
+handler.tags = ['ai'];
 handler.command = ['llama']
 
 export default handler
