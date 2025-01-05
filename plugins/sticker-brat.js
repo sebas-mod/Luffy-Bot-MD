@@ -41,39 +41,45 @@ const handler = async (m, { text, conn, args }) => {
 
     try {
         let stiker;
+        const outputFilePath = path.join(tmpdir(), `sticker-${Date.now()}.webp`);
+
         if (isUrl(args[0])) {
-            // Si es una URL, utiliza la función de sticker con nombre personalizado
+            // Si es una URL, usa la función personalizada
             stiker = await sticker(false, args[0], global.sticker2, global.sticker1);
         } else {
             // Genera el sticker basado en texto
             const buffer = await fetchSticker(text);
-            const outputFilePath = path.join(tmpdir(), `sticker-${Date.now()}.webp`);
+
             await sharp(buffer)
                 .resize(512, 512, {
                     fit: 'contain',
                     background: { r: 255, g: 255, b: 255, alpha: 0 }
                 })
-                .webp({ quality: 80 })
+                .webp({
+                    quality: 80,
+                    metadata: true // Habilita la posibilidad de agregar metadatos
+                })
+                .withMetadata({
+                    exif: {
+                        IFD0: {
+                            Artist: global.sticker1 || "Autor desconocido",
+                            Copyright: global.sticker2 || "Sin nombre",
+                        },
+                    },
+                })
                 .toFile(outputFilePath);
 
             stiker = { url: outputFilePath };
         }
 
-        // Envía el sticker con nombre basado en global.sticker2 y global.sticker1
+        // Envía el sticker
         await conn.sendMessage(m.chat, {
             sticker: stiker,
-            contextInfo: {
-                externalAdReply: {
-                    title: global.sticker2 || "Sticker Personalizado",
-                    body: global.sticker1 || "Creado por Bot",
-                    mediaType: 2,
-                },
-            },
         }, { quoted: m });
 
+        // Si es un archivo temporal, eliminarlo después de enviarlo
         if (!isUrl(args[0])) {
-            // Si se generó un archivo temporal, eliminarlo después de enviarlo
-            fs.unlinkSync(stiker.url);
+            fs.unlinkSync(outputFilePath);
         }
     } catch (error) {
         return conn.sendMessage(m.chat, {
