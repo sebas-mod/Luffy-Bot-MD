@@ -1,5 +1,5 @@
 let handler = async (m, { conn }) => {
-  const imageUrl = 'https://pomf2.lain.la/f/76lbjk8n.jpg'; // URL de la imagen
+  const imageUrl = 'https://files.catbox.moe/r8gcdz.jpeg'; // URL de la imagen
   const text = `
 🌐 *Precios de TK-Coins* 💰
 
