@@ -68,10 +68,13 @@ var canal = 'https://whatsapp.com/channel/0029VaJxgcB0bIdvuOwKTM2Y'
 var canal2 = 'https://whatsapp.com/channel/0029VaGGynJLY6d43krQYR2g'
 var canal3 = 'https://whatsapp.com/channel/0029VawMIXi2P59oaQ2H1j0O'
 var canal4 = 'https://whatsapp.com/channel/0029VaS4zeE72WTyg5et571r'
+var canal5 = 'https://whatsapp.com/channel/0029VavYQDTBlHpcishJCZ0k'
 var github = 'https://github.com/Angelito-OFC/Genesis-AI'  
 var insta = 'https://www.instagram.com/angelito.kzx'
 
 global.redes = [canal, canal2, canal3, canal4, github, insta].getRandom()
+
+global.channels = [canal, canal5].getRandom()
 
 global.redeshost = [canal, canal2, github, insta].getRandom()
 
