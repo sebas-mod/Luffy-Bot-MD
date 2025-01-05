@@ -27,6 +27,6 @@ Aquí tienes la lista completa de los prebots que puedes utilizar:
   await conn.sendFile(m.chat, imageUrl, 'pagina-panel.jpg', text, m);
 };
 handler.command = ['prebots'];
-handler.tags = ['pagina-panel'];
+handler.tags = ['tk'];
 handler.help = ['prebots'];
 export default handler;
