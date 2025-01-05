@@ -77,7 +77,7 @@ const handler = async (m, { text }) => {
 };
 
 handler.help = ["nglspam *<nom|msj|cant>*"]
-handler.tags = ["anonymous"]
+handler.tags = ["confesar"]
 handler.command = ["nglspam"]
 handler.premium = true;
 
