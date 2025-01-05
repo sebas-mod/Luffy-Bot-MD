@@ -396,7 +396,7 @@ if (SBprekey.length === 0) return null
 }}
 
 function purgeOldFiles() {
-const directories = [`./${sessions}/`, `./${jadi}/]
+const directories = [`./${sessions}/`, `./${jadi}/`]
 const oneHourAgo = Date.now() - (60 * 60 * 1000)
 directories.forEach(dir => {
 readdirSync(dir, (err, files) => {
