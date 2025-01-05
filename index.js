@@ -19,8 +19,6 @@ const { say } = cfonts
 const rl = createInterface(process.stdin, process.stdout)
 console.log('\n🚀 Iniciando Génesis-Ultra...');
 
-//const app = express()
-//const port = process.env.PORT || 8080;
 
 say('Genesis\nUltra', {
 font: 'chrome',
