@@ -42,7 +42,7 @@ await m.react(error)
 }}
 
 handler.help = ['npmjs *<texto>*']
-handler.tags = ['search']
+handler.tags = ['internet']
 handler.command = ['npmjs']
 handler.register = true
 handler.cookies = 1
