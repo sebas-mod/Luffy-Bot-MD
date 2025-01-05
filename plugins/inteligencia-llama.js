@@ -27,7 +27,20 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     let responseMessage = json.choices[0].message.content
     conn.aiSessions[m.sender].push({ role: "system", content: responseMessage })
 
-    await conn.sendMessage(m.chat, { text: responseMessage }, { quoted: m })
+   // await conn.sendMessage(m.chat, { text: responseMessage }, { quoted: m })
+
+await conn.sendMessage(m.chat, {
+text: responseMessage,
+contextInfo: {
+externalAdReply: {
+title: '[ LLAMA - AI ]',
+body: dev,
+thumbnailUrl: 'https://files.catbox.moe/599oai.jpeg',
+sourceUrl: canal,
+mediaType: 1,
+renderLargerThumbnail: true
+}}},
+{ quoted: m})
 
   } catch (error) {
     console.error(error)
