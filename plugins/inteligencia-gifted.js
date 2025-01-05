@@ -21,7 +21,7 @@ await conn.sendMessage(m.chat, {
             body: dev,
             previewType: "PHOTO",
             thumbnailUrl: 'https://files.catbox.moe/bjmjxd.jpeg', 
-            sourceUrl: canal,
+            sourceUrl: channels,
         }
     }
 }, { quoted: m });
