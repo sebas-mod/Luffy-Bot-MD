@@ -35,7 +35,7 @@ contextInfo: {
 externalAdReply: {
 title: '[ LLAMA - AI ]',
 body: dev,
-thumbnailUrl: 'https://files.catbox.moe/599oai.jpeg',
+thumbnailUrl: 'https://files.catbox.moe/j791b7.jpeg',
 sourceUrl: canal,
 mediaType: 1,
 renderLargerThumbnail: true
