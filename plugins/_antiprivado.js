@@ -1,41 +1,27 @@
-// Definimos la lista de comandos válidos (modo case-insensitive).
-const comandos = /piedra|papel|tijera|verificar|code|serbot code|serbot|creadora|grupos|bots|deletebot|eliminarsesion|serbot|verify|register|registrar|reg|registroc|deletesesion|registror|jadibot/i;
+const comandos = /\b(piedra|papel|tijera|verificar|code|serbot code|serbot|creadora|grupos|bots|deletebot|eliminarsesion|verify|register|registrar|reg|registroc|deletesesion|registror|jadibot)\b/i;
 
 // Handler base
 let handler = (m) => m;
 
 handler.before = async function (m, { conn, isOwner, isROwner, prefix }) {
-  // 1) Ignoramos si no hay texto (por ejemplo, stickers, imágenes, etc.).
-  if (!m.message) return true;
+  // Ignorar si el mensaje no contiene texto.
+  if (!m.text) return true;
 
-  // 2) Si eres tú (fromMe) o eres Owner/ROwner, deja que pase todo.
-  if (m.fromMe || isOwner || isROwner) {
-    return true;
-  }
+  // Permitir si el mensaje es del bot o de un Owner/ROwner.
+  if (m.fromMe || isOwner || isROwner) return true;
 
-  // 3) Si eres usuario normal, revisamos si está activado el antiPrivate.
-  //    Obtenemos la config del bot en la DB
-  const bot = global.db.data.settings[this.user.jid] || {};
-  if (bot.antiPrivate && !isOwner && !isROwner) {
-//  if (bot.antiPrivate && !m.isGroup) {
-    // En caso de estar en privado y antiPrivate activado,
-    // simplemente ignoramos retornando "false".
-    return false;
-  }
+  // Configuración del bot en la base de datos.
+  const bot = global.db?.data?.settings?.[this.user.jid] || {};
 
-  // 4) Si llegamos aquí, o no está activo antiPrivate, o el chat es grupo.
-  //    Revisa si el mensaje es un comando permitido con el prefijo.
-  //    - Ajusta la parte de prefix según sea RegExp o string.
-  //    - Si prefix es un string, en lugar de prefix.source usarías: `^${prefix}\s?${comandos.source}`
-  const regexWithPrefix = new RegExp(`^${prefix.source}\\s?${comandos.source}`, 'i');
+  // Ignorar mensajes privados si el antiPrivate está activado.
+  if (bot.antiPrivate && !m.isGroup) return false;
 
-  // 5) Si coincide con un comando permitido, se ejecuta.
-  if (regexWithPrefix.test(m.text.toLowerCase().trim())) {
-    return true;
-  }
+  // Verificar si el mensaje coincide con un comando permitido.
+  const prefixStr = typeof prefix === 'string' ? `^${prefix}\\s?` : prefix.source;
+  const regexWithPrefix = new RegExp(`${prefixStr}${comandos.source}`, 'i');
 
-  // 6) Si no coincide, ignoramos sin bloquear ni advertir.
-  return false;
+  // Ejecutar si coincide con el comando, ignorar de lo contrario.
+  return regexWithPrefix.test(m.text.trim());
 };
 
 export default handler;
