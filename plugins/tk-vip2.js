@@ -32,7 +32,7 @@ Plan diseñado para bots avanzados con capacidad para manejar múltiples conexio
 💡 ¡Lleva tu bot al siguiente nivel con el Plan TK-Vip2! 🚀
   `.trim();
 
-  await conn.sendFile(m.chat, randomImageUrl, 'tk-vip2.jpg', text, m);
+  await conn.sendFile(m.chat, randomImageUrl, 'tk-vip2.jpg', text, m, null, fake);
 };
 
 handler.command = ['vip2'];
