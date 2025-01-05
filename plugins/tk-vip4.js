@@ -32,6 +32,6 @@ Perfecto para proyectos avanzados que requieren mayor rendimiento.
 };
 
 handler.command = ['vip4'];
-handler.tags = ['planes'];
+handler.tags = ['tk'];
 handler.help = ['vip4'];
 export default handler;
