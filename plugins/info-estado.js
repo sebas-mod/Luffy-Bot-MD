@@ -24,7 +24,7 @@ let handler = async (m, { conn, usedPrefix, isRowner }) => {
     let speed = neww - old
     const used = process.memoryUsage()
 
-    let txt = `☁️ \`\`\`Información - Genesis-Ai\`\`\` ☁️\n\n`
+    let txt = `☁️ \`\`\`Información - Genesis\`\`\` ☁️\n\n`
     txt += `☁️꙰᠁❥ *◜Creador◞* ⇢ Izumi.kzx\n`
     txt += `☁️꙰᠁❥ *◜Prefijo◞* ⇢ [ ${usedPrefix} ]\n`
     txt += `☁️꙰᠁❥ *◜Versión◞* ⇢ ${vs}\n`
