@@ -73,10 +73,6 @@ global.canal = 'https://whatsapp.com/channel/0029VaJxgcB0bIdvuOwKTM2Y'
 global.github = 'https://github.com/Angelito-OFC/Genesis-AI' 
 global.instagram = 'https://www.instagram.com/angelito.kzx' 
 global.whatsApp = 'https://wa.me/59168683798'
-global.channels = {
-channel1: 'https://whatsapp.com/channel/0029VaJxgcB0bIdvuOwKTM2Y',
-channel2: 'https://whatsapp.com/channel/0029VavYQDTBlHpcishJCZ0k'
-}
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
