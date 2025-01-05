@@ -13,8 +13,8 @@ import os from 'os'
 import { promises as fsPromises } from 'fs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-const require = createRequire(__dirname) //Incorpora la capacidad de crear el método 'requerir'
-const { name, author } = require(join(__dirname, './package.json')) //https://www.stefanjudis.com/snippets/how-to-import-json-files-in-es-modules-node-js/
+const require = createRequire(__dirname)
+const { name, author } = require(join(__dirname, './package.json'))
 const { say } = cfonts
 const rl = createInterface(process.stdin, process.stdout)
 console.log('\n🚀 Iniciando Génesis-Ultra...');
