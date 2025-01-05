@@ -356,13 +356,13 @@ unlinkSync(filePath)})
 
 function purgeSession() {
 let prekey = []
-let directorio = readdirSync("./sessions")
+let directorio = readdirSync("./${sessions}")
 let filesFolderPreKeys = directorio.filter(file => {
 return file.startsWith('pre-key-')
 })
 prekey = [...prekey, ...filesFolderPreKeys]
 filesFolderPreKeys.forEach(files => {
-unlinkSync(`./sessions/${files}`)
+unlinkSync(`./${sessions}/${files}`)
 })
 }
 
@@ -378,16 +378,16 @@ originalConsoleMethod.apply(console, arguments)
 
 function purgeSessionSB() {
 try {
-let listaDirectorios = readdirSync('../serbot/');
+let listaDirectorios = readdirSync('./${jadi}/');
 let SBprekey = []
 listaDirectorios.forEach(directorio => {
-if (statSync(`../serbot/${directorio}`).isDirectory()) {
-let DSBPreKeys = readdirSync(`../serbot/${directorio}`).filter(fileInDir => {
+if (statSync(`./${jadi}/${directorio}`).isDirectory()) {
+let DSBPreKeys = readdirSync(`./${jadi}/${directorio}`).filter(fileInDir => {
 return fileInDir.startsWith('pre-key-')
 })
 SBprekey = [...SBprekey, ...DSBPreKeys]
 DSBPreKeys.forEach(fileInDir => {
-unlinkSync(`../serbot/${directorio}/${fileInDir}`)
+unlinkSync(`./${jadi}/${directorio}/${fileInDir}`)
 })
 }
 })
@@ -396,7 +396,7 @@ if (SBprekey.length === 0) return null
 }}
 
 function purgeOldFiles() {
-const directories = ['./sessions/', '../serbot/']
+const directories = [./${sessions}/`, `./${jadi}/]
 const oneHourAgo = Date.now() - (60 * 60 * 1000)
 directories.forEach(dir => {
 readdirSync(dir, (err, files) => {
