@@ -32,7 +32,7 @@ const handler = async (m, {
 }) => {
     if (!text) {
         return conn.sendMessage(m.chat, {
-            text: 'teks?.',
+            text: '☁️ Te Faltó El Texto!',
         }, {
             quoted: m
         });
