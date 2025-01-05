@@ -44,7 +44,7 @@ global.jadi = 'GenesisJadiBot'
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
 global.packname = '⪛✰ Genesis Ai - Ultra ✰⪜'
-global.botname = 'Genesis-Ai'
+global.botname = 'gᥱᥒᥱsіs-ᥲі'
 global.wm = 'Genesis-Ultra 🤍'
 global.author = 'mᥲძᥱ ᑲᥡ : іzᥙmі.kz᥊ ☕'
 global.dev = '© ⍴᥆ᥕᥱrᥱძ ᑲᥡ іzᥙmі.kz᥊'
