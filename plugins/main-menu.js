@@ -225,7 +225,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args, command }) => {
     await conn.sendMessage(m.chat, {
       image: { url: img },
       caption: estilo(text),
-      footer: ' ©️ ρσωε૨ ɓყ ƭεαɱ รƭα૨૮σ૨ε',
+      footer: dev,
       buttons: [
         {
           buttonId: `.ping`,
