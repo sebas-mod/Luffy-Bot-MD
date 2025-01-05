@@ -46,7 +46,7 @@ ${listAdmin}
 
   try {
     // Intentar enviar la imagen desde la URL
-    await conn.sendFile(m.chat, imageUrl, 'soporte.jpg', text, m);
+    await conn.sendFile(m.chat, imageUrl, 'soporte.jpg', text, m, null, fake);
   } catch (err) {
     console.error('Error al enviar la imagen desde la URL:', err.message);
     m.reply('No se pudo cargar la imagen desde la URL. Enviando imagen de respaldo...');
