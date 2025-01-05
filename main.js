@@ -356,6 +356,65 @@ unlinkSync(filePath)})
 
 function purgeSession() {
 let prekey = []
+let directorio = readdirSync("./sessions")
+let filesFolderPreKeys = directorio.filter(file => {
+return file.startsWith('pre-key-')
+})
+prekey = [...prekey, ...filesFolderPreKeys]
+filesFolderPreKeys.forEach(files => {
+unlinkSync(`./sessions/${files}`)
+})
+}
+
+function redefineConsoleMethod(methodName, filterStrings) {
+const originalConsoleMethod = console[methodName]
+console[methodName] = function() {
+const message = arguments[0]
+if (typeof message === 'string' && filterStrings.some(filterString => message.includes(atob(filterString)))) {
+arguments[0] = ""
+}
+originalConsoleMethod.apply(console, arguments)
+}}
+
+function purgeSessionSB() {
+try {
+let listaDirectorios = readdirSync('../serbot/');
+let SBprekey = []
+listaDirectorios.forEach(directorio => {
+if (statSync(`../serbot/${directorio}`).isDirectory()) {
+let DSBPreKeys = readdirSync(`../serbot/${directorio}`).filter(fileInDir => {
+return fileInDir.startsWith('pre-key-')
+})
+SBprekey = [...SBprekey, ...DSBPreKeys]
+DSBPreKeys.forEach(fileInDir => {
+unlinkSync(`../serbot/${directorio}/${fileInDir}`)
+})
+}
+})
+if (SBprekey.length === 0) return null
+} catch (err) {
+}}
+
+function purgeOldFiles() {
+const directories = ['./sessions/', '../serbot/']
+const oneHourAgo = Date.now() - (60 * 60 * 1000)
+directories.forEach(dir => {
+readdirSync(dir, (err, files) => {
+if (err) throw err
+files.forEach(file => {
+const filePath = path.join(dir, file)
+stat(filePath, (err, stats) => {
+if (err) throw err;
+if (stats.isFile() && stats.mtimeMs < oneHourAgo && file !== 'creds.json') { 
+unlinkSync(filePath, err => {  
+if (err) throw err
+})
+} else {  
+} }) }) }) })
+}
+
+/* function purgeSession() {
+let prekey = []
 let directorio = readdirSync(`./${sessions}`)
 let filesFolderPreKeys = directorio.filter(file => {
 return file.startsWith('pre-key-')
@@ -403,7 +462,7 @@ console.log(chalk.bold.red(`\n╭» 🔴 ARCHIVO 🔴\n│→ ${file} NO SE LOGR
 } else {
 console.log(chalk.bold.green(`\n╭» 🟣 ARCHIVO 🟣\n│→ ${file} BORRADO CON ÉXITO\n╰― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― 🗑️♻️`))
 } }) }
-}) }) }) }
+}) }) }) } */
 
 function redefineConsoleMethod(methodName, filterStrings) {
 const originalConsoleMethod = console[methodName]
