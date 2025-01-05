@@ -21,7 +21,7 @@ conn.reply(m.chat, teks, m, rcanal)
 })
 }
 handler.help = ['google *<texto>*']
-handler.tags = ['search']
+handler.tags = ['internet']
 handler.command = ['google']
 handler.register = true 
 export default handler
