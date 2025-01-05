@@ -16,7 +16,7 @@ await conn.sendMessage(m.chat, {
             showAdAttribution: true,
             containsAutoReply: true,
             title: `[ 𝗖𝗛𝗔𝗧𝗚𝗣𝗧 - 𝗗𝗘𝗠𝗢 ]`,
-            body: ``,
+            body: dev,
             previewType: "PHOTO",
             thumbnailUrl: 'https://tinyurl.com/2awg2bch', 
             sourceUrl: 'https://whatsapp.com/channel/0029VaJxgcB0bIdvuOwKTM2Y'
