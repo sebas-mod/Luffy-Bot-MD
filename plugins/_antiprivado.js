@@ -16,7 +16,8 @@ handler.before = async function (m, { conn, isOwner, isROwner, prefix }) {
   // 3) Si eres usuario normal, revisamos si está activado el antiPrivate.
   //    Obtenemos la config del bot en la DB
   const bot = global.db.data.settings[this.user.jid] || {};
-  if (bot.antiPrivate && !m.isGroup) {
+  if (bot.antiPrivate && !isOwner && !isROwner) {
+//  if (bot.antiPrivate && !m.isGroup) {
     // En caso de estar en privado y antiPrivate activado,
     // simplemente ignoramos retornando "false".
     return false;
