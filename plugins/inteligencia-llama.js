@@ -33,7 +33,7 @@ await conn.sendMessage(m.chat, {
 text: responseMessage,
 contextInfo: {
 externalAdReply: {
-title: '[ LLAMA - AI ]',
+title: 'ᥣᥣᥲmᥲ - ᥲі ⍴᥆ᥕᥱr ᑲᥡ mᥱ𝗍ᥲ',
 body: dev,
 thumbnailUrl: 'https://files.catbox.moe/j791b7.jpeg',
 sourceUrl: canal,
