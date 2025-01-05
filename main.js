@@ -462,7 +462,7 @@ console.log(chalk.bold.red(`\n╭» 🔴 ARCHIVO 🔴\n│→ ${file} NO SE LOGR
 } else {
 console.log(chalk.bold.green(`\n╭» 🟣 ARCHIVO 🟣\n│→ ${file} BORRADO CON ÉXITO\n╰― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― 🗑️♻️`))
 } }) }
-}) }) }) } */
+}) }) }) }
 
 function redefineConsoleMethod(methodName, filterStrings) {
 const originalConsoleMethod = console[methodName]
@@ -472,7 +472,7 @@ if (typeof message === 'string' && filterStrings.some(filterString => message.in
 arguments[0] = ""
 }
 originalConsoleMethod.apply(console, arguments)
-}}
+}} */
 
 setInterval(async () => {
   if (stopped === 'close' || !conn || !conn.user) return
