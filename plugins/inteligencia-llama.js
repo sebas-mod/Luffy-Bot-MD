@@ -10,7 +10,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     if (!(m.sender in conn.aiSessions))
       conn.aiSessions[m.sender] = [{
         role: 'system',
-        content: `Eres Llama AI una inteligencia artificial, responde de manera clara y concisa para que los usuarios entiendan mejor tus respuestas. El nombre del usuario será: ${conn.getName(m.sender)}`
+        content: `Eres Llama Ai una inteligencia artificial, responde de manera clara y concisa con emojis para que los usuarios entiendan mejor tus respuestas. El nombre del usuario será: ${conn.getName(m.sender)}`
       }]
 
     if (conn.aiSessions[m.sender].length > 10) {
