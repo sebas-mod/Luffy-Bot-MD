@@ -12,7 +12,7 @@ var handler = async (m, { conn, args, command }) => {
             externalAdReply: {
                 mediaUrl: '',
                 mediaType: 2,
-                description: 'anu',
+                description: dev,
                 title: packname,
                 body: 'Total Plugins',
                 previewType: 0,
