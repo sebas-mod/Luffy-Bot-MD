@@ -41,7 +41,7 @@ const handler = async (m, {
     try {
         const buffer = await fetchSticker(text);
         const outputFilePath = path.join(tmpdir(), `sticker-${Date.now()}.webp`);
-        await sharp(buffer, false, global.packname, global.author)
+        await sharp(buffer)
             .resize(512, 512, {
                 fit: 'contain',
                 background: {
