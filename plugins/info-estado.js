@@ -37,7 +37,7 @@ let handler = async (m, { conn, usedPrefix, isRowner }) => {
     txt += `☁️꙰᠁❥ *◜Velocidad◞* ⇢ ${(speed * 1000).toFixed(0) / 1000}\n`
     txt += `☁️꙰᠁❥ *◜SubBots Activos◞* ⇢ ${totalUsers || '0'}`
 
-    await conn.sendFile(m.chat, pp, 'image.jpg', txt, fkontak, null, rcanal)
+    await conn.sendFile(m.chat, pp, 'image.jpg', txt, fkontak, null, fake)
 }
 
 handler.help = ['status']
