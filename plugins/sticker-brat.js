@@ -126,7 +126,7 @@ const handler = async (m, {
 
     try {
         const buffer = await fetchSticker(text);
-        const outputFilePath = path.join(tmpdir(), `sticker-${Date.now()}.webp`);
+        const outputFilePath = path.join(tmpdir(), `sticker-${Date.now()}.webp`, global.packname, global.author);
         await sharp(buffer)
             .resize(512, 512, {
                 fit: 'contain',
