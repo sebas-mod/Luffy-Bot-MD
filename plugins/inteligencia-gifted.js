@@ -20,7 +20,7 @@ await conn.sendMessage(m.chat, {
             title: `gі𝖿𝗍ᥱძ - іᥒ𝗍ᥱᥣіgᥱᥒᥴіᥲ`,
             body: dev,
             previewType: "PHOTO",
-            thumbnailUrl: 'https://tinyurl.com/2awg2bch', 
+            thumbnailUrl: 'https://files.catbox.moe/bjmjxd.jpeg', 
             sourceUrl: canal,
         }
     }
