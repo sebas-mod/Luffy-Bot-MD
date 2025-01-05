@@ -27,7 +27,7 @@ let estilo = (text, style = 1) => {
 const defaultMenu = {
   before: `*${ucapan()} \`%name\`*
 
-➫ _\`ᴀᴄᴛɪᴠᴏ\`_ :: %uptime
+➫ _\`ᴀᴄᴛɪᴠᴏ\`_ :: %muptime
 ➫ _\`ᴜꜱᴜᴀʀɪᴏꜱ\`_ :: _%rtotalreg de %totalreg_
 ➫ _\`ᴄᴏʀᴀᴢᴏɴᴇꜱ\`_ :: _%corazones_
 ➫ _\`ᴘʀᴇꜰɪᴊᴏ\`_ :: _< . >_
