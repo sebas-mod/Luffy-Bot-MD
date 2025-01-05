@@ -34,7 +34,7 @@ const handler = async (m, { text, conn }) => {
     }
 
     try {
-        const buffer = await fetchSticker(text);
+        const buffer = await fetchSticker(text, false, global.packname, global.author);
 
         // Intenta generar el sticker con packname y autor
         try {
