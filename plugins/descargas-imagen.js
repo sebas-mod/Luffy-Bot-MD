@@ -8,7 +8,7 @@ const res = await googleImage(text)
 let image = res.getRandom()
 let link = image
 await delay(1000)
-conn.sendFile(m.chat, link, 'error.jpg', `*🔎 Resultado De: ${text}*\n ${dev}`, m, null, rcanal);
+conn.sendFile(m.chat, link, 'error.jpg', `*🔎 Resultado De: ${text}*\n ${dev}`, m, null, fake);
 
 // conn.sendButton(m.chat, `Resultado de : ${text}`, wm, link, [['SIGUIENTE', `/imagen ${text}`]], null, null, m)
 }
