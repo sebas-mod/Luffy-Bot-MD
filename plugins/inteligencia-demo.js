@@ -7,7 +7,24 @@ let handler = async (m, { conn, text }) => {
     try {
         conn.reply(m.chat, m);
         let data = await chatGpt(text)
-await conn.sendMessage(m.chat, { text: data,
+await conn.sendMessage(m.chat, { 
+    text: data,
+    contextInfo: {
+        forwardingScore: 9999999,
+        isForwarded: false, 
+        externalAdReply: {
+            showAdAttribution: true,
+            containsAutoReply: true,
+            title: `[ 𝗖𝗛𝗔𝗧𝗚𝗣𝗧 - 𝗗𝗘𝗠𝗢 ]`,
+            body: ``,
+            previewType: "PHOTO",
+            thumbnailUrl: 'https://tinyurl.com/2awg2bch', 
+            sourceUrl: 'https://whatsapp.com/channel/0029VaJxgcB0bIdvuOwKTM2Y'
+        }
+    }
+}, { quoted: m });
+
+/* await conn.sendMessage(m.chat, { text: data,
 contextInfo:{
 forwardingScore: 9999999,
 isForwarded: false, 
@@ -19,7 +36,7 @@ body: ``,
 "previewType": "PHOTO",
 thumbnailUrl: 'https://tinyurl.com/2awg2bch', 
 sourceUrl: 'https://whatsapp.com/channel/0029VaJxgcB0bIdvuOwKTM2Y'}}},
-{ quoted: m})
+{ quoted: m}) */
     } catch (err) {
         m.reply('error cik:/ ' + err);
     }
