@@ -68,7 +68,7 @@ const handler = async (m, {
         return conn.sendMessage(m.chat, {
             text: `: ${error.message}`,
         }, {
-            quoted: m
+            quoted: fkontak
         });
     }
 };
