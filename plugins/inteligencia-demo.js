@@ -19,7 +19,7 @@ await conn.sendMessage(m.chat, {
             body: dev,
             previewType: "PHOTO",
             thumbnailUrl: 'https://tinyurl.com/2awg2bch', 
-            sourceUrl: 'https://whatsapp.com/channel/0029VaJxgcB0bIdvuOwKTM2Y'
+            sourceUrl: channels,
         }
     }
 }, { quoted: m });
