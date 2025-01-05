@@ -8,7 +8,23 @@ return conn.reply(m.chat, `❀ Ingresa un texto para hablar con Chatgpt`, m)
 try {
 let api = await fetch(`https://api.giftedtech.my.id/api/ai/gpt?apikey=gifted&q=${text}`)
 let json = await api.json()
-await m.reply(json.result)
+// await m.reply(json.result)
+await conn.sendMessage(m.chat, { 
+    text: '*Gifted:* ' + json.result,
+    contextInfo: {
+        forwardingScore: 9999999,
+        isForwarded: false, 
+        externalAdReply: {
+            showAdAttribution: true,
+            containsAutoReply: true,
+            title: `gі𝖿𝗍ᥱძ - іᥒ𝗍ᥱᥣіgᥱᥒᥴіᥲ`,
+            body: dev,
+            previewType: "PHOTO",
+            thumbnailUrl: 'https://tinyurl.com/2awg2bch', 
+            sourceUrl: channels,
+        }
+    }
+}, { quoted: m });
 } catch (error) {
 console.error(error)    
 }}
