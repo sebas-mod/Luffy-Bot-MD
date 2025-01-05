@@ -142,7 +142,7 @@ const handler = async (m, {
             })
             .toFile(outputFilePath);
 
-        await conn.sendMessage(m.chat, global.packname, global.author, {
+        await conn.sendMessage(m.chat, {
             sticker: {
                 url: outputFilePath
             },
