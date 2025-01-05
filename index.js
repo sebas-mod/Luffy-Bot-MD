@@ -91,10 +91,6 @@ console.log(chalk.yellow(`╭${lineM}
 ┊${chalk.blueBright('┊')}${chalk.cyan(`📌 Descripción: ${packageJsonObj.description}`)}
 ┊${chalk.blueBright('┊')}${chalk.cyan(`👤 Creador: ${packageJsonObj.author.name}`)}
 ┊${chalk.blueBright('╰┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅')} 
-┊${chalk.blueBright('╭┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅')}
-┊${chalk.blueBright('┊')}${chalk.cyan(`⏰ Hora Actual :`)}
-┊${chalk.blueBright('┊')}${chalk.cyan(`${currentTime}`)}
-┊${chalk.blueBright('╰┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅')} 
 ╰${lineM}`));
 setInterval(() => {}, 1000)
 } catch (err) {
