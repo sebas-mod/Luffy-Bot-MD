@@ -18,6 +18,7 @@ const require = createRequire(__dirname) //Incorpora la capacidad de crear el m�
 const { name, author } = require(join(__dirname, './package.json')) //https://www.stefanjudis.com/snippets/how-to-import-json-files-in-es-modules-node-js/
 const { say } = cfonts
 const rl = createInterface(process.stdin, process.stdout)
+console.log('\n🚀 Iniciando Génesis-Ultra...');
 
 //const app = express()
 //const port = process.env.PORT || 8080;
