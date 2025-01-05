@@ -24,7 +24,7 @@ Aquí tienes la lista completa de los prebots que puedes utilizar:
 ¡Selecciona tu prebot favorito y comienza a configurarlo ahora mismo!
 
   `.trim();
-  await conn.sendFile(m.chat, imageUrl, 'pagina-panel.jpg', text, m, fake);
+  await conn.sendFile(m.chat, imageUrl, 'pagina-panel.jpg', text, m, null, fake);
 };
 handler.command = ['prebots'];
 handler.tags = ['tk'];
