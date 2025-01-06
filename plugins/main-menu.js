@@ -27,19 +27,18 @@ let estilo = (text, style = 1) => {
 const defaultMenu = {
   before: `*${ucapan()} \`%name\`*
 
-➫ _\`ᴀᴄᴛɪᴠᴏ\`_ :: %muptime
-➫ _\`ᴜꜱᴜᴀʀɪᴏꜱ\`_ :: _%rtotalreg de %totalreg_
-➫ _\`ᴄᴏʀᴀᴢᴏɴᴇꜱ\`_ :: _%corazones_
-➫ _\`ᴘʀᴇꜰɪᴊᴏ\`_ :: _< . >_
-➫ _\`ᴘᴀᴛʀᴏᴄɪɴᴀᴅᴏʀ\`_ :: _Tk-Host_
-➫ _\`ᴛᴏᴛᴀʟ ᴄᴏᴍᴀɴᴅᴏꜱ\`_ :: _%totalf_
+│♛ _\`ᴀᴄᴛɪᴠᴏ\`_ :: %muptime
+│♛ _\`ᴜꜱᴜᴀʀɪᴏꜱ\`_ :: _%rtotalreg de %totalreg_
+│♛ _\`ᴄᴏʀᴀᴢᴏɴᴇꜱ\`_ :: _%corazones_
+│♛ _\`ᴘʀᴇꜰɪᴊᴏ\`_ :: _< . >_
+│♛ _\`ᴛᴏᴛᴀʟ ᴄᴏᴍᴀɴᴅᴏꜱ\`_ :: _%totalf_
 
 ▬▭▬▭▬▭▬▭▬▭▬▭▬▭▬
  %readmore
   `.trimStart(),
-  header: '✧*̥˚ ︶︶︶︶︶︶︶︶︶  ✧*̥˚\n┊ %category \n✧*̥˚ ︶︶︶︶︶︶︶︶︶  ✧*̥˚',
-  body: '*┊➫* %cmd %iscorazones %isPremium',
-  footer: '  ︶︶︶︶︶︶︶︶︶︶︶︶\n\n',
+  header: '≫ ──── ≪•◦✧-ˏˋ⋆\n┊ %category \n⋆ˊˎ-✧◦•≫ ──── ≪',
+  body: '*│♛* %cmd %iscorazones %isPremium',
+  footer: '  ≫ ──── ≪•◦ ❈ ◦•≫ ──── ≪\n\n',
   after: ``,
   }
 let handler = async (m, { conn, usedPrefix: _p, __dirname, args, command }) => {
@@ -220,7 +219,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args, command }) => {
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
 
-    let img = 'https://i.ibb.co/6mvk6Xn/1a35aec3-8ce2-4e46-97ad-cf080ab4ee69.png'
+    let img = 'https://files.catbox.moe/uc846d.jpeg'
     await m.react('🤍')
     await conn.sendMessage(m.chat, {
       image: { url: img },
