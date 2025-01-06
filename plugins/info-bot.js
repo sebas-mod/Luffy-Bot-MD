@@ -6,7 +6,7 @@ handler.all = async function(m) {
 
   if (/^bot$/i.test(m.text) && !chat.isBanned) {
     conn.sendPresenceUpdate('recording', m.chat);
-conn.reply(m.chat, `🤍 ¡Hola! Soy Ai Genesis, en que puedo ayudarte hoy?\n\n✰ Usa *!menu* para ver mis comandos.`, m, rcanal, )
+conn.reply(m.chat, ` ¡Hola! Soy Luffy Bot MD, en que puedo ayudarte hoy?\n\n✰ Usa *!menu* para ver mis comandos.`, m, rcanal, )
 }
 if (/^sexo$/i.test(m.text)) {
 conn.reply(m.chat, `*pervertido* 🫣`, m, rcanal, )
