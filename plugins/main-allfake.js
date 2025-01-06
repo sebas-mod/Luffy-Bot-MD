@@ -28,17 +28,17 @@ console.log(`Error : ${e}`)
 }}
 
 //creador y otros
-global.creador = 'Wa.me/5493876432076'
+global.creador = 'Wa.me/5491140951014'
 global.ofcbot = `${conn.user.jid.split('@')[0]}`
 global.asistencia = 'https://wa.me/message/O4QPPHZOFDOJI1'
-global.namechannel = '✿ Genesis • Channel OFC ✿'
+global.namechannel = 'luffy • Channel OFC '
 global.listo = '✨️ *Aquí tienes ฅ^•ﻌ•^ฅ*'
 global.fotoperfil = await conn.profilePictureUrl(m.sender, 'image').catch(_ => 'https://qu.ax/QGAVS.jpg')
 
 //ids channel
-global.channelid = '120363220939514640@newsletter'
-global.canalIdYL = ["120363220939514640@newsletter", "120363205895430548@newsletter", "120363383239813951@newsletter", "120363233459118973@newsletter", "120363343366246815@newsletter"]
-global.canalNombreYL = ["✿ Genesis • Channel OFC ✿", "TK • Hosting ☁️", "Sociedad • TK 🫂", "Diario de Joan TK ✍️", "Canal de Izumi-kzx ☁️"]
+global.channelid = '120363299030870235@newsletter'
+global.canalIdYL = ["120363299030870235@newsletter"]
+global.canalNombreYL = ["Luffy Bot MD"]
 global.channelRD = await getRandomChannel()
 
 //fechas
@@ -64,13 +64,13 @@ global.wait = '🚀 Cargando...'
 global.emojis = [emoji, emoji2, emoji3, emoji4, emoji5].getRandom()
 
 //Enlaces
-var canal = 'https://whatsapp.com/channel/0029VaJxgcB0bIdvuOwKTM2Y'
-var canal2 = 'https://whatsapp.com/channel/0029VaGGynJLY6d43krQYR2g'
-var canal3 = 'https://whatsapp.com/channel/0029VawMIXi2P59oaQ2H1j0O'
-var canal4 = 'https://whatsapp.com/channel/0029VaS4zeE72WTyg5et571r'
-var canal5 = 'https://whatsapp.com/channel/0029VavYQDTBlHpcishJCZ0k'
-var github = 'https://github.com/Angelito-OFC/Genesis-AI'  
-var insta = 'https://www.instagram.com/angelito.kzx'
+var canal = 'https://whatsapp.com/channel/0029VafHsEoBqbr3qlW1aX0U'
+var canal2 = 'https://whatsapp.com/channel/0029VafHsEoBqbr3qlW1aX0U'
+var canal3 = 'https://whatsapp.com/channel/0029VafHsEoBqbr3qlW1aX0U'
+var canal4 = 'https://whatsapp.com/channel/0029VafHsEoBqbr3qlW1aX0U'
+var canal5 = 'https://whatsapp.com/channel/0029VafHsEoBqbr3qlW1aX0U'
+var github = 'https://github.com/sebas-mod'  
+var insta = 'https://www.instagram.com/sebas-d<n'
 
 global.redes = [canal, canal2, canal3, canal4, github, insta].getRandom()
 
@@ -94,7 +94,7 @@ global.taguser = '@' + m.sender.split("@s.whatsapp.net")
 var more = String.fromCharCode(8206)
 global.readMore = more.repeat(850)
 global.sticker1 = `☁️Usuario: ${nombre}
-☁️ Creador: Izumi-kzx • ☁️ Fecha: ${fecha}`;
+☁️ Creador: sebas- MD • ☁️ Fecha: ${fecha}`;
 global.sticker2 = `☁️Bot: ${botname}`
 
 //Fakes
@@ -104,12 +104,12 @@ global.fake = { contextInfo: { isForwarded: true, forwardedNewsletterMessageInfo
 }}, { quoted: m }
 
 global.icono = [ 
-'https://files.catbox.moe/odskvf.jpeg',
-'https://files.catbox.moe/33kn6n.jpeg',
-'https://files.catbox.moe/vp6kej.jpeg',
-'https://files.catbox.moe/btsvpg.jpeg',
-'https://files.catbox.moe/v591ox.jpeg',
-'https://files.catbox.moe/5lag14.jpeg'
+'https://files.catbox.moe/z9zdly.jpeg',
+'https://files.catbox.moe/iyi6ar.jpeg',
+'https://files.catbox.moe/8t5iog.jpeg',
+'https://files.catbox.moe/odp0jf.jpeg',
+'https://files.catbox.moe/05wefb.jpeg',
+'https://files.catbox.moe/yd0q6b.jpeg'
 ].getRandom()
 
 global.rcanal = { contextInfo: { isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, serverMessageId: 100, newsletterName: channelRD.name, }, externalAdReply: { showAdAttribution: true, title: botname, body: dev, mediaUrl: null, description: null, previewType: "PHOTO", thumbnailUrl: icono, sourceUrl: redes, mediaType: 1, renderLargerThumbnail: false }, }, }}
