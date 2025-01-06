@@ -64,8 +64,8 @@ global.catalogo = fs.readFileSync('./src/catalogo.png')
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
-global.group = 'https://chat.whatsapp.com/GqKwwoV2JJaJDP2SL7SddX'
-global.group2 = ''
+global.group = 'https://chat.whatsapp.com/DJkL87Jl3qFCRCUNt19UlO'
+global.group2 = 'https://chat.whatsapp.com/DJkL87Jl3qFCRCUNt19UlO'
 global.canal = 'https://whatsapp.com/channel/0029VafHsEoBqbr3qlW1aX0U'
 global.github = 'https://github.com/sebas-mod' 
 global.instagram = 'https://www.instagram.com/sebas-dzn' 
@@ -84,9 +84,9 @@ global.fakegif4 = { key: { participant: `0@s.whatsapp.net`, ...(false ? { remote
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
 global.ch = {
-ch1: '120363220939514640@newsletter',
-ch2: '120363205895430548@newsletter',
-ch3: '120363343366246815@newsletter'
+ch1: '120363299030870235@newsletter',
+ch2: '120363299030870235@newsletter',
+ch3: '120363299030870235@newsletter'
 }
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
