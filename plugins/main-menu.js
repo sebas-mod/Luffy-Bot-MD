@@ -45,7 +45,6 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args, command }) => {
 
   let tags = {
     "main": "🌟 「 *`PRINCIPAL`* 」 🌟",
-    "tk": "💻 「 *`TK-HOSTING`* 」 💻",
     "info": "ℹ️ 「 *`INFORMACION`* 」 ℹ️",
     "search": "🔍 「 *`SEARCH`* 」 🔍",
     "rpg": "🎮 「 *`RPG`* 」 🎮",
