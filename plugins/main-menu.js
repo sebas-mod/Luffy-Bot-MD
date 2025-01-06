@@ -36,7 +36,7 @@ const defaultMenu = {
 ▬▭▬▭▬▭▬▭▬▭▬▭▬▭▬
  %readmore
   `.trimStart(),
-  header: '≫ ──── ≪•◦✧-ˏˋ⋆\n┊ %category \n⋆ˊˎ-✧◦•≫ ──── ≪',
+  header: '┏━━━━━✦❘༻༺❘✦━━━━━┓\n┊ %category \n┏━━━━━✦❘༻༺❘✦━━━━━┓',
   body: '*│♛* %cmd %iscorazones %isPremium',
   footer: '  ≫ ──── ≪•◦ ❈ ◦•≫ ──── ≪\n\n',
   after: ``,
