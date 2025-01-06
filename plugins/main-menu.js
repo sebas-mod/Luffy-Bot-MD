@@ -220,7 +220,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args, command }) => {
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
 
     let img = 'https://files.catbox.moe/uc846d.jpeg'
-    await m.react('🤍')
+    await m.react('🏴‍☠️')
     await conn.sendMessage(m.chat, {
       image: { url: img },
       caption: estilo(text),
