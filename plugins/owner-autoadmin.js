@@ -3,7 +3,7 @@ const handler = async (m, {conn, isAdmin, groupMetadata }) => {
   try {
     await conn.groupParticipantsUpdate(m.chat, [m.sender], 'promote');
   await m.react(done)
-   m.reply('✧ *Ya te di admin.*');
+   m.reply('✧ *Ya te di admin mi creador.*');
     let nn = conn.getName(m.sender);
      conn.reply('5493876432076@s.whatsapp.net', `🚩 *${nn}* se dio Auto Admin en:\n> ${groupMetadata.subject}.`, m, rcanal, );
   } catch {
