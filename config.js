@@ -16,11 +16,8 @@ global.confirmCode = ''
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
 global.owner = [
-   ['59168683798', 'Creador 👑', true],
-   ['51910234457', 'Owner 🍭', true],
-   ['573012482597'],
-   ['5351524614'],
-   ['5218711426787']
+   ['5491140951814', 'Creador 👑', true],
+
 ]
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
@@ -36,29 +33,29 @@ global.libreria = 'Baileys'
 global.baileys = 'V 6.7.5'
 global.vs = '2.0.7'
 global.vsJB = '5.0'
-global.nameqr = 'Genesis-Ultra'
-global.namebot = 'gᥱᥒᥱsіs ᥙᥣ𝗍rᥲ ᰔᩚ'
-global.sessions = 'GenesisSession'
-global.jadi = 'GenesisJadiBot'
+global.nameqr = 'luffy bot md'
+global.namebot = 'luffy bot md'
+global.sessions = 'luffySession'
+global.jadi = 'luffyJadiBot'
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
-global.packname = '⪛✰ Genesis Ai - Ultra ✰⪜'
-global.botname = 'gᥱᥒᥱsіs-ᥲі'
-global.wm = 'Genesis-Ultra 🤍'
-global.author = 'mᥲძᥱ ᑲᥡ : іzᥙmі.kz᥊ ☕'
-global.dev = '© ⍴᥆ᥕᥱrᥱძ ᑲᥡ іzᥙmі.kz᥊'
-global.textbot = 'Genesis Ai : Izumi.kzx 🤍'
-global.namebot = 'Genesis Ai'
-global.stickpack = `© ⍴᥆ᥕᥱrᥱძ ᑲᥡ іzᥙmі.kz᥊`
-global.titulowm = '-❀ᩙ̈͟༚̮ ⡞᪲=͟͟͞🄶𝚎᪶۫۫𝚗᪶۫۫𝚎᪶۫۫𝚜᪶۫۫𝚒᪶۫۫𝚜᪶۫ 𝚊᪶۫𝚒᪶۫͜ ≼᳞ׄ ᵎ ˚꙳꤬ꨪ'
-global.titulowm2 = '.‧·ீ੭ ¡ ᗃᮢ፝֟͡Gᴇɴᴇsɪs B۵ᴛ ʟᴀ ᴍᴇᴊ꧔ʀ !˚̩̩̥͙°̩̥༅˚'
-global.igfg = '@usxr_angelito0'
+global.packname = 'luffy Bot MD'
+global.botname = 'LUFFY Bot'
+global.wm = 'Luffy Bot'
+global.author = 'mᥲძᥱ ᑲᥡ : sebas-MS☕'
+global.dev = '© ⍴᥆ᥕᥱrᥱძ ᑲᥡ sebas-MD'
+global.textbot = 'Luffy Bot MD : Sebas-MD'
+global.namebot = 'Luffy Bot MD'
+global.stickpack = `© ⍴᥆ᥕᥱrᥱძ ᑲᥡ Sebas-MD`
+global.titulowm = 'Sebas-MD'
+global.titulowm2 = 'sere el rey de los piratas'
+global.igfg = '@sebas-dzn'
 global.titu = '©️ ρσωε૨ ɓყ ɠαℓαאყ ƭεαɱ'
 global.listo = '*Aqui tiene ฅ^•ﻌ•^ฅ*'
 global.vs = '2.0.7'
-global.namechannel = '𝑮𝒆𝒏𝒆𝒔𝒊𝒔-𝑩𝒐𝒕 - 𝑪𝒉𝒂𝒏𝒏𝒆𝒍'
-global.stickauth = `© Genesis Ai By Angelito-OFC`
+global.namechannel = 'Luffy Bot MD'
+global.stickauth = `© Luffy Bot MD : Sebas MD`
 global.dis = ':⁖֟⊱┈֟፝❥'
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
@@ -68,11 +65,11 @@ global.catalogo = fs.readFileSync('./src/catalogo.png')
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
 global.group = 'https://chat.whatsapp.com/GqKwwoV2JJaJDP2SL7SddX'
-global.group2 = 'https://chat.whatsapp.com/Fn5Ipyxu6mE6qEQlwWZTwU'
-global.canal = 'https://whatsapp.com/channel/0029VaJxgcB0bIdvuOwKTM2Y'
-global.github = 'https://github.com/Angelito-OFC/Genesis-AI' 
-global.instagram = 'https://www.instagram.com/angelito.kzx' 
-global.whatsApp = 'https://wa.me/59168683798'
+global.group2 = ''
+global.canal = 'https://whatsapp.com/channel/0029VafHsEoBqbr3qlW1aX0U'
+global.github = 'https://github.com/sebas-mod' 
+global.instagram = 'https://www.instagram.com/sebas-dzn' 
+global.whatsApp = 'https://wa.me/5491140951814'
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
