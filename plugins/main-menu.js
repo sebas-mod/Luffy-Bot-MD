@@ -36,9 +36,9 @@ const defaultMenu = {
 ▬▭▬▭▬▭▬▭▬▭▬▭▬▭▬
  %readmore
   `.trimStart(),
-  header: '┏━━━━━✦❘༻༺❘✦━━━━━┓\n┊ %category \n┏━━━━━✦❘༻༺❘✦━━━━━┓',
+  header: '┏━━━━━✦❘༻༺❘✦━━━━━┓\n┊ %category \n┗━━━━━✦❘༻༺❘✦━━━━━┛',
   body: '*│♛* %cmd %iscorazones %isPremium',
-  footer: '  ≫ ──── ≪•◦ ❈ ◦•≫ ──── ≪\n\n',
+  footer: '  ┗━━━━━━━✦❘༻༺❘✦━━━━━━━┛\n\n',
   after: ``,
   }
 let handler = async (m, { conn, usedPrefix: _p, __dirname, args, command }) => {
