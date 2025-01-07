@@ -29,7 +29,7 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
   let sn = createHash('md5').update(m.sender).digest('hex').slice(0, 6);
 
   // Descargar imagen como Buffer
-  let imgUrl = `https://qu.ax/rJHDD.jpg`;
+  let imgUrl = `https://files.catbox.moe/uc846d.jpeg`;
   let imgBuffer;
   try {
     imgBuffer = await (await fetch(imgUrl)).buffer();
@@ -51,7 +51,7 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
   txt += `\`━━━━━━━━━━━━━━━━━━━━\``;
 //  txt += `> Escribe *${usedPrefix}profile* para ver tu perfil.`;
 
-  let dev = '© ⍴᥆ᥕᥱrᥱძ ᑲᥡ іzᥙmі.kz᥊';
+  let dev = '© ⍴᥆ᥕᥱrᥱძ ᑲᥡ Sebas-MD';
 
   // Enviar mensaje con imagen
   await conn.sendMessage(m.chat, {
