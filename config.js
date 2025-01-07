@@ -40,23 +40,23 @@ global.jadi = 'luffyJadiBot'
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
-global.packname = 'luffy Bot MD'
-global.botname = 'LUFFY Bot'
-global.wm = 'Luffy Bot'
-global.author = 'mᥲძᥱ ᑲᥡ : sebas-MS☕'
-global.dev = '© ⍴᥆ᥕᥱrᥱძ ᑲᥡ sebas-MD'
-global.textbot = 'Luffy Bot MD : Sebas-MD'
-global.namebot = 'Luffy Bot MD'
-global.stickpack = `© ⍴᥆ᥕᥱrᥱძ ᑲᥡ Sebas-MD`
-global.titulowm = 'Sebas-MD'
+global.packname = '𝐋𝐮𝐟𝐟𝐲 𝐁𝐨𝐭 𝐌𝐃'
+global.botname = '𝐋𝐮𝐟𝐟𝐲 𝐁𝐨𝐭 𝐌𝐃'
+global.wm = '𝐋𝐮𝐟𝐟𝐲 𝐁𝐨𝐭 𝐌𝐃'
+global.author = '𝑴𝒂𝒅𝒆 𝑩𝒚 : 𝑺𝒆𝒃𝒂𝒔-𝑴𝑫☕'
+global.dev = '© 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝑩𝒚: 𝑺𝒆𝒃𝒂𝒔-𝑴𝑫'
+global.textbot = '𝐋𝐮𝐟𝐟𝐲 𝐁𝐨𝐭 𝐌𝐃 : 𝑺𝒆𝒃𝒂𝒔-𝑴𝑫'
+global.namebot = '𝐋𝐮𝐟𝐟𝐲 𝐁𝐨𝐭 𝐌𝐃'
+global.stickpack = `© 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝑩𝒚: 𝑺𝒆𝒃𝒂𝒔-𝑴𝑫`
+global.titulowm = '𝑺𝒆𝒃𝒂𝒔-𝑴𝑫'
 global.titulowm2 = 'sere el rey de los piratas'
 global.igfg = '@sebas-dzn'
 global.titu = '©️ ρσωε૨ ɓყ ɠαℓαאყ ƭεαɱ'
 global.listo = '*Aqui tiene ฅ^•ﻌ•^ฅ*'
 global.vs = '2.0.7'
-global.namechannel = 'Luffy Bot MD'
-global.stickauth = `© Luffy Bot MD : Sebas MD`
-global.dis = ':⁖֟⊱┈֟፝❥'
+global.namechannel = '𝐋𝐮𝐟𝐟𝐲 𝐁𝐨𝐭 𝐌𝐃'
+global.stickauth = `© 𝐋𝐮𝐟𝐟𝐲 𝐁𝐨𝐭 𝐌𝐃 : 𝑺𝒆𝒃𝒂𝒔-𝑴𝑫`
+global.dis = '♕⫸'
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
