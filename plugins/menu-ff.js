@@ -186,8 +186,8 @@ await m.react('🎳')
         text: text,
         contextInfo: {
         externalAdReply: {
-        title: '𝐆𝐞𝐧𝐞𝐬𝐢𝐬𝐁𝐨𝐭-𝐌𝐃',
-        body: '©𝟐𝟎𝟐𝟒 𝐀𝐧𝐠𝐞𝐥𝐢𝐭𝐨-𝐎𝐅𝐂',
+        title: 'Luffy-MD',
+        body: 'sebas-MD',
         thumbnailUrl: img,
         sourceUrl: global.canal,
         mediaType: 1,
@@ -200,9 +200,9 @@ await m.react('🎳')
     throw e
   }
 }
-handler.help = ['menugame']
+handler.help = ['menuff']
 handler.tags = ['main']
-handler.command = ['menugame']
+handler.command = ['menuff']
 
 export default handler
 
