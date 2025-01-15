@@ -32,7 +32,7 @@ ${yo}
 conn.sendFile(m.chat, pp, 'error.jpg', texto, m, false, { mentions: [...groupAdmins.map(v => v.id), owner] })
 
 }
-handler.help = ['admins']
+handler.help = ['4vs4']
 handler.tags = ['ff']
 handler.command = /^(ff|4vs4)$/i
 handler.group = true
