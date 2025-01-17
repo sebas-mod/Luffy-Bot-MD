@@ -17,13 +17,13 @@ const require = createRequire(__dirname)
 const { name, author } = require(join(__dirname, './package.json'))
 const { say } = cfonts
 const rl = createInterface(process.stdin, process.stdout)
-console.log('\n🚀 Iniciando Génesis-Ultra...');
+console.log('\n🚀 Iniciando Luffy-MD...');
 
-say('Genesis\nUltra', {
+say('luffy\nMD', {
 font: 'chrome',
 align: 'center',
 gradient: ['red', 'magenta']})
-say(`Made By - Izumi-kzx`, {
+say(`Made By - Sebas-MD`, {
 font: 'console',
 align: 'center',
 gradient: ['red', 'magenta']})
