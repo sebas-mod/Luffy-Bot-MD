@@ -1,7 +1,7 @@
 {
-"name": "Genesis-Ultra",
-"version": "2.0.7",
-"description": "Una de las mejores Bots",
+"name": "Luffy-MD",
+"version": "2.0.0",
+"description": "Uno de los mejores Bots",
 "main": "index.js",
 "type": "module",
 "directories": {
@@ -18,16 +18,16 @@
 "eslint": "eslint .",
 "eslintfix": "eslint --fix ."
 },
-"homepage": "https://github.com/Izumi-kzx/Genesis-Ai",
+"homepage": "https://github.com/sebas-mod/Luffy-Bot-MD",
 "author": {
-"name": "Izumi.kzx"
+"name": "Sebas-MD"
 },
 "repository": {
 "type": "git",
-"url": "git+https://github.com/Izumi-kzx/Genesis-Ai.git"
+"url": "git+https://github.com/sebas-mod/Luffy-Bot-MD.git"
 },
 "bugs": {
-"url": "https://github.com/Izumi-kzx/Genesis-Ai/issues"
+"url": "https://github.com/sebas-mod/Luffy-Bot-MD/issues"
 },
 "license": "GPL-3.0-or-later",
 "dependencies": {
