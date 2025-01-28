@@ -1,76 +1,46 @@
-// *[ ❀ YTMP4 ]*
-import fetch from 'node-fetch'
+/* 
+- Downloader Ytmp4 By Izumi-kzx
+- https://whatsapp.com/channel/0029VaJxgcB0bIdvuOwKTM2Y
+*/
+import fetch from 'node-fetch';
 
-let handler = async (m, { conn, text, usedPrefix, command }) => {
-if (!text) return conn.reply(m.chat, `❀ Ingresa un  link de youtube`, m, rcanal)
-    
-try {
-let api = await (await fetch(`https://api.siputzx.my.id/api/d/ytmp4?url=${text}`)).json()
-let dl_url = api.data.dl
+const handler = async (m, { conn, text, usedPrefix, command }) => {
+  await m.react('✖');
+  if (!text) throw Proporcióname el enlace de YouTube para que pueda ayudarte. 🎥;
 
-await conn.sendMessage(m.chat, { video: { url: dl_url }, caption: null }, { quoted: m })
-} catch (error) {
-console.error(error)
-}}
-
-handler.command = ['ytmp4']
-
-export default handler
-
-
-
-/* import fetch from 'node-fetch';
-
-let handler = async (m, { conn, text }) => {
-  if (!text) {
-    await m.react('✖️');
-    return conn.reply(m.chat, `☁️ Ingresa un enlace de YouTube.`, m, fake);
-  }
+  await m.react('🕓');
 
   try {
-    await m.react('🕒');
+    const apiKey = 'xenzpedo';
+    const response = await fetch(https://api.botcahx.eu.org/api/dowloader/yt?url=${encodeURIComponent(text)}&apikey=${apiKey});
+    const result = await response.json();
 
-    let api = await fetch(`https://restapi.apibotwa.biz.id/api/ytmp4?url=${encodeURIComponent(text)}`);
-    let json = await api.json();
+    if (result.status && result.result && result.result.mp4) {
+      const { title, thumb, mp4, duration } = result.result;
 
-    if (!json || !json.data || !json.data.download || !json.data.download.url) {
-      await m.react('❌');
-      return conn.reply(
+      await conn.sendMessage(
         m.chat,
-        `❌ No se pudo obtener el enlace de descarga. Verifica el enlace y vuelve a intentarlo.`,
-        m
+        {
+          video: { url: mp4 },
+          mimetype: 'video/mp4',
+          caption: *🍟 Título:* ${title}\n*🍟 Duración:* ${Math.floor(duration / 60)}:${duration % 60} minutos,
+          thumbnail: await (await fetch(thumb)).buffer(),
+        },
+        { quoted: m }
       );
+
+      await m.react('✅');
+    } else {
+      throw new Error('Error: No se pudo obtener el archivo MP4');
     }
-
-    let title = json.data.metadata.title || "Sin título";
-    let dl_url = json.data.download.url;
-    let fileName = json.data.filename || "video";
-
-    await conn.sendMessage(
-      m.chat,
-      {
-        video: { url: dl_url },
-        caption: `🎥 *Título*: ${title}`,
-        fileName: `${fileName}.mp4`,
-        mimetype: "video/mp4",
-      },
-      { quoted: m }
-    );
-
-    await m.react('✅');
-
   } catch (error) {
-    console.error(error);
     await m.react('❌');
-    await conn.reply(
-      m.chat,
-      `❌ Ocurrió un error al procesar tu solicitud. Por favor, intenta nuevamente más tarde.`,
-      m
-    );
+    m.reply(❌ *Error:* ${error.message || 'Ocurrió un error desconocido'});
   }
 };
 
-handler.help = ['ytmp4 *<url>*']
-handler.tags = ['dl']
+handler.help = ['ytmp4 <url>'];
 handler.command = ['ytmp4'];
-export default handler; */
+handler.tags = ['dl'];
+
+export default handler;
