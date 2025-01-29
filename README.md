@@ -1,11 +1,7 @@
-¡Claro! Aquí tienes cómo quedaría el código de tu `README.md` con los cambios solicitados:
-
----
-
 【 **`L U F F Y - B O T - MD`** 】  
-<a href=""><img src="https://readme-typing-svg.demolab.com?font=Oswald&weight=300&size=37&duration=3000&pause=100&color=000000&background=601D6E00&center=true&vCenter=true&repeat=true&random=FALSO&width=660&height=90&lines=Sebas-MD+lanzó+la+mejor+versión;De+Luffy+Bot+MD+-+2.0.0;Con+nuevos+comandos+y+mejoras;Luffy-Bot+El+Mejor+Bot+De+WhatsApp" alt="Typing SVG"/></a>
+<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Oswald&weight=300&size=37&duration=3000&pause=100&color=000000&background=601D6E00&center=true&vCenter=true&repeat=true&random=FALSO&width=660&height=90&lines=Sebas-MD+lanzó+la+mejor+versión;De+Luffy+Bot+MD+-+2.0.0;Con+nuevos+comandos+y+mejoras;Luffy-Bot+El+Mejor+Bot+De+WhatsApp" alt="Typing SVG"/></a>
 
-![img](https://i.ibb.co/1djcb0T/file.jpg)
+![img](https://files.catbox.moe/8t5iog.jpeg)
 
 ### **`☠️ Información importante`**
 
@@ -45,7 +41,3 @@ Luffy-Bot-MD recibe **soporte semanal** si llegas a ver un error **repetitivamen
 <a href="https://github.com/sebas-mod"><img src="https://github.com/sebas-mod.png" width="130" height="130" alt="Sebas MD"/></a>
 
 **`¡GRACIAS POR PREFERIR ESTE PROYECTO!` ☕**
-
----
-
-¡Así es como quedaría! ¿Hay algo más que te gustaría ajustar o agregar?
