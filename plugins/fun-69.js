@@ -7,7 +7,6 @@ let handler = async (m, { conn, usedPrefix }) => {
     let who;
     if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : false;
     else who = m.chat;
-    if (!db.data.chats[m.chat].nsfw && m.isGroup) return m.reply('✧ *¡Estos comandos están desactivados!*');
     if (!who) throw m.reply('Etiqueta o menciona a alguien');
 
     let user = global.db.data.users[who];
