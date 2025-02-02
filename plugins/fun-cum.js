@@ -7,7 +7,6 @@ import { sticker } from '../lib/sticker.js';
 
 let handler = async (m, { conn, usedPrefix }) => {
     let who;
-    if (!db.data.chats[m.chat].nsfw && m.isGroup) return m.reply('✧ *¡Estos comandos están desactivados!*');
     if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : false;
     else who = m.chat;
     if (!who) throw m.reply('Etiqueta o menciona a alguien');
