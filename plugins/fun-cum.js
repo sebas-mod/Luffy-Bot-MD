@@ -41,7 +41,7 @@ let pp11 = 'https://telegra.ph/file/acdb5c2703ee8390aaf33.mp4'
 }
 
 handler.help = ['cum @tag'];
-handler.tags = ['fun'];
+handler.tags = ['rpg'];
 handler.command = ['cum'];
 handler.register = true;
 handler.group = true;
