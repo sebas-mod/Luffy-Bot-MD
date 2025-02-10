@@ -30,9 +30,9 @@ const handler = async (m, { conn, args, command }) => {
       return;
     }
 
-    if (partidas[partidaId].jugadores.length < 3) {
+    if (partidas[partidaId].jugadores.length < 6) {
       partidas[partidaId].jugadores.push(name);
-    } else if (partidas[partidaId].suplentes.length < 3) {
+    } else if (partidas[partidaId].suplentes.length < 4) {
       partidas[partidaId].suplentes.push(name);
     } else {
       conn.reply(m.chat, "¡La escuadra y suplentes ya están llenos! Lista cerrada.", m);
@@ -40,7 +40,7 @@ const handler = async (m, { conn, args, command }) => {
       return;
     }
 
-    if (partidas[partidaId].jugadores.length === 3 && partidas[partidaId].suplentes.length === 3) {
+    if (partidas[partidaId].jugadores.length === 6 && partidas[partidaId].suplentes.length === 4) {
       conn.reply(m.chat, "¡Lista llena, suerte en el VS!", m);
     }
 
