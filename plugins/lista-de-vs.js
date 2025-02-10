@@ -19,14 +19,6 @@ const handler = async (m, { conn, args, command }) => {
 
     if (partidas[partidaId].jugadores.includes(name) || partidas[partidaId].suplentes.includes(name)) {
       conn.reply(m.chat, "¡Ya estás anotado en esta partida!", m);
-      const mensaje = generarMensaje(partidas[partidaId]);
-      conn.sendMessage(m.chat, {
-        text: mensaje,
-        footer: "¡Anótate para el 4vs4!",
-        buttons: [{ buttonId: `.anotar ${partidaId}`, buttonText: { displayText: "📌 Anotar" } }],
-        viewOnce: true,
-        headerType: 1
-      }, { quoted: m });
       return;
     }
 
@@ -36,12 +28,7 @@ const handler = async (m, { conn, args, command }) => {
       partidas[partidaId].suplentes.push(name);
     } else {
       conn.reply(m.chat, "¡La escuadra y suplentes ya están llenos! Lista cerrada.", m);
-      conn.sendMessage(m.chat, "Lista llena, suerte en el VS!", m);
       return;
-    }
-
-    if (partidas[partidaId].jugadores.length === 6 && partidas[partidaId].suplentes.length === 4) {
-      conn.reply(m.chat, "¡Lista llena, suerte en el VS!", m);
     }
 
     const mensaje = generarMensaje(partidas[partidaId]);
@@ -109,8 +96,8 @@ function generarMensaje(partida) {
     })
     .join("\n");
 
-  const escuadra = partida.jugadores.map(jugador => `🥷 ${jugador}`).join("\n") || "-";
-  const suplentes = partida.suplentes.map(suplente => `🥷 ${suplente}`).join("\n") || "-";
+  const escuadra = Array(6).fill('-').map((_, i) => partida.jugadores[i] ? `🥷 ${partida.jugadores[i]}` : '-').join("\n");
+  const suplentes = Array(4).fill('-').map((_, i) => partida.suplentes[i] ? `🥷 ${partida.suplentes[i]}` : '-').join("\n");
 
   return `*4 VERSUS 4 ${partida.modalidad}*\n${horarios}\n*REGLAS:* ${partida.reglas}\n𝗘𝗦𝗖𝗨𝗔𝗗𝗥𝗔\n${escuadra}\n𝗦𝗨𝗣𝗟𝗘𝗡𝗧𝗘𝗦\n${suplentes}`;
 }
