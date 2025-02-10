@@ -13,12 +13,12 @@ const handler = async (m, { conn, args, command }) => {
     const partidaId = args[0];
 
     if (!partidas[partidaId]) {
-      conn.reply(m.chat, "𝐧𝐨 𝐡𝐚𝐲 𝐮𝐧𝐚 𝐩𝐚𝐫𝐭𝐢𝐝𝐚 𝐚𝐜𝐭𝐢𝐯𝐚 𝐞𝐧 𝐞𝐬𝐭𝐞 𝐦𝐨𝐦𝐞𝐧𝐭𝐨.", m);
+      conn.reply(m.chat, "No hay una partida activa en este momento.", m);
       return;
     }
 
     if (partidas[partidaId].jugadores.includes(name) || partidas[partidaId].suplentes.includes(name)) {
-      conn.reply(m.chat, "¡𝐲𝐚 𝐞𝐬𝐭𝐚𝐬 𝐚𝐧𝐨𝐭𝐚𝐝𝐨 𝐞𝐧 𝐞𝐬𝐭𝐚 𝐩𝐚𝐫𝐭𝐢𝐝𝐚!", m);
+      conn.reply(m.chat, "¡Ya estás anotado en esta partida!", m);
       return;
     }
 
@@ -27,7 +27,7 @@ const handler = async (m, { conn, args, command }) => {
     } else if (partidas[partidaId].suplentes.length < 2) {
       partidas[partidaId].suplentes.push(name);
     } else {
-      conn.reply(m.chat, "¡𝐋𝐚 𝐞𝐬𝐜𝐮𝐚𝐝𝐫𝐚 𝐲 𝐬𝐮𝐩𝐥𝐞𝐧𝐭𝐞𝐬 𝐲𝐚 𝐞𝐬𝐭á𝐧 𝐥𝐥𝐞𝐧𝐨𝐬! 𝐋𝐢𝐬𝐭𝐚 𝐜𝐞𝐫𝐫𝐚𝐝𝐚.", m);
+      conn.reply(m.chat, "¡La escuadra y suplentes ya están llenos! Lista cerrada.", m);
       return;
     }
 
@@ -43,7 +43,7 @@ const handler = async (m, { conn, args, command }) => {
   }
 
   if (args.length < 4) {
-    conn.reply(m.chat, 'Debes proporcionar esto.\n*.4vs4 <región> <hora> <Bandera> <modalidad>*\n\n*Regiones\nSR (Sudamérica)\nEU (Estados Unidos)\n\n*Ejemplo:*\n.4vs4 SR 22:00 🇦🇷 infinito\n.4vs4 SR 22:00 🇦🇷 vivido\n.4vs4 EU 20:00 🇲🇽 infinito\n.4vs4 EU 20:00 🇲🇽 vivido', m);
+    conn.reply(m.chat, 'Debes proporcionar esto.\n*.4vs4 <región> <hora> <Bandera> <modalidad>\n\n*Regiones\nSR (Sudamérica)\nEU (Estados Unidos)\n\n*Ejemplo:*\n.4vs4 SR 22:00 🇦🇷 infinito\n.4vs4 SR 22:00 🇦🇷 vivido\n.4vs4 EU 20:00 🇲🇽 infinito\n.4vs4 EU 20:00 🇲🇽 vivido', m);
     return;
   }
 
