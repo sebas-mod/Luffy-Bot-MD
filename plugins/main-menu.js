@@ -60,6 +60,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args, command }) => {
     "anime": "🌸 「 *`ANIME`* 」 🌸",
     "group": "👥 「 *`GROUP`* 」 👥",
     "owner": "👑 「 *`OWNER`* 」 👑",
+    "audios": "「 *`MODIFICADOR DE VOZ`* 」",
   }
 
   try {
