@@ -4,6 +4,15 @@ const palabras = [
   "delfín", "serpiente", "hámster", "mosquito", "abeja", "negro", "television", 
   "computadora", "botsito", "reggaeton", "economía", "electrónica", "facebook", 
   "WhatsApp", "Instagram", "tiktok", "presidente", "bot", "películas", "gata", "gatabot"
+  "javascript", "programacion", "ahorcado", "desarrollo", "computadora", "internet", "servidor", "cliente", "framework", "biblioteca", 
+  "variable", "funcion", "condicional", "bucle", "recursion", "compilador", "interprete", "sintaxis", "algoritmo", "estructura", 
+  "dato", "objeto", "clase", "herencia", "polimorfismo", "encapsulacion", "modularidad", "optimizacion", "inteligencia", "artificial", 
+  "robotica", "automatizacion", "aprendizaje", "profundo", "redes", "neuronales", "procesador", "memoria", "almacenamiento", "ciberseguridad", 
+  "encriptacion", "firewall", "criptografia", "hash", "contraseña", "seguridad", "privacidad", "navegador", "motor", "busqueda", 
+  "indexacion", "rendimiento", "escalabilidad", "concurrencia", "asincronia", "promesa", "callback", "evento", "desarrollo", "frontend", 
+  "backend", "fullstack", "base", "datos", "relacional", "sql", "nosql", "mongodb", "postgresql", "mysql", "sqlite", "docker", 
+  "kubernetes", "servidorless", "lambda", "aplicacion", "movil", "android", "ios", "react", "angular", "vue", "svelte", "typescript", 
+  "javascript", "python", "java", "csharp", "golang", "swift", "kotlin", "ruby", "php", "rust"
 ];
 
 const intentosMaximos = 6;
