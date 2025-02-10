@@ -22,9 +22,9 @@ const handler = async (m, { conn, args, command }) => {
       return;
     }
 
-    if (partidas[partidaId].jugadores.length < 6) {
+    if (partidas[partidaId].jugadores.length < 4) {
       partidas[partidaId].jugadores.push(name);
-    } else if (partidas[partidaId].suplentes.length < 4) {
+    } else if (partidas[partidaId].suplentes.length < 2) {
       partidas[partidaId].suplentes.push(name);
     } else {
       conn.reply(m.chat, "¡La escuadra y suplentes ya están llenos! Lista cerrada.", m);
@@ -96,8 +96,8 @@ function generarMensaje(partida) {
     })
     .join("\n");
 
-  const escuadra = Array(6).fill('-').map((_, i) => partida.jugadores[i] ? `🥷 ${partida.jugadores[i]}` : '-').join("\n");
-  const suplentes = Array(4).fill('-').map((_, i) => partida.suplentes[i] ? `🥷 ${partida.suplentes[i]}` : '-').join("\n");
+  const escuadra = Array(4).fill('-').map((_, i) => partida.jugadores[i] ? `🥷 ${partida.jugadores[i]}` : '-').join("\n");
+  const suplentes = Array(2).fill('-').map((_, i) => partida.suplentes[i] ? `🥷 ${partida.suplentes[i]}` : '-').join("\n");
 
   return `*4 VERSUS 4 ${partida.modalidad}*\n${horarios}\n*REGLAS:* ${partida.reglas}\n𝗘𝗦𝗖𝗨𝗔𝗗𝗥𝗔\n${escuadra}\n𝗦𝗨𝗣𝗟𝗘𝗡𝗧𝗘𝗦\n${suplentes}`;
 }
