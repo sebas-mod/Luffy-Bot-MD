@@ -5,7 +5,7 @@ import ws from 'ws';
 
 let handler = async (m, { conn: _envio, command, usedPrefix, args, text, isOwner}) => {
 
-let img = await (await fetch(`https://ibb.co/Ps2RZfkf`)).buffer()
+let img = await (await fetch(`https://ibb.co/Ps2RZfkf/ee415abc-626b-4659-9a9e-a313c159512b.png`)).buffer()
 
 const isCommand1 = /^(deletesesion|deletebot|deletesession|deletesesaion)$/i.test(command)  
 const isCommand2 = /^(stop|pausarai|pausarbot)$/i.test(command)  
