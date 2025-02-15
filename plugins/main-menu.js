@@ -164,7 +164,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args, command }) => {
         help: Array.isArray(plugin.tags) ? plugin.help : [plugin.help],
         tags: Array.isArray(plugin.tags) ? plugin.tags : [plugin.tags],
         prefix: 'customPrefix' in plugin,
-        corazones: plugin.corazones,
+        calaveras: plugin.calaveras,
         premium: plugin.premium,
         enabled: !plugin.disabled,
       }
@@ -190,7 +190,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args, command }) => {
           ...help.filter(menu => menu.tags && menu.tags.includes(tag) && menu.help).map(menu => {
             return menu.help.map(help => {
               return body.replace(/%cmd/g, menu.prefix ? help : '%_p' + help)
-                .replace(/%iscorazones/g, menu.corazones ? '◜🪙◞' : '')
+                .replace(/%iscalaveras/g, menu.calaveras ? '◜🪙◞' : '')
                 .replace(/%isPremium/g, menu.premium ? '◜🎫◞' : '')
 //                .replace(/%iscorazones/g, menu.corazones ? corazones : '')
 //                .replace(/%isPremium/g, menu.premium ? lprem : '')
