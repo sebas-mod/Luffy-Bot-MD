@@ -37,7 +37,7 @@ const defaultMenu = {
  %readmore
   `.trimStart(),
   header: '┏━━━━━✦❘༻༺❘✦━━━━━┓\n┊ %category \n┗━━━━━✦❘༻༺❘✦━━━━━┛',
-  body: '*│♛* %cmd %iscorazones %isPremium',
+  body: '*│♛* %cmd %iscalaveras %isPremium',
   footer: '  ┗━━━━━✦❘༻༺❘✦━━━━━┛\n\n',
   after: ``,
   }
