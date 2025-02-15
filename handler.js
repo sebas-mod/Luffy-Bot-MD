@@ -372,8 +372,8 @@ if (xp > 200)
 m.reply('chirrido -_-')
 else
 m.exp += xp
-if (!isPrems && plugin.corazones && global.db.data.users[m.sender].corazones < plugin.corazones * 1) {
-conn.reply(m.chat, `Se agotaron tus *🤍 Corazones*`, m, null, fake)
+if (!isPrems && plugin.corazones && global.db.data.users[m.sender].corazones < plugin.calaveras * 1) {
+conn.reply(m.chat, `Se agotaron tus *☠️ Calaveras*`, m, null, fake)
 continue
 }
 let extra = {
@@ -402,7 +402,7 @@ __filename
 try {
 await plugin.call(this, m, extra)
 if (!isPrems)
-m.corazones = m.corazones || plugin.corazones || false
+m.calaveras = m.calaveras || plugin.calaveras || false
 } catch (e) {
 m.error = e
 console.error(e)
@@ -419,8 +419,8 @@ await plugin.after.call(this, m, extra)
 } catch (e) {
 console.error(e)
 }}
-if (m.corazones)
-conn.reply(m.chat, `Utilizaste *${+m.corazones}* 🤍`, m, null, fake)
+if (m.calaveras)
+conn.reply(m.chat, `Utilizaste *${+m.calaveras}* ☠️`, m, null, fake)
 }
 break
 }}
@@ -441,7 +441,7 @@ await conn.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id:
 }
 if (m.sender && (user = global.db.data.users[m.sender])) {
 user.exp += m.exp
-user.corazones -= m.corazones * 1
+user.calaveras -= m.calaveras * 1
 }
 
 let stat
