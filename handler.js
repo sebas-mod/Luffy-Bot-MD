@@ -38,8 +38,8 @@ global.db.data.users[m.sender] = {}
 if (user) {
 if (!isNumber(user.exp))
 user.exp = 0
-if (!isNumber(user.corazones))
-user.corazones = 10
+if (!isNumber(user.calaveras))
+user.calaveras = 10
 if (!('muto' in user))
 user.muto = false
 if (!('premium' in user)) 
@@ -71,7 +71,7 @@ user.bank = 0
 } else
                 global.db.data.users[m.sender] = {
 exp: 0,
-corazones: 10,
+calaveras: 10,
 muto: false,
 registered: false,
 name: m.name,
