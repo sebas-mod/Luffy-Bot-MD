@@ -5,7 +5,11 @@ import ws from 'ws';
 
 let handler = async (m, { conn: _envio, command, usedPrefix, args, text, isOwner}) => {
 
-let img = await (await fetch(`https://ibb.co/B5DFhRv5/5d85c33f775d6c6fefef774b3cf9d387`)).buffer()
+let img = [ 
+    'https://i.ibb.co/VYMKmbM/file.jpg',
+    'https://i.ibb.co/Zf4YQqC/file.jpg',
+    'https://i.ibb.co/10QK4kb/file.jpg'
+  ].getRandom()
 
 const isCommand1 = /^(deletesesion|deletebot|deletesession|deletesesaion)$/i.test(command)  
 const isCommand2 = /^(stop|pausarai|pausarbot)$/i.test(command)  
@@ -73,11 +77,13 @@ return resultado;
 const message = users.map((v, index) => `👤 *\`「 ${index + 1} 」\` ${v.user.name || 'Sub-Bot'}*\n📎 Wa.me/${v.user.jid.replace(/[^0-9]/g, '')}?text=${usedPrefix}menu\n🕑 Online: ${ v.uptime ? convertirMsADiasHorasMinutosSegundos(Date.now() - v.uptime) : 'Desconocido'}`).join('\n\n__________________________\n\n');
 const replyMessage = message.length === 0 ? `No hay Sub-Bots disponible por el momento, verifique mas tarde.` : message;
 const totalUsers = users.length;
-const responseMessage = ` *🇸 🇺 🇧 -🇧 🇴 🇹 🇸 - 🇱  🇺  🇫  🇫  🇾 * \n\n_Total Subbots Activos :_ ${totalUsers || '0'}\n\n${replyMessage.trim()}`.trim();
+const responseMessage = `☁️ *S U B B O T S - G E N E S I S* ☁️\n\n_Total Subbots Activos :_ ${totalUsers || '0'}\n\n${replyMessage.trim()}`.trim();
 await m.react('☁️')
 await _envio.sendFile(m.chat, img, 'thumbnail.jpg', responseMessage, m, null, fake, false, { mentions: _envio.parseMention(responseMessage) })
 break   
 }}
 
+handler.help = ['deletesesion', 'deletebot', 'deletesession', 'deletesession', 'stop', 'pausarai', 'pausarbot', 'bots', 'sockets', 'socket'];
+handler.tags = ['serbot'];
 handler.command = ['deletesesion', 'deletebot', 'deletesession', 'deletesession', 'stop', 'pausarai', 'pausarbot', 'bots', 'sockets', 'socket']
 export default handler
