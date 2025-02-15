@@ -18,10 +18,10 @@ return;
   }
   const users = global.db.data.users[who];
   const rob = Math.floor(Math.random() * ro);
-  if (users.corazones < rob) return conn.reply(m.chat, `😔 @${who.split`@`[0]} Tiene menos de *${ro} Corazones 🤍*\nNo robes a un pobre :v`, m, {mentions: [who]});
+  if (users.corazones < rob) return conn.reply(m.chat, `😔 @${who.split`@`[0]} Tiene menos de *${ro} Calaveras ☠️*\nNo robes a un pobre :v`, m, {mentions: [who]});
   global.db.data.users[m.sender].cookies += rob;
   global.db.data.users[who].corazones -= rob;
-  conn.reply(m.chat, `*☁️ Robastes ${rob} Corazones 🤍 a @${who.split`@`[0]}*`, m, {mentions: [who]});
+  conn.reply(m.chat, `*☁️ Robastes ${rob} Calaveras ☠️ a @${who.split`@`[0]}*`, m, {mentions: [who]});
   global.db.data.users[m.sender].lastrob2 = new Date * 1;
 };
 handler.help = ['rob2'];
