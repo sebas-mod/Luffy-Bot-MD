@@ -8,7 +8,7 @@ let handler = async (m, { conn, text }) => {
     else who = m.chat
     if (!who) return m.reply('⚠️️ *Taguea al usuario*')
     let txt = text.replace('@' + who.split`@`[0], '').trim()
-    if (!txt) return m.reply('⚠️️ Ingrese la cantidad de *Galletas* que quiere añadir')
+    if (!txt) return m.reply('⚠️️ Ingrese la cantidad de *calaveras☠️* que quiere añadir')
     if (isNaN(txt)) return m.reply('⚠️ *sólo números*')
     let dmt = parseInt(txt)
     let cookies = dmt
@@ -22,12 +22,12 @@ let handler = async (m, { conn, text }) => {
 ┏━━━━━━━━━━━⬣
 ┃⋄ *Total:* ${dmt}
 ┗━━━━━━━━━━━⬣`, m, rcanal)
-   conn.fakeReply(m.chat, `⊜ *_Recibiste_* \n\n *_+${dmt} Galletas 🍪_*`, who, m.text)
+   conn.fakeReply(m.chat, `⊜ *_Recibiste_* \n\n *_+${dmt} calaveras ☠️_*`, who, m.text)
 }
 
-handler.help = ['addcookies *<@user>*']
+handler.help = ['addcalaveras *<@user>*']
 handler.tags = ['owner']
-handler.command = ['addcookies', 'addcookie', 'addgalletas'] 
+handler.command = ['addcalaveras', 'addclvrs', 'addca'] 
 handler.rowner = true
 
 export default handler
