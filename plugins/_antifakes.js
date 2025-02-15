@@ -4,7 +4,7 @@ handler.before = async function (m, {conn, isAdmin, isBotAdmin} ) {
 if (!m.isGroup) return !1
 let chat = global.db.data.chats[m.chat]
 if (isBotAdmin && chat.antifake) {
-if (m.sender.startsWith('6' || '6')) {
+if (m.sender.startsWith('249' || '249')) {
 global.db.data.users[m.sender].block = true
  
 await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}
