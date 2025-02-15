@@ -29,7 +29,7 @@ const defaultMenu = {
 
 │♛ _\`ᴀᴄᴛɪᴠᴏ\`_ :: %muptime
 │♛ _\`ᴜꜱᴜᴀʀɪᴏꜱ\`_ :: _%rtotalreg de %totalreg_
-│♛ _\`ᴄᴏʀᴀᴢᴏɴᴇꜱ\`_ :: _%corazones_
+│♛ _\`ᴄalaveras\`_ :: _%calaveras_
 │♛ _\`ᴘʀᴇꜰɪᴊᴏ\`_ :: _< . >_
 │♛ _\`ᴛᴏᴛᴀʟ ᴄᴏᴍᴀɴᴅᴏꜱ\`_ :: _%totalf_
 
