@@ -146,7 +146,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args, command }) => {
 
     let mode = global.opts['self'] || global.opts['owneronly'] ? 'Private' : 'Publik'
     let _package = JSON.parse(await promises.readFile(join(__dirname, '../package.json')).catch(_ => ({}))) || {}
-    let { age, exp, corazones, level, role, registered, money } = global.db.data.users[m.sender]
+    let { age, exp, calaveras, level, role, registered, money } = global.db.data.users[m.sender]
     let { min, xp, max } = xpRange(level, global.multiplier)
     let name = await conn.getName(m.sender)
     let premium = global.db.data.users[m.sender].premiumTime
