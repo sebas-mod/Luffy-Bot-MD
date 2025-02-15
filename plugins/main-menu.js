@@ -36,16 +36,15 @@ const defaultMenu = {
 ▬▭▬▭▬▭▬▭▬▭▬▭▬▭▬
  %readmore
   `.trimStart(),
-  header: '≫ ──── ≪•◦✧-ˏˋ⋆\n┊ %category \n⋆ˊˎ-✧◦•≫ ──── ≪',
+  header: '┏━━━━━✦❘༻༺❘✦━━━━━┓\n┊ %category \n┗━━━━━✦❘༻༺❘✦━━━━━┛',
   body: '*│♛* %cmd %iscorazones %isPremium',
-  footer: '  ≫ ──── ≪•◦ ❈ ◦•≫ ──── ≪\n\n',
+  footer: '  ┗━━━━━✦❘༻༺❘✦━━━━━┛\n\n',
   after: ``,
   }
 let handler = async (m, { conn, usedPrefix: _p, __dirname, args, command }) => {
 
   let tags = {
     "main": "🌟 「 *`PRINCIPAL`* 」 🌟",
-    "tk": "💻 「 *`TK-HOSTING`* 」 💻",
     "info": "ℹ️ 「 *`INFORMACION`* 」 ℹ️",
     "search": "🔍 「 *`SEARCH`* 」 🔍",
     "rpg": "🎮 「 *`RPG`* 」 🎮",
@@ -54,6 +53,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args, command }) => {
     "sticker": "🖼️ 「 *`STICKER`* 」 🖼️",
     "dl": "📥 「 *`DOWNLOADER`* 」 📥",
     "ai": "🧠 「 *`INTELIGENCIAS`* 」 🧠",
+     "search": "🧐 「 *`search`* 」 🧐",
     "tools": "🛠️ 「 *`TOOLS`* 」 🛠️",
     "anonymous": "🙈 「 *`ANONYMOUS`* 」 🙈",
     "confesar": "🤫 「 *`CONFESIONES`* 」 🤫",
@@ -61,6 +61,8 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args, command }) => {
     "anime": "🌸 「 *`ANIME`* 」 🌸",
     "group": "👥 「 *`GROUP`* 」 👥",
     "owner": "👑 「 *`OWNER`* 」 👑",
+    "audios": "🤖「 *`MODIFICADOR DE VOZ`* 」🤖",
+     "nsfw": "🔞 「 *`+18`* 」🔞 ",
   }
 
   try {
@@ -220,7 +222,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args, command }) => {
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
 
     let img = 'https://files.catbox.moe/uc846d.jpeg'
-    await m.react('🤍')
+    await m.react('🏴‍☠️')
     await conn.sendMessage(m.chat, {
       image: { url: img },
       caption: estilo(text),
