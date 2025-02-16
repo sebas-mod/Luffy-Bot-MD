@@ -2,7 +2,7 @@
 
 const handler = async (m, { text, conn, args, usedPrefix, command }) => {
   if (!args[0]) {
-    return conn.reply(m.chat, '*\`Ingresa El link Del vídeo a descargar 🤍\`*', m, fake);
+    return conn.reply(m.chat, '*\`Ingresa El link Del vídeo a descargar ☠️\`*', m, fake);
   }
 
   await m.react('🕒');
@@ -41,7 +41,7 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 };
 
 handler.help = ['fb *<link>*'];
-handler.corazones = 2
+handler.calaveras = 2
 handler.tags = ['dl']
 handler.command = /^(fb|facebook|fbdl)$/i;
 handler.register = true
