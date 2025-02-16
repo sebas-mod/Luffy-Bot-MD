@@ -6,18 +6,16 @@ const more = String.fromCharCode(8206)
 const readMore = more.repeat(4001)
 let txt = `*Hola!, te invito a unirte a los grupos oficiales de del Bot para convivir con la comunidad :D*
 
-1- Génesis Ultra ☁️
-*✰* https://chat.whatsapp.com/GqKwwoV2JJaJDP2SL7SddX
+1- global luffy bot
+*✰* 
 
 *─ׄ─ׄ⭒─ׄ─ׅ─ׄ⭒─ׄ─ׅ─ׄ⭒─ׄ─ׅ─ׄ⭒─ׄ─ׅ─ׄ⭒─ׄ─ׄ*
 
 ➠ Enlace anulado? entre aquí! 
 
-♡ Canal Genesis :
-*✰* https://whatsapp.com/channel/0029VaJxgcB0bIdvuOwKTM2Y
+ Canal luffy :
+*✰* 
 
-♡ Canal TK-Host :
-*✰* https://whatsapp.com/channel/0029VaGGynJLY6d43krQYR2g
 
 > ${dev}`
 await conn.sendFile(m.chat, img, "Thumbnail.jpg", txt, m, null, fake)
