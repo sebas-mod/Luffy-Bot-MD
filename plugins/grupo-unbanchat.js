@@ -3,7 +3,7 @@ if (!(m.chat in global.db.data.chats)) return conn.reply(m.chat, '🍭 *¡Este c
 let chat = global.db.data.chats[m.chat]
 if (!chat.isBanned) return conn.reply(m.chat, '🍟 *¡Ai Yaemori no está baneada en este chat!*', m, fake)
 chat.isBanned = false
-await conn.reply(m.chat, '🚩 *¡Ai Genesis ya fué desbaneada en este chat!*', m, fake)
+await conn.reply(m.chat, '🚩 *luffyBot ya fué desbaneada en este chat!*', m, fake)
 }
 handler.help = ['unbanchat'];
 handler.tags = ['grupo'];
