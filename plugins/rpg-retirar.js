@@ -6,7 +6,7 @@ if (!args[0]) return m.reply(' Ingresa la cantidad de *☠️ Calaveras* que des
 if (args[0] == 'all') {
 let count = parseInt(user.bank)
 user.bank -= count * 1
-user.corazones += count * 1
+user.calaveras += count * 1
 await m.reply(` Retiraste *${count} ☠️ Calaveras* del Banco.`)
 return !0
 }
@@ -15,7 +15,7 @@ let count = parseInt(args[0])
 if (!user.bank) return m.reply('No tienes * Calaveras* en el Banco.')
 if (user.bank < count) return m.reply(`Solo tienes *${user.bank} ☠️ Calaveras* en el Banco.`)
 user.bank -= count * 1
-user.corazones += count * 1
+user.calaveras += count * 1
 await m.reply(`Retiraste *${count} ☠️ Calaveras* del Banco.`)}
 
 handler.help = ['retirar']
