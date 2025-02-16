@@ -57,5 +57,100 @@ function juegoTerminado(grupo, jugador, palabra, letrasAdivinadas, intentos) {
         return ` *¡FELICIDADES!*\n\n Palabra correcta: *"<span class="math-inline">\{palabra\}"\*\\n Has ganado\: \*</span>{expGanada} EXP*\n\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬`;
     }
 
-    return ` *AHORCADO*\n${mostrarA
-                           
+    return ` *AHORCADO*\n${mostrarAhorcado(intentos)}\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n✍️ *Progreso:* <span class="math-inline">\{mensaje\}\\n\\n Intentos restantes\: \*</span>{intentos}*\n\n¡Escribe otra letra para continuar!`;
+}
+
+let handler = async (m, { conn, text }) => {
+    const grupo = m.chat; // Identificador del grupo
+    const jugador = m.sender; // Identificador del jugador
+
+    if (text === "unir") {
+        if (juegos.has(grupo) && juegos.get(grupo).jugadores.has(jugador)) {
+            return conn.reply(m.chat, "⚠️ Ya estás en la partida.", m);
+        }
+
+        if (!juegos.has(grupo)) {
+            juegos.set(grupo, { palabra: null, letrasAdivinadas: [], jugadores: new Map(), esperando: true });
+        }
+
+        const juego = juegos.get(grupo);
+        juego.jugadores.set(jugador, { intentos: intentosMaximos });
+
+        const numJugadores = juego.jugadores.size;
+        conn.reply(m.chat, `✅ Te has unido a la partida. ¡Esperando jugadores! (${numJugadores}/3)`, m);
+
+        if (numJugadores >= 3) {
+            juego.palabra = elegirPalabraAleatoria();
+            juego.esperando = false;
+            const mensaje = ocultarPalabra(juego.palabra, juego.letrasAdivinadas);
+            const text = `🪓 *AHORCADO*\n\n✍️ Adivina la palabra:\n${mensaje}\n\n¡La partida ha comenzado!`;
+            conn.reply(m.chat, text, m);
+        }
+        return;
+    }
+
+    if (text === "terminar") {
+        if (juegos.has(grupo) && juegos.get(grupo).jugadores.has(jugador)) {
+            const juego = juegos.get(grupo);
+            juego.jugadores.delete(jugador);
+            if (juego.jugadores.size === 0) {
+                juegos.delete(grupo);
+            }
+            conn.reply(m.chat, "Has abandonado la partida.", m);
+        } else {
+            conn.reply(m.chat, "No estás en ninguna partida.", m);
+        }
+        return;
+    }
+
+    if (juegos.has(grupo) && juegos.get(grupo).jugadores.has(jugador)) {
+        return conn.reply(m.chat, "⚠️ Ya tienes un juego en curso en este grupo. ¡Termina ese primero!", m);
+    }
+
+    const juego = juegos.get(grupo);
+
+    if (juego && juego.esperando && juego.jugadores.size >= 3) {
+        juego.palabra = elegirPalabraAleatoria();
+        juego.esperando = false;
+        const mensaje = ocultarPalabra(juego.palabra, juego.letrasAdivinadas);
+        const text = `🪓 *AHORCADO*\n\n✍️ Adivina la palabra:\n${mensaje}\n\n¡La partida ha comenzado!`;
+        conn.reply(m.chat, text, m);
+    } else if (juego && juego.esperando) {
+        const numJugadores = juego.jugadores.size;
+        conn.reply(m.chat, `⚠️ Espera a que se unan más jugadores. (${numJugadores}/3)`, m);
+        return;
+    }
+
+    const palabra = elegirPalabraAleatoria();
+    const letrasAdivinadas = [];
+    const intentos = intentosMaximos;
+    const mensaje = ocultarPalabra(palabra, letrasAdivinadas);
+
+    if (!juegos.has(grupo)) {
+        juegos.set(grupo, { palabra, letrasAdivinadas, jugadores: new Map() });
+    }
+
+    const juego = juegos.get(grupo);
+    juego.jugadores.set(jugador, { intentos });
+
+    const text = `🪓 *AHORCADO*\n\n✍️ Adivina la palabra:\n${mensaje}\n\n Intentos restantes: *<span class="math-inline">\{intentos\}\*\\n\\n¡Escribe una letra para comenzar\!\`;
+conn\.reply\(m\.chat, text, m\);
+\};
+handler\.before \= async \(m, \{ conn \}\) \=\> \{
+const grupo \= m\.chat;
+const jugador \= m\.sender;
+const juego \= juegos\.get\(grupo\);
+if \(\!juego \|\| \!juego\.jugadores\.has\(jugador\)\) return;
+const \{ palabra, letrasAdivinadas \} \= juego;
+const \{ intentos \} \= juego\.jugadores\.get\(jugador\);
+if \(m\.text\.length \=\=\= 1 && /^\[a\-zA\-Z\]</span>/.test(m.text)) {
+        const letra = m.text.toLowerCase();
+        if (!letrasAdivinadas.includes(letra)) {
+            letrasAdivinadas.push(letra);
+            if (!palabra.includes(letra)) {
+                juego.jugadores.get(jugador).intentos -= 1;
+            }
+        }
+
+        const mensaje = ocultarPalabra(palabra, letrasAdivinadas);
+        const respuesta = juegoTerminado(grupo, jugador, palabra, letrasAdivinadas, juego.jugadores.get(jugador).intentos);
