@@ -17,6 +17,7 @@ const palabras = [
 
 const intentosMaximos = 6;
 const gam = new Map();
+const esperandoJugadores = new Map();
 
 function elegirPalabraAleatoria() {
   return palabras[Math.floor(Math.random() * palabras.length)];
@@ -36,7 +37,7 @@ function mostrarAhorcado(intentos) {
     intentos < 6 ? " |  😵" : " |", 
     intentos < 5 ? " |  /" : " |",
     intentos < 4 ? " |  /|" : " |",
-    intentos < 3 ? " |  /|\\" : " |",
+    intentos < 3 ? " |  /\\" : " |",
     intentos < 2 ? " |   /" : " |",
     intentos < 1 ? " |   / \\" : " |",
     "_|_"
@@ -47,76 +48,40 @@ function mostrarAhorcado(intentos) {
 function juegoTerminado(juego) {
   if (juego.intentos === 0) {
     gam.delete(juego.id);
-    return `😵 *¡PERDISTE!*
-
-La palabra era: *"${juego.palabra}"*
-
-${mostrarAhorcado(juego.intentos)}\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬`;
+    return `😵 *¡PERDISTE!*\n\nLa palabra era: *\"${juego.palabra}\"*\n\n${mostrarAhorcado(juego.intentos)}\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬`;
   }
   if (!juego.mensaje.includes("_")) {
     gam.delete(juego.id);
-    return `🎉 *¡FELICIDADES!*
-
-🎯 Palabra correcta: *"${juego.palabra}"*
-
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬`;
+    return `🎉 *¡FELICIDADES!*\n\n🎯 Palabra correcta: *\"${juego.palabra}\"*\n\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬`;
   }
-  return `🎮 *AHORCADO*
-${mostrarAhorcado(juego.intentos)}
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-
-✍️ *Progreso:* ${juego.mensaje}
-📉 Intentos restantes: *${juego.intentos}*
-👤 Turno de: *@${juego.jugadores[juego.turno]}*
-
-¡Escribe una letra para continuar!`;
+  return `🎮 *AHORCADO*\n${mostrarAhorcado(juego.intentos)}\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n✍️ *Progreso:* ${juego.mensaje}\n📉 Intentos restantes: *${juego.intentos}*\n👤 Turno de: *@${juego.jugadores[juego.turno]}*\n\n¡Escribe una letra para continuar!`;
 }
 
-let handler = async (m, { conn, participants }) => {
-  if (gam.has(m.chat)) return conn.reply(m.chat, "⚠️ Ya hay un juego en curso en este grupo.", m);
-  
-  const jugadores = participants.map(p => p.id).slice(0, 3);
-  if (jugadores.length < 3) return conn.reply(m.chat, "⚠️ Se necesitan al menos 3 jugadores para comenzar.", m);
-  
-  const palabra = elegirPalabraAleatoria();
-  const letrasAdivinadas = [];
-  const intentos = intentosMaximos;
-  const mensaje = ocultarPalabra(palabra, letrasAdivinadas);
-  
-  gam.set(m.chat, { id: m.chat, palabra, letrasAdivinadas, intentos, mensaje, jugadores, turno: 0 });
-  
-  conn.reply(m.chat, `🪓 *AHORCADO*
-
-✍️ Adivina la palabra:
-${mensaje}
-
-📉 Intentos restantes: *${intentos}*
-👤 Turno de: *@${jugadores[0]}*
-
-¡Escribe una letra para comenzar!`, m, { mentions: jugadores });
+let handler = async (m, { conn }) => {
+  if (esperandoJugadores.has(m.chat)) {
+    const jugadores = esperandoJugadores.get(m.chat);
+    if (!jugadores.includes(m.sender)) {
+      jugadores.push(m.sender);
+      conn.sendMessage(m.chat, { text: `✅ @${m.sender} se ha unido a la partida. (${jugadores.length}/3)`, mentions: jugadores });
+    }
+    if (jugadores.length === 3) {
+      esperandoJugadores.delete(m.chat);
+      const palabra = elegirPalabraAleatoria();
+      const letrasAdivinadas = [];
+      const intentos = intentosMaximos;
+      const mensaje = ocultarPalabra(palabra, letrasAdivinadas);
+      gam.set(m.chat, { id: m.chat, palabra, letrasAdivinadas, intentos, mensaje, jugadores, turno: 0 });
+      conn.sendMessage(m.chat, { text: `🪓 *AHORCADO*\n\n✍️ Adivina la palabra:\n${mensaje}\n\n📉 Intentos restantes: *${intentos}*\n👤 Turno de: *@${jugadores[0]}*\n\n¡Escribe una letra para comenzar!`, mentions: jugadores });
+    }
+    return;
+  }
+  esperandoJugadores.set(m.chat, [m.sender]);
+  conn.sendMessage(m.chat, {
+    text: `🎮 *AHORCADO - Esperando jugadores*\n\nSe necesitan 3 jugadores para comenzar.`,
+    footer: "Presiona el botón para unirte",
+    buttons: [{ buttonId: "!unirme", buttonText: { displayText: "Entrar a la partida" }, type: 1 }]
+  });
 };
 
-handler.before = async (m, { conn }) => {
-  const juego = gam.get(m.chat);
-  if (!juego || m.sender !== juego.jugadores[juego.turno]) return;
-  
-  const letra = m.text.toLowerCase();
-  if (!/^[a-z]$/.test(letra)) return conn.reply(m.chat, "⚠️ *Solo puedes enviar una letra a la vez.*", m);
-  if (juego.letrasAdivinadas.includes(letra)) return conn.reply(m.chat, `⚠️ Ya intentaste con la letra "${letra}". Prueba otra.`, m);
-  
-  juego.letrasAdivinadas.push(letra);
-  if (!juego.palabra.includes(letra)) juego.intentos -= 1;
-  
-  juego.mensaje = ocultarPalabra(juego.palabra, juego.letrasAdivinadas);
-  juego.turno = (juego.turno + 1) % juego.jugadores.length;
-  
-  const respuesta = juegoTerminado(juego);
-  conn.reply(m.chat, respuesta, m, { mentions: [juego.jugadores[juego.turno]] });
-};
-
-handler.help = ["ahorcado"];
-handler.tags = ["rpg"];
-handler.command = ["ahorcado"];
-handler.register = true;
-
+handler.command = ["ahorcado", "unirme"];
 export default handler;
