@@ -1,9 +1,14 @@
 const palabras = [
-  "gato", "perro", "elefante", "tigre", "ballena", "mariposa", "tortuga", 
-  "conejo", "rana", "pulpo", "ardilla", "jirafa", "cocodrilo", "pingüino", 
-  "delfín", "serpiente", "hámster", "mosquito", "abeja", "negro", "television", 
-  "computadora", "botsito", "reggaeton", "economía", "electrónica", "facebook", 
-  "WhatsApp", "Instagram", "tiktok", "presidente", "bot", "películas", "gata", "gatabot"
+  "gato", "perro", "elefante", "tigre", "ballena", "mariposa", "tortuga",
+  "conejo", "rana", "pulpo", "ardilla", "jirafa", "cocodrilo", "pingüino",
+  "delfín", "serpiente", "hámster", "mosquito", "abeja", "negro", "television",
+  "computadora", "botsito", "reggaeton", "economía", "electrónica", "facebook",
+  "WhatsApp", "Instagram", "tiktok", "presidente", "bot", "películas", "gata", "gatabot",
+  "Argentina", "Brasil", "México", "España", "Italia", "Francia", "Alemania", "Japón", "China", "Estados Unidos",
+  "León", "Águila", "Delfín", "Mariposa", "Colibrí", "Lobo", "Oso", "Serpiente", "Ballena", "Elefante",
+  "Mesa", "Silla", "Cama", "Libro", "Teléfono", "Coche", "Avión", "Barco", "Casa", "Árbol",
+  "Shakira", "Beyoncé", "Michael Jackson", "Madonna", "Elvis Presley",
+  "Bohemian Rhapsody", "Thriller", "Like a Virgin", "Hotel California", "Imagine"
 ];
 
 const intentosMaximos = 6;
