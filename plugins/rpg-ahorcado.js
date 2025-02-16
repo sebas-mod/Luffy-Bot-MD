@@ -42,7 +42,7 @@ function juegoTerminado(grupo, jugador, palabra, letrasAdivinadas, intentos) {
         if (juego.jugadores.size === 0) {
             juegos.delete(grupo);
         }
-        return ` *¡PERDISTE!*\n\nLa palabra era: *"${palabra}"*\n\n${mostrarAhorcado(intentos)}\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬`;
+        return ` *¡PERDISTE!*\n\nLa palabra era: *"<span class="math-inline">\{palabra\}"\*\\n\\n</span>{mostrarAhorcado(intentos)}\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬`;
     }
 
     if (!mensaje.includes("_")) {
@@ -52,18 +52,57 @@ function juegoTerminado(grupo, jugador, palabra, letrasAdivinadas, intentos) {
         if (juego.jugadores.size === 0) {
             juegos.delete(grupo);
         }
-        return ` *¡FELICIDADES!*\n\n Palabra correcta: *"${palabra}"*\n Has ganado: *${expGanada} EXP*\n\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬`;
+        return ` *¡FELICIDADES!*\n\n Palabra correcta: *"<span class="math-inline">\{palabra\}"\*\\n Has ganado\: \*</span>{expGanada} EXP*\n\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬`;
     }
 
-    return ` *AHORCADO*\n${mostrarAhorcado(intentos)}\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n✍️ *Progreso:* ${mensaje}\n\n Intentos restantes: *${intentos}*\n\n¡Escribe otra letra para continuar!`;
+    return ` *AHORCADO*\n${mostrarAhorcado(intentos)}\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n✍️ *Progreso:* <span class="math-inline">\{mensaje\}\\n\\n Intentos restantes\: \*</span>{intentos}*\n\n¡Escribe otra letra para continuar!`;
 }
 
-let handler = async (m, { conn }) => {
+let handler = async (m, { conn, text }) => {
     const grupo = m.chat; // Identificador del grupo
     const jugador = m.sender; // Identificador del jugador
 
+    if (text === "unir") {
+        if (juegos.has(grupo) && juegos.get(grupo).jugadores.has(jugador)) {
+            return conn.reply(m.chat, "⚠️ Ya estás en la partida.", m);
+        }
+
+        if (!juegos.has(grupo)) {
+            juegos.set(grupo, { palabra: null, letrasAdivinadas: [], jugadores: new Map(), esperando: true });
+        }
+
+        const juego = juegos.get(grupo);
+        juego.jugadores.set(jugador, { intentos: intentosMaximos });
+
+        const numJugadores = juego.jugadores.size;
+        conn.reply(m.chat, `✅ Te has unido a la partida. ¡Esperando jugadores! (${numJugadores}/3)`, m);
+
+        if (numJugadores >= 3) {
+            juego.palabra = elegirPalabraAleatoria();
+            juego.esperando = false;
+            const mensaje = ocultarPalabra(juego.palabra, juego.letrasAdivinadas);
+            const text = `🪓 *AHORCADO*\n\n✍️ Adivina la palabra:\n${mensaje}\n\n¡La partida ha comenzado!`;
+            conn.reply(m.chat, text, m);
+        }
+        return;
+    }
+
     if (juegos.has(grupo) && juegos.get(grupo).jugadores.has(jugador)) {
         return conn.reply(m.chat, "⚠️ Ya tienes un juego en curso en este grupo. ¡Termina ese primero!", m);
+    }
+
+    const juego = juegos.get(grupo);
+
+    if (juego && juego.esperando && juego.jugadores.size >= 3) {
+        juego.palabra = elegirPalabraAleatoria();
+        juego.esperando = false;
+        const mensaje = ocultarPalabra(juego.palabra, juego.letrasAdivinadas);
+        const text = `🪓 *AHORCADO*\n\n✍️ Adivina la palabra:\n${mensaje}\n\n¡La partida ha comenzado!`;
+        conn.reply(m.chat, text, m);
+    } else if (juego && juego.esperando) {
+        const numJugadores = juego.jugadores.size;
+        conn.reply(m.chat, `⚠️ Espera a que se unan más jugadores. (${numJugadores}/3)`, m);
+        return;
     }
 
     const palabra = elegirPalabraAleatoria();
@@ -116,8 +155,3 @@ handler.before = async (m, { conn }) => {
 };
 
 handler.help = ["ahorcado"];
-handler.tags = ["rpg"];
-handler.command = ["ahorcado"];
-handler.register = true;
-
-export default handler;
