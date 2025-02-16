@@ -29,7 +29,7 @@ const defaultMenu = {
 
 │♛ _\`ᴀᴄᴛɪᴠᴏ\`_ :: %muptime
 │♛ _\`ᴜꜱᴜᴀʀɪᴏꜱ\`_ :: _%rtotalreg de %totalreg_
-│♛ _\`ᴄᴏʀᴀᴢᴏɴᴇꜱ\`_ :: _%corazones_
+│♛ _\`ᴄalaveras\`_ :: _%calaveras_
 │♛ _\`ᴘʀᴇꜰɪᴊᴏ\`_ :: _< . >_
 │♛ _\`ᴛᴏᴛᴀʟ ᴄᴏᴍᴀɴᴅᴏꜱ\`_ :: _%totalf_
 
@@ -37,7 +37,7 @@ const defaultMenu = {
  %readmore
   `.trimStart(),
   header: '┏━━━━━✦❘༻༺❘✦━━━━━┓\n┊ %category \n┗━━━━━✦❘༻༺❘✦━━━━━┛',
-  body: '*│♛* %cmd %iscorazones %isPremium',
+  body: '*│♛* %cmd %iscalaveras %isPremium',
   footer: '  ┗━━━━━✦❘༻༺❘✦━━━━━┛\n\n',
   after: ``,
   }
@@ -146,7 +146,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args, command }) => {
 
     let mode = global.opts['self'] || global.opts['owneronly'] ? 'Private' : 'Publik'
     let _package = JSON.parse(await promises.readFile(join(__dirname, '../package.json')).catch(_ => ({}))) || {}
-    let { age, exp, corazones, level, role, registered, money } = global.db.data.users[m.sender]
+    let { age, exp, calaveras, level, role, registered, money } = global.db.data.users[m.sender]
     let { min, xp, max } = xpRange(level, global.multiplier)
     let name = await conn.getName(m.sender)
     let premium = global.db.data.users[m.sender].premiumTime
@@ -190,7 +190,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args, command }) => {
           ...help.filter(menu => menu.tags && menu.tags.includes(tag) && menu.help).map(menu => {
             return menu.help.map(help => {
               return body.replace(/%cmd/g, menu.prefix ? help : '%_p' + help)
-                .replace(/%iscorazones/g, menu.corazones ? '◜🪙◞' : '')
+                .replace(/%iscalaveras/g, menu.calaveras ? '◜🪙◞' : '')
                 .replace(/%isPremium/g, menu.premium ? '◜🎫◞' : '')
 //                .replace(/%iscorazones/g, menu.corazones ? corazones : '')
 //                .replace(/%isPremium/g, menu.premium ? lprem : '')
@@ -216,7 +216,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args, command }) => {
       xp4levelup: max - exp,
       github: _package.homepage ? _package.homepage.url || _package.homepage : '[unknown github url]',
       tag, dash, m1, m2, m3, m4, cc, c1, c2, c3, c4, lprem, llim,
-      ucpn, platform, wib, mode, _p, money, age, tag, name, prems, level, corazones, name, weton, week, date, dateIslamic, time, totalreg, rtotalreg, role, totalf,
+      ucpn, platform, wib, mode, _p, money, age, tag, name, prems, level, calaveras, name, weton, week, date, dateIslamic, time, totalreg, rtotalreg, role, totalf,
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
