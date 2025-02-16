@@ -70,7 +70,7 @@ var canal3 = 'https://whatsapp.com/channel/0029VafHsEoBqbr3qlW1aX0U'
 var canal4 = 'https://whatsapp.com/channel/0029VafHsEoBqbr3qlW1aX0U'
 var canal5 = 'https://whatsapp.com/channel/0029VafHsEoBqbr3qlW1aX0U'
 var github = 'https://github.com/sebas-mod'  
-var insta = 'https://www.instagram.com/sebas-d<n'
+var insta = 'https://www.instagram.com/sebas-dzn'
 
 global.redes = [canal, canal2, canal3, canal4, github, insta].getRandom()
 
