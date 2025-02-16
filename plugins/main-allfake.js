@@ -33,7 +33,7 @@ global.ofcbot = `${conn.user.jid.split('@')[0]}`
 global.asistencia = 'https://wa.me/message/O4QPPHZOFDOJI1'
 global.namechannel = 'luffy • Channel OFC '
 global.listo = '✨️ *Aquí tienes ฅ^•ﻌ•^ฅ*'
-global.fotoperfil = await conn.profilePictureUrl(m.sender, 'image').catch(_ => 'https://qu.ax/QGAVS.jpg')
+global.fotoperfil = await conn.profilePictureUrl(m.sender, 'image').catch(_ => 'https://i.ibb.co/QvyTyRBc/file.jpg')
 
 //ids channel
 global.channelid = '120363299030870235@newsletter'
@@ -104,11 +104,13 @@ global.fake = { contextInfo: { isForwarded: true, forwardedNewsletterMessageInfo
 }}, { quoted: m }
 
 global.icono = [ 
-'https://files.catbox.moe/z9zdly.jpeg',
-'https://files.catbox.moe/8t5iog.jpeg',
-'https://files.catbox.moe/odp0jf.jpeg',
-'https://files.catbox.moe/05wefb.jpeg',
-'https://files.catbox.moe/yd0q6b.jpeg'
+'https://i.ibb.co/GfgtFhrQ/file.jpg',
+'https://i.ibb.co/7xm409mj/file.jpg',
+'https://i.ibb.co/QvyTyRBc/file.jpg',
+'https://i.ibb.co/N65VZxmy/file.jpg',
+'https://i.ibb.co/Vch1QP94/file.jpg',
+'https://i.ibb.co/3mWpsnmZ/file.jpg',
+'https://i.ibb.co/4HCKWsb/file.jpg'
 ].getRandom()
 
 global.rcanal = { contextInfo: { isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, serverMessageId: 100, newsletterName: channelRD.name, }, externalAdReply: { showAdAttribution: true, title: botname, body: dev, mediaUrl: null, description: null, previewType: "PHOTO", thumbnailUrl: icono, sourceUrl: redes, mediaType: 1, renderLargerThumbnail: false }, }, }}
