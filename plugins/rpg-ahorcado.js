@@ -3,16 +3,16 @@ const palabras = [
   "conejo", "rana", "pulpo", "ardilla", "jirafa", "cocodrilo", "pingüino", 
   "delfín", "serpiente", "hámster", "mosquito", "abeja", "negro", "television", 
   "computadora", "botsito", "reggaeton", "economía", "electrónica", "facebook", 
-  "WhatsApp", "Instagram", "tiktok", "presidente", "bot", "películas", "gata", "gatabot"
-  "javascript", "programacion", "ahorcado", "desarrollo", "computadora", "internet", "servidor", "cliente", "framework", "biblioteca", 
+  "WhatsApp", "Instagram", "tiktok", "presidente", "bot", "películas", "gata", "gatabot",
+  "javascript", "programacion", "ahorcado", "desarrollo", "internet", "servidor", "cliente", "framework", "biblioteca", 
   "variable", "funcion", "condicional", "bucle", "recursion", "compilador", "interprete", "sintaxis", "algoritmo", "estructura", 
   "dato", "objeto", "clase", "herencia", "polimorfismo", "encapsulacion", "modularidad", "optimizacion", "inteligencia", "artificial", 
   "robotica", "automatizacion", "aprendizaje", "profundo", "redes", "neuronales", "procesador", "memoria", "almacenamiento", "ciberseguridad", 
   "encriptacion", "firewall", "criptografia", "hash", "contraseña", "seguridad", "privacidad", "navegador", "motor", "busqueda", 
-  "indexacion", "rendimiento", "escalabilidad", "concurrencia", "asincronia", "promesa", "callback", "evento", "desarrollo", "frontend", 
+  "indexacion", "rendimiento", "escalabilidad", "concurrencia", "asincronia", "promesa", "callback", "evento", "frontend", 
   "backend", "fullstack", "base", "datos", "relacional", "sql", "nosql", "mongodb", "postgresql", "mysql", "sqlite", "docker", 
   "kubernetes", "servidorless", "lambda", "aplicacion", "movil", "android", "ios", "react", "angular", "vue", "svelte", "typescript", 
-  "javascript", "python", "java", "csharp", "golang", "swift", "kotlin", "ruby", "php", "rust"
+  "python", "java", "csharp", "golang", "swift", "kotlin", "ruby", "php", "rust"
 ];
 
 const intentosMaximos = 6;
@@ -23,80 +23,97 @@ function elegirPalabraAleatoria() {
 }
 
 function ocultarPalabra(palabra, letrasAdivinadas) {
-  let palabraOculta = "";
-  for (const letra of palabra) {
-    palabraOculta += letrasAdivinadas.includes(letra) ? `${letra} ` : "_ ";
-  }
-  return palabraOculta.trim();
+  return palabra
+    .split('')
+    .map(letra => letrasAdivinadas.includes(letra) ? letra : '_')
+    .join(' ');
 }
 
 function mostrarAhorcado(intentos) {
-const dibujo = [
+  const dibujo = [
     " ____",
     " |  |",
     intentos < 6 ? " |  😵" : " |", 
-    intentos < 5 ? " |  /" : intentos < 4 ? " |  /|" : intentos < 3 ? " |  /|\\" : " |",
-    intentos < 2 ? " |   /" : intentos < 1 ? " |   / \\" : " |",
+    intentos < 5 ? " |  /" : " |",
+    intentos < 4 ? " |  /|" : " |",
+    intentos < 3 ? " |  /|\\" : " |",
+    intentos < 2 ? " |   /" : " |",
+    intentos < 1 ? " |   / \\" : " |",
     "_|_"
   ];
   return dibujo.join("\n");
 }
 
+function juegoTerminado(juego) {
+  if (juego.intentos === 0) {
+    gam.delete(juego.id);
+    return `😵 *¡PERDISTE!*
 
-function juegoTerminado(sender, mensaje, palabra, letrasAdivinadas, intentos) {
-  if (intentos === 0) {
-    gam.delete(sender);
-    return `😵 *¡PERDISTE!*\n\nLa palabra era: *"${palabra}"*\n\n${mostrarAhorcado(intentos)}\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬`;
+La palabra era: *"${juego.palabra}"*
+
+${mostrarAhorcado(juego.intentos)}\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬`;
   }
+  if (!juego.mensaje.includes("_")) {
+    gam.delete(juego.id);
+    return `🎉 *¡FELICIDADES!*
 
-  if (!mensaje.includes("_")) {
-    const expGanada = palabra.length >= 8 ? Math.floor(Math.random() * 6500) : Math.floor(Math.random() * 350);
-    global.db.data.users[sender].exp += expGanada;
-    gam.delete(sender);
-    return `🎉 *¡FELICIDADES!*\n\n🎯 Palabra correcta: *"${palabra}"*\n🏆 Has ganado: *${expGanada} EXP*\n\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬`;
+🎯 Palabra correcta: *"${juego.palabra}"*
+
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬`;
   }
+  return `🎮 *AHORCADO*
+${mostrarAhorcado(juego.intentos)}
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 
-  return `🎮 *AHORCADO*\n${mostrarAhorcado(intentos)}\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n✍️ *Progreso:* ${mensaje}\n\n📉 Intentos restantes: *${intentos}*\n\n¡Escribe otra letra para continuar!`;
+✍️ *Progreso:* ${juego.mensaje}
+📉 Intentos restantes: *${juego.intentos}*
+👤 Turno de: *@${juego.jugadores[juego.turno]}*
+
+¡Escribe una letra para continuar!`;
 }
 
-let handler = async (m, { conn }) => {
-const users = global.db.data.users[m.sender];
-if (gam.has(m.sender)) return conn.reply(m.chat, "⚠️ Ya tienes un juego en curso. ¡Termina ese primero!", m);
+let handler = async (m, { conn, participants }) => {
+  if (gam.has(m.chat)) return conn.reply(m.chat, "⚠️ Ya hay un juego en curso en este grupo.", m);
+  
+  const jugadores = participants.map(p => p.id).slice(0, 3);
+  if (jugadores.length < 3) return conn.reply(m.chat, "⚠️ Se necesitan al menos 3 jugadores para comenzar.", m);
+  
+  const palabra = elegirPalabraAleatoria();
+  const letrasAdivinadas = [];
+  const intentos = intentosMaximos;
+  const mensaje = ocultarPalabra(palabra, letrasAdivinadas);
+  
+  gam.set(m.chat, { id: m.chat, palabra, letrasAdivinadas, intentos, mensaje, jugadores, turno: 0 });
+  
+  conn.reply(m.chat, `🪓 *AHORCADO*
 
-const palabra = elegirPalabraAleatoria();
-const letrasAdivinadas = [];
-const intentos = intentosMaximos;
-const mensaje = ocultarPalabra(palabra, letrasAdivinadas);
+✍️ Adivina la palabra:
+${mensaje}
 
-gam.set(m.sender, { palabra, letrasAdivinadas, intentos });
-const text = `🪓 *AHORCADO*\n\n✍️ Adivina la palabra:\n${mensaje}\n\n📉 Intentos restantes: *${intentos}*\n\n¡Escribe una letra para comenzar!`;
-conn.reply(m.chat, text, m);
+📉 Intentos restantes: *${intentos}*
+👤 Turno de: *@${jugadores[0]}*
+
+¡Escribe una letra para comenzar!`, m, { mentions: jugadores });
 };
 
 handler.before = async (m, { conn }) => {
-const juego = gam.get(m.sender);
-if (!juego) return;
-const { palabra, letrasAdivinadas, intentos } = juego;
-if (m.text.length === 1 && /^[a-zA-Z]$/.test(m.text)) {
-const letra = m.text.toLowerCase();
-if (!letrasAdivinadas.includes(letra)) {
-letrasAdivinadas.push(letra);
-if (!palabra.includes(letra)) {
-juego.intentos -= 1;
-}}
+  const juego = gam.get(m.chat);
+  if (!juego || m.sender !== juego.jugadores[juego.turno]) return;
+  
+  const letra = m.text.toLowerCase();
+  if (!/^[a-z]$/.test(letra)) return conn.reply(m.chat, "⚠️ *Solo puedes enviar una letra a la vez.*", m);
+  if (juego.letrasAdivinadas.includes(letra)) return conn.reply(m.chat, `⚠️ Ya intentaste con la letra "${letra}". Prueba otra.`, m);
+  
+  juego.letrasAdivinadas.push(letra);
+  if (!juego.palabra.includes(letra)) juego.intentos -= 1;
+  
+  juego.mensaje = ocultarPalabra(juego.palabra, juego.letrasAdivinadas);
+  juego.turno = (juego.turno + 1) % juego.jugadores.length;
+  
+  const respuesta = juegoTerminado(juego);
+  conn.reply(m.chat, respuesta, m, { mentions: [juego.jugadores[juego.turno]] });
+};
 
-const mensaje = ocultarPalabra(palabra, letrasAdivinadas);
-const respuesta = juegoTerminado(m.sender, mensaje, palabra, letrasAdivinadas, juego.intentos);
-
-if (juego.intentos === 0 || !mensaje.includes("_")) {
-conn.reply(m.chat, respuesta, m);
-} else {
-const letrasErradas = letrasAdivinadas.filter((letra) => !palabra.includes(letra)).join(", ");
-gam.set(m.sender, { palabra, letrasAdivinadas, intentos: juego.intentos });
-conn.reply(m.chat, `${respuesta}\n\n❌ *Letras incorrectas usadas:* ${letrasErradas || "Ninguna"}\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬`, m);
-}} else {
-conn.reply(m.chat, "⚠️ *Solo puedes enviar una letra a la vez.*", m);
-}};
 handler.help = ["ahorcado"];
 handler.tags = ["rpg"];
 handler.command = ["ahorcado"];
