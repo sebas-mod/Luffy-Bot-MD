@@ -372,7 +372,7 @@ if (xp > 200)
 m.reply('chirrido -_-')
 else
 m.exp += xp
-if (!isPrems && plugin.corazones && global.db.data.users[m.sender].corazones < plugin.calaveras * 1) {
+if (!isPrems && plugin.calaveras && global.db.data.users[m.sender].calaveras < plugin.calaveras * 1) {
 conn.reply(m.chat, `Se agotaron tus *☠️ Calaveras*`, m, null, fake)
 continue
 }
