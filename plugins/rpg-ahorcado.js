@@ -79,9 +79,11 @@ let handler = async (m, { conn }) => {
   conn.sendMessage(m.chat, {
     text: `🎮 *AHORCADO - Esperando jugadores*\n\nSe necesitan 3 jugadores para comenzar.`,
     footer: "Presiona el botón para unirte",
-    buttons: [{ buttonId: "!unirme", buttonText: { displayText: "Entrar a la partida" }, type: 1 }]
+    buttons: [{ buttonId: "unirme", buttonText: { displayText: "Entrar a la partida" }, type: 1 }],
+    headerType: 1
   });
 };
 
 handler.command = ["ahorcado", "unirme"];
 export default handler;
+
