@@ -7,7 +7,6 @@ let handler = async (m, { conn: _envio, command, usedPrefix, args, text, isOwner
 
 let img = [ 
     'https://files.catbox.moe/z9zdly.jpeg',
-'https://files.catbox.moe/iyi6ar.jpeg',
 'https://files.catbox.moe/8t5iog.jpeg'
   ].getRandom()
 
