@@ -243,7 +243,7 @@ if (_0x4ea9f2) {
           global.conns.push(_0x4e0ea3);
           await joinChannels(_0x4e0ea3);
           await _0x3b0d31.sendMessage(_0x229076.chat, {
-            'text': _0x42414c[0x0] ? "⚪ *Está conectado(a)!! Por favor espere se está cargando los mensajes...*\n\n♻️ *Opciones Disponibles:*\n*» " + _0x3dccaa + "pausarai _(Detener la función Sub Bot)_*\n*» " + _0x3dccaa + "deletesession _(Borrar todo rastro de Sub Bot)_*\n*» " + _0x3dccaa + "serbot _(Nuevo código QR o Conectarse si ya es Sub Bot)_*" : "*`[ Conectado Exitosamente 🤍 ]`*\n> _Se intentara reconectar en caso de desconexion de sesion_\n> _Si quieres eliminr el subbot borra la sesion en dispositivos vinculados_\n> _El número del bot puede cambiar, guarda este enlace :_\nhttps://whatsapp.com/channel/0029VaJxgcB0bIdvuOwKTM2Y" + (" " + (_0x3dccaa + _0x509ed3))
+            'text': _0x42414c[0x0] ? "⚪ *Está conectado(a)!! Por favor espere se está cargando los mensajes...*\n\n♻️ *Opciones Disponibles:*\n*» " + _0x3dccaa + "pausarai _(Detener la función Sub Bot)_*\n*» " + _0x3dccaa + "deletesession _(Borrar todo rastro de Sub Bot)_*\n*» " + _0x3dccaa + "serbot _(Nuevo código QR o Conectarse si ya es Sub Bot)_*" : "*`[ Conectado Exitosamente  ]`*\n> _Se intentara reconectar en caso de desconexion de sesion_\n> _Si quieres eliminr el subbot borra la sesion en dispositivos vinculados_\n>" + (" " + (_0x3dccaa + _0x509ed3))
           }, {
             'quoted': _0x229076
           });
