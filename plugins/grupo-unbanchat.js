@@ -1,15 +1,23 @@
-let handler = async (m, { conn }) => {
-if (!(m.chat in global.db.data.chats)) return conn.reply(m.chat, '🍭 *¡Este chat no está registrado!*', m, fake)
-let chat = global.db.data.chats[m.chat]
-if (!chat.isBanned) return conn.reply(m.chat, '🍟 *¡Ai Yaemori no está baneada en este chat!*', m, fake)
-chat.isBanned = false
-await conn.reply(m.chat, '🚩 *luffyBot ya fué desbaneada en este chat!*', m, fake)
-}
-handler.help = ['unbanchat'];
-handler.tags = ['grupo'];
-handler.command = ['unbanchat','desbanearchat','desbanchat']
-handler.admin = true 
-handler.botAdmin = true
-handler.group = true
+let handler = async (m, { conn, isAdmin, isROwner, command }) => {
+    global.db = global.db || { data: { chats: {} } };
+    global.db.data.chats = global.db.data.chats || {};
+    global.db.data.chats[m.chat] = global.db.data.chats[m.chat] || {};
 
-export default handler
+    if (command === 'banchat') {
+        global.db.data.chats[m.chat].isBanned = true;
+        await conn.reply(m.chat, `🚩 El bot ha sido baneado en este chat.`, m);
+        await m.react('✅');
+    } else if (command === 'unbanchat') {
+        global.db.data.chats[m.chat].isBanned = false;
+        await conn.reply(m.chat, `🚩 El bot ha sido activado en este chat.`, m);
+        await m.react('✅');
+    }
+};
+
+handler.help = ['banchat', 'unbanchat'];
+handler.tags = ['owner'];
+handler.command = ['banchat', 'unbanchat'];
+handler.group = true;
+handler.owner = true;
+
+export default handler;
