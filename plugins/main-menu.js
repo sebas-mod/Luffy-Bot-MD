@@ -26,10 +26,10 @@ let estilo = (text, style = 1) => {
 };
 const defaultMenu = {
   before: `*${ucapan()} \`%name\`*
-
+│♛ _\`ᴄʀᴇᴀᴅᴏʀ\`_ :: wa.me/549110951814
 │♛ _\`ᴀᴄᴛɪᴠᴏ\`_ :: %muptime
 │♛ _\`ᴜꜱᴜᴀʀɪᴏꜱ\`_ :: _%rtotalreg de %totalreg_
-│♛ _\`ᴄalaveras\`_ :: _%calaveras_
+│♛ _\`ᴄᴀʟᴀᴠᴇʀᴀꜱ\`_ :: _%calaveras_
 │♛ _\`ᴘʀᴇꜰɪᴊᴏ\`_ :: _< . >_
 │♛ _\`ᴛᴏᴛᴀʟ ᴄᴏᴍᴀɴᴅᴏꜱ\`_ :: _%totalf_
 
