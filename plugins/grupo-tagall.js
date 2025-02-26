@@ -22,8 +22,8 @@ const handler = async (m, { isOwner, isAdmin, conn, text, participants, args, co
   }
   teks += 
   `ꜱᴇʙᴀꜱ ᴠᴇɴᴛᴀꜱ 
- https://chat.whatsapp.com/GmFsmsfQm18GGnfRwMeYgQ`
-  \`╰ ━━━━✦❘༻*${vs}*༺❘✦━━━━┛`;
+ https://chat.whatsapp.com/GmFsmsfQm18GGnfRwMeYgQ
+ ╰ ━━━━✦❘༻*${vs}*༺❘✦━━━━┛`;
 
   conn.sendMessage(m.chat, { text: teks, mentions: participants.map((a) => a.id) });
 };
