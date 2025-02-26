@@ -16,14 +16,13 @@ const handler = async (m, { isOwner, isAdmin, conn, text, participants, args, co
 
   const pesan = args.join` `;
   const oi = `*» INFO :* ${pesan}`;
-  let teks = `*!  MENCION!*\n  *PARA ${participants.length} PARTICIPANTES* 🗣️\n\n ${oi}\n\n╭  ┄  \`ACTIVENSE\n`;
+  let teks = `*!  MENCION!*\n  *PARA ${participants.length} PARTICIPANTES* 🗣️\n\n ${oi}\n\n╭  ┄  \`
+  ꜱᴇʙᴀꜱ ᴠᴇɴᴛᴀꜱ 
+ https://chat.whatsapp.com/GmFsmsfQm18GGnfRwMeYgQ\n`;
   for (const mem of participants) {
     teks += `┊${customEmoji} @${mem.id.split('@')[0]}\n`;
   }
-  teks += 
-  `ꜱᴇʙᴀꜱ ᴠᴇɴᴛᴀꜱ 
- https://chat.whatsapp.com/GmFsmsfQm18GGnfRwMeYgQ
- ╰ ━━━━✦❘༻*${vs}*༺❘✦━━━━┛`;
+  teks += `╰ ━━━━✦❘༻*${vs}*༺❘✦━━━━┛`;
 
   conn.sendMessage(m.chat, { text: teks, mentions: participants.map((a) => a.id) });
 };
