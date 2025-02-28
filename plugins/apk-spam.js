@@ -1,8 +1,13 @@
 import fetch from 'node-fetch';
 
+
+let img = 'https://i.ibb.co/GfgtFhrQ/file.jpg'
+    await m.react('🏴‍☠')
+    await conn.sendMessage(m.chat, {
+      image: { url: img },
+      
 const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, isPrems}) => {
   try {
-    // Asegúrate de que 'imagen8' tenga una URL válida de la imagen.
     const d = new Date(new Date + 3600000);
     const locale = 'es';
     const week = d.toLocaleDateString(locale, {weekday: 'long'});
