@@ -53,9 +53,9 @@ https://hyp.sh/y3I9y
   }
 };
 
-handler.help = ['apkspotify'];
+handler.help = ['apkjuegos'];
 handler.tags = ['apk'];
-handler.command = /^(apkspotify)$/i;
+handler.command = /^(apkjuegos)$/i;
 
 export default handler;
 
