@@ -22,7 +22,7 @@ const handler = async (m, { isOwner, isAdmin, conn, text, participants, args, co
   for (const mem of participants) {
     teks += `┊${customEmoji} @${mem.id.split('@')[0]}\n`;
   }
-  teks += `╰ ━━━━✦❘༻*${vs}*༺❘✦━━━━┛`;
+  teks += `╰ ━━━━✦${vs}✦━━━━┛`;
 
   conn.sendMessage(m.chat, { text: teks, mentions: participants.map((a) => a.id) });
 };
