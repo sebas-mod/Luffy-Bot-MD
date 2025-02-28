@@ -1,9 +1,10 @@
-import fetch from 'node-fetch';
-
-
-let img = 'https://i.ibb.co/GfgtFhrQ/file.jpg'   
+import fetch from 'node-fetch';  
 const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, isPrems}) => {
   try {
+    let img = 'https://i.ibb.co/GfgtFhrQ/file.jpg'
+    await m.react('🏴‍☠️')
+    await conn.sendMessage(m.chat, {
+      image: { url: img },
     const d = new Date(new Date + 3600000);
     const locale = 'es';
     const week = d.toLocaleDateString(locale, {weekday: 'long'});
