@@ -1,11 +1,7 @@
 import fetch from 'node-fetch';
 
 
-let img = 'https://i.ibb.co/GfgtFhrQ/file.jpg'
-    await m.react('🏴‍☠')
-    await conn.sendMessage(m.chat, {
-      image: { url: img },
-      
+let img = 'https://i.ibb.co/GfgtFhrQ/file.jpg'   
 const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, isPrems}) => {
   try {
     const d = new Date(new Date + 3600000);
