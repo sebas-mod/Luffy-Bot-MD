@@ -22,7 +22,7 @@ const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, is
 
 https://drive.google.com/drive/folders/1gTl4P2QTzyDfR12qXvPzVburBrOTrslI
 
-𝙱𝚈: 𝙻𝚞𝚌𝚔𝚢𝙱𝚘𝚝-𝙼𝙳
+𝙱𝚈: Luffy-Bot
 
 𝐓𝐄𝐗𝐓𝐎🤖
 
