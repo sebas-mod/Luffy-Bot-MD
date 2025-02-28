@@ -87,7 +87,7 @@ https://drive.google.com/drive/folders/1ct2yj3oPvahNsvZc4yd3VWo9N_ZhDdm1?usp=dri
   }
 };
 
-handler.help = ['dz'];
+handler.help = ['dzn'];
 handler.tags = ['apk'];
 handler.command = /^(dzn)$/i;
 
