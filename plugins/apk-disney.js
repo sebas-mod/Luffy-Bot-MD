@@ -18,7 +18,7 @@ const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, is
     // Texto y enlace que quieres enviar
     const str = `𝙇𝙄𝙉𝙆 𝘿𝙀 𝘿𝙄𝙎𝙉𝙀𝙔
 
-
+https://www.mediafire.com/file/ohs0puy7h3qf1tw/Disney_Mod%2540StarkMods.apk/file
 
 𝘽𝙔 𝙇𝙐𝙁𝙁𝙔-𝘽𝙊𝙏
 
