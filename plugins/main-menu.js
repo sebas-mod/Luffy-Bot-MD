@@ -46,6 +46,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args, command }) => {
   let tags = {
     "main": "🌟 「 *`PRINCIPAL`* 」 🌟",
     "info": "ℹ️ 「 *`INFORMACION`* 」 ℹ️",
+    "apk": " 「 *`archivos y apk`* 」 ",
     "search": "🔍 「 *`SEARCH`* 」 🔍",
     "rpg": "🎮 「 *`RPG`* 」 🎮",
     "nable": "🟢 「 *`ON - OFF`* 」 🔴",
@@ -63,6 +64,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args, command }) => {
     "owner": "👑 「 *`OWNER`* 」 👑",
     "audios": "🤖「 *`MODIFICADOR DE VOZ`* 」🤖",
      "nsfw": "🔞 「 *`+18`* 」🔞 ",
+
   }
 
   try {
