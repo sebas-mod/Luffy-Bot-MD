@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 
 const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, isPrems}) => {
   try {
-    // Asegúrate de que 'imagen8' tenga una URL o una imagen válida
+    const pp = imagen8; // Asegúrate de que 'imagen8' tenga una URL válida de la imagen.
     const d = new Date(new Date + 3600000);
     const locale = 'es';
     const week = d.toLocaleDateString(locale, {weekday: 'long'});
@@ -16,10 +16,8 @@ const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, is
     const more = String.fromCharCode(8206);
     const readMore = more.repeat(850);
     const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
-    const doc = ['pdf', 'zip', 'vnd.openxmlformats-officedocument.presentationml.presentation', 'vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'vnd.openxmlformats-officedocument.wordprocessingml.document'];
-    const document = doc[Math.floor(Math.random() * doc.length)];
 
-    // Texto y enlace a enviar
+    // Texto y enlace que quieres enviar
     const str = `𝐃𝐑𝐈𝐕𝐄 𝐃𝐑𝐀𝐆𝐎𝐍 𝐁𝐀𝐋𝐋🐉
 
 https://drive.google.com/drive/folders/1gTl4P2QTzyDfR12qXvPzVburBrOTrslI
@@ -30,41 +28,24 @@ https://drive.google.com/drive/folders/1gTl4P2QTzyDfR12qXvPzVburBrOTrslI
 
 𝑬𝒍 𝒅𝒓𝒊𝒗𝒆 𝒍𝒍𝒆𝒗𝒂 𝒖𝒏𝒂 𝒈𝒓𝒂𝒏 𝒄𝒂𝒏𝒕𝒊𝒅𝒂𝒅 𝒅𝒆 𝒑𝒆𝒍𝒊𝒄𝒖𝒍𝒂𝒔/𝒕𝒆𝒎𝒑𝒐𝒓𝒂𝒅𝒂𝒔/𝒔𝒂𝒈𝒂𝒔 𝒅𝒆 𝒅𝒓𝒂𝒈𝒐𝒏 𝒃𝒂𝒍𝒍 𝒅𝒊𝒔𝒇𝒓𝒖𝒕𝒂𝒍𝒐🍿`.trim();
 
-    if (m.isGroup) {
-      // Si es un grupo, se envía el mensaje con la imagen
-      const fkontak2 = {
-        'key': {
-          'participants': '0@s.whatsapp.net',
-          'remoteJid': 'status@broadcast',
-          'fromMe': false,
-          'id': 'Halo'
-        },
-        'message': {
-          'contactMessage': {
-            'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
-          }
-        },
-        'participant': '0@s.whatsapp.net'
-      };
-      conn.sendMessage(m.chat, {image: pp, caption: str, mentions: [...str.matchAll(/@([0-9]{5,16}|0)/g)].map((v) => v[1] + '@s.whatsapp.net')}, {quoted: fkontak2});
-    } else {
-      // Si no es un grupo, se envía el mensaje con la imagen
-      const fkontak2 = {
-        'key': {
-          'participants': '0@s.whatsapp.net',
-          'remoteJid': 'status@broadcast',
-          'fromMe': false,
-          'id': 'Halo'
-        },
-        'message': {
-          'contactMessage': {
-            'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
-          }
-        },
-        'participant': '0@s.whatsapp.net'
-      };
-      conn.sendMessage(m.chat, {image: pp, caption: str, mentions: [...str.matchAll(/@([0-9]{5,16}|0)/g)].map((v) => v[1] + '@s.whatsapp.net')}, {quoted: fkontak2});
-    }
+    // Enviar mensaje con enlace
+    const fkontak2 = {
+      'key': {
+        'participants': '0@s.whatsapp.net',
+        'remoteJid': 'status@broadcast',
+        'fromMe': false,
+        'id': 'Halo'
+      },
+      'message': {
+        'contactMessage': {
+          'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
+        }
+      },
+      'participant': '0@s.whatsapp.net'
+    };
+
+    // Enviar el mensaje con el enlace
+    conn.sendMessage(m.chat, {text: str, mentions: [...str.matchAll(/@([0-9]{5,16}|0)/g)].map((v) => v[1] + '@s.whatsapp.net')}, {quoted: fkontak2});
 
   } catch (err) {
     console.error(err);
