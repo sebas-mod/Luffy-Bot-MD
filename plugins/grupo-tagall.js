@@ -18,7 +18,7 @@ const handler = async (m, { isOwner, isAdmin, conn, text, participants, args, co
   const oi = `*» INFO :* ${pesan}`;
   let teks = `*!  MENCION!*\n  *PARA ${participants.length} PARTICIPANTES* 🗣️\n\n ${oi}\n\n╭  ┄ 
   \nhttps://chat.whatsapp.com/GmFsmsfQm18GGnfRwMeYgQ`;
-  
+}
   for (const mem of participants) {
     teks += `┊${customEmoji} @${mem.id.split('@')[0]}\n`;
   }
