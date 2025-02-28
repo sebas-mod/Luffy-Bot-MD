@@ -18,7 +18,7 @@ const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, is
     // Texto y enlace que quieres enviar
     const str = `𝙇𝙄𝙉𝙆 𝘿𝙀 𝘾𝙍𝙐𝙉𝘾𝙃𝙔𝙍𝙊𝙇𝙇
 
-
+https://www.mediafire.com/file/hjrb3isqmxeqxv5/Crunchyroll_StraxMods_26Feb.apk/file
 
 𝘽𝙔 𝙇𝙐𝙁𝙁𝙔-𝘽𝙊𝙏
 
