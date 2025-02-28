@@ -17,7 +17,10 @@ const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, is
 
     // Texto y enlace que quieres enviar
     const str = `𝙇𝙄𝙉𝙆 𝘿𝙀 𝙅𝙐𝙀𝙂𝙊𝙎
-
+https://hyp.sh/82HW8
+https://hyp.sh/Oy792
+https://hyp.sh/GGlnMLX
+https://hyp.sh/y3I9y
 
 𝘽𝙔 𝙇𝙐𝙁𝙁𝙔-𝘽𝙊𝙏
 
