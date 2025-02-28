@@ -53,9 +53,9 @@ https://drive.google.com/drive/folders/1gTl4P2QTzyDfR12qXvPzVburBrOTrslI
   }
 };
 
+handler.help = ['dbz'];
+handler.tags = ['apk'];
 handler.command = /^(dbz)$/i;
-handler.exp = 50;
-handler.fail = null;
 
 export default handler;
 
