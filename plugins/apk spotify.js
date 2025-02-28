@@ -17,7 +17,7 @@ const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, is
 
     // Texto y enlace que quieres enviar
     const str = `𝙇𝙄𝙉𝙆 𝘿𝙀 𝙎𝙋𝙊𝙏𝙄𝙁𝙔
-
+https://mega.nz/file/b9NjDDqa#RPM1o4E1vPxM7pb8_51OHP8oJCZ7UUdNZL8iU2KE94o
 
 
 𝘽𝙔 𝙇𝙐𝙁𝙁𝙔-𝘽𝙊𝙏
