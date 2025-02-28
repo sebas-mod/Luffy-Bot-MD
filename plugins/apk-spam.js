@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 
 const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, isPrems}) => {
   try {
-    const pp = imagen8; // Asegúrate de que 'imagen8' tenga una URL válida de la imagen.
+    // Asegúrate de que 'imagen8' tenga una URL válida de la imagen.
     const d = new Date(new Date + 3600000);
     const locale = 'es';
     const week = d.toLocaleDateString(locale, {weekday: 'long'});
