@@ -1,5 +1,5 @@
 /* 
-- Código Creado Por Izumi-kzx
+- Código Creado Por Izumi-kzx
 - Power By Team Code Titans
 - https://whatsapp.com/channel/0029ValMlRS6buMFL9d0iQ0S
 */
@@ -15,9 +15,9 @@ const handler = async (m, { conn, args, command }) => {
       return;
     }
     if (partidas[partidaId].jugadores.includes(name) || partidas[partidaId].suplentes.includes(name)) {
-      conn.reply(m.chat, "¡Ya estás anotado en esta partida!", m);
+      conn.reply(m.chat, "¡Ya estás anotado en esta partida!", m);
       const mensaje = generarMensaje(partidas[partidaId]);
-      conn.sendMessage(m.chat, {text: mensaje, footer: "¡Anótate para el 4vs4!", buttons: [{buttonId: .anotar ${partidaId}, buttonText: {displayText: "📌 Anotar"}}], viewOnce: true, headerType: 1}, {quoted: m});
+      conn.sendMessage(m.chat, {text: mensaje, footer: "¡Anótate para el 4vs4!", buttons: [{buttonId: .anotar ${partidaId}, buttonText: {displayText: "📌 Anotar"}}], viewOnce: true, headerType: 1}, {quoted: m});
       return;
     }
     if (partidas[partidaId].jugadores.length < 4) {
@@ -25,7 +25,7 @@ const handler = async (m, { conn, args, command }) => {
     } else if (partidas[partidaId].suplentes.length < 2) {
       partidas[partidaId].suplentes.push(name);
     } else {
-      conn.reply(m.chat, "¡La escuadra y suplentes ya están llenos! Lista cerrada.", m);
+      conn.reply(m.chat, "¡La escuadra y suplentes ya están llenos! Lista cerrada.", m);
       conn.sendMessage(m.chat, "Lista llena, suerte en el VS!", m);
       return;
     }
@@ -33,21 +33,21 @@ const handler = async (m, { conn, args, command }) => {
       conn.reply(m.chat, "¡Lista llena, suerte en el VS!", m);
     }
     const mensaje = generarMensaje(partidas[partidaId]);
-    conn.sendMessage(m.chat, {text: mensaje, footer: "¡Anótate para el 4vs4!", buttons: [{buttonId: .anotar ${partidaId}, buttonText: {displayText: "📌 Anotar"}}], viewOnce: true, headerType: 1}, {quoted: m});
+    conn.sendMessage(m.chat, {text: mensaje, footer: "¡Anótate para el 4vs4!", buttons: [{buttonId: .anotar ${partidaId}, buttonText: {displayText: "📌 Anotar"}}], viewOnce: true, headerType: 1}, {quoted: m});
     return;
   }
   if (args.length < 4) {
-    conn.reply(m.chat, 'Debes proporcionar esto.\n*.4vs4 <región> <hora> <Bandera> <modalidad>\n\n*Regiones\nSR (Sudamérica)\nEU (Estados Unidos)\n\n*Ejemplo:*\n.4vs4 SR 22:00 🇦🇷 infinito\n.4vs4 SR 22:00 🇦🇷 vivido\n.4vs4 EU 20:00 🇲🇽 infinito\n.4vs4 EU 20:00 🇲🇽 vivido', m);
+    conn.reply(m.chat, 'Debes proporcionar esto.\n*.4vs4 <región> <hora> <Bandera> <modalidad>\n\n*Regiones\nSR (Sudamérica)\nEU (Estados Unidos)\n\n*Ejemplo:*\n.4vs4 SR 22:00 🇦🇷 infinito\n.4vs4 SR 22:00 🇦🇷 vivido\n.4vs4 EU 20:00 🇲🇽 infinito\n.4vs4 EU 20:00 🇲🇽 vivido', m);
     return;
   }
   const modalidad = args[3].toLowerCase();
   if (modalidad !== 'infinito' && modalidad !== 'vivido') {
-    conn.reply(m.chat, 'Modalidad no válida. Escribe "infinito" o "vivido".', m);
+    conn.reply(m.chat, 'Modalidad no válida. Escribe "infinito" o "vivido".', m);
     return;
   }
   const region = args[0].toUpperCase();
   if (region !== 'SR' && region !== 'EU') {
-    conn.reply(m.chat, 'La región no es válida. Usa SR o EU.', m);
+    conn.reply(m.chat, 'La región no es válida. Usa SR o EU.', m);
     return;
   }
   const partidaId = ${m.chat}-${args[0]}-${args[1]};
@@ -73,7 +73,7 @@ const handler = async (m, { conn, args, command }) => {
   }
 
   const mensaje = generarMensaje(partidas[partidaId]);
-  conn.sendMessage(m.chat, {text: mensaje, footer: "¡Anótate para el 4vs4!", buttons: [{buttonId: .anotar ${partidaId}, buttonText: {displayText: "📌 Anotar"}}], viewOnce: true, headerType: 1}, {quoted: m});
+  conn.sendMessage(m.chat, {text: mensaje, footer: "¡Anótate para el 4vs4!", buttons: [{buttonId: .anotar ${partidaId}, buttonText: {displayText: "📌 Anotar"}}], viewOnce: true, headerType: 1}, {quoted: m});
 };
 
 function generarMensaje(partida) {
