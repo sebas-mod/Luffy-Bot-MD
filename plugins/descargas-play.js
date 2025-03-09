@@ -147,7 +147,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
   }
 };
 
-handler.command = handler.help = ['play', 'ytmp4', 'play2'];
+handler.command = handler.help = ['play', 'ytmp4'];
 handler.tags = ['downloader'];
 handler.group = true
 
