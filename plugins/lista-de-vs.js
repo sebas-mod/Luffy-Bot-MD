@@ -17,7 +17,7 @@ const handler = async (m, { conn, args, command }) => {
     if (partidas[partidaId].jugadores.includes(name) || partidas[partidaId].suplentes.includes(name)) {
       conn.reply(m.chat, "¡Ya estás anotado en esta partida!", m);
       const mensaje = generarMensaje(partidas[partidaId]);
-      conn.sendMessage(m.chat, {text: mensaje, footer: "¡Anótate para el 4vs4!", buttons: [{buttonId: .anotar ${partidaId}, buttonText: {displayText: "📌 Anotar"}}], viewOnce: true, headerType: 1}, {quoted: m});
+      conn.sendMessage(m.chat, { text: mensaje, footer: "¡Anótate para el 4vs4!", buttons: [{ buttonId: `anotar ${partidaId}`, buttonText: { displayText: "📌 Anotar" } }], viewOnce: true, headerType: 1 }, { quoted: m });
       return;
     }
     if (partidas[partidaId].jugadores.length < 4) {
@@ -33,7 +33,7 @@ const handler = async (m, { conn, args, command }) => {
       conn.reply(m.chat, "¡Lista llena, suerte en el VS!", m);
     }
     const mensaje = generarMensaje(partidas[partidaId]);
-    conn.sendMessage(m.chat, {text: mensaje, footer: "¡Anótate para el 4vs4!", buttons: [{buttonId: .anotar ${partidaId}, buttonText: {displayText: "📌 Anotar"}}], viewOnce: true, headerType: 1}, {quoted: m});
+    conn.sendMessage(m.chat, { text: mensaje, footer: "¡Anótate para el 4vs4!", buttons: [{ buttonId: `anotar ${partidaId}`, buttonText: { displayText: "📌 Anotar" } }], viewOnce: true, headerType: 1 }, { quoted: m });
     return;
   }
   if (args.length < 4) {
@@ -50,7 +50,7 @@ const handler = async (m, { conn, args, command }) => {
     conn.reply(m.chat, 'La región no es válida. Usa SR o EU.', m);
     return;
   }
-  const partidaId = ${m.chat}-${args[0]}-${args[1]};
+  const partidaId = `${m.chat}-${args[0]}-${args[1]}`;
   const horariosSR = { BO: "21:00", PE: "20:00", AR: "22:00" };
   let horariosEU = { CO: "21:00", MX: "" };
   if (region === 'EU') {
@@ -73,21 +73,21 @@ const handler = async (m, { conn, args, command }) => {
   }
 
   const mensaje = generarMensaje(partidas[partidaId]);
-  conn.sendMessage(m.chat, {text: mensaje, footer: "¡Anótate para el 4vs4!", buttons: [{buttonId: .anotar ${partidaId}, buttonText: {displayText: "📌 Anotar"}}], viewOnce: true, headerType: 1}, {quoted: m});
+  conn.sendMessage(m.chat, { text: mensaje, footer: "¡Anótate para el 4vs4!", buttons: [{ buttonId: `anotar ${partidaId}`, buttonText: { displayText: "📌 Anotar" } }], viewOnce: true, headerType: 1 }, { quoted: m });
 };
 
 function generarMensaje(partida) {
   const horarios = Object.entries(partida.horarios)
     .map(([pais, hora]) => {
-      const bandera = {BO: "🇧🇴", PE: "🇵🇪", AR: "🇦🇷", CO: "🇨🇴", MX: "🇲🇽"}[pais];
-      return *${bandera} ${pais} :* ${hora};
+      const bandera = { BO: "🇧🇴", PE: "🇵🇪", AR: "🇦🇷", CO: "🇨🇴", MX: "🇲🇽" }[pais];
+      return `${bandera} ${pais} : ${hora}`;
     })
     .join("\n");
 
-  const escuadra = [🥷 ${partida.jugadores[0] || ""}, 🥷 ${partida.jugadores[1] || ""}, 🥷 ${partida.jugadores[2] || ""}, 🥷 ${partida.jugadores[3] || ""}].join("\n");
-  const suplentes = [🥷 ${partida.suplentes[0] || ""}, 🥷 ${partida.suplentes[1] || ""}].join("\n");
+  const escuadra = [`🥷 ${partida.jugadores[0] || ""}`, `🥷 ${partida.jugadores[1] || ""}`, `🥷 ${partida.jugadores[2] || ""}`, `🥷 ${partida.jugadores[3] || ""}`].join("\n");
+  const suplentes = [`🥷 ${partida.suplentes[0] || ""}`, `🥷 ${partida.suplentes[1] || ""}`].join("\n");
 
-  return *4 VERSUS 4 ${partida.modalidad}*\n${horarios}\n*REGLAS:* ${partida.reglas}\n𝗘𝗦𝗖𝗨𝗔𝗗𝗥𝗔\n${escuadra}\n𝗦𝗨𝗣𝗟𝗘𝗡𝗧𝗘𝗦\n${suplentes}.trim();
+  return `4 VERSUS 4 ${partida.modalidad}\n${horarios}\nREGLAS: ${partida.reglas}\n𝗘𝗦𝗖𝗨𝗔𝗗𝗥𝗔\n${escuadra}\n𝗦𝗨𝗣𝗟𝗘𝗡𝗧𝗘𝗦\n${suplentes}`.trim();
 }
 
 handler.help = ['4vs4 <Reg|Hr|Bnd|Mod>']
