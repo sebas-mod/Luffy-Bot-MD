@@ -3,53 +3,68 @@
 - Power By Team Code Titans
 - https://whatsapp.com/channel/0029ValMlRS6buMFL9d0iQ0S
 */
+
 // [ 🍧 4VS4 FREE FIRE ]
 const partidas = {};
+
 const handler = async (m, { conn, args, command }) => {
   if (command === 'anotar') {
     const who = m.sender;
     const { name } = global.db.data.users[who];
     const partidaId = args[0];
+    
     if (!partidas[partidaId]) {
       conn.reply(m.chat, "No hay una partida activa en este momento.", m);
       return;
     }
+
     if (partidas[partidaId].jugadores.includes(name) || partidas[partidaId].suplentes.includes(name)) {
       conn.reply(m.chat, "¡Ya estás anotado en esta partida!", m);
-      const mensaje = generarMensaje(partidas[partidaId]);
-      conn.sendMessage(m.chat, { text: mensaje, footer: "¡Anótate para el 4vs4!", buttons: [{ buttonId: `anotar ${partidaId}`, buttonText: { displayText: "📌 Anotar" } }], viewOnce: true, headerType: 1 }, { quoted: m });
       return;
     }
+
+    // Verificar si el jugador se puede agregar a la lista
     if (partidas[partidaId].jugadores.length < 4) {
       partidas[partidaId].jugadores.push(name);
     } else if (partidas[partidaId].suplentes.length < 2) {
       partidas[partidaId].suplentes.push(name);
     } else {
       conn.reply(m.chat, "¡La escuadra y suplentes ya están llenos! Lista cerrada.", m);
-      conn.sendMessage(m.chat, "Lista llena, suerte en el VS!", m);
       return;
     }
-    if (partidas[partidaId].jugadores.length === 4 && partidas[partidaId].suplentes.length === 2) {
-      conn.reply(m.chat, "¡Lista llena, suerte en el VS!", m);
-    }
+
     const mensaje = generarMensaje(partidas[partidaId]);
-    conn.sendMessage(m.chat, { text: mensaje, footer: "¡Anótate para el 4vs4!", buttons: [{ buttonId: `anotar ${partidaId}`, buttonText: { displayText: "📌 Anotar" } }], viewOnce: true, headerType: 1 }, { quoted: m });
-    return;
+    conn.sendMessage(m.chat, {
+      text: mensaje,
+      footer: "¡Anótate para el 4vs4!",
+      buttons: [
+        {
+          buttonId: `anotar ${partidaId}`,
+          buttonText: { displayText: "📌 Anotar" }
+        }
+      ],
+      viewOnce: true,
+      headerType: 1
+    }, { quoted: m });
   }
+
   if (args.length < 4) {
     conn.reply(m.chat, 'Debes proporcionar esto.\n*.4vs4 <región> <hora> <Bandera> <modalidad>*\n\n*Regiones*\nSR (Sudamérica)\nEU (Estados Unidos)\n\n*Ejemplo:*\n.4vs4 SR 22:00 🇦🇷 infinito\n.4vs4 SR 22:00 🇦🇷 vivido\n.4vs4 EU 20:00 🇲🇽 infinito\n.4vs4 EU 20:00 🇲🇽 vivido', m);
     return;
   }
+
   const modalidad = args[3].toLowerCase();
   if (modalidad !== 'infinito' && modalidad !== 'vivido') {
     conn.reply(m.chat, 'Modalidad no válida. Escribe "infinito" o "vivido".', m);
     return;
   }
+
   const region = args[0].toUpperCase();
   if (region !== 'SR' && region !== 'EU') {
     conn.reply(m.chat, 'La región no es válida. Usa SR o EU.', m);
     return;
   }
+
   const partidaId = `${m.chat}-${args[0]}-${args[1]}`;
   const horariosSR = { BO: "21:00", PE: "20:00", AR: "22:00" };
   let horariosEU = { CO: "21:00", MX: "" };
@@ -73,9 +88,54 @@ const handler = async (m, { conn, args, command }) => {
   }
 
   const mensaje = generarMensaje(partidas[partidaId]);
-  conn.sendMessage(m.chat, { text: mensaje, footer: "¡Anótate para el 4vs4!", buttons: [{ buttonId: `anotar ${partidaId}`, buttonText: { displayText: "📌 Anotar" } }], viewOnce: true, headerType: 1 }, { quoted: m });
+  conn.sendMessage(m.chat, {
+    text: mensaje,
+    footer: "¡Anótate para el 4vs4!",
+    buttons: [
+      {
+        buttonId: `anotar ${partidaId}`,
+        buttonText: { displayText: "📌 Anotar" }
+      }
+    ],
+    viewOnce: true,
+    headerType: 1
+  }, { quoted: m });
 };
 
+// Manejador de Interacción con el Botón
+const handleButtonPress = async (m, { conn }) => {
+  if (m.buttonReplyMessage) {
+    const buttonId = m.buttonReplyMessage.selectedButtonId;
+    const partidaId = buttonId.split(' ')[1]; // Extraer el partidaId del buttonId
+    const who = m.sender;
+    const { name } = global.db.data.users[who];
+
+    if (partidas[partidaId]) {
+      const partida = partidas[partidaId];
+
+      // Verificar si el jugador ya está anotado
+      if (partida.jugadores.includes(name) || partida.suplentes.includes(name)) {
+        conn.reply(m.chat, "¡Ya estás anotado en esta partida!", m);
+        return;
+      }
+
+      // Si la lista no está llena, anotar al jugador
+      if (partida.jugadores.length < 4) {
+        partida.jugadores.push(name);
+      } else if (partida.suplentes.length < 2) {
+        partida.suplentes.push(name);
+      } else {
+        conn.reply(m.chat, "¡La escuadra y suplentes ya están llenos! Lista cerrada.", m);
+        return;
+      }
+
+      const mensaje = generarMensaje(partida);
+      conn.sendMessage(m.chat, { text: mensaje, footer: "¡Anótate para el 4vs4!", buttons: [{ buttonId: `anotar ${partidaId}`, buttonText: { displayText: "📌 Anotar" } }], viewOnce: true, headerType: 1 });
+    }
+  }
+};
+
+// Función para Generar el Mensaje
 function generarMensaje(partida) {
   const horarios = Object.entries(partida.horarios)
     .map(([pais, hora]) => {
@@ -90,8 +150,12 @@ function generarMensaje(partida) {
   return `4 VERSUS 4 ${partida.modalidad}\n${horarios}\nREGLAS: ${partida.reglas}\n𝗘𝗦𝗖𝗨𝗔𝗗𝗥𝗔\n${escuadra}\n𝗦𝗨𝗣𝗟𝗘𝗡𝗧𝗘𝗦\n${suplentes}`.trim();
 }
 
-handler.help = ['4vs4 <Reg|Hr|Bnd|Mod>']
-handler.tags = ['main']
+// Escuchar eventos de los botones (depende de tu framework, en este ejemplo se asume que el bot escucha mensajes)
+conn.on('message', handleButtonPress);
+
+handler.help = ['4vs4 <Reg|Hr|Bnd|Mod>'];
+handler.tags = ['main'];
 handler.command = /^(4vs4|anotar)$/i;
-handler.group = true
-export default handler;
+handler.group = true;
+
+export default 
