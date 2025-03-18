@@ -17,19 +17,24 @@ const handler = async (m, { conn, args, command }) => {
       return;
     }
 
+    // Verifica si ya está anotado el usuario
     if (partidas[partidaId].jugadores.includes(name) || partidas[partidaId].suplentes.includes(name)) {
       conn.reply(m.chat, "¡Ya estás anotado en esta partida!", m);
       const mensaje = generarMensaje(partidas[partidaId]);
       conn.sendMessage(m.chat, { 
         text: mensaje, 
         footer: "¡Anótate para el 4vs4!", 
-        buttons: [{ buttonId: `anotar ${partidaId}`, buttonText: { displayText: "📌 Anotar" } }], 
+        buttons: [{ 
+          buttonId: `anotar ${partidaId}`, 
+          buttonText: { displayText: "📌 Anotar" } 
+        }], 
         viewOnce: true, 
         headerType: 1 
       }, { quoted: m });
       return;
     }
 
+    // Agregar jugador a la partida
     if (partidas[partidaId].jugadores.length < 4) {
       partidas[partidaId].jugadores.push(name);
     } else if (partidas[partidaId].suplentes.length < 2) {
@@ -40,21 +45,27 @@ const handler = async (m, { conn, args, command }) => {
       return;
     }
 
+    // Cuando se llena la lista
     if (partidas[partidaId].jugadores.length === 4 && partidas[partidaId].suplentes.length === 2) {
       conn.reply(m.chat, "¡Lista llena, suerte en el VS!", m);
     }
 
+    // Enviar mensaje actualizado
     const mensaje = generarMensaje(partidas[partidaId]);
     conn.sendMessage(m.chat, { 
       text: mensaje, 
       footer: "¡Anótate para el 4vs4!", 
-      buttons: [{ buttonId: `anotar ${partidaId}`, buttonText: { displayText: "📌 Anotar" } }], 
+      buttons: [{ 
+        buttonId: `anotar ${partidaId}`, 
+        buttonText: { displayText: "📌 Anotar" } 
+      }], 
       viewOnce: true, 
       headerType: 1 
     }, { quoted: m });
     return;
   }
 
+  // Comprobando si los argumentos son suficientes
   if (args.length < 4) {
     conn.reply(m.chat, 'Debes proporcionar esto.\n*.4vs4 <región> <hora> <Bandera> <modalidad>\n\n*Regiones*\nSR (Sudamérica)\nEU (Estados Unidos)\n\n*Ejemplo:*\n.4vs4 SR 22:00 🇦🇷 infinito\n.4vs4 SR 22:00 🇦🇷 vivido\n.4vs4 EU 20:00 🇲🇽 infinito\n.4vs4 EU 20:00 🇲🇽 vivido', m);
     return;
@@ -72,6 +83,7 @@ const handler = async (m, { conn, args, command }) => {
     return;
   }
 
+  // Identificador único para la partida
   const partidaId = `${m.chat}-${args[0]}-${args[1]}`;
   const horariosSR = { BO: "21:00", PE: "20:00", AR: "22:00" };
   let horariosEU = { CO: "21:00", MX: "" };
@@ -80,6 +92,7 @@ const handler = async (m, { conn, args, command }) => {
   }
   const horarios = region === 'SR' ? horariosSR : horariosEU;
 
+  // Crear una nueva partida si no existe
   if (!partidas[partidaId]) {
     partidas[partidaId] = {
       jugadores: [],
@@ -94,17 +107,21 @@ const handler = async (m, { conn, args, command }) => {
     partidas[partidaId].reglas = modalidad === 'infinito' ? '.reglasinf' : '.reglasvv2';
   }
 
+  // Enviar mensaje de la partida creada
   const mensaje = generarMensaje(partidas[partidaId]);
   conn.sendMessage(m.chat, { 
     text: mensaje, 
     footer: "¡Anótate para el 4vs4!", 
-    buttons: [{ buttonId: `anotar ${partidaId}`, buttonText: { displayText: "📌 Anotar" } }], 
+    buttons: [{ 
+      buttonId: `anotar ${partidaId}`, 
+      buttonText: { displayText: "📌 Anotar" } 
+    }], 
     viewOnce: true, 
     headerType: 1 
   }, { quoted: m });
 };
 
-// Función para Generar el Mensaje
+// Función para generar el mensaje
 function generarMensaje(partida) {
   const horarios = Object.entries(partida.horarios)
     .map(([pais, hora]) => {
