@@ -92,5 +92,6 @@ handler.tags = ['group']
 handler.command = ['mute', 'unmute'];
 handler.group = true;
 handler.admin = true;
+handler.owner = true;
 handler.botAdmin = true;
 export default handler;
