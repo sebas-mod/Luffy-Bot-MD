@@ -224,7 +224,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args, command }) => {
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
 
 
-    let img = 'https://postimg.cc/34hK0kYt'
+    let img = 'https://postimg.cc/14zkCGCp'
     await m.react('🏴‍☠️')
     await conn.sendMessage(m.chat, {
       image: { url: img },
