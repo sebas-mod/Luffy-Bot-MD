@@ -104,7 +104,7 @@ global.fake = { contextInfo: { isForwarded: true, forwardedNewsletterMessageInfo
 }}, { quoted: m }
 
 global.icono = [ 
-'https://files.fm/u/8p4ub48qe2',
+'https://qu.ax/YEHhR.jpg',
 
 ].getRandom()
 
