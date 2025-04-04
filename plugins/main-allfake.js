@@ -28,12 +28,12 @@ console.log(`Error : ${e}`)
 }}
 
 //creador y otros
-global.creador = 'Wa.me/5491140951014'
+global.creador = 'Wa.me/5491140951814'
 global.ofcbot = `${conn.user.jid.split('@')[0]}`
 global.asistencia = 'https://wa.me/message/O4QPPHZOFDOJI1'
 global.namechannel = 'luffy • Channel OFC '
 global.listo = '✨️ *Aquí tienes ฅ^•ﻌ•^ฅ*'
-global.fotoperfil = await conn.profilePictureUrl(m.sender, 'image').catch(_ => 'https://i.ibb.co/QvyTyRBc/file.jpg')
+global.fotoperfil = await conn.profilePictureUrl(m.sender, 'image').catch(_ => 'https://qu.ax/YEHhR.jpg')
 
 //ids channel
 global.channelid = '120363299030870235@newsletter'
