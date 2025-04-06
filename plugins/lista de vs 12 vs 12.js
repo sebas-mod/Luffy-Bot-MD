@@ -100,7 +100,7 @@ EU (Estados Unidos)
       jugadores: [],
       suplentes: [],
       hora: args[1],
-      modalidad: "12 VS 12",
+      modalidad: "MAPA GRANDE",
       reglas: "MAPA GRANDE - 12 VS 12",
       horarios: horarios,
     };
@@ -122,7 +122,7 @@ function generarMensaje(partida) {
   const suplentes = Array.from({ length: 4 }, (_, i) => `🥷 ${partida.suplentes[i] || ""}`).join("\n");
 
   return (
-    `*12 VERSUS 12 - MAPA GRANDE*\n` +
+    `*12 VERSUS 12 - ${partida.modalidad}*\n` +
     `${horarios}\n` +
     `*REGLAS:* ${partida.reglas}\n` +
     `𝗘𝗦𝗖𝗨𝗔𝗗𝗥𝗔\n${escuadra}\n𝗦𝗨𝗣𝗟𝗘𝗡𝗧𝗘𝗦\n${suplentes}`.trim()
