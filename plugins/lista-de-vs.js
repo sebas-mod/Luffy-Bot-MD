@@ -8,7 +8,7 @@
 const partidas = {};
 
 const handler = async (m, { conn, args, command }) => {
-  // Helper to send the partida message
+
   const sendPartidaMessage = (chatId, partidaId, partida, quotedMsg) => {
     const mensaje = generarMensaje(partida);
     conn.sendMessage(
@@ -33,7 +33,7 @@ const handler = async (m, { conn, args, command }) => {
     const who = m.sender;
     const { name } = global.db.data.users[who];
     const partidaId = args[0];
-    
+
     if (!partidas[partidaId]) {
       conn.reply(m.chat, "No hay una partida activa en este momento.", m);
       return;
@@ -61,11 +61,12 @@ const handler = async (m, { conn, args, command }) => {
     if (partidas[partidaId].jugadores.length === 4 && partidas[partidaId].suplentes.length === 2) {
       conn.reply(m.chat, "¡Lista llena, suerte en el VS!", m);
     }
+
     sendPartidaMessage(m.chat, partidaId, partidas[partidaId], m);
     return;
   }
 
-  // Check if there are enough arguments to create a partida
+  // Crear partida
   if (args.length < 4) {
     conn.reply(
       m.chat,
@@ -98,15 +99,12 @@ EU (Estados Unidos)
     return;
   }
 
-  // Construct partidaId using template literals
   const partidaId = `${m.chat}-${args[0]}-${args[1]}`;
-  
-  // Define horarios based on region
+
   const horariosSR = { BO: "21:00", PE: "20:00", AR: "22:00" };
   let horariosEU = { CO: "21:00", MX: args[1] };
   const horarios = region === "SR" ? horariosSR : horariosEU;
 
-  // Create or update partida entry
   if (!partidas[partidaId]) {
     partidas[partidaId] = {
       jugadores: [],
@@ -124,6 +122,7 @@ EU (Estados Unidos)
   sendPartidaMessage(m.chat, partidaId, partidas[partidaId], m);
 };
 
+// 🧠 Generador de mensaje de partida
 function generarMensaje(partida) {
   const horarios = Object.entries(partida.horarios)
     .map(([pais, hora]) => {
@@ -148,10 +147,7 @@ function generarMensaje(partida) {
     `*4 VERSUS 4 ${partida.modalidad}*\n` +
     `${horarios}\n` +
     `*REGLAS:* ${partida.reglas}\n` +
-    `𝗘𝗦𝗖𝗨𝗔𝗗𝗥𝗔\n` +
-    `${escuadra}\n` +
-    `𝗦𝗨𝗣𝗟𝗘𝗡𝗧𝗘𝗦\n` +
-    `${suplentes}`.trim()
+    `𝗘𝗦𝗖𝗨𝗔𝗗𝗥𝗔\n${escuadra}\n𝗦𝗨𝗣𝗟𝗘𝗡𝗧𝗘𝗦\n${suplentes}`.trim()
   );
 }
 
