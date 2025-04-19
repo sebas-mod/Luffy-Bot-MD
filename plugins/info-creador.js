@@ -1,30 +1,28 @@
 import fetch from 'node-fetch';
 
 let handler = async (m, { conn, usedPrefix, text, args, command }) => {
-   await m.react('🎉');
+    await m.react('🎉');
 
-    let fkontak = { 
-        "key": { 
-            "participants": "0@s.whatsapp.net", 
-            "remoteJid": "status@broadcast", 
-            "fromMe": false, 
-            "id": "Halo" 
-        }, 
-        "message": { 
-            "contactMessage": { 
-                "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` 
-            }
-        }, 
-        "participant": "0@s.whatsapp.net" 
-    };
+    // Mensaje falso de contacto para citar
+    let fkontak = { 
+        "key": { 
+            "participants": "0@s.whatsapp.net", 
+            "remoteJid": "status@broadcast", 
+            "fromMe": false, 
+            "id": "Halo" 
+        }, 
+        "message": { 
+            "contactMessage": { 
+                "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` 
+            }
+        }, 
+        "participant": "0@s.whatsapp.net" 
+    };
 
-    let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender;
-    let name = await conn.getName(who);
-    let edtr = `@${m.sender.split`@`[0]}`;
-    let username = conn.getName(m.sender);
+    let username = await conn.getName(m.sender);
 
-    // VCARD
-    let vcard = `BEGIN:VCARD
+    // vCard del creador
+    let vcard = `BEGIN:VCARD
 VERSION:3.0
 N:Dzn;Sebas
 FN:Sebas Dzn
@@ -42,32 +40,32 @@ item4.X-ABLabel:Localización
 BDAY:2004-07-02
 END:VCARD`;
 
+    // Enviar contacto
+    await conn.sendMessage(m.chat, { 
+        contacts: { 
+            displayName: "Creador",
+            contacts: [{ vcard }] 
+        }
+    }, { quoted: fkontak });
 
+    // Enviar mensaje adicional con botón
+    let txt = `👋 *Hola \`${username}\`, este es el contacto de mi creador*`;
 
-    const tag_own = await conn.sendMessage(m.chat, { 
-        contacts: { 
-            displayName: "Creador",
-            contacts: [{ vcard }] 
-        }
-    }, { quoted: estilo });
-
-    let txt = `👋 *Hola \`${username}\` este es*\n*el contacto de mi creador*`;
-
-    await conn.sendMessage(m.chat, {
-        text: txt,
-        footer: '© ᥴrᥱᥲძ᥆r ᥆𝖿іᥴіᥲᥣ sebas.MD',
-        buttons: [
-            {
-                buttonId: ".menu",
-                buttonText: {
-                    displayText: 'MENU BOT'
-                },
-                type: 1
-            }
-        ],
-        viewOnce: true,
-        headerType: 1
-    }, { quoted: m });
+    await conn.sendMessage(m.chat, {
+        text: txt,
+        footer: '© ᥴrᥱᥲძ᥆r ᥆𝖿іᥴіᥲᥣ sebas.MD',
+        buttons: [
+            {
+                buttonId: ".menu",
+                buttonText: {
+                    displayText: 'MENU BOT'
+                },
+                type: 1
+            }
+        ],
+        viewOnce: true,
+        headerType: 1
+    }, { quoted: m });
 };
 
 handler.help = ['owner', 'creator'];
