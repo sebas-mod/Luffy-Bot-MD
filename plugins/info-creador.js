@@ -31,7 +31,7 @@ FN:Sebas Dzn
 NICKNAME:Sebas-dzn
 ORG:sebas-MD
 TITLE:Soft
-item1.TEL;waid=5491166887146:+54 9 11 6688 7146
+item1.TEL;waid=5491166887146:+5491166887146
 item1.X-ABLabel:WhatsApp Owner
 item2.URL:https://github.com/sebas-MD
 item2.X-ABLabel:More
@@ -41,6 +41,7 @@ item4.ADR:;;Argentina;;;;
 item4.X-ABLabel:Localización
 BDAY:2004-07-02
 END:VCARD`;
+
 
 
     const tag_own = await conn.sendMessage(m.chat, { 
