@@ -1,14 +1,11 @@
-let handler = async (m, { conn, text, isROwner, isOwner, isAdmin, usedPrefix, command }) => {
+const handler = async (m, {conn, text, isROwner, isOwner}) => {
   if (text) {
-    if (isROwner) global.conn.welcome = text
-    else if ((isOwner || isAdmin)) conn.welcome = text
-    global.db.data.chats[m.chat].sWelcome = text
-    m.reply('Welcome berhasil diatur\n@user (Mention)\n@subject (Judul Grup)\n@desc (Deskripsi Grup)')
-  } else throw `Teksnya mana?\n\ncontoh:\n${usedPrefix + command} hai, @user!\nSelamat datang di grup @subject\n\n@desc`
-}
-handler.help = ['setwelcome <teks>']
-handler.tags = ['group']
-handler.command = /^(setwelcome|setw)$/i
-handler.group = true
-
-module.exports = handler
+    global.db.data.chats[m.chat].sWelcome = text;
+    m.reply('[❗] MENSAJE DE BIENVENIDA CONFIGURADO CORRECTAMENTE PARA ESTE GRUPO*');
+  } else throw `[❗] INGRESE EL MENSAJE DE BIENVENIDA QUE DESEE AGREGAR, USE:*\n*- @user (mención)*\n*- @group (nombre de grupo)*\n*- @desc (description de grupo)*`;
+};
+handler.help = ['setwelcome <text>'];
+handler.tags = ['group'];
+handler.command = ['setwelcome'];
+handler.admin = true;
+export default handler;
