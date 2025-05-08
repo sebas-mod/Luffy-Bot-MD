@@ -1,43 +1,41 @@
 import fs from 'fs';
 import path from 'path';
 
-var handler = async (m, { usedPrefix, command }) => {
-    try {
-        await m.react('🕒'); 
-        conn.sendPresenceUpdate('composing', m.chat);
+let Fruatre = async (m, { conn }) => {
+    let pluginFolder = './plugins';
+    let errorList = [];
 
-        const pluginsDir = './plugins';
+    // Cek apakah folder plugin ada
+    if (!fs.existsSync(pluginFolder)) {
+        return m.reply('❌ Carpeta de complementos no encontrada!');
+    }
 
-        const files = fs.readdirSync(pluginsDir).filter(file => file.endsWith('.js'));
+    // Baca semua file dalam folder plugins
+    let files = fs.readdirSync(pluginFolder).filter(file => file.endsWith('.js'));
 
-        let response = 📂 *Revisión de Syntax Errors:*\n\n;
-        let hasErrors = false;
-
-        for (const file of files) {
-            try {
-                await import(path.resolve(pluginsDir, file));
-            } catch (error) {
-                hasErrors = true;
-                response += 🚩 *Error en:* ${file}\n${error.message}\n\n;
+    for (let file of files) {
+        try {
+            // Import file sebagai modul ESM
+            let plugin = await import(file://${path.resolve(pluginFolder, file)});
+            if (typeof plugin.default !== 'function') {
+                throw new Error('La exportación predeterminada no es una función');
             }
+        } catch (err) {
+            errorList.push(❌ ${file}: ${err.message});
         }
+    }
 
-        if (!hasErrors) {
-            response += '✅ ¡Todo está en orden! No se detectaron errores de sintaxis.';
-        }
-
-        await conn.reply(m.chat, response, m);
-        await m.react('✅');
-    } catch (err) {
-        await m.react('✖'); 
-        console.error(err);
-        conn.reply(m.chat, '🚩 Ocurrió un fallo al verificar los plugins.', m);
+    // Kirim hasil pengecekan
+    if (errorList.length === 0) {
+        m.reply('✅ ¡Todas las funciones son seguras, sin errores!');
+    } else {
+        m.reply(🚨 Se Encontró ${errorList.length} errores:\n\n + errorList.join('\n'));
     }
 };
 
-handler.command = ['detectarsyntax', 'revs'];
-handler.help = ['detectarsyntax'];
-handler.tags = ['tools'];
-handler.register = true;
+Fruatre.help = ['viewerror'];
+Fruatre.tags = ['owner'];
+Fruatre.command = /^viewerror$/i;
+Fruatre.rowner = true; // Hanya untuk owner
 
-export default handler;
+export default Fruatre;
